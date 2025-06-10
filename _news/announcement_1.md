@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper "The second Dirichlet eigenvalue is simple on every non-equilateral triangle" (with Xuefeng Liu) has been posted to [arXiv:2503.06786](https://arxiv.org/abs/2503.06786).
+Our paper "The second Dirichlet eigenvalue is simple on every non-equilateral triangle" (with Prof. Xuefeng Liu) has been posted to [arXiv:2503.06786](https://arxiv.org/abs/2503.06786).
