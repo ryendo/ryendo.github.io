@@ -72,11 +72,11 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/blog/";
               },
-            },{id: "post-a-post-with-plotly-js",
+            },{id: "post-something-about-eigenvalues",
         
-          title: "a post with plotly.js",
+          title: "something about eigenvalues",
         
-        description: "this is what included plotly.js code could look like",
+        description: "eigenvalues are good.",
         section: "Posts",
         handler: () => {
           
