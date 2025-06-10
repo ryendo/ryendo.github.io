@@ -8,7 +8,7 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>ORCID: 0000-0003-3149-072X <a href="[https://researchmap.jp/rendo](https://orcid.org/0000-0003-3149-072X)">[https://researchmap.jp/rendo](https://orcid.org/0000-0003-3149-072X)</a></p>
+    <p>ORCID: 0000-0003-3149-072X <a href="https://orcid.org/0000-0003-3149-072X">https://orcid.org/0000-0003-3149-072X</a></p>
     <p>researchmap ID: R000057605 <a href="https://researchmap.jp/rendo">https://researchmap.jp/rendo</a></p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
