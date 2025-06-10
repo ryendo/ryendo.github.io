@@ -8,9 +8,8 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    #<p>555 your office number</p>
-    #<p>123 your address street</p>
-    #<p>Your City, State 12345</p>
+    <p>ORCID: <a href="https://orcid.org/0000-0003-3149-072X">https://orcid.org/0000-0003-3149-072X</a></p>
+    <p>researchmap ID: R000057605 <a href="https://researchmap.jp/rendo">https://researchmap.jp/rendo</a></p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
