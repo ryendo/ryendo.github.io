@@ -73,21 +73,21 @@ const {
           </nav>
 
           {altLink && (
-            <div class="lang-toggle" aria-label={lang === "ja" ? "言語切替" : "Language switch"}>
-              <a
-                class={`lang-toggle-item ${lang === "ja" ? "is-current" : ""}`}
-                href={`${import.meta.env.BASE_URL}ja/`}
-                aria-current={lang === "ja" ? "page" : undefined}
-              >
-                日本語
-              </a>
-
+            <div class="lang-toggle" aria-label={lang === "ja" ? "言語切替" : "Language switch"}>              
               <a
                 class={`lang-toggle-item ${lang === "en" ? "is-current" : ""}`}
                 href={`${import.meta.env.BASE_URL}en/`}
                 aria-current={lang === "en" ? "page" : undefined}
               >
                 English
+              </a>
+
+              <a
+                class={`lang-toggle-item ${lang === "ja" ? "is-current" : ""}`}
+                href={`${import.meta.env.BASE_URL}ja/`}
+                aria-current={lang === "ja" ? "page" : undefined}
+              >
+                日本語
               </a>
             </div>
           )}
