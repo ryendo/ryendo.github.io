@@ -5,180 +5,218 @@ import { profileJa, siteInfo } from "../../data/profile";
 const profile = profileJa;
 const base = import.meta.env.BASE_URL;
 ---
+
 <BaseLayout
   title="遠藤 凌輝 | Ryoki Endo"
-  description=""
+  description="遠藤凌輝の研究者個人ページ"
   lang="ja"
   homeLink={`${base}ja/`}
   homeLabel="プロフィール"
   altLink={`${base}en/`}
   altLabel="English"
-  blogLink={`${base}ja/blog/`}
-  blogLabel="Blog"
 >
-  <section class="hero">
-    <div>
-      <h1>{profile.heroTitle}</h1>
-      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
-      <div class="action-row">
-        <a class="pill-link" href={siteInfo.researchmap} target="_blank" rel="noreferrer">researchmap</a>
-        <a class="pill-link" href={siteInfo.orcid} target="_blank" rel="noreferrer">ORCID</a>
+  <main class="main-panel">
+    <section class="hero-card">
+      <img
+        class="hero-avatar"
+        src={`${base}avatar.svg`}
+        alt="Ryoki Endo"
+        width="140"
+        height="140"
+      />
+
+      <div class="hero-body">
+        <h1 class="hero-title">{profile.heroTitle}</h1>
+        <p class="hero-subtitle">{profile.heroSubtitle}</p>
+        <p class="hero-summary">{profile.bio[0]}</p>
+
+        <div class="hero-meta">
+          <span class="meta-chip">{siteInfo.taglineJa}</span>
+          <span class="meta-chip">博士（理学）, 新潟大学</span>
+          <span class="meta-chip">ORCID</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="profile-layout" style="margin-top: 1.2rem;">
+      <aside class="profile-sidebar">
+        <div class="profile-sidebar-card">
+          <h2 class="profile-sidebar-title">目次</h2>
+          <nav class="section-nav" aria-label="ページ内リンク">
+            <a href="#summary">概要</a>
+            <a href="#keywords">研究キーワード</a>
+            <a href="#education">学歴</a>
+            <a href="#degrees">学位</a>
+            <a href="#awards">受賞</a>
+            <a href="#papers">論文</a>
+            <a href="#talks-ja">日本語の講演</a>
+            <a href="#talks-en">英語の講演</a>
+            <a href="#societies">所属学協会</a>
+            <a href="#grants">共同研究・競争的資金等の研究課題</a>
+            <a href="#links">リンク</a>
+            <a href="#memo">メモ</a>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="profile-main">
+        <div class="section-stack">
+          <section id="summary" class="section-card anchor-offset">
+            <h2 class="section-title">概要</h2>
+            {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+          </section>
+
+          <section id="keywords" class="section-card anchor-offset">
+            <h2 class="section-title">研究キーワード</h2>
+            <div class="hero-meta">
+              {profile.keywords.map((keyword) => (
+                <span class="tag">{keyword}</span>
+              ))}
+            </div>
+          </section>
+
+          <section id="education" class="section-card anchor-offset">
+            <h2 class="section-title">学歴</h2>
+            <div class="info-list">
+              {profile.education.map((item) => (
+                <div class="info-item">
+                  <div class="info-item-title">{item.ja}</div>
+                  <div class="info-item-meta">{item.period}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="degrees" class="section-card anchor-offset">
+            <h2 class="section-title">学位</h2>
+            <div class="info-list">
+              {profile.degrees.map((item) => (
+                <div class="info-item">
+                  <div class="info-item-title">{item.ja}</div>
+                  <div class="info-item-meta">{item.when}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="awards" class="section-card anchor-offset">
+            <h2 class="section-title">受賞</h2>
+            <div class="info-list">
+              {profile.awards.map((item) => (
+                <div class="info-item">
+                  <div class="info-item-title">{item.label}</div>
+                  <div class="info-item-meta">{item.year}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="papers" class="section-card anchor-offset">
+            <h2 class="section-title">論文</h2>
+            <div class="card-list">
+              {profile.publications.map((paper) => (
+                <article class="item-card">
+                  <h3>{paper.title}</h3>
+                  <p>{paper.authors}</p>
+                  <p class="muted">{paper.venue}</p>
+                  <div class="hero-meta" style="margin-top: 0.8rem;">
+                    <span class="meta-chip">{paper.when}</span>
+                    <span class="meta-chip">{paper.note}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="talks-ja" class="section-card anchor-offset">
+            <h2 class="section-title">日本語の講演</h2>
+            <div class="card-list">
+              {profile.talksJapanese.map((talk) => (
+                <article class="item-card">
+                  <h3>{talk.title}</h3>
+                  {talk.authors && <p>発表者: {talk.authors}</p>}
+                  <p>{talk.event}</p>
+                  <p class="muted">
+                    {talk.date}
+                    {talk.note ? ` · ${talk.note}` : ""}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="talks-en" class="section-card anchor-offset">
+            <h2 class="section-title">英語の講演</h2>
+            <div class="card-list">
+              {profile.talksEnglish.map((talk) => (
+                <article class="item-card">
+                  <h3>{talk.title}</h3>
+                  {talk.authors && <p>Speaker(s): {talk.authors}</p>}
+                  <p>{talk.event}</p>
+                  <p class="muted">{talk.date}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="societies" class="section-card anchor-offset">
+            <h2 class="section-title">所属学協会</h2>
+            <div class="info-list">
+              {profile.memberships.map((item) => (
+                <div class="info-item">
+                  <div class="info-item-title">{item.ja}</div>
+                  <div class="info-item-meta">{item.period}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="grants" class="section-card anchor-offset">
+            <h2 class="section-title">共同研究・競争的資金等の研究課題</h2>
+            <div class="card-list">
+              {profile.grants.map((item) => (
+                <article class="item-card">
+                  <h3>{item.ja}</h3>
+                  <p>{item.funding}</p>
+                  <p class="muted">{item.period}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="links" class="section-card anchor-offset">
+            <h2 class="section-title">リンク</h2>
+            <div class="inline-links">
+              <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">
+                researchmap
+              </a>
+              <a href={siteInfo.orcid} target="_blank" rel="noreferrer">
+                ORCID
+              </a>
+            </div>
+
+            <div class="info-list" style="margin-top: 1rem;">
+              <div class="info-item">
+                <div class="info-item-title">研究者番号</div>
+                <div class="info-item-meta">{siteInfo.researcherNumber}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-item-title">連絡先</div>
+                <div class="info-item-meta">{siteInfo.emailDisplay}</div>
+              </div>
+            </div>
+          </section>
+
+          <section id="memo" class="section-card anchor-offset">
+            <h2 class="section-title">メモ</h2>
+            <p>{profile.updatedNote}</p>
+            <p>
+              データは <code>src/data/profile.ts</code> にまとめてあります。
+              業績や略歴を更新するときは、まずそこを書き換えると管理しやすいです。
+            </p>
+          </section>
+        </div>
       </div>
     </div>
-  </section>
-
-  <div class="page-grid">
-    <aside class="side-panel">
-      <nav aria-label="ページ内リンク">
-        <a href="#summary">概要</a>
-        <a href="#keywords">研究キーワード</a>
-        <a href="#education">学歴</a>
-        <a href="#degrees">学位</a>
-        <a href="#awards">受賞</a>
-        <a href="#publications">論文</a>
-        <a href="#talks-ja">日本語の講演</a>
-        <a href="#talks-en">英語の講演</a>
-        <a href="#memberships">所属学協会</a>
-        <a href="#grants">共同研究・競争的資金等の研究課題</a>
-        <a href="#links">リンク</a>
-        <a href="#updated">メモ</a>
-      </nav>
-    </aside>
-
-    <main class="main-panel">
-      <section id="summary" class="section-card">
-        <h2>概要</h2>
-        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
-      </section>
-
-      <section id="keywords" class="section-card">
-        <h2>研究キーワード</h2>
-        <div class="keyword-list">
-          {profile.keywords.map((keyword) => <span class="keyword">{keyword}</span>)}
-        </div>
-      </section>
-
-      <section id="education" class="section-card">
-        <h2>学歴</h2>
-        <div class="timeline">
-          {profile.education.map((item) => (
-            <div class="entry">
-              <h3>{true ? item.ja : item.en}</h3>
-              <p class="meta">{item.period}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="degrees" class="section-card">
-        <h2>学位</h2>
-        <div class="timeline">
-          {profile.degrees.map((item) => (
-            <div class="entry">
-              <h3>{true ? item.ja : item.en}</h3>
-              <p class="meta">{item.when}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="awards" class="section-card">
-        <h2>受賞</h2>
-        <div class="entry-list">
-          {profile.awards.map((item) => (
-            <div class="entry">
-              <h3>{item.label}</h3>
-              <p class="meta">{item.year}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="publications" class="section-card">
-        <h2>論文</h2>
-        <div class="entry-list">
-          {profile.publications.map((paper) => (
-            <article class="entry">
-              <h3>{paper.title}</h3>
-              <p>{paper.authors}</p>
-              <p class="meta">{paper.venue}</p>
-              <div class="tags">
-                <span>日付: {paper.when}</span>
-                <span>査読情報: {paper.note}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="talks-ja" class="section-card">
-        <h2>日本語の講演</h2>
-        <div class="entry-list">
-          {profile.talksJapanese.map((talk) => (
-            <article class="entry">
-              <h3>{talk.title}</h3>
-              {talk.authors && <p>発表者: {talk.authors}</p>}
-              <p>会議等: {talk.event}</p>
-              <p class="meta">日付: {talk.date}{talk.note ? ` · ${talk.note}` : ""}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="talks-en" class="section-card">
-        <h2>英語の講演</h2>
-        <div class="entry-list">
-          {profile.talksEnglish.map((talk) => (
-            <article class="entry">
-              <h3>{talk.title}</h3>
-              {talk.authors && <p>発表者: {talk.authors}</p>}
-              <p>会議等: {talk.event}</p>
-              <p class="meta">日付: {talk.date}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="memberships" class="section-card">
-        <h2>所属学協会</h2>
-        <div class="entry-list">
-          {profile.memberships.map((item) => (
-            <div class="entry">
-              <h3>{true ? item.ja : item.en}</h3>
-              <p class="meta">{item.period}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="grants" class="section-card">
-        <h2>共同研究・競争的資金等の研究課題</h2>
-        <div class="entry-list">
-          {profile.grants.map((item) => (
-            <article class="entry">
-              <h3>{true ? item.ja : item.en}</h3>
-              <p>資金: {item.funding}</p>
-              <p class="meta">{item.period}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="links" class="section-card">
-        <h2>リンク</h2>
-        <div class="entry">
-          <p><strong>researchmap:</strong> <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">{siteInfo.researchmap}</a></p>
-          <p><strong>ORCID:</strong> <a href={siteInfo.orcid} target="_blank" rel="noreferrer">{siteInfo.orcid}</a></p>
-          <p><strong>研究者番号:</strong> {siteInfo.researcherNumber}</p>
-          <p><strong>連絡先:</strong> {siteInfo.emailDisplay}</p>
-        </div>
-      </section>
-
-      <section id="updated" class="section-card">
-        <h2>メモ</h2>
-        <p>{profile.updatedNote}</p>
-        <p>このサイトの業績データは src/data/profile.ts にまとめてあります。ノートは src/pages/ja/notes/ と src/pages/en/notes/ の Markdown ファイルとして管理できます。</p>
-      </section>
-    </main>
-  </div>
+  </main>
 </BaseLayout>
