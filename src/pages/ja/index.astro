@@ -22,6 +22,12 @@ const base = import.meta.env.BASE_URL;
     <section class="section-card">
       <h1 class="hero-title">{profile.heroTitle}</h1>
       {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+      <div class="info-list" style="margin-top: 1rem;">
+        <div class="info-item">
+          <div class="info-item-title">連絡先</div>
+          <div class="info-item-meta">{siteInfo.emailDisplay}</div>
+        </div>
+      </div>
     </section>
 
     <div class="profile-layout" style="margin-top: 1.2rem;">
@@ -52,17 +58,6 @@ const base = import.meta.env.BASE_URL;
               <a href={siteInfo.orcid} target="_blank" rel="noreferrer">
                 ORCID
               </a>
-            </div>
-
-            <div class="info-list" style="margin-top: 1rem;">
-              <div class="info-item">
-                <div class="info-item-title">研究者番号</div>
-                <div class="info-item-meta">{siteInfo.researcherNumber}</div>
-              </div>
-              <div class="info-item">
-                <div class="info-item-title">連絡先</div>
-                <div class="info-item-meta">{siteInfo.emailDisplay}</div>
-              </div>
             </div>
           </section>
 
