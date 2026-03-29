@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="ブログ | 遠藤 凌輝"
+  description="遠藤凌輝のブログ"
+  lang="ja"
+  homeLink={`${base}ja/`}
+  homeLabel="プロフィール"
+  notesLink={`${base}ja/notes/`}
+  notesLabel="ノート"
+  blogLink={`${base}ja/blog/`}
+  blogLabel="ブログ"
+  altLink={`${base}en/blog/`}
+  altLabel="English"
+>
+  <main class="main-panel" style="margin-top: 1rem;">
+    <section class="section-card">
+      <h1>ブログ</h1>
+      <p>研究の小さな更新、告知、セミナー記録、短いエッセイなどを書く場所です。</p>
+      <div class="note-list">
+        <a href={`${base}ja/blog/first-post/`}>
+          <div class="note-card">
+            <h3>最初の記事</h3>
+            <p>これはサンプル記事です。あとで自分の記事に置き換えてください。</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Blog | Ryoki Endo"
+  description="Blog posts by Ryoki Endo"
+  lang="en"
+  homeLink={`${base}en/`}
+  homeLabel="Profile"
+  notesLink={`${base}en/notes/`}
+  notesLabel="Notes"
+  blogLink={`${base}en/blog/`}
+  blogLabel="Blog"
+  altLink={`${base}ja/blog/`}
+  altLabel="日本語"
+>
+  <main class="main-panel" style="margin-top: 1rem;">
+    <section class="section-card">
+      <h1>Blog</h1>
+      <p>Short updates, research notes, announcements, and travel or seminar reports.</p>
+      <div class="note-list">
+        <a href={`${base}en/blog/first-post/`}>
+          <div class="note-card">
+            <h3>First post</h3>
+            <p>This is a sample blog entry. Replace it with your own post.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

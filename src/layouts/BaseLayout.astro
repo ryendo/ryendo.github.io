@@ -10,6 +10,8 @@ interface Props {
   homeLabel: string;
   notesLink?: string;
   notesLabel?: string;
+  blogLink?: string;
+  blogLabel?: string;
   altLink?: string;
   altLabel?: string;
 }
@@ -22,6 +24,8 @@ const {
   homeLabel,
   notesLink,
   notesLabel,
+  blogLink,
+  blogLabel,
   altLink,
   altLabel,
 } = Astro.props as Props;
@@ -46,10 +50,11 @@ const {
           </span>
         </a>
         <nav class="top-links" aria-label={lang === "ja" ? "主要リンク" : "Primary links"}>
-          <a class="pill-link" href={homeLink}>{homeLabel}</a>
-          {notesLink && notesLabel && <a class="pill-link" href={notesLink}>{notesLabel}</a>}
-          {altLink && altLabel && <a class="pill-link" href={altLink}>{altLabel}</a>}
-        </nav>
+        <a class="pill-link" href={homeLink}>{homeLabel}</a>
+        {notesLink && notesLabel && <a class="pill-link" href={notesLink}>{notesLabel}</a>}
+        {blogLink && blogLabel && <a class="pill-link" href={blogLink}>{blogLabel}</a>}
+        {altLink && altLabel && <a class="pill-link" href={altLink}>{altLabel}</a>}
+      </nav>
       </header>
       <slot />
       <footer class="site-footer">
