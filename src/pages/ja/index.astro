@@ -27,7 +27,15 @@ const base = import.meta.env.BASE_URL;
           <div class="info-item-title">連絡先</div>
           <div class="info-item-meta">{siteInfo.emailDisplay}</div>
         </div>
-      </div>
+        <div class="info-item">
+          <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">
+            researchmap
+          </a>
+          <a href={siteInfo.orcid} target="_blank" rel="noreferrer">
+            ORCID
+          </a>
+        </div>
+      </div>      
     </section>
 
     <div class="profile-layout" style="margin-top: 1.2rem;">
@@ -49,17 +57,6 @@ const base = import.meta.env.BASE_URL;
 
       <div class="profile-main">
         <div class="section-stack">
-          <section id="links" class="section-card anchor-offset">
-            <h2 class="section-title">リンク</h2>
-            <div class="inline-links">
-              <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">
-                researchmap
-              </a>
-              <a href={siteInfo.orcid} target="_blank" rel="noreferrer">
-                ORCID
-              </a>
-            </div>
-          </section>
 
           <section id="keywords" class="section-card anchor-offset">
             <h2 class="section-title">研究キーワード</h2>
