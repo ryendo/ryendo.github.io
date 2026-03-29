@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { profileJa } from "../../../data/profile";
+
+const profile = profileJa;
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  title="ノート | 遠藤 凌輝"
+  description="数式付きの Markdown ノート"
+  lang="ja"
+  homeLink={`${base}ja/`}
+  homeLabel="プロフィール"
+  notesLink={`${base}ja/notes/`}
+  notesLabel="ノート"
+  altLink={`${base}en/notes/`}
+  altLabel="English"
+>
+  <main class="main-panel" style="margin-top: 1rem;">
+    <section class="section-card">
+      <h1>ノート</h1>
+      <p>Markdown と KaTeX を使ったノート置き場です。新しいノートは src/pages/ja/notes/ 以下に Markdown ファイルとして追加してください。</p>
+      <div class="note-list">
+        {profile.notes.map((note) => (
+          <a href={`${base}${note.url.replace(/^\//, "")}`}>
+            <div class="note-card">
+              <h3>{note.title}</h3>
+              <p>{note.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

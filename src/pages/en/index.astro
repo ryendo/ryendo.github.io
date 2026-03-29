@@ -1,0 +1,188 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { profileEn, siteInfo } from "../../data/profile";
+
+const profile = profileEn;
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  title="Ryoki Endo"
+  description="Ryoki Endo's academic personal website"
+  lang="en"
+  homeLink={`${base}en/`}
+  homeLabel="Profile"
+  notesLink={`${base}en/notes/`}
+  notesLabel="Notes"
+  altLink={`${base}ja/`}
+  altLabel="日本語"
+>
+  <section class="hero">
+    <img src={`${base}avatar.svg`} alt="Placeholder avatar" width="168" height="168" />
+    <div>
+      <span class="badge">{siteInfo.nameEn} / {siteInfo.nameJa}</span>
+      <h1>{profile.heroTitle}</h1>
+      <p class="tagline">{profile.heroTagline}</p>
+      <p class="muted">{profile.heroSubtitle}</p>
+      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+      <div class="action-row">
+        <a class="pill-link" href={siteInfo.researchmap} target="_blank" rel="noreferrer">researchmap</a>
+        <a class="pill-link" href={siteInfo.orcid} target="_blank" rel="noreferrer">ORCID</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-grid">
+    <aside class="side-panel">
+      <nav aria-label="In-page navigation">
+        <a href="#summary">About</a>
+        <a href="#keywords">Research Keywords</a>
+        <a href="#education">Education</a>
+        <a href="#degrees">Degrees</a>
+        <a href="#awards">Awards</a>
+        <a href="#publications">Publications</a>
+        <a href="#talks-ja">Talks in Japanese</a>
+        <a href="#talks-en">Talks in English</a>
+        <a href="#memberships">Professional Memberships</a>
+        <a href="#grants">Research Funding</a>
+        <a href="#links">Links</a>
+        <a href="#updated">Note</a>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <section id="summary" class="section-card">
+        <h2>About</h2>
+        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+      </section>
+
+      <section id="keywords" class="section-card">
+        <h2>Research Keywords</h2>
+        <div class="keyword-list">
+          {profile.keywords.map((keyword) => <span class="keyword">{keyword}</span>)}
+        </div>
+      </section>
+
+      <section id="education" class="section-card">
+        <h2>Education</h2>
+        <div class="timeline">
+          {profile.education.map((item) => (
+            <div class="entry">
+              <h3>{false ? item.ja : item.en}</h3>
+              <p class="meta">{item.period}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="degrees" class="section-card">
+        <h2>Degrees</h2>
+        <div class="timeline">
+          {profile.degrees.map((item) => (
+            <div class="entry">
+              <h3>{false ? item.ja : item.en}</h3>
+              <p class="meta">{item.when}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="awards" class="section-card">
+        <h2>Awards</h2>
+        <div class="entry-list">
+          {profile.awards.map((item) => (
+            <div class="entry">
+              <h3>{item.label}</h3>
+              <p class="meta">{item.year}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="publications" class="section-card">
+        <h2>Publications</h2>
+        <div class="entry-list">
+          {profile.publications.map((paper) => (
+            <article class="entry">
+              <h3>{paper.title}</h3>
+              <p>{paper.authors}</p>
+              <p class="meta">{paper.venue}</p>
+              <div class="tags">
+                <span>Date: {paper.when}</span>
+                <span>Review status: {paper.note}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="talks-ja" class="section-card">
+        <h2>Talks in Japanese</h2>
+        <div class="entry-list">
+          {profile.talksJapanese.map((talk) => (
+            <article class="entry">
+              <h3>{talk.title}</h3>
+              {talk.authors && <p>Speakers: {talk.authors}</p>}
+              <p>Event: {talk.event}</p>
+              <p class="meta">Date: {talk.date}{talk.note ? ` · ${talk.note}` : ""}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="talks-en" class="section-card">
+        <h2>Talks in English</h2>
+        <div class="entry-list">
+          {profile.talksEnglish.map((talk) => (
+            <article class="entry">
+              <h3>{talk.title}</h3>
+              {talk.authors && <p>Speakers: {talk.authors}</p>}
+              <p>Event: {talk.event}</p>
+              <p class="meta">Date: {talk.date}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="memberships" class="section-card">
+        <h2>Professional Memberships</h2>
+        <div class="entry-list">
+          {profile.memberships.map((item) => (
+            <div class="entry">
+              <h3>{false ? item.ja : item.en}</h3>
+              <p class="meta">{item.period}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="grants" class="section-card">
+        <h2>Research Funding</h2>
+        <div class="entry-list">
+          {profile.grants.map((item) => (
+            <article class="entry">
+              <h3>{false ? item.ja : item.en}</h3>
+              <p>Funding: {item.funding}</p>
+              <p class="meta">{item.period}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="links" class="section-card">
+        <h2>Links</h2>
+        <div class="entry">
+          <p><strong>researchmap:</strong> <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">{siteInfo.researchmap}</a></p>
+          <p><strong>ORCID:</strong> <a href={siteInfo.orcid} target="_blank" rel="noreferrer">{siteInfo.orcid}</a></p>
+          <p><strong>Researcher Number:</strong> {siteInfo.researcherNumber}</p>
+          <p><strong>Contact:</strong> {siteInfo.emailDisplay}</p>
+        </div>
+      </section>
+
+      <section id="updated" class="section-card">
+        <h2>Note</h2>
+        <p>{profile.updatedNote}</p>
+        <p>Structured profile data lives in src/data/profile.ts. Notes can be managed manually as Markdown files under src/pages/ja/notes/ and src/pages/en/notes/.</p>
+      </section>
+    </main>
+  </div>
+</BaseLayout>

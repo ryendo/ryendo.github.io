@@ -1,0 +1,28 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const isJa = frontmatter.lang === "ja";
+const homeLink = `${base}${isJa ? "ja/" : "en/"}`;
+const notesLink = `${base}${isJa ? "ja/notes/" : "en/notes/"}`;
+const altLink = `${base}${isJa ? "en/notes/" : "ja/notes/"}`;
+---
+<BaseLayout
+  title={`${frontmatter.title} | ${isJa ? "遠藤 凌輝" : "Ryoki Endo"}`}
+  description={frontmatter.description ?? frontmatter.title}
+  lang={isJa ? "ja" : "en"}
+  homeLink={homeLink}
+  homeLabel={isJa ? "プロフィール" : "Profile"}
+  notesLink={notesLink}
+  notesLabel={isJa ? "ノート" : "Notes"}
+  altLink={altLink}
+  altLabel={isJa ? "English" : "日本語"}
+>
+  <article class="note-panel">
+    <a class="back-link" href={notesLink}>← {isJa ? "ノート一覧に戻る" : "Back to notes"}</a>
+    <h1>{frontmatter.title}</h1>
+    <p class="note-meta">{frontmatter.date} · {frontmatter.description}</p>
+    <slot />
+  </article>
+</BaseLayout>

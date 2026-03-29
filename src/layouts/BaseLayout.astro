@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+import "katex/dist/katex.min.css";
+
+interface Props {
+  title: string;
+  description: string;
+  lang: "ja" | "en";
+  homeLink: string;
+  homeLabel: string;
+  notesLink?: string;
+  notesLabel?: string;
+  altLink?: string;
+  altLabel?: string;
+}
+
+const {
+  title,
+  description,
+  lang,
+  homeLink,
+  homeLabel,
+  notesLink,
+  notesLabel,
+  altLink,
+  altLabel,
+} = Astro.props as Props;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}avatar.svg`} />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="site-brand" href={homeLink}>
+          <img src={`${import.meta.env.BASE_URL}avatar.svg`} alt="avatar" width="42" height="42" />
+          <span>
+            {lang === "ja" ? "遠藤 凌輝" : "Ryoki Endo"}
+            <small>{lang === "ja" ? "研究者個人ページ" : "Academic personal site"}</small>
+          </span>
+        </a>
+        <nav class="top-links" aria-label={lang === "ja" ? "主要リンク" : "Primary links"}>
+          <a class="pill-link" href={homeLink}>{homeLabel}</a>
+          {notesLink && notesLabel && <a class="pill-link" href={notesLink}>{notesLabel}</a>}
+          {altLink && altLabel && <a class="pill-link" href={altLink}>{altLabel}</a>}
+        </nav>
+      </header>
+      <slot />
+      <footer class="site-footer">
+        <p>Built with Astro + Markdown + KaTeX. Replace avatar.svg and edit src/data/profile.ts to update the site.</p>
+      </footer>
+    </div>
+  </body>
+</html>

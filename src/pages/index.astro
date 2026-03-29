@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  title="Ryoki Endo / 遠藤 凌輝"
+  description="Bilingual academic website for Ryoki Endo built with Astro, Markdown, and KaTeX."
+  lang="en"
+  homeLink={base}
+  homeLabel="Home"
+  altLink={`${base}ja/`}
+  altLabel="日本語"
+>
+  <main class="home-landing">
+    <section class="hero">
+      <img src={`${base}avatar.svg`} alt="Placeholder avatar" width="168" height="168" />
+      <div>
+        <h1>Ryoki Endo / 遠藤 凌輝</h1>
+        <p class="tagline">Spectral geometry, verified numerical computation, and computer-assisted proofs</p>
+        <p>
+          This starter project contains a bilingual academic website, separated talk lists in Japanese and English,
+          and sample Markdown notes with KaTeX-enabled mathematics.
+        </p>
+        <div class="action-row">
+          <a class="pill-link" href={`${base}en/`}>Enter in English</a>
+          <a class="pill-link" href={`${base}ja/`}>日本語で見る</a>
+        </div>
+      </div>
+    </section>
+    <section class="section-card" style="margin-top: 1rem;">
+      <h2>What is included</h2>
+      <div class="lang-cards">
+        <a class="lang-card" href={`${base}en/`}>
+          <h2>English profile</h2>
+          <p>Profile, publications, awards, memberships, grants, and talks split into English talks and Japanese talks.</p>
+        </a>
+        <a class="lang-card" href={`${base}ja/`}>
+          <h2>日本語プロフィール</h2>
+          <p>プロフィール、論文、受賞、所属学会、研究課題、そして日本語講演・英語講演を分けた一覧を収録しています。</p>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

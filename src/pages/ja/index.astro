@@ -1,0 +1,188 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { profileJa, siteInfo } from "../../data/profile";
+
+const profile = profileJa;
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  title="遠藤 凌輝 | Ryoki Endo"
+  description="遠藤凌輝の研究者個人ページ"
+  lang="ja"
+  homeLink={`${base}ja/`}
+  homeLabel="プロフィール"
+  notesLink={`${base}ja/notes/`}
+  notesLabel="ノート"
+  altLink={`${base}en/`}
+  altLabel="English"
+>
+  <section class="hero">
+    <img src={`${base}avatar.svg`} alt="Placeholder avatar" width="168" height="168" />
+    <div>
+      <span class="badge">{siteInfo.nameEn} / {siteInfo.nameJa}</span>
+      <h1>{profile.heroTitle}</h1>
+      <p class="tagline">{profile.heroTagline}</p>
+      <p class="muted">{profile.heroSubtitle}</p>
+      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+      <div class="action-row">
+        <a class="pill-link" href={siteInfo.researchmap} target="_blank" rel="noreferrer">researchmap</a>
+        <a class="pill-link" href={siteInfo.orcid} target="_blank" rel="noreferrer">ORCID</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-grid">
+    <aside class="side-panel">
+      <nav aria-label="ページ内リンク">
+        <a href="#summary">概要</a>
+        <a href="#keywords">研究キーワード</a>
+        <a href="#education">学歴</a>
+        <a href="#degrees">学位</a>
+        <a href="#awards">受賞</a>
+        <a href="#publications">論文</a>
+        <a href="#talks-ja">日本語の講演</a>
+        <a href="#talks-en">英語の講演</a>
+        <a href="#memberships">所属学協会</a>
+        <a href="#grants">共同研究・競争的資金等の研究課題</a>
+        <a href="#links">リンク</a>
+        <a href="#updated">メモ</a>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <section id="summary" class="section-card">
+        <h2>概要</h2>
+        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+      </section>
+
+      <section id="keywords" class="section-card">
+        <h2>研究キーワード</h2>
+        <div class="keyword-list">
+          {profile.keywords.map((keyword) => <span class="keyword">{keyword}</span>)}
+        </div>
+      </section>
+
+      <section id="education" class="section-card">
+        <h2>学歴</h2>
+        <div class="timeline">
+          {profile.education.map((item) => (
+            <div class="entry">
+              <h3>{true ? item.ja : item.en}</h3>
+              <p class="meta">{item.period}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="degrees" class="section-card">
+        <h2>学位</h2>
+        <div class="timeline">
+          {profile.degrees.map((item) => (
+            <div class="entry">
+              <h3>{true ? item.ja : item.en}</h3>
+              <p class="meta">{item.when}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="awards" class="section-card">
+        <h2>受賞</h2>
+        <div class="entry-list">
+          {profile.awards.map((item) => (
+            <div class="entry">
+              <h3>{item.label}</h3>
+              <p class="meta">{item.year}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="publications" class="section-card">
+        <h2>論文</h2>
+        <div class="entry-list">
+          {profile.publications.map((paper) => (
+            <article class="entry">
+              <h3>{paper.title}</h3>
+              <p>{paper.authors}</p>
+              <p class="meta">{paper.venue}</p>
+              <div class="tags">
+                <span>日付: {paper.when}</span>
+                <span>査読情報: {paper.note}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="talks-ja" class="section-card">
+        <h2>日本語の講演</h2>
+        <div class="entry-list">
+          {profile.talksJapanese.map((talk) => (
+            <article class="entry">
+              <h3>{talk.title}</h3>
+              {talk.authors && <p>発表者: {talk.authors}</p>}
+              <p>会議等: {talk.event}</p>
+              <p class="meta">日付: {talk.date}{talk.note ? ` · ${talk.note}` : ""}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="talks-en" class="section-card">
+        <h2>英語の講演</h2>
+        <div class="entry-list">
+          {profile.talksEnglish.map((talk) => (
+            <article class="entry">
+              <h3>{talk.title}</h3>
+              {talk.authors && <p>発表者: {talk.authors}</p>}
+              <p>会議等: {talk.event}</p>
+              <p class="meta">日付: {talk.date}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="memberships" class="section-card">
+        <h2>所属学協会</h2>
+        <div class="entry-list">
+          {profile.memberships.map((item) => (
+            <div class="entry">
+              <h3>{true ? item.ja : item.en}</h3>
+              <p class="meta">{item.period}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="grants" class="section-card">
+        <h2>共同研究・競争的資金等の研究課題</h2>
+        <div class="entry-list">
+          {profile.grants.map((item) => (
+            <article class="entry">
+              <h3>{true ? item.ja : item.en}</h3>
+              <p>資金: {item.funding}</p>
+              <p class="meta">{item.period}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="links" class="section-card">
+        <h2>リンク</h2>
+        <div class="entry">
+          <p><strong>researchmap:</strong> <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">{siteInfo.researchmap}</a></p>
+          <p><strong>ORCID:</strong> <a href={siteInfo.orcid} target="_blank" rel="noreferrer">{siteInfo.orcid}</a></p>
+          <p><strong>研究者番号:</strong> {siteInfo.researcherNumber}</p>
+          <p><strong>連絡先:</strong> {siteInfo.emailDisplay}</p>
+        </div>
+      </section>
+
+      <section id="updated" class="section-card">
+        <h2>メモ</h2>
+        <p>{profile.updatedNote}</p>
+        <p>このサイトの業績データは src/data/profile.ts にまとめてあります。ノートは src/pages/ja/notes/ と src/pages/en/notes/ の Markdown ファイルとして管理できます。</p>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
