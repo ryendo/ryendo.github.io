@@ -5,180 +5,223 @@ import { profileEn, siteInfo } from "../../data/profile";
 const profile = profileEn;
 const base = import.meta.env.BASE_URL;
 ---
+
 <BaseLayout
   title="Ryoki Endo"
-  description=""
+  description="Personal academic website of Ryoki Endo"
   lang="en"
   homeLink={`${base}en/`}
   homeLabel="Profile"
-  altLink={`${base}ja/`}
-  altLabel="日本語"
   blogLink={`${base}en/blog/`}
   blogLabel="Blog"
+  altLink={`${base}ja/`}
+  altLabel="日本語"
 >
-  <section class="hero">
-    <div>
-      <h1>{profile.heroTitle}</h1>
-      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
-      <div class="action-row">
-        <a class="pill-link" href={siteInfo.researchmap} target="_blank" rel="noreferrer">researchmap</a>
-        <a class="pill-link" href={siteInfo.orcid} target="_blank" rel="noreferrer">ORCID</a>
+  <main class="main-panel">
+    <section class="hero-card">
+      <img
+        class="hero-avatar"
+        src={`${base}avatar.svg`}
+        alt="Ryoki Endo"
+        width="140"
+        height="140"
+      />
+
+      <div class="hero-body">
+        <h1 class="hero-title">{profile.heroTitle}</h1>
+        <p class="hero-subtitle">{profile.heroSubtitle}</p>
+        <p class="hero-summary">{profile.bio[0]}</p>
+
+        <div class="hero-meta">
+          <span class="meta-chip">{siteInfo.taglineEn}</span>
+          <span class="meta-chip">Ph.D. in Science, Niigata University</span>
+          <span class="meta-chip">ORCID</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="profile-layout" style="margin-top: 1.2rem;">
+      <aside class="profile-sidebar">
+        <div class="profile-sidebar-card">
+          <h2 class="profile-sidebar-title">Contents</h2>
+          <nav class="section-nav" aria-label="Page contents">
+            <a href="#summary">Summary</a>
+            <a href="#keywords">Keywords</a>
+            <a href="#education">Education</a>
+            <a href="#degrees">Degrees</a>
+            <a href="#awards">Awards</a>
+            <a href="#papers">Papers</a>
+            <a href="#talks-ja">Talks in Japanese</a>
+            <a href="#talks-en">Talks in English</a>
+            <a href="#societies">Academic Societies</a>
+            <a href="#grants">Grants</a>
+            <a href="#links">Links</a>
+            <a href="#memo">Memo</a>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="profile-main">
+        <div class="section-stack">
+          <section id="summary" class="section-card anchor-offset">
+            <h2 class="section-title">Summary</h2>
+            {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+          </section>
+
+          <section id="keywords" class="section-card anchor-offset">
+            <h2 class="section-title">Keywords</h2>
+            <div class="hero-meta">
+              {profile.keywords.map((keyword) => (
+                <span class="tag">{keyword}</span>
+              ))}
+            </div>
+          </section>
+
+          <section id="education" class="section-card anchor-offset">
+            <h2 class="section-title">Education</h2>
+            <div class="info-list">
+              {profile.education.map((item) => (
+                <div class="info-item">
+                  <div class="info-item-title">{item.en}</div>
+                  <div class="info-item-meta">{item.period}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="degrees" class="section-card anchor-offset">
+            <h2 class="section-title">Degrees</h2>
+            <div class="info-list">
+              {profile.degrees.map((item) => (
+                <div class="info-item">
+                  <div class="info-item-title">{item.en}</div>
+                  <div class="info-item-meta">{item.when}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="awards" class="section-card anchor-offset">
+            <h2 class="section-title">Awards</h2>
+            <div class="info-list">
+              {profile.awards.map((item) => (
+                <div class="info-item">
+                  <div class="info-item-title">{item.label}</div>
+                  <div class="info-item-meta">{item.year}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="papers" class="section-card anchor-offset">
+            <h2 class="section-title">Papers</h2>
+            <div class="card-list">
+              {profile.publications.map((paper) => (
+                <article class="item-card">
+                  <h3>{paper.title}</h3>
+                  <p>{paper.authors}</p>
+                  <p class="muted">{paper.venue}</p>
+                  <div class="hero-meta" style="margin-top: 0.8rem;">
+                    <span class="meta-chip">{paper.when}</span>
+                    <span class="meta-chip">{paper.note}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="talks-ja" class="section-card anchor-offset">
+            <h2 class="section-title">Talks in Japanese</h2>
+            <div class="card-list">
+              {profile.talksJapanese.map((talk) => (
+                <article class="item-card">
+                  <h3>{talk.title}</h3>
+                  {talk.authors && <p>Speaker(s): {talk.authors}</p>}
+                  <p>{talk.event}</p>
+                  <p class="muted">
+                    {talk.date}
+                    {talk.note ? ` · ${talk.note}` : ""}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="talks-en" class="section-card anchor-offset">
+            <h2 class="section-title">Talks in English</h2>
+            <div class="card-list">
+              {profile.talksEnglish.map((talk) => (
+                <article class="item-card">
+                  <h3>{talk.title}</h3>
+                  {talk.authors && <p>Speaker(s): {talk.authors}</p>}
+                  <p>{talk.event}</p>
+                  <p class="muted">
+                    {talk.date}
+                    {talk.note ? ` · ${talk.note}` : ""}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="societies" class="section-card anchor-offset">
+            <h2 class="section-title">Academic Societies</h2>
+            <div class="info-list">
+              {profile.memberships.map((item) => (
+                <div class="info-item">
+                  <div class="info-item-title">{item.en}</div>
+                  <div class="info-item-meta">{item.period}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="grants" class="section-card anchor-offset">
+            <h2 class="section-title">Grants</h2>
+            <div class="card-list">
+              {profile.grants.map((item) => (
+                <article class="item-card">
+                  <h3>{item.en}</h3>
+                  <p>{item.funding}</p>
+                  <p class="muted">{item.period}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="links" class="section-card anchor-offset">
+            <h2 class="section-title">Links</h2>
+            <div class="inline-links">
+              <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">
+                researchmap
+              </a>
+              <a href={siteInfo.orcid} target="_blank" rel="noreferrer">
+                ORCID
+              </a>
+            </div>
+
+            <div class="info-list" style="margin-top: 1rem;">
+              <div class="info-item">
+                <div class="info-item-title">Researcher ID</div>
+                <div class="info-item-meta">{siteInfo.researcherNumber}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-item-title">Contact</div>
+                <div class="info-item-meta">{siteInfo.emailDisplay}</div>
+              </div>
+            </div>
+          </section>
+
+          <section id="memo" class="section-card anchor-offset">
+            <h2 class="section-title">Memo</h2>
+            <p>{profile.updatedNote}</p>
+            <p>
+              The data is organized in <code>src/data/profile.ts</code>.
+              It is easiest to update your CV, talks, and publications there first.
+            </p>
+          </section>
+        </div>
       </div>
     </div>
-  </section>
-
-  <div class="page-grid">
-    <aside class="side-panel">
-      <nav aria-label="In-page navigation">
-        <a href="#summary">About</a>
-        <a href="#keywords">Research Keywords</a>
-        <a href="#education">Education</a>
-        <a href="#degrees">Degrees</a>
-        <a href="#awards">Awards</a>
-        <a href="#publications">Publications</a>
-        <a href="#talks-ja">Talks in Japanese</a>
-        <a href="#talks-en">Talks in English</a>
-        <a href="#memberships">Professional Memberships</a>
-        <a href="#grants">Research Funding</a>
-        <a href="#links">Links</a>
-        <a href="#updated">Note</a>
-      </nav>
-    </aside>
-
-    <main class="main-panel">
-      <section id="summary" class="section-card">
-        <h2>About</h2>
-        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
-      </section>
-
-      <section id="keywords" class="section-card">
-        <h2>Research Keywords</h2>
-        <div class="keyword-list">
-          {profile.keywords.map((keyword) => <span class="keyword">{keyword}</span>)}
-        </div>
-      </section>
-
-      <section id="education" class="section-card">
-        <h2>Education</h2>
-        <div class="timeline">
-          {profile.education.map((item) => (
-            <div class="entry">
-              <h3>{false ? item.ja : item.en}</h3>
-              <p class="meta">{item.period}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="degrees" class="section-card">
-        <h2>Degrees</h2>
-        <div class="timeline">
-          {profile.degrees.map((item) => (
-            <div class="entry">
-              <h3>{false ? item.ja : item.en}</h3>
-              <p class="meta">{item.when}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="awards" class="section-card">
-        <h2>Awards</h2>
-        <div class="entry-list">
-          {profile.awards.map((item) => (
-            <div class="entry">
-              <h3>{item.label}</h3>
-              <p class="meta">{item.year}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="publications" class="section-card">
-        <h2>Publications</h2>
-        <div class="entry-list">
-          {profile.publications.map((paper) => (
-            <article class="entry">
-              <h3>{paper.title}</h3>
-              <p>{paper.authors}</p>
-              <p class="meta">{paper.venue}</p>
-              <div class="tags">
-                <span>Date: {paper.when}</span>
-                <span>Review status: {paper.note}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="talks-ja" class="section-card">
-        <h2>Talks in Japanese</h2>
-        <div class="entry-list">
-          {profile.talksJapanese.map((talk) => (
-            <article class="entry">
-              <h3>{talk.title}</h3>
-              {talk.authors && <p>Speakers: {talk.authors}</p>}
-              <p>Event: {talk.event}</p>
-              <p class="meta">Date: {talk.date}{talk.note ? ` · ${talk.note}` : ""}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="talks-en" class="section-card">
-        <h2>Talks in English</h2>
-        <div class="entry-list">
-          {profile.talksEnglish.map((talk) => (
-            <article class="entry">
-              <h3>{talk.title}</h3>
-              {talk.authors && <p>Speakers: {talk.authors}</p>}
-              <p>Event: {talk.event}</p>
-              <p class="meta">Date: {talk.date}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="memberships" class="section-card">
-        <h2>Professional Memberships</h2>
-        <div class="entry-list">
-          {profile.memberships.map((item) => (
-            <div class="entry">
-              <h3>{false ? item.ja : item.en}</h3>
-              <p class="meta">{item.period}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="grants" class="section-card">
-        <h2>Research Funding</h2>
-        <div class="entry-list">
-          {profile.grants.map((item) => (
-            <article class="entry">
-              <h3>{false ? item.ja : item.en}</h3>
-              <p>Funding: {item.funding}</p>
-              <p class="meta">{item.period}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="links" class="section-card">
-        <h2>Links</h2>
-        <div class="entry">
-          <p><strong>researchmap:</strong> <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">{siteInfo.researchmap}</a></p>
-          <p><strong>ORCID:</strong> <a href={siteInfo.orcid} target="_blank" rel="noreferrer">{siteInfo.orcid}</a></p>
-          <p><strong>Researcher Number:</strong> {siteInfo.researcherNumber}</p>
-          <p><strong>Contact:</strong> {siteInfo.emailDisplay}</p>
-        </div>
-      </section>
-
-      <section id="updated" class="section-card">
-        <h2>Note</h2>
-        <p>{profile.updatedNote}</p>
-        <p>Structured profile data lives in src/data/profile.ts. Notes can be managed manually as Markdown files under src/pages/ja/notes/ and src/pages/en/notes/.</p>
-      </section>
-    </main>
-  </div>
+  </main>
 </BaseLayout>
