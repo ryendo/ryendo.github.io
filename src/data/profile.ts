@@ -49,11 +49,6 @@ export const profileJa = {
     "when": "2024.03",
     "ja": "修士（理学）, 新潟大学",
     "en": "M.Sc. in Science, Niigata University"
-  },
-  {
-    "when": "2022.03",
-    "ja": "学士（理学）, 新潟大学",
-    "en": "B.Sc. in Science, Niigata University"
   }
 ],
   awards: [

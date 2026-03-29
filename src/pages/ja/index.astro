@@ -19,11 +19,9 @@ const base = import.meta.env.BASE_URL;
   currentSection="home"
 >
   <main class="main-panel">
-    <section class="hero-card">
-      <div class="hero-body">
-        <h1 class="hero-title">{profile.heroTitle}</h1>
-        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
+    <section class="section-card">
+      <h1 class="hero-title">{profile.heroTitle}</h1>
+      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
     </section>
 
     <div class="profile-layout" style="margin-top: 1.2rem;">
@@ -32,7 +30,6 @@ const base = import.meta.env.BASE_URL;
           <h2 class="profile-sidebar-title">目次</h2>
           <nav class="section-nav" aria-label="ページ内リンク">
             <a href="#keywords">研究キーワード</a>
-            <a href="#education">学歴</a>
             <a href="#degrees">学位</a>
             <a href="#awards">受賞</a>
             <a href="#papers">論文</a>
@@ -54,18 +51,6 @@ const base = import.meta.env.BASE_URL;
             <div class="hero-meta">
               {profile.keywords.map((keyword) => (
                 <span class="tag">{keyword}</span>
-              ))}
-            </div>
-          </section>
-
-          <section id="education" class="section-card anchor-offset">
-            <h2 class="section-title">学歴</h2>
-            <div class="info-list">
-              {profile.education.map((item) => (
-                <div class="info-item">
-                  <div class="info-item-title">{item.ja}</div>
-                  <div class="info-item-meta">{item.period}</div>
-                </div>
               ))}
             </div>
           </section>

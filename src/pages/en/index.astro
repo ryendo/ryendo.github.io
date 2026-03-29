@@ -19,11 +19,9 @@ const base = import.meta.env.BASE_URL;
   currentSection="home"
 >
   <main class="main-panel">
-    <section class="hero-card">
-      <div class="hero-body">
-        <h1 class="hero-title">{profile.heroTitle}</h1>
-        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
+    <section class="section-card">
+      <h1 class="hero-title">{profile.heroTitle}</h1>
+      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
     </section>
 
     <div class="profile-layout" style="margin-top: 1.2rem;">
@@ -32,7 +30,6 @@ const base = import.meta.env.BASE_URL;
           <h2 class="profile-sidebar-title">Contents</h2>
           <nav class="section-nav" aria-label="Page contents">
             <a href="#keywords">Keywords</a>
-            <a href="#education">Education</a>
             <a href="#degrees">Degrees</a>
             <a href="#awards">Awards</a>
             <a href="#papers">Papers</a>
@@ -54,18 +51,6 @@ const base = import.meta.env.BASE_URL;
             <div class="hero-meta">
               {profile.keywords.map((keyword) => (
                 <span class="tag">{keyword}</span>
-              ))}
-            </div>
-          </section>
-
-          <section id="education" class="section-card anchor-offset">
-            <h2 class="section-title">Education</h2>
-            <div class="info-list">
-              {profile.education.map((item) => (
-                <div class="info-item">
-                  <div class="info-item-title">{item.en}</div>
-                  <div class="info-item-meta">{item.period}</div>
-                </div>
               ))}
             </div>
           </section>
