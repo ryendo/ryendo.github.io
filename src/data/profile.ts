@@ -4,7 +4,7 @@ export const siteInfo = {
   "orcid": "https://orcid.org/0000-0003-3149-072X",
   "researchmap": "https://researchmap.jp/rendo",
   "researcherNumber": "41013494",
-  "emailDisplay": "endom.sc.niigata-u.ac.jp",
+  "emailDisplay": "endo _at_ m.sc.niigata-u.ac.jp",
   "taglineJa": "ラプラシアン固有値のスペクトル幾何学と計算機援用証明",
   "taglineEn": "Spectral geometry of Laplacian eigenvalues and computer-assisted proofs",
   "updatedNoteJa": "このサイトの内容は公開 researchmap 情報をもとに整理したものです。必要に応じて data ファイルを書き換えてください。",
