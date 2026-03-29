@@ -31,20 +31,40 @@ const base = import.meta.env.BASE_URL;
           <nav class="section-nav" aria-label="ページ内リンク">
             <a href="#keywords">研究キーワード</a>
             <a href="#degrees">学位</a>
-            <a href="#awards">受賞</a>
             <a href="#papers">論文</a>
+            <a href="#awards">受賞</a>            
             <a href="#talks-ja">日本語の講演</a>
             <a href="#talks-en">英語の講演</a>
             <a href="#societies">所属学協会</a>
-            <a href="#grants">共同研究・競争的資金等の研究課題</a>
-            <a href="#links">リンク</a>
-            <a href="#memo">メモ</a>
+            <a href="#grants">共同研究・競争的資金等の研究課題</a>            
           </nav>
         </div>
       </aside>
 
       <div class="profile-main">
         <div class="section-stack">
+          <section id="links" class="section-card anchor-offset">
+            <h2 class="section-title">リンク</h2>
+            <div class="inline-links">
+              <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">
+                researchmap
+              </a>
+              <a href={siteInfo.orcid} target="_blank" rel="noreferrer">
+                ORCID
+              </a>
+            </div>
+
+            <div class="info-list" style="margin-top: 1rem;">
+              <div class="info-item">
+                <div class="info-item-title">研究者番号</div>
+                <div class="info-item-meta">{siteInfo.researcherNumber}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-item-title">連絡先</div>
+                <div class="info-item-meta">{siteInfo.emailDisplay}</div>
+              </div>
+            </div>
+          </section>
 
           <section id="keywords" class="section-card anchor-offset">
             <h2 class="section-title">研究キーワード</h2>
@@ -67,17 +87,6 @@ const base = import.meta.env.BASE_URL;
             </div>
           </section>
 
-          <section id="awards" class="section-card anchor-offset">
-            <h2 class="section-title">受賞</h2>
-            <div class="info-list">
-              {profile.awards.map((item) => (
-                <div class="info-item">
-                  <div class="info-item-title">{item.label}</div>
-                  <div class="info-item-meta">{item.year}</div>
-                </div>
-              ))}
-            </div>
-          </section>
 
           <section id="papers" class="section-card anchor-offset">
             <h2 class="section-title">論文</h2>
@@ -92,6 +101,18 @@ const base = import.meta.env.BASE_URL;
                     <span class="meta-chip">{paper.note}</span>
                   </div>
                 </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="awards" class="section-card anchor-offset">
+            <h2 class="section-title">受賞</h2>
+            <div class="info-list">
+              {profile.awards.map((item) => (
+                <div class="info-item">
+                  <div class="info-item-title">{item.label}</div>
+                  <div class="info-item-meta">{item.year}</div>
+                </div>
               ))}
             </div>
           </section>
@@ -150,30 +171,7 @@ const base = import.meta.env.BASE_URL;
                 </article>
               ))}
             </div>
-          </section>
-
-          <section id="links" class="section-card anchor-offset">
-            <h2 class="section-title">リンク</h2>
-            <div class="inline-links">
-              <a href={siteInfo.researchmap} target="_blank" rel="noreferrer">
-                researchmap
-              </a>
-              <a href={siteInfo.orcid} target="_blank" rel="noreferrer">
-                ORCID
-              </a>
-            </div>
-
-            <div class="info-list" style="margin-top: 1rem;">
-              <div class="info-item">
-                <div class="info-item-title">研究者番号</div>
-                <div class="info-item-meta">{siteInfo.researcherNumber}</div>
-              </div>
-              <div class="info-item">
-                <div class="info-item-title">連絡先</div>
-                <div class="info-item-meta">{siteInfo.emailDisplay}</div>
-              </div>
-            </div>
-          </section>
+          </section>          
         </div>
       </div>
     </div>
