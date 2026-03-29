@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout
   title="Ryoki Endo"
-  description="Ryoki Endo's academic personal website"
+  description=""
   lang="en"
   homeLink={`${base}en/`}
   homeLabel="Profile"
@@ -17,9 +17,7 @@ const base = import.meta.env.BASE_URL;
   blogLabel="Blog"
 >
   <section class="hero">
-    <img src={`${base}avatar.svg`} alt="Placeholder avatar" width="168" height="168" />
     <div>
-      <span class="badge">{siteInfo.nameEn} / {siteInfo.nameJa}</span>
       <h1>{profile.heroTitle}</h1>
       <p class="tagline">{profile.heroTagline}</p>
       <p class="muted">{profile.heroSubtitle}</p>
