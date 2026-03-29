@@ -16,8 +16,7 @@ export const profileJa = {
   heroSubtitle: "Endo Ryoki",
   heroTagline: "ラプラシアン固有値のスペクトル幾何学と計算機援用証明",
   bio: [
-    "2026年3月に新潟大学で博士（理学）を取得しました。ラプラシアンの固有値に対する形状最適化問題や逆スペクトル問題に対して、精度保証付き数値計算を用いた計算機援用証明を研究しています。",
-    "とくに、固有値の単純性・固有値ギャップ・崩壊する領域の漸近解析・Berry 位相を通じた縮退構造の理解に関心があります。"
+    "2026年3月に新潟大学で博士（理学）を取得しました。ラプラシアンの固有値に対する形状最適化問題や逆スペクトル問題に対して、精度保証付き数値計算を用いた計算機援用証明を研究しています。"
   ],
   keywords: [
   "Laplacian の固有値",
@@ -261,8 +260,7 @@ export const profileEn = {
   heroSubtitle: "遠藤 凌輝",
   heroTagline: "Spectral geometry of Laplacian eigenvalues and computer-assisted proofs",
   bio: [
-    "I received my Ph.D. in Science from Niigata University in March 2026. My research focuses on computer-assisted proofs with verified numerical computation for shape optimization problems and inverse spectral problems involving eigenvalues of differential operators.",
-    "My current interests include simplicity of eigenvalues, eigenvalue gaps, asymptotic analysis on collapsing domains, and the study of degeneracy structures through Berry phase."
+    "I received my Ph.D. in Science from Niigata University in March 2026. My research focuses on computer-assisted proofs with verified numerical computation for shape optimization problems and inverse spectral problems involving eigenvalues of differential operators."
   ],
   keywords: [
   "Eigenvalues of the Laplacian",

@@ -373,14 +373,25 @@ small,
   background: var(--surface-soft);
 }
 
+.hero-card--textonly {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.hero-card--textonly .hero-body {
+  max-width: 72ch;
+}
+
 .hero-body p {
-  max-width: 68ch;
+  max-width: 72ch;
 }
 
 .hero-title {
-  margin-bottom: 0.4rem;
-  white-space: nowrap;
+  margin-bottom: 0.6rem;
+  white-space: normal;
+  word-break: keep-all;
 }
+
 
 .hero-subtitle {
   margin-bottom: 0.7rem;
