@@ -21,9 +21,9 @@ const base = import.meta.env.BASE_URL;
   <main class="main-panel">
     <section class="hero-card">
       <div class="hero-body">
-        <h1 class="hero-title">{profile.heroTitle}</h1>
-        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+        <h1 class="hero-title">{profile.heroTitle}</h1>        
       </div>
+      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
     </section>
 
     <div class="profile-layout" style="margin-top: 1.2rem;">
