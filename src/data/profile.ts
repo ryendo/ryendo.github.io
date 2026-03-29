@@ -318,23 +318,26 @@ export const profileEn = {
   {
     "title": "The second Dirichlet eigenvalue is simple on every non-equilateral triangle, Part I: Nearly degenerate triangles",
     "authors": "Ryoki Endo, Xuefeng Liu",
-    "venue": "Journal of Differential Equations 447, 113629–113629",
+    "venue": "Journal of Differential Equations 447, 113629",
     "when": "2025-12",
-    "note": "peer reviewed · first author"
+    "note": "peer reviewed · first author",
+    "journalUrl": "https://www.sciencedirect.com/science/article/abs/pii/S0022039625006564",
   },
   {
     "title": "Stable Computation of Laplacian Eigenfunctions Corresponding to Clustered Eigenvalues",
     "authors": "Ryoki Endo, Xuefeng Liu",
     "venue": "Applications of Mathematics 70, 595–609",
     "when": "2025-10",
-    "note": "peer reviewed · first author"
+    "note": "peer reviewed · first author",
+    "journalUrl": "https://link.springer.com/article/10.21136/AM.2025.0132-25",
   },
   {
     "title": "Shape optimization for the Laplacian eigenvalue over triangles and its application to interpolation error analysis",
     "authors": "Ryoki Endo, Xuefeng Liu",
     "venue": "Journal of Differential Equations 376, 750–772",
     "when": "2023-12",
-    "note": "peer reviewed · first author"
+    "note": "peer reviewed · first author",
+    "journalUrl": "https://www.sciencedirect.com/science/article/abs/pii/S0022039623006009",
   }
 ],
   talksJapanese: [
