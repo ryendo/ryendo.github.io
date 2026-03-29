@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import "katex/dist/katex.min.css";
 
 interface Props {
   title: string;
@@ -8,12 +7,11 @@ interface Props {
   lang: "ja" | "en";
   homeLink: string;
   homeLabel: string;
-  notesLink?: string;
-  notesLabel?: string;
   blogLink?: string;
   blogLabel?: string;
   altLink?: string;
   altLabel?: string;
+  currentSection?: "home" | "blog";
 }
 
 const {
@@ -22,14 +20,14 @@ const {
   lang,
   homeLink,
   homeLabel,
-  notesLink,
-  notesLabel,
   blogLink,
   blogLabel,
   altLink,
   altLabel,
+  currentSection,
 } = Astro.props as Props;
 ---
+
 <!doctype html>
 <html lang={lang}>
   <head>
@@ -37,29 +35,65 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}avatar.svg`} />
   </head>
+
   <body>
-    <div class="site-shell">
-      <header class="site-header">
+    <header class="site-header">
+      <div class="site-header-inner">
         <a class="site-brand" href={homeLink}>
-          <img src={`${import.meta.env.BASE_URL}avatar.svg`} alt="avatar" width="42" height="42" />
-          <span>
-            {lang === "ja" ? "遠藤 凌輝" : "Ryoki Endo"}
-            <small>{lang === "ja" ? "研究者個人ページ" : "Academic personal site"}</small>
-          </span>
+          <img src={`${import.meta.env.BASE_URL}avatar.svg`} alt="Ryoki Endo" />
+          <div class="site-brand-text">
+            <div class="site-brand-title">Ryoki Endo</div>
+            <div class="site-brand-subtitle">
+              {lang === "ja"
+                ? "Mathematics / Spectral Geometry"
+                : "Mathematics / Spectral Geometry"}
+            </div>
+          </div>
         </a>
-        <nav class="top-links" aria-label={lang === "ja" ? "主要リンク" : "Primary links"}>
-        <a class="pill-link" href={homeLink}>{homeLabel}</a>
-        {notesLink && notesLabel && <a class="pill-link" href={notesLink}>{notesLabel}</a>}
-        {blogLink && blogLabel && <a class="pill-link" href={blogLink}>{blogLabel}</a>}
-        {altLink && altLabel && <a class="pill-link" href={altLink}>{altLabel}</a>}
-      </nav>
-      </header>
-      <slot />
-      <footer class="site-footer">
-        <p>Built with Astro + Markdown + KaTeX. Replace avatar.svg and edit src/data/profile.ts to update the site.</p>
-      </footer>
-    </div>
+
+        <div class="header-controls">
+          <nav class="site-nav" aria-label={lang === "ja" ? "主要メニュー" : "Main navigation"}>
+            <a
+              class={`nav-tab ${currentSection === "home" ? "is-active" : ""}`}
+              href={homeLink}
+              aria-current={currentSection === "home" ? "page" : undefined}
+            >
+              {homeLabel}
+            </a>
+
+            {blogLink && blogLabel && (
+              <a
+                class={`nav-tab ${currentSection === "blog" ? "is-active" : ""}`}
+                href={blogLink}
+                aria-current={currentSection === "blog" ? "page" : undefined}
+              >
+                {blogLabel}
+              </a>
+            )}
+          </nav>
+
+          {altLink && altLabel && (
+            <div class="lang-toggle" aria-label={lang === "ja" ? "言語切替" : "Language switch"}>
+              <span class={`lang-toggle-item is-current`}>
+                {lang === "ja" ? "日本語" : "English"}
+              </span>
+              <a class="lang-toggle-item" href={altLink}>
+                {altLabel}
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span>© Ryoki Endo</span>
+        <span>{lang === "ja" ? "個人研究ページ" : "Personal academic website"}</span>
+      </div>
+    </footer>
   </body>
 </html>
