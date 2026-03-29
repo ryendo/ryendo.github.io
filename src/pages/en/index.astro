@@ -24,6 +24,24 @@ const base = import.meta.env.BASE_URL;
       {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
     </section>
 
+    <div class="profile-layout" style="margin-top: 1.2rem;">
+      <aside class="profile-sidebar">
+        <div class="profile-sidebar-card">
+          <h2 class="profile-sidebar-title">Contents</h2>
+          <nav class="section-nav" aria-label="Page contents">
+            <a href="#keywords">Keywords</a>
+            <a href="#degrees">Degrees</a>
+            <a href="#awards">Awards</a>
+            <a href="#papers">Papers</a>
+            <a href="#talks-ja">Talks in Japanese</a>
+            <a href="#talks-en">Talks in English</a>
+            <a href="#societies">Academic Societies</a>
+            <a href="#grants">Grants</a>
+            <a href="#links">Links</a>
+          </nav>
+        </div>
+      </aside>
+
       <div class="profile-main">
         <div class="section-stack">
 
