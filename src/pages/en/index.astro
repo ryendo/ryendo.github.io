@@ -84,42 +84,42 @@ const base = import.meta.env.BASE_URL;
             <h2 class="section-title">Published Articles</h2>
             <div class="card-list">
               {profile.publications.map((paper) => (
-            <article class="item-card">
-              <h3>{paper.title}</h3>
-              <p>{paper.authors}</p>
-              <p class="muted">{paper.venue}</p>
+                <article class="item-card">
+                  <h3>{paper.title}</h3>
+                  <p>{paper.authors}</p>
+                  <p class="muted">{paper.venue}</p>
 
-              <div class="hero-meta" style="margin-top: 0.8rem;">
-                <span class="meta-chip">{paper.when}</span>
-                <span class="meta-chip">{paper.note}</span>
-              </div>
+                  <div class="hero-meta" style="margin-top: 0.8rem;">
+                    <span class="meta-chip">{paper.when}</span>
+                    <span class="meta-chip">{paper.note}</span>
+                  </div>
 
-              {(paper.arxivUrl || paper.journalUrl) && (
-                <div class="publication-links">
-                  {paper.arxivUrl && (
-                    <a
-                      class="publication-link"
-                      href={paper.arxivUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      arXiv
-                    </a>
+                  {(paper.arxivUrl || paper.journalUrl) && (
+                    <div class="publication-links">
+                      {paper.arxivUrl && (
+                        <a
+                          class="publication-link"
+                          href={paper.arxivUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          arXiv
+                        </a>
+                      )}
+
+                      {paper.journalUrl && (
+                        <a
+                          class="publication-link"
+                          href={paper.journalUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Journal
+                        </a>
+                      )}
+                    </div>
                   )}
-
-                  {paper.journalUrl && (
-                    <a
-                      class="publication-link"
-                      href={paper.journalUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Journal
-                    </a>
-                  )}
-                </div>
-              )}
-            </article>
+                </article>
               ))}
             </div>
           </section>
