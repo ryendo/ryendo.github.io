@@ -20,12 +20,12 @@ export const profileJa = {
   ],
   keywords: [
   "Laplacian の固有値",
-  "崩壊する領域",
-  "固有値のギャップ",
+  "計算機援用証明",
   "形状最適化問題",
   "逆問題「太鼓の形を聴く」",
-  "Berry 位相",
-  "計算機援用証明"
+  "崩壊する領域",
+  "固有値のギャップ",  
+  "Berry 位相"  
 ],
   education: [
   {
@@ -262,12 +262,12 @@ export const profileEn = {
   ],
   keywords: [
   "Eigenvalues of the Laplacian",
-  "Collapsing domains",
-  "Eigenvalue gaps",
+  "Computer-assisted proofs",
   "Shape optimization",
   "Inverse problems (“hearing the shape of a drum”)",
-  "Berry phase",
-  "Computer-assisted proofs"
+  "Collapsing domains",
+  "Eigenvalue gaps",  
+  "Berry phase"
 ],
   education: [
   {
