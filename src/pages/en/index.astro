@@ -22,6 +22,7 @@ const base = import.meta.env.BASE_URL;
     <section class="hero-card">
       <div class="hero-body">
         <h1 class="hero-title">{profile.heroTitle}</h1>
+        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
       </div>
     </section>
 
@@ -30,7 +31,6 @@ const base = import.meta.env.BASE_URL;
         <div class="profile-sidebar-card">
           <h2 class="profile-sidebar-title">Contents</h2>
           <nav class="section-nav" aria-label="Page contents">
-            <a href="#summary">Summary</a>
             <a href="#keywords">Keywords</a>
             <a href="#education">Education</a>
             <a href="#degrees">Degrees</a>
@@ -48,10 +48,6 @@ const base = import.meta.env.BASE_URL;
 
       <div class="profile-main">
         <div class="section-stack">
-          <section id="summary" class="section-card anchor-offset">
-            <h2 class="section-title">Summary</h2>
-            {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
-          </section>
 
           <section id="keywords" class="section-card anchor-offset">
             <h2 class="section-title">Keywords</h2>
