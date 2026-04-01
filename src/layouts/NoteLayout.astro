@@ -1,28 +1,45 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 
-const { frontmatter } = Astro.props;
+type Frontmatter = {
+  title: string;
+  description: string;
+  date: string;
+  lang: "ja" | "en";
+};
+
+const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
+
 const base = import.meta.env.BASE_URL;
 const isJa = frontmatter.lang === "ja";
+
 const homeLink = `${base}${isJa ? "ja/" : "en/"}`;
-const notesLink = `${base}${isJa ? "ja/notes/" : "en/notes/"}`;
-const altLink = `${base}${isJa ? "en/notes/" : "ja/notes/"}`;
+const blogLink = `${base}${isJa ? "ja/blog/" : "en/blog/"}`;
+
+const pathParts = Astro.url.pathname.split("/").filter(Boolean);
+const slug = pathParts[pathParts.length - 1] ?? "";
+const altLink = `${base}${isJa ? "en" : "ja"}/blog/${slug}/`;
 ---
+
 <BaseLayout
-  title={`${frontmatter.title} | ${isJa ? "遠藤 凌輝" : "Ryoki Endo"}`}
-  description={frontmatter.description ?? frontmatter.title}
+  title={frontmatter.title}
+  description={frontmatter.description}
   lang={isJa ? "ja" : "en"}
   homeLink={homeLink}
-  homeLabel={isJa ? "プロフィール" : "Profile"}
-  notesLink={notesLink}
-  notesLabel={isJa ? "ノート" : "Notes"}
+  homeLabel="Home"
+  blogLink={blogLink}
+  blogLabel="Blog"
   altLink={altLink}
-  altLabel={isJa ? "English" : "日本語"}
+  currentSection="blog"
 >
-  <article class="note-panel">
-    <a class="back-link" href={notesLink}>← {isJa ? "ノート一覧に戻る" : "Back to notes"}</a>
-    <h1>{frontmatter.title}</h1>
-    <p class="note-meta">{frontmatter.date} · {frontmatter.description}</p>
-    <slot />
-  </article>
+  <p>
+    <a href={blogLink}>
+      {isJa ? "← ブログ一覧に戻る" : "← Back to blog"}
+    </a>
+  </p>
+
+  <h1>{frontmatter.title}</h1>
+  <p>{frontmatter.date} · {frontmatter.description}</p>
+
+  <slot />
 </BaseLayout>

@@ -1,34 +1,52 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
+type Post = {
+  url: string;
+  frontmatter: {
+    title: string;
+    description: string;
+    date: string;
+  };
+};
+
 const base = import.meta.env.BASE_URL;
+const homeLink = `${base}en/`;
+const blogLink = `${base}en/blog/`;
+const altLink = `${base}ja/blog/`;
+
+const posts = ((await Astro.glob("./*.md")) as Post[]).sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).getTime() -
+    new Date(a.frontmatter.date).getTime()
+);
 ---
 
 <BaseLayout
-  title="Blog | Ryoki Endo"
-  description="Blog posts by Ryoki Endo"
+  title="Blog"
+  description="Short updates, research notes, announcements, and seminar or travel reports"
   lang="en"
-  homeLink={`${base}en/`}
-  homeLabel="Profile"
-  blogLink={`${base}en/blog/`}
+  homeLink={homeLink}
+  homeLabel="Home"
+  blogLink={blogLink}
   blogLabel="Blog"
-  altLink={`${base}ja/blog/`}
-  altLabel="日本語"
+  altLink={altLink}
   currentSection="blog"
 >
-  <main class="main-panel">
-    <section class="section-card">
-      <h1 class="section-title">Blog</h1>
-      <p>Short updates, research notes, announcements, and seminar or travel reports.</p>
+  <h1>Blog</h1>
 
-      <div class="card-list" style="margin-top: 1rem;">
-        <a href={`${base}en/blog/first-post/`}>
-          <article class="item-card">
-            <h3>First post</h3>
-            <p>A sample blog entry. Replace this with your own post.</p>
-          </article>
-        </a>
-      </div>
-    </section>
-  </main>
+  <p>Short updates, research notes, announcements, and seminar or travel reports.</p>
+
+  <ul>
+    {posts.map((post) => (
+      <li>
+        <a href={post.url}>{post.frontmatter.title}</a>
+        {" — "}
+        {post.frontmatter.description}
+        {" ("}
+        {post.frontmatter.date}
+        {")"}
+      </li>
+    ))}
+  </ul>
 </BaseLayout>

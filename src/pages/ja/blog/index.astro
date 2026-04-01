@@ -1,34 +1,52 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
+type Post = {
+  url: string;
+  frontmatter: {
+    title: string;
+    description: string;
+    date: string;
+  };
+};
+
 const base = import.meta.env.BASE_URL;
+const homeLink = `${base}ja/`;
+const blogLink = `${base}ja/blog/`;
+const altLink = `${base}en/blog/`;
+
+const posts = ((await Astro.glob("./*.md")) as Post[]).sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).getTime() -
+    new Date(a.frontmatter.date).getTime()
+);
 ---
 
 <BaseLayout
-  title="ブログ | 遠藤凌輝"
-  description="遠藤凌輝のブログ"
+  title="ブログ"
+  description="研究の更新、短いメモ、告知、セミナーや出張の記録"
   lang="ja"
-  homeLink={`${base}ja/`}
-  homeLabel="プロフィール"
-  blogLink={`${base}ja/blog/`}
-  blogLabel="ブログ"
-  altLink={`${base}en/blog/`}
-  altLabel="English"
+  homeLink={homeLink}
+  homeLabel="Home"
+  blogLink={blogLink}
+  blogLabel="Blog"
+  altLink={altLink}
   currentSection="blog"
 >
-  <main class="main-panel">
-    <section class="section-card">
-      <h1 class="section-title">ブログ</h1>
-      <p>研究の更新、短いメモ、告知、セミナーや出張の記録を書く場所です。</p>
+  <h1>ブログ</h1>
 
-      <div class="card-list" style="margin-top: 1rem;">
-        <a href={`${base}ja/blog/first-post/`}>
-          <article class="item-card">
-            <h3>最初の記事</h3>
-            <p>これはサンプル記事です。あとで自分の記事に置き換えてください。</p>
-          </article>
-        </a>
-      </div>
-    </section>
-  </main>
+  <p>研究の更新、短いメモ、告知、セミナーや出張の記録を書く場所です。</p>
+
+  <ul>
+    {posts.map((post) => (
+      <li>
+        <a href={post.url}>{post.frontmatter.title}</a>
+        {" — "}
+        {post.frontmatter.description}
+        {" ("}
+        {post.frontmatter.date}
+        {")"}
+      </li>
+    ))}
+  </ul>
 </BaseLayout>
