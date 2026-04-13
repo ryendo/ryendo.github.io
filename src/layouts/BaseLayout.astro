@@ -41,66 +41,40 @@ const {
     <header class="site-header">
       <div class="site-header-inner">
         <a class="site-brand" href={homeLink}>
-          <div class="site-brand-text">
-            <div class="site-brand-title"></div>
-            <div class="site-brand-subtitle">
-              {lang === "ja"
-                ? ""
-                : ""}
-            </div>
-          </div>
+          {lang === "ja" ? "遠藤 凌輝" : "Ryoki Endo"}
         </a>
 
-        <div class="header-controls">
-          <nav class="site-nav" aria-label={lang === "ja" ? "主要メニュー" : "Main navigation"}>
-            <a
-              class={`nav-tab ${currentSection === "home" ? "is-active" : ""}`}
-              href={homeLink}
-              aria-current={currentSection === "home" ? "page" : undefined}
-            >
-              {homeLabel}
-            </a>
+        <div class="header-right">
+          <a
+            href={homeLink}
+            class={currentSection === "home" ? "is-active" : ""}
+          >
+            {homeLabel}
+          </a>
 
-            {blogLink && blogLabel && (
-              <a
-                class={`nav-tab ${currentSection === "blog" ? "is-active" : ""}`}
-                href={blogLink}
-                aria-current={currentSection === "blog" ? "page" : undefined}
-              >
-                {blogLabel}
-              </a>
-            )}
-          </nav>
+          {blogLink && blogLabel && (
+            <a
+              href={blogLink}
+              class={currentSection === "blog" ? "is-active" : ""}
+            >
+              {blogLabel}
+            </a>
+          )}
 
           {altLink && (
-            <div class="lang-toggle" aria-label={lang === "ja" ? "言語切替" : "Language switch"}>              
-              <a
-                class={`lang-toggle-item ${lang === "en" ? "is-current" : ""}`}
-                href={`${import.meta.env.BASE_URL}en/`}
-                aria-current={lang === "en" ? "page" : undefined}
-              >
-                English
-              </a>
-
-              <a
-                class={`lang-toggle-item ${lang === "ja" ? "is-current" : ""}`}
-                href={`${import.meta.env.BASE_URL}ja/`}
-                aria-current={lang === "ja" ? "page" : undefined}
-              >
-                日本語
-              </a>
-            </div>
+            <>
+              <span class="lang-sep">|</span>
+              <a href={altLink}>{altLabel}</a>
+            </>
           )}
+        </div>
       </div>
     </header>
 
     <slot />
 
     <footer class="footer">
-      <div class="footer-inner">
-        <span>© Ryoki Endo</span>
-        <span>{lang === "ja" ? "" : ""}</span>
-      </div>
+      <span>&copy; Ryoki Endo</span>
     </footer>
   </body>
 </html>

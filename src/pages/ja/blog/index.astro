@@ -27,26 +27,24 @@ const posts = ((await Astro.glob("./*.md")) as Post[]).sort(
   description="研究の更新、短いメモ、告知、セミナーや出張の記録"
   lang="ja"
   homeLink={homeLink}
-  homeLabel="Home"
+  homeLabel="プロフィール"
   blogLink={blogLink}
-  blogLabel="Blog"
+  blogLabel="ブログ"
   altLink={altLink}
   currentSection="blog"
 >
-  <h1>ブログ</h1>
+  <main class="main-panel">
+    <h1>ブログ</h1>
+    <p class="muted">研究の更新、短いメモ、告知、セミナーや出張の記録を書く場所です。</p>
 
-  <p>研究の更新、短いメモ、告知、セミナーや出張の記録を書く場所です。</p>
-
-  <ul>
-    {posts.map((post) => (
-      <li>
-        <a href={post.url}>{post.frontmatter.title}</a>
-        {" — "}
-        {post.frontmatter.description}
-        {" ("}
-        {post.frontmatter.date}
-        {")"}
-      </li>
-    ))}
-  </ul>
+    <ul class="blog-list">
+      {posts.map((post) => (
+        <li>
+          <a href={post.url}>{post.frontmatter.title}</a>
+          <div class="desc">{post.frontmatter.description}</div>
+          <div class="date">{post.frontmatter.date}</div>
+        </li>
+      ))}
+    </ul>
+  </main>
 </BaseLayout>

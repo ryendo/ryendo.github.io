@@ -26,20 +26,26 @@ const altLink = `${base}${isJa ? "en" : "ja"}/blog/${slug}/`;
   description={frontmatter.description}
   lang={isJa ? "ja" : "en"}
   homeLink={homeLink}
-  homeLabel="Home"
+  homeLabel={isJa ? "プロフィール" : "Profile"}
   blogLink={blogLink}
-  blogLabel="Blog"
+  blogLabel={isJa ? "ブログ" : "Blog"}
   altLink={altLink}
   currentSection="blog"
 >
-  <p>
-    <a href={blogLink}>
-      {isJa ? "← ブログ一覧に戻る" : "← Back to blog"}
-    </a>
-  </p>
+  <main class="main-panel">
+    <p>
+      <a href={blogLink}>
+        {isJa ? "← ブログ一覧に戻る" : "← Back to blog"}
+      </a>
+    </p>
 
-  <h1>{frontmatter.title}</h1>
-  <p>{frontmatter.date} · {frontmatter.description}</p>
+    <div class="article-header">
+      <h1 class="article-title">{frontmatter.title}</h1>
+      <div class="article-meta">{frontmatter.date} · {frontmatter.description}</div>
+    </div>
 
-  <slot />
+    <div class="article-content">
+      <slot />
+    </div>
+  </main>
 </BaseLayout>
