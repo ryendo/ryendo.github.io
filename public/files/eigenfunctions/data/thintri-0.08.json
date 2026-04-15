@@ -1,0 +1,305 @@
+{
+  "id": "thintri-0.08",
+  "nameEn": "Isoceles triangle h=0.08",
+  "nameJa": "二等辺三角形 h=0.08",
+  "descriptionEn": "Isoceles triangle with base 1 and height h. The limit h → 0 realises the thin-domain asymptotics λ ~ (const)/h² (Friedlander–Solomyak 2009).",
+  "descriptionJa": "底辺 1、高さ h の二等辺三角形。h → 0 の細領域極限では λ ~ (定数)/h² (Friedlander–Solomyak 2009)。",
+  "category": "collapsing",
+  "reference": "Friedlander–Solomyak, ESAIM COCV (2009).",
+  "familyId": "thintri",
+  "familyParam": 0.08,
+  "mesh": {
+    "vertices": 185,
+    "triangles": 266,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 1943.5764380523758,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_dirichlet_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 2525.2096036579114,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_dirichlet_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 3012.628036011259,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_dirichlet_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 3517.920303701389,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_dirichlet_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 4015.7973872567186,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_dirichlet_5.webp"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_neumann_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 22.952689218433278,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_neumann_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 58.233113922616795,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_neumann_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 120.93474390980911,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_neumann_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 195.20581840846123,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_neumann_5.webp"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 4.798955585402369,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-0.1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 31.369495165726338,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-0.1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 68.15825413205448,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-0.1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 131.71883930656264,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-0.1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 206.7115321327996,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-0.1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 39.4294434136898,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 87.9458727775318,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 139.07594978629612,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 213.8690006569784,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 297.6766686313926,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 290.26548291937837,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-10_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 423.482574916988,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-10_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 540.2226091459364,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-10_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 678.1620948010094,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-10_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 819.29499547888,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-10_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 100.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 1257.0704511754072,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-100_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 1640.140911496842,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-100_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 1960.202063249538,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-100_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 2294.827612872688,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-100_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 2624.38684845159,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/thintri-0.08_robin-100_5.webp"
+            }
+          ]
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_steklov_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 0.22833757157938347,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_steklov_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 0.5771695088146199,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_steklov_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 1.1979141465545586,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_steklov_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 1.9231640243037664,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thintri-0.08_steklov_5.webp"
+        }
+      ]
+    }
+  }
+}

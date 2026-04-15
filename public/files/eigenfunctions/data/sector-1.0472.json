@@ -7,10 +7,10 @@
   "category": "sector",
   "reference": "",
   "familyId": "sector",
-  "familyParam": 1.0471975511965976,
+  "familyParam": 1.0472,
   "mesh": {
-    "vertices": 487,
-    "triangles": 890,
+    "vertices": 309,
+    "triangles": 550,
     "element": "P2 Lagrange"
   },
   "boundaries": {
@@ -18,45 +18,38 @@
       "modes": [
         {
           "k": 1,
-          "lambda": 40.73593770324091,
+          "lambda": 40.73608679251478,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_1.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_1.webp"
         },
         {
           "k": 2,
-          "lambda": 95.34774215712227,
+          "lambda": 95.35137899085281,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_2.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_2.webp"
         },
         {
           "k": 3,
-          "lambda": 98.79884090757234,
+          "lambda": 98.80173210961088,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_3.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_3.webp"
         },
         {
           "k": 4,
-          "lambda": 169.52586902795122,
+          "lambda": 169.54765878594492,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_4.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_4.webp"
         },
         {
           "k": 5,
-          "lambda": 178.47373509100336,
+          "lambda": 178.48939218448785,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 184.81168617674453,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_6.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_dirichlet_5.webp"
         }
       ]
     },
@@ -67,42 +60,205 @@
           "lambda": 0.0,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_1.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_1.webp"
         },
         {
           "k": 2,
-          "lambda": 14.692462260682241,
+          "lambda": 14.692475123234562,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_2.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_2.webp"
         },
         {
           "k": 3,
-          "lambda": 17.662533096732197,
+          "lambda": 17.662482931198983,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_3.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_3.webp"
         },
         {
           "k": 4,
-          "lambda": 49.25380116303635,
+          "lambda": 49.25438621643526,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_4.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_4.webp"
         },
         {
           "k": 5,
-          "lambda": 56.309040694937806,
+          "lambda": 56.30924798993688,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_5.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_5.webp"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.5744688992723124,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 15.655549674417054,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 18.53480612565204,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 50.331447789366834,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 57.30103912270024,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_5.webp"
+            }
+          ]
         },
         {
-          "k": 6,
-          "lambda": 64.29026635430888,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_neumann_6.jpg"
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 5.129007711313069,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 23.38380885914783,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 25.72859734920351,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 59.394440631194314,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 65.76324121887681,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 24.691646305611755,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 59.57427807658302,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 62.14899536968166,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 109.35513261357079,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 116.08325652387846,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 100.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 38.422263937071115,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-100_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 89.941240096803,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-100_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 93.27232187244108,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-100_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 159.9380386752779,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-100_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 168.54128455170428,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/sector-1.0472_robin-100_5.webp"
+            }
+          ]
         }
       ]
     },
@@ -113,336 +269,35 @@
           "lambda": 0.0,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_1.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_1.webp"
         },
         {
           "k": 2,
-          "lambda": 1.2834886526207998,
+          "lambda": 1.2834909033497757,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_2.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_2.webp"
         },
         {
           "k": 3,
-          "lambda": 1.7087414925097912,
+          "lambda": 1.7087382762110122,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_3.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_3.webp"
         },
         {
           "k": 4,
-          "lambda": 3.9621799216522033,
+          "lambda": 3.9622341914572936,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_4.jpg"
+          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_4.webp"
         },
         {
           "k": 5,
-          "lambda": 4.614674022045625,
+          "lambda": 4.614679140075294,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 5.48510054311862,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_6.jpg"
-        }
-      ]
-    },
-    "robin": {
-      "alphas": [
-        0.1,
-        0.3,
-        1.0,
-        3.0,
-        10.0,
-        30.0
-      ],
-      "entries": [
-        {
-          "alpha": 0.1,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 0.574469777984405,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 15.65553701340591,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 18.534856251464078,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 50.3308468935299,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 57.30081964148931,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 65.1929238539016,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.1_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 0.3,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 1.6782483851674406,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.3_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 17.51382644542679,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.3_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 20.233424446131988,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.3_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 52.44290489178461,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.3_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 59.25324631808112,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.3_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 66.97134243138147,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-0.3_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 1.0,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 5.1290156308632255,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 23.383791626756267,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 25.728643640961415,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 59.393673171641765,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 65.76290013679578,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 72.9191154249707,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-1_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 3.0,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 12.452058395018867,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-3_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 36.19684215764409,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-3_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 38.29157001524313,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-3_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 75.82194407040282,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-3_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 81.74049678949315,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-3_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 87.71008440150811,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-3_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 10.0,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 24.691666624551974,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 59.57380395444807,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 62.148685373734956,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 109.35131654133,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 116.08080645794416,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 120.89322725123618,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-10_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 30.0,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 33.76289896571337,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-30_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 79.20045773952482,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-30_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 82.28387025952466,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-30_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 141.19885966859252,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-30_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 149.1382718902915,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-30_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 154.42947035531725,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/sector-1.0472_robin-30_6.jpg"
-            }
-          ]
+          "image": "/files/eigenfunctions/img/sector-1.0472_steklov_5.webp"
         }
       ]
     }

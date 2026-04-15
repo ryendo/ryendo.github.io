@@ -1,0 +1,305 @@
+{
+  "id": "isotri-157",
+  "nameEn": "Isoceles triangle θ=157°",
+  "nameJa": "二等辺三角形 θ=157°",
+  "descriptionEn": "Isoceles triangle with base 1 and apex angle θ. At θ = 60° reduces to the equilateral triangle.",
+  "descriptionJa": "底辺 1、頂角 θ の二等辺三角形。θ = 60° で正三角形に一致。",
+  "category": "polygon",
+  "reference": "",
+  "familyId": "isotri",
+  "familyParam": 157,
+  "mesh": {
+    "vertices": 153,
+    "triangles": 222,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 1254.9844433346866,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_dirichlet_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 1697.8223815172164,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_dirichlet_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 2078.5859434793147,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_dirichlet_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 2480.5334626481017,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_dirichlet_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 2882.0501841054356,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_dirichlet_5.webp"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_neumann_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 22.85021179900521,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_neumann_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 57.93321734894997,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_neumann_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 120.39117280842827,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_neumann_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 194.17670229912179,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_neumann_5.webp"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 3.822054287956572,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-0.1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 29.54968254733393,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-0.1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 65.80556812626827,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-0.1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 128.92232935348338,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-0.1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 203.2715274583552,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-0.1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 31.894327444823233,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 76.17953318449982,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 124.12528805465479,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 195.97082219887284,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 277.1003157067098,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 228.32539170190805,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-10_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 345.59059862990415,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-10_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 450.72085853666783,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-10_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 576.9323303415932,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-10_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 707.4030462639568,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-10_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 100.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 879.7700703205211,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-100_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 1193.9199532683026,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-100_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 1463.2871592747247,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-100_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 1749.4993691772684,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-100_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 2035.0915853561462,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-157_robin-100_5.webp"
+            }
+          ]
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_steklov_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 0.28810709268646845,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_steklov_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 0.7262165759703811,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_steklov_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 1.5075617650533912,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_steklov_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 2.4108889698610434,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/isotri-157_steklov_5.webp"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "id": "pacman-0.6545",
+  "nameEn": "Pac-Man θ=0.6545",
+  "nameJa": "Pac-Man θ=0.6545",
+  "descriptionEn": "Unit disk with a sector of opening angle θ removed; the re-entrant angle at the origin is 2π − θ, generating an r^{π/(2π−θ)} corner singularity.",
+  "descriptionJa": "単位円板から開き角 θ の扇形を除いた領域。原点での凹角は 2π − θ で、r^{π/(2π−θ)} 型特異性が生じる。",
+  "category": "non-convex",
+  "reference": "",
+  "familyId": "pacman",
+  "familyParam": 0.6545,
+  "mesh": {
+    "vertices": 1981,
+    "triangles": 3766,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 10.424267154839736,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_dirichlet_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 15.905213702187952,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_dirichlet_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 22.27684241575516,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_dirichlet_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 29.482430074762984,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_dirichlet_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 37.50159662649518,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_dirichlet_5.webp"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_neumann_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 1.5673162976168442,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_neumann_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 3.9549329797087185,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_neumann_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 7.129478189721987,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_neumann_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 11.056872804379495,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_neumann_5.webp"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.2644495747144599,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-0.1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 1.9198142608115452,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-0.1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 4.340795848982757,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-0.1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 7.5481716679438335,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-0.1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 11.50679042374529,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-0.1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 2.1685263297017525,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 4.514379699503765,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 7.31913053759449,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 10.863711995383914,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 15.11271776975552,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 7.5906777100096,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-10_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 12.242183063596642,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-10_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 17.25440858878918,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-10_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 22.944426535780686,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-10_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 29.24560791958446,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-10_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 100.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 10.009461143154168,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-100_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 15.457285842805113,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-100_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 21.669112995553142,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-100_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 28.686915064276477,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-100_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 36.494143795932125,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-0.6545_robin-100_5.webp"
+            }
+          ]
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_steklov_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 0.3973845662966429,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_steklov_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 0.8941264335768241,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_steklov_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 1.4355384874787205,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_steklov_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 1.9791585519853778,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pacman-0.6545_steklov_5.webp"
+        }
+      ]
+    }
+  }
+}

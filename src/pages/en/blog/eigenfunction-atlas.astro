@@ -150,14 +150,6 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
           <label><input type="radio" name="eig-bc" value="all" /> all</label>
         </div>
 
-        <nav class="eig-jump" aria-label="Jump to a domain">
-          {individuals.map((d: any) => (
-            <a href={`#${d.id}`} data-jump={d.id}>{d.nameEn}</a>
-          ))}
-          {families.map((f: any) => (
-            <a href={`#${f.id}`} data-jump={f.id}>{f.nameEn}</a>
-          ))}
-        </nav>
       </div>
 
       {/* --- INDIVIDUAL DOMAINS (by category) --- */}

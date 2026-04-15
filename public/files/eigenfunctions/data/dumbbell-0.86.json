@@ -1,0 +1,305 @@
+{
+  "id": "dumbbell-0.86",
+  "nameEn": "Dumbbell n=0.86",
+  "nameJa": "ダンベル n=0.86",
+  "descriptionEn": "Two unit disks centred at (±1.3, 0) connected by a rectangular channel of half-width n. As n → 0 the first two Dirichlet eigenvalues become asymptotically degenerate (Jimbo 1989; Arrieta 1995).",
+  "descriptionJa": "中心 (±1.3, 0) の単位円板 2 つを、半幅 n の長方形頸部で連結した領域。n → 0 で第 1, 第 2 Dirichlet 固有値が漸近的に縮退する (Jimbo 1989; Arrieta 1995)。",
+  "category": "collapsing",
+  "reference": "Jimbo, J. Diff. Eq. 77 (1989); Arrieta, J. Diff. Eq. 118 (1995).",
+  "familyId": "dumbbell",
+  "familyParam": 0.86,
+  "mesh": {
+    "vertices": 2504,
+    "triangles": 4812,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 3.64506410794563,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_dirichlet_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 4.928609004940184,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_dirichlet_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 7.516124428443079,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_dirichlet_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 11.163796346319009,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_dirichlet_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 12.913230369942962,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_dirichlet_5.webp"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_neumann_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 0.5087052005359259,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_neumann_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 2.1951899234993695,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_neumann_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 3.165967181268489,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_neumann_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 3.722307873541192,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_neumann_5.webp"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.1434169992985574,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-0.1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 0.6841411631784489,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-0.1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 2.3700935825440244,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-0.1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 3.4073800164866785,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-0.1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 3.978774023977756,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-0.1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 1.088148302449943,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 1.8719697354242573,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 3.647792181806055,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 5.214550734557995,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 5.898645765165343,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 2.9969583702027354,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-10_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 4.218754248624081,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-10_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 6.607440290998325,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-10_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 9.950093003294034,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-10_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 10.56731777065146,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-10_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 100.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 3.569832851777619,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-100_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 4.848601185415803,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-100_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 7.4165084676266115,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-100_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 11.030703842904012,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-100_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 12.636534537865225,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/dumbbell-0.86_robin-100_5.webp"
+            }
+          ]
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_steklov_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 0.260234001216253,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_steklov_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 1.007233210007234,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_steklov_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 1.04444862395099,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_steklov_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 1.140999684853858,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.86_steklov_5.webp"
+        }
+      ]
+    }
+  }
+}

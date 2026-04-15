@@ -1,0 +1,305 @@
+{
+  "id": "rect-2.8",
+  "nameEn": "Rectangle r=2.8",
+  "nameJa": "長方形 r=2.8",
+  "descriptionEn": "Rectangle [0, r] × [0, 1]. Separable spectrum λ_{m,n} = π²((m/r)² + n²).",
+  "descriptionJa": "長方形 [0, r] × [0, 1]。変数分離可能で λ_{m,n} = π²((m/r)² + n²)。",
+  "category": "curved",
+  "reference": "",
+  "familyId": "rect",
+  "familyParam": 2.8,
+  "mesh": {
+    "vertices": 1403,
+    "triangles": 2652,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 11.128489003214673,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_dirichlet_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 14.905132677730144,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_dirichlet_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 21.199551359743573,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_dirichlet_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 30.01177549175917,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_dirichlet_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 40.73760014424504,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_dirichlet_5.webp"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_neumann_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 1.2588781220311203,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_neumann_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 5.035513060787503,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_neumann_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 9.869608605204048,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_neumann_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 11.1284889246598,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_neumann_5.webp"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.2649270867378981,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-0.1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 1.5944738988123834,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-0.1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 5.374004851427688,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-0.1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 10.333801554324351,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-0.1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 11.663350777935413,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-0.1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 2.1836934578976166,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 4.061834268935335,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 8.02913931973828,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 13.969006213313943,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 14.391447759179659,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 8.001834136587163,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-10_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 11.299535151277423,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-10_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 16.815486178080732,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-10_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 24.576179376104847,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-10_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 29.264934505513494,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-10_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 100.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 10.727564538813214,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-100_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 14.450838744983333,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-100_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 20.656336174345146,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-100_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 29.344128398353934,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-100_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 39.18864652788583,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rect-2.8_robin-100_5.webp"
+            }
+          ]
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_steklov_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 0.3406684468517403,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_steklov_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 1.289345399999519,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_steklov_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 1.5575200349825213,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_steklov_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 1.5857670416003973,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-2.8_steklov_5.webp"
+        }
+      ]
+    }
+  }
+}

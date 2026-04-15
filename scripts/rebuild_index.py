@@ -48,6 +48,36 @@ for fam in FAMILIES:
         "reference": fam.reference,
     })
 
+# Also read the analytic-families companion file (from compute_analytic.py)
+# and append them alongside the FEM-computed families.
+analytic_path = OUT_DATA / "_analytic_families.json"
+if analytic_path.exists():
+    analytic_families = json.loads(analytic_path.read_text())
+    for fam in analytic_families:
+        # Load each analytic-domain JSON and splice into `index`.
+        for mid in fam["memberIds"]:
+            p = OUT_DATA / f"{mid}.json"
+            if not p.exists():
+                continue
+            d = json.loads(p.read_text())
+            index.append({
+                "id": d["id"],
+                "nameEn": d["nameEn"],
+                "nameJa": d["nameJa"],
+                "descriptionEn": d["descriptionEn"],
+                "descriptionJa": d["descriptionJa"],
+                "category": d["category"],
+                "reference": d.get("reference", ""),
+                "familyId": d.get("familyId"),
+                "familyParam": d.get("familyParam"),
+                "mesh": d.get("mesh", {"vertices": 0, "triangles": 0, "element": "analytic"}),
+                "analytic": d.get("analytic", True),
+                "dimension": d.get("dimension", "2d"),
+                "firstFew": {bc: _first_few(d["boundaries"][bc]) for bc in d["boundaries"]},
+            })
+        # register family
+        family_entries.append(fam)
+
 (OUT_DATA / "index.json").write_text(
     json.dumps({"domains": index, "individuals": individuals, "families": family_entries},
                indent=2, ensure_ascii=False)

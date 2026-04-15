@@ -1,0 +1,305 @@
+{
+  "id": "rhombus-37",
+  "nameEn": "Rhombus θ=37°",
+  "nameJa": "菱形 θ=37°",
+  "descriptionEn": "Unit-side rhombus with acute interior angle θ. At θ = 90° reduces to a unit square.",
+  "descriptionJa": "一辺 1、鋭角 θ の菱形。θ = 90° で単位正方形に一致。",
+  "category": "polygon",
+  "reference": "",
+  "familyId": "rhombus",
+  "familyParam": 37,
+  "mesh": {
+    "vertices": 249,
+    "triangles": 428,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 45.5244534167072,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_dirichlet_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 81.48985077119725,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_dirichlet_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 118.95787289565928,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_dirichlet_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 145.42229359514238,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_dirichlet_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 162.62227692750298,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_dirichlet_5.webp"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_neumann_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 6.238440591253735,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_neumann_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 15.741723120611075,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_neumann_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 32.85415509097992,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_neumann_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 38.4391859347058,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_neumann_5.webp"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.6472432297879204,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-0.1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 7.341272441538214,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-0.1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 17.050104236447392,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-0.1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 34.24987020197396,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-0.1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 39.25838444544956,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-0.1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 5.442613391632326,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 15.38207411418471,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 27.195453676523133,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 45.602701207801104,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 46.23285662499478,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 26.260383185506925,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-10_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 48.33365989333858,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-10_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 71.4849617786248,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-10_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 88.82958737160558,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-10_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 99.6190430080338,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-10_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 100.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 42.640839624738874,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-100_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 76.34087522205213,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-100_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 111.44126135072803,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-100_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 136.21410651745114,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-100_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 152.35743074130946,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/rhombus-37_robin-100_5.webp"
+            }
+          ]
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_steklov_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 0.47936710309941527,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_steklov_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 1.1331986114745738,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_steklov_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 2.350673066281849,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_steklov_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 3.43618311289044,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-37_steklov_5.webp"
+        }
+      ]
+    }
+  }
+}

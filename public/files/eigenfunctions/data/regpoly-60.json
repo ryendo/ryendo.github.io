@@ -9,8 +9,8 @@
   "familyId": "regpoly",
   "familyParam": 60,
   "mesh": {
-    "vertices": 3114,
-    "triangles": 6046,
+    "vertices": 1403,
+    "triangles": 2684,
     "element": "P2 Lagrange"
   },
   "boundaries": {
@@ -18,45 +18,38 @@
       "modes": [
         {
           "k": 1,
-          "lambda": 5.7939147313163915,
+          "lambda": 5.793937009662438,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_1.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_1.webp"
         },
         {
           "k": 2,
-          "lambda": 14.709210880636293,
+          "lambda": 14.709279605163418,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_2.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_2.webp"
         },
         {
           "k": 3,
-          "lambda": 14.709211181460516,
+          "lambda": 14.70928185244802,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_3.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_3.webp"
         },
         {
           "k": 4,
-          "lambda": 26.423563958216047,
+          "lambda": 26.423745267013064,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_4.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_4.webp"
         },
         {
           "k": 5,
-          "lambda": 26.42356471586566,
+          "lambda": 26.42374892640625,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 30.52782194525725,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_6.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_dirichlet_5.webp"
         }
       ]
     },
@@ -67,42 +60,205 @@
           "lambda": 0.0,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_neumann_1.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_neumann_1.webp"
         },
         {
           "k": 2,
-          "lambda": 3.396133633033745,
+          "lambda": 3.3961387346385523,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_neumann_2.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_neumann_2.webp"
         },
         {
           "k": 3,
-          "lambda": 3.396133657972967,
+          "lambda": 3.3961388256665517,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_neumann_3.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_neumann_3.webp"
         },
         {
           "k": 4,
-          "lambda": 9.345297362278629,
+          "lambda": 9.345326263285619,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_neumann_4.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_neumann_4.webp"
         },
         {
           "k": 5,
-          "lambda": 9.345297522964286,
+          "lambda": 9.345326512295411,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_neumann_5.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_neumann_5.webp"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.1953527273609379,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 3.675296583368039,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 3.6752966709572448,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 9.691056420807083,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 9.691056663932423,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_5.webp"
+            }
+          ]
         },
         {
-          "k": 6,
-          "lambda": 14.70884114274568,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_neumann_6.jpg"
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 1.5793183752423519,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 5.792839581200919,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 5.7928396415799925,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 12.399978775824207,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 12.399978971173828,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 4.758493657769748,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 12.129917956450647,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 12.129918006659448,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 21.87858775881737,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 21.878588005827798,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 100.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 5.679096961800741,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-100_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 14.417803402873147,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-100_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 14.4178039049537,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-100_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 25.900272754255866,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-100_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 25.900273803105943,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/regpoly-60_robin-100_5.webp"
+            }
+          ]
         }
       ]
     },
@@ -113,336 +269,35 @@
           "lambda": 0.0,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_steklov_1.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_steklov_1.webp"
         },
         {
           "k": 2,
-          "lambda": 1.0004466003172356,
+          "lambda": 1.0004483392201606,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_steklov_2.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_steklov_2.webp"
         },
         {
           "k": 3,
-          "lambda": 1.0004466093591728,
+          "lambda": 1.0004483718100665,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_steklov_3.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_steklov_3.webp"
         },
         {
           "k": 4,
-          "lambda": 2.00087154426818,
+          "lambda": 2.000878683343295,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_steklov_4.jpg"
+          "image": "/files/eigenfunctions/img/regpoly-60_steklov_4.webp"
         },
         {
           "k": 5,
-          "lambda": 2.000871594727395,
+          "lambda": 2.000878748840944,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_steklov_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 3.0012739104037998,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/regpoly-60_steklov_6.jpg"
-        }
-      ]
-    },
-    "robin": {
-      "alphas": [
-        0.1,
-        0.3,
-        1.0,
-        3.0,
-        10.0,
-        30.0
-      ],
-      "entries": [
-        {
-          "alpha": 0.1,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 0.1953527273604435,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 3.675291626677021,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 3.6752916506309012,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 9.691027955483655,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 9.691028111273498,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 14.909071247043315,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.1_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 0.3,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 0.5579875897323316,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.3_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 4.205094013773574,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.3_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 4.205094035848706,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.3_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 10.35389716198724,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.3_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 10.353897308498533,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.3_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 15.308480276876793,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-0.3_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 1.0,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 1.579318372331463,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 5.792835608185881,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 5.792835624641632,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 12.39995326601893,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 12.399953384730468,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 16.67173817874763,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-1_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 3.0,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 3.204429762599006,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-3_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 8.714629565083593,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-3_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 8.71462957193971,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-3_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 16.464240932467114,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-3_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 16.464240998397756,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-3_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 19.95627112818046,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-3_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 10.0,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 4.75849321029801,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 12.129911517570992,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 12.129911521311097,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 21.878550584649282,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 21.87855063165668,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 25.377802437195072,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-10_6.jpg"
-            }
-          ]
-        },
-        {
-          "alpha": 30.0,
-          "modes": [
-            {
-              "k": 1,
-              "lambda": 5.420715555892518,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-30_1.jpg"
-            },
-            {
-              "k": 2,
-              "lambda": 13.764266611638536,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-30_2.jpg"
-            },
-            {
-              "k": 3,
-              "lambda": 13.764266622391688,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-30_3.jpg"
-            },
-            {
-              "k": 4,
-              "lambda": 24.730924939345474,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-30_4.jpg"
-            },
-            {
-              "k": 5,
-              "lambda": 24.730925060122168,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-30_5.jpg"
-            },
-            {
-              "k": 6,
-              "lambda": 28.5776763457961,
-              "lambdaExact": null,
-              "relErr": null,
-              "image": "/files/eigenfunctions/img/regpoly-60_robin-30_6.jpg"
-            }
-          ]
+          "image": "/files/eigenfunctions/img/regpoly-60_steklov_5.webp"
         }
       ]
     }

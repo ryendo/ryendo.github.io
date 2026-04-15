@@ -1,0 +1,305 @@
+{
+  "id": "stadium-2.9",
+  "nameEn": "Stadium a=2.9",
+  "nameJa": "スタジアム a=2.9",
+  "descriptionEn": "Rectangle [-a, a] × [-1, 1] with unit semicircular caps. The classical billiard is ergodic and K-mixing for every a > 0 (Bunimovich 1974); a = 0 is the unit disk.",
+  "descriptionJa": "長方形 [-a, a] × [-1, 1] の両端に半径 1 の半円を付加した領域。a > 0 で古典ビリヤードは ergodic かつ K-mixing (Bunimovich 1974)；a = 0 は単位円板。",
+  "category": "chaotic",
+  "reference": "Bunimovich, Commun. Math. Phys. 65 (1979).",
+  "familyId": "stadium-family",
+  "familyParam": 2.9,
+  "mesh": {
+    "vertices": 4977,
+    "triangles": 9652,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 2.643281905400592,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_dirichlet_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 3.169891473867515,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_dirichlet_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 4.044214812128949,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_dirichlet_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 5.261503857613963,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_dirichlet_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 6.815698060794547,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_dirichlet_5.webp"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_neumann_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 0.18135239877198983,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_neumann_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 0.7211212633310317,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_neumann_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 1.6065298800196566,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_neumann_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 2.5674220613061105,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_neumann_5.webp"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.11625868842754501,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-0.1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 0.31851834642425086,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-0.1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 0.8600860363550756,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-0.1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 1.746575252602827,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-0.1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 2.7687650567312123,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-0.1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.8449195921463456,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-1_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 1.1834817622089249,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-1_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 1.8020421737319317,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-1_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 2.730633137835015,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-1_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 3.9755231790117365,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-1_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 2.2091292844081583,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-10_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 2.7104721078650345,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-10_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 3.5426599543021573,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-10_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 4.700878278351051,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-10_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 6.178941462563851,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-10_5.webp"
+            }
+          ]
+        },
+        {
+          "alpha": 100.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 2.59386577989769,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-100_1.webp"
+            },
+            {
+              "k": 2,
+              "lambda": 3.1180504111652994,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-100_2.webp"
+            },
+            {
+              "k": 3,
+              "lambda": 3.988275984741929,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-100_3.webp"
+            },
+            {
+              "k": 4,
+              "lambda": 5.1997196076237495,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-100_4.webp"
+            },
+            {
+              "k": 5,
+              "lambda": 6.746234808616128,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/stadium-2.9_robin-100_5.webp"
+            }
+          ]
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_steklov_1.webp"
+        },
+        {
+          "k": 2,
+          "lambda": 0.12118227024542616,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_steklov_2.webp"
+        },
+        {
+          "k": 3,
+          "lambda": 0.4530217922380801,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_steklov_3.webp"
+        },
+        {
+          "k": 4,
+          "lambda": 0.8986230112817851,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_steklov_4.webp"
+        },
+        {
+          "k": 5,
+          "lambda": 1.0000311605747698,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium-2.9_steklov_5.webp"
+        }
+      ]
+    }
+  }
+}
