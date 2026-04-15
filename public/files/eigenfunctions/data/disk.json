@@ -162,80 +162,6 @@
         }
       ]
     },
-    "robin": {
-      "modes": [
-        {
-          "k": 1,
-          "lambda": 1.5772196158571967,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_1.jpg"
-        },
-        {
-          "k": 2,
-          "lambda": 5.784129181910807,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_2.jpg"
-        },
-        {
-          "k": 3,
-          "lambda": 5.784129182043403,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_3.jpg"
-        },
-        {
-          "k": 4,
-          "lambda": 12.380699907455737,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_4.jpg"
-        },
-        {
-          "k": 5,
-          "lambda": 12.3806999086266,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 16.64502806205422,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_6.jpg"
-        },
-        {
-          "k": 7,
-          "lambda": 21.27937193878891,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_7.jpg"
-        },
-        {
-          "k": 8,
-          "lambda": 21.279372567841403,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_8.jpg"
-        },
-        {
-          "k": 9,
-          "lambda": 30.47663368050872,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_9.jpg"
-        },
-        {
-          "k": 10,
-          "lambda": 30.476633688941373,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/disk_robin_10.jpg"
-        }
-      ]
-    },
     "steklov": {
       "modes": [
         {
@@ -307,6 +233,468 @@
           "lambdaExact": 5.0,
           "relErr": 4.569775690388411e-05,
           "image": "/files/eigenfunctions/img/disk_steklov_10.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.1951091307525265,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 3.66937253417328,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 3.669372534187086,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 9.67532599096989,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 9.675325991680662,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 14.884575672196824,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 18.056419527709405,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 18.056419970564367,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 28.63664245689791,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 28.636642465362893,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 0.3,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.5572807535130998,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 4.198502379369207,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 4.198502379388733,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 10.337351736442503,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 10.337351736938354,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 15.283488812153626,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 18.834384430643198,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 18.834384913471432,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 29.050425175865954,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 29.05042518436882,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-0.3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 1.577219615857197,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 5.78412918191081,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 5.784129182043404,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 12.380699907455753,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 12.380699908626587,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 16.645028062054212,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 21.279371938788866,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 21.279372567841396,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 30.47663368050869,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 30.47663368894134,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 3.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 3.199795376270711,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 8.701558475344381,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 8.70155847649941,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 16.439045343758696,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 16.439045356207252,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 19.925063729377666,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 26.379068676632613,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 26.379069721634895,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 34.12472205554901,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 34.1247220797654,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 4.751013050855306,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 12.110790534569118,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 12.110790539627127,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 21.843977661501143,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 21.843977715264526,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 25.337576694447876,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 33.84708725479108,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 33.847089276772195,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 41.22544122099233,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 41.2254413664118,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-10_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 30.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 5.411893676698787,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 13.741863184110894,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 13.741863193559249,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 24.690665753065606,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 24.69066584297732,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 28.531144915499336,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 38.1153549312351,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 38.11535780819957,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 46.103018722786,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 46.10301900333296,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/disk_robin-30_10.jpg"
+            }
+          ]
         }
       ]
     }

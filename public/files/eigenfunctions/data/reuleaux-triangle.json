@@ -162,80 +162,6 @@
         }
       ]
     },
-    "robin": {
-      "modes": [
-        {
-          "k": 1,
-          "lambda": 3.94820658938659,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_1.jpg"
-        },
-        {
-          "k": 2,
-          "lambda": 19.94347892054382,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_2.jpg"
-        },
-        {
-          "k": 3,
-          "lambda": 19.943478926640402,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_3.jpg"
-        },
-        {
-          "k": 4,
-          "lambda": 49.69375155274161,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_4.jpg"
-        },
-        {
-          "k": 5,
-          "lambda": 49.693751651070194,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 58.05512961685057,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_6.jpg"
-        },
-        {
-          "k": 7,
-          "lambda": 93.84466916896719,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_7.jpg"
-        },
-        {
-          "k": 8,
-          "lambda": 95.18981057525879,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_8.jpg"
-        },
-        {
-          "k": 9,
-          "lambda": 110.00796946384921,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_9.jpg"
-        },
-        {
-          "k": 10,
-          "lambda": 110.0079697473774,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/reuleaux-triangle_robin_10.jpg"
-        }
-      ]
-    },
     "steklov": {
       "modes": [
         {
@@ -307,6 +233,468 @@
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/reuleaux-triangle_steklov_10.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.4402617010580974,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 14.597924740840979,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 14.597924748359656,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 43.351088835244326,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 43.35108896279481,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 52.18970829556876,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 86.64923020082819,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 89.03539023059254,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 103.31988399497885,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 103.31988436538356,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 0.3,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 1.2885243661860977,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 15.861721030579819,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 15.861721037789835,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 44.82422755586286,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 44.82422767632083,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 53.55196128200764,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 88.30998613748052,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 90.4225009808013,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 104.86647070620546,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 104.86647105576269,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-0.3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 3.94820658938659,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 19.943478920543832,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 19.94347892664039,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 49.693751552741546,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 49.69375165107023,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 58.055129616850735,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 93.84466916896713,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 95.18981057525872,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 110.0079694638492,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 110.00796974737747,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 3.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 9.509507378739578,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 29.179141101532977,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 29.179141104798227,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 61.41138600906851,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 61.411386060919085,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 68.96723192361182,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 107.51309157964506,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 107.74720740693125,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 122.69880088597175,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 122.69880103283924,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 18.036517672804713,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 45.80171841836677,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 45.80171842910309,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 85.47970321685662,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 85.47970324960494,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 92.19143457262544,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 137.8813914980863,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 137.89046361828807,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 151.702902826595,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 151.70290315572313,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-10_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 30.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 23.511143293576175,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 58.27982196372328,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 58.27982199454682,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 106.45127518443036,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 106.45127528313112,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 113.37801112786745,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 167.87233636083087,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 168.41818254882963,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 182.0035847131773,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 182.00358570145852,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/reuleaux-triangle_robin-30_10.jpg"
+            }
+          ]
         }
       ]
     }

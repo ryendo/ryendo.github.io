@@ -106,52 +106,6 @@
         }
       ]
     },
-    "robin": {
-      "modes": [
-        {
-          "k": 1,
-          "lambda": 9.672566685709832,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/annulus-0.8_robin_1.jpg"
-        },
-        {
-          "k": 2,
-          "lambda": 10.913082912387308,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/annulus-0.8_robin_2.jpg"
-        },
-        {
-          "k": 3,
-          "lambda": 10.913082921784135,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/annulus-0.8_robin_3.jpg"
-        },
-        {
-          "k": 4,
-          "lambda": 14.633484795100571,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/annulus-0.8_robin_4.jpg"
-        },
-        {
-          "k": 5,
-          "lambda": 14.63348481942005,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/annulus-0.8_robin_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 20.830336577708806,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/annulus-0.8_robin_6.jpg"
-        }
-      ]
-    },
     "steklov": {
       "modes": [
         {
@@ -195,6 +149,300 @@
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/annulus-0.8_steklov_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.9965304967092806,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 2.2364842301133794,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 2.2364842303317274,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 5.955130844868857,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 5.955130864218377,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 12.14883190670739,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.1_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 0.3,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 2.969705974298713,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 4.209792694849563,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 4.209792695200527,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 7.928853898781809,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 7.928853914773273,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 14.123297879994169,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-0.3_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 9.672566685709848,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 10.91308291238731,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 10.913082921784135,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 14.6334847951006,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 14.633484819420062,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 20.830336577708817,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-1_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 3.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 27.211200001280464,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 28.452682109764815,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 28.452682391709732,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 32.17611159645171,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 32.17611199074057,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 38.378440358495034,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-3_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 73.93180186113585,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-10_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 75.17484020590882,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-10_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 75.17484485566759,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-10_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 78.90324328161329,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-10_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 78.9032458090656,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-10_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 85.11484685556937,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-10_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 30.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 141.96197850515213,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-30_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 143.20519187333736,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-30_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 143.20520542574317,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-30_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 146.93444112330286,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-30_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 146.9344658601996,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-30_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 153.14850671730778,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/annulus-0.8_robin-30_6.jpg"
+            }
+          ]
         }
       ]
     }

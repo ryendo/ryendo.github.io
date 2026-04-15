@@ -181,16 +181,33 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
                 {(["dirichlet", "neumann", "robin", "steklov"] as const).map((bc) => {
                   const info = d.boundaries?.[bc];
                   if (!info) return null;
-                  const modes = info.modes as any[];
+                  const hasAlpha = bc === "robin" && Array.isArray((info as any).entries);
+                  const entries = hasAlpha ? (info as any).entries : null;
+                  const alphas = hasAlpha ? (info as any).alphas : null;
+                  const defIdx = hasAlpha
+                    ? Math.max(0, (alphas as number[]).findIndex((a: number) => Math.abs(a - 1.0) < 1e-9))
+                    : 0;
+                  const modes = (hasAlpha ? entries[defIdx].modes : info.modes) as any[];
                   const bcLabel = ({
                     dirichlet: "Dirichlet",
                     neumann: "Neumann",
-                    robin: "Robin (α=1)",
+                    robin: "Robin",
                     steklov: "Steklov",
                   } as const)[bc];
                   return (
                     <div class="eig-bc-block" data-bc={bc}>
                       <h4>{bcLabel} boundary</h4>
+
+                      {hasAlpha && (
+                        <div class="eig-alpha-slider">
+                          <label><span class="eig-param-label">α = </span><output class="eig-alpha-value">{alphas[defIdx]}</output></label>
+                          <input type="range" class="eig-alpha-range"
+                            min="0" max={alphas.length - 1} step="1" value={defIdx} />
+                          <span class="eig-alpha-count muted">{defIdx + 1} / {alphas.length}</span>
+                          <script type="application/json" class="eig-alpha-payload"
+                            set:html={JSON.stringify({ alphas, entries })} />
+                        </div>
+                      )}
 
                       <div class="eig-viewer">
                         <figure class="eig-focus">
@@ -239,29 +256,34 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
 
             {famByCat.get(cat)!.map((fam: any) => {
               // Extract per-member data needed at runtime
-              const membersData = fam.members.map((m: any) => ({
-                id: m.id,
-                param: m.familyParam,
-                boundaries: {
-                  dirichlet: (m.boundaries?.dirichlet?.modes ?? []).map((mm: any) => ({
-                    k: mm.k, lambda: mm.lambda,
-                    lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image,
-                  })),
-                  neumann: (m.boundaries?.neumann?.modes ?? []).map((mm: any) => ({
-                    k: mm.k, lambda: mm.lambda,
-                    lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image,
-                  })),
-                  robin: (m.boundaries?.robin?.modes ?? []).map((mm: any) => ({
-                    k: mm.k, lambda: mm.lambda,
-                    lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image,
-                  })),
-                  steklov: (m.boundaries?.steklov?.modes ?? []).map((mm: any) => ({
-                    k: mm.k, lambda: mm.lambda,
-                    lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image,
-                  })),
-                },
-                mesh: m.mesh,
-              }));
+              const packMode = (mm: any) => ({
+                k: mm.k, lambda: mm.lambda,
+                lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image,
+              });
+              const membersData = fam.members.map((m: any) => {
+                const robinInfo = m.boundaries?.robin;
+                const robinPayload = robinInfo
+                  ? (Array.isArray(robinInfo.entries)
+                      ? {
+                          alphas: robinInfo.alphas,
+                          entries: robinInfo.entries.map((e: any) => ({
+                            alpha: e.alpha, modes: (e.modes ?? []).map(packMode),
+                          })),
+                        }
+                      : { alphas: [1.0], entries: [{ alpha: 1.0, modes: (robinInfo.modes ?? []).map(packMode) }] })
+                  : null;
+                return {
+                  id: m.id,
+                  param: m.familyParam,
+                  boundaries: {
+                    dirichlet: (m.boundaries?.dirichlet?.modes ?? []).map(packMode),
+                    neumann: (m.boundaries?.neumann?.modes ?? []).map(packMode),
+                    robin: robinPayload,
+                    steklov: (m.boundaries?.steklov?.modes ?? []).map(packMode),
+                  },
+                  mesh: m.mesh,
+                };
+              });
               const haystack = `${fam.id} ${fam.nameEn} ${fam.descriptionEn} ${fam.category} ${fam.members.map((m: any) => m.id).join(" ")}`.toLowerCase();
 
               return (
@@ -305,9 +327,16 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
                         <h4>{({
                           dirichlet: "Dirichlet",
                           neumann: "Neumann",
-                          robin: "Robin (α=1)",
+                          robin: "Robin",
                           steklov: "Steklov",
                         } as const)[bc]} boundary</h4>
+                        {bc === "robin" && (
+                          <div class="eig-alpha-slider">
+                            <label><span class="eig-param-label">α = </span><output class="eig-alpha-value">1</output></label>
+                            <input type="range" class="eig-alpha-range" min="0" max="0" step="1" value="0" />
+                            <span class="eig-alpha-count muted">1 / 1</span>
+                          </div>
+                        )}
                         <div class="eig-viewer" data-family-viewer={bc}>
                           <figure class="eig-focus">
                             <img class="eig-focus-img" alt={`${fam.nameEn}, ${bc}, focused mode`} loading="lazy" />
@@ -349,6 +378,101 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
   };
   const fmtErr = (x) => (x === null || x === undefined) ? null : Number(x).toExponential(1);
 
+  // Shared state: for family cards, remembers the selected k (mode) per BC.
+  const familyState = new WeakMap();
+
+  // Helper: populate mode picker + focus image/caption from a modes array.
+  const populateModes = (viewer, modes, selectedIdx, card, bcForState) => {
+    const img = viewer.querySelector(".eig-focus-img");
+    const kCap = viewer.querySelector(".eig-focus-k");
+    const lamCap = viewer.querySelector(".eig-focus-lam");
+    const picker = viewer.querySelector(".eig-mode-picker");
+    if (!img || !lamCap) return;
+    let idx = Math.max(0, Math.min(selectedIdx ?? 0, modes.length - 1));
+    img.src = modes[idx].image;
+    kCap.textContent = `k = ${modes[idx].k}`;
+    let text = `λ = ${fmt(modes[idx].lambda)}`;
+    if (modes[idx].lambdaExact !== null && modes[idx].lambdaExact !== undefined) {
+      const e = fmtErr(modes[idx].relErr);
+      text += e ? `  (exact ${fmt(modes[idx].lambdaExact)}, rel. err ${e})` : `  (exact ${fmt(modes[idx].lambdaExact)})`;
+    }
+    lamCap.textContent = text;
+    // update data-* attributes so existing mode-picker handler sees the new arrays
+    img.dataset.modes = JSON.stringify(modes.map((m) => m.image));
+    lamCap.dataset.lams = JSON.stringify(modes.map((m) => m.lambda));
+    lamCap.dataset.exact = JSON.stringify(modes.map((m) => m.lambdaExact));
+    lamCap.dataset.err = JSON.stringify(modes.map((m) => m.relErr));
+    picker.innerHTML = "";
+    modes.forEach((m, i) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "eig-mode-btn" + (i === idx ? " is-active" : "");
+      btn.dataset.idx = String(i);
+      btn.dataset.k = String(m.k);
+      btn.title = `λ = ${fmt(m.lambda)}`;
+      btn.textContent = `k=${m.k}`;
+      btn.addEventListener("click", () => {
+        // update in place
+        const imgEl = viewer.querySelector(".eig-focus-img");
+        const images = JSON.parse(imgEl.dataset.modes || "[]");
+        const lams = JSON.parse(lamCap.dataset.lams || "[]");
+        const exacts = JSON.parse(lamCap.dataset.exact || "[]");
+        const errs = JSON.parse(lamCap.dataset.err || "[]");
+        imgEl.src = images[i];
+        kCap.textContent = `k = ${m.k}`;
+        let t = `λ = ${fmt(lams[i])}`;
+        if (exacts[i] !== null && exacts[i] !== undefined) {
+          const e = fmtErr(errs[i]);
+          t += e ? `  (exact ${fmt(exacts[i])}, rel. err ${e})` : `  (exact ${fmt(exacts[i])})`;
+        }
+        lamCap.textContent = t;
+        viewer.querySelectorAll(".eig-mode-btn").forEach((b) => b.classList.toggle("is-active", b === btn));
+        if (card && bcForState) {
+          const s = familyState.get(card) || { selectedIdx: {} };
+          s.selectedIdx[bcForState] = i;
+          familyState.set(card, s);
+        }
+      });
+      picker.appendChild(btn);
+    });
+  };
+
+  // Helper: wire up a Robin block's α slider, given a payload {alphas, entries}.
+  const wireRobinAlpha = (bcBlock, payload, selectedK = 0, card = null) => {
+    const slider = bcBlock.querySelector(".eig-alpha-range");
+    if (!slider || !payload || !payload.alphas || !payload.entries) return;
+    const valueOut = bcBlock.querySelector(".eig-alpha-value");
+    const countOut = bcBlock.querySelector(".eig-alpha-count");
+    const viewer = bcBlock.querySelector(".eig-viewer");
+    const alphas = payload.alphas;
+    const entries = payload.entries;
+    slider.max = String(alphas.length - 1);
+    // default to α = 1 if present, else first
+    let idx = alphas.findIndex((a) => Math.abs(a - 1.0) < 1e-9);
+    if (idx < 0) idx = 0;
+    slider.value = String(idx);
+    const update = () => {
+      const i = Number(slider.value);
+      valueOut.textContent = alphas[i];
+      if (countOut) countOut.textContent = `${i + 1} / ${alphas.length}`;
+      const modes = entries[i].modes || [];
+      if (!modes.length) { bcBlock.style.display = "none"; return; }
+      bcBlock.style.display = "";
+      populateModes(viewer, modes, selectedK, card, "robin");
+    };
+    slider.oninput = update;
+    update();
+  };
+
+  // --- individual-domain Robin α sliders ---
+  document.querySelectorAll('.eig-domain:not(.eig-family) .eig-bc-block[data-bc="robin"]').forEach((bcBlock) => {
+    const payloadEl = bcBlock.querySelector(".eig-alpha-payload");
+    if (!payloadEl) return;
+    const payload = JSON.parse(payloadEl.textContent || "null");
+    if (!payload) return;
+    wireRobinAlpha(bcBlock, payload);
+  });
+
   // --- individual-domain viewers (mode picker) ---
   document.querySelectorAll(".eig-domain:not(.eig-family) .eig-viewer").forEach((viewer) => {
     const img = viewer.querySelector(".eig-focus-img");
@@ -385,52 +509,28 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
   });
 
   // --- family viewers (slider + per-param data swap) ---
-  const familyState = new WeakMap();
-
   const renderFamilyBC = (card, bcBlock, member, bc) => {
-    const modes = member.boundaries[bc] || [];
     const viewer = bcBlock.querySelector(".eig-viewer");
     if (!viewer) return;
-    const img = viewer.querySelector(".eig-focus-img");
-    const kCap = viewer.querySelector(".eig-focus-k");
-    const lamCap = viewer.querySelector(".eig-focus-lam");
-    const picker = viewer.querySelector(".eig-mode-picker");
+
+    if (bc === "robin") {
+      const payload = member.boundaries?.robin;
+      if (!payload || !payload.entries || !payload.entries.length) {
+        bcBlock.style.display = "none"; return;
+      }
+      bcBlock.style.display = "";
+      const st = familyState.get(card) || { selectedIdx: {} };
+      const selectedK = st.selectedIdx[bc] ?? 0;
+      wireRobinAlpha(bcBlock, payload, selectedK, card);
+      return;
+    }
+
+    const modes = member.boundaries[bc] || [];
     if (!modes.length) { bcBlock.style.display = "none"; return; }
     bcBlock.style.display = "";
-
-    // Remember selected k across parameter changes (by index)
     const st = familyState.get(card) || { selectedIdx: {} };
-    let idx = st.selectedIdx[bc] ?? 0;
-    if (idx >= modes.length) idx = 0;
-
-    img.src = modes[idx].image;
-    img.alt = `${card.dataset.name}, ${bc}, k=${modes[idx].k}`;
-    kCap.textContent = `k = ${modes[idx].k}`;
-    let text = `λ = ${fmt(modes[idx].lambda)}`;
-    if (modes[idx].lambdaExact !== null && modes[idx].lambdaExact !== undefined) {
-      const e = fmtErr(modes[idx].relErr);
-      text += e ? `  (exact ${fmt(modes[idx].lambdaExact)}, rel. err ${e})` : `  (exact ${fmt(modes[idx].lambdaExact)})`;
-    }
-    lamCap.textContent = text;
-
-    // Rebuild mode buttons
-    picker.innerHTML = "";
-    modes.forEach((m, i) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "eig-mode-btn" + (i === idx ? " is-active" : "");
-      btn.dataset.idx = String(i);
-      btn.dataset.k = String(m.k);
-      btn.title = `λ = ${fmt(m.lambda)}`;
-      btn.textContent = `k=${m.k}`;
-      btn.addEventListener("click", () => {
-        const s = familyState.get(card) || { selectedIdx: {} };
-        s.selectedIdx[bc] = i;
-        familyState.set(card, s);
-        renderFamilyBC(card, bcBlock, member, bc);
-      });
-      picker.appendChild(btn);
-    });
+    const selectedIdx = st.selectedIdx[bc] ?? 0;
+    populateModes(viewer, modes, selectedIdx, card, bc);
   };
 
   document.querySelectorAll(".eig-family").forEach((card) => {
@@ -589,6 +689,20 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
   .eig-family-slider .eig-param-range { flex: 1; }
   .eig-family-slider .eig-param-count { font-size: 0.8em; font-family: ui-monospace, Menlo, monospace; }
   .eig-family-payload { display: none; }
+
+  .eig-alpha-slider {
+    display: flex; align-items: center; gap: 0.8em;
+    margin: 0.3em 0 0.6em;
+    padding: 0.35em 0.7em;
+    background: #eef6ff;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .eig-alpha-slider label { font-family: ui-monospace, Menlo, monospace; font-size: 0.9em; }
+  .eig-alpha-value { font-weight: 600; }
+  .eig-alpha-range { flex: 1; }
+  .eig-alpha-count { font-size: 0.78em; font-family: ui-monospace, Menlo, monospace; }
+  .eig-alpha-payload { display: none; }
 
   .eig-bc-block { margin-top: 1em; }
   .eig-bc-block h4 { margin: 0.5em 0 0.4em; font-size: 0.95em; color: #333; font-weight: 600; }

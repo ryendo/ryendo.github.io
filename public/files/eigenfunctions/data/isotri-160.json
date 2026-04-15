@@ -106,52 +106,6 @@
         }
       ]
     },
-    "robin": {
-      "modes": [
-        {
-          "k": 1,
-          "lambda": 36.18433398030689,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/isotri-160_robin_1.jpg"
-        },
-        {
-          "k": 2,
-          "lambda": 82.92585545135496,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/isotri-160_robin_2.jpg"
-        },
-        {
-          "k": 3,
-          "lambda": 132.7217033541893,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/isotri-160_robin_3.jpg"
-        },
-        {
-          "k": 4,
-          "lambda": 206.26645847198643,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/isotri-160_robin_4.jpg"
-        },
-        {
-          "k": 5,
-          "lambda": 288.9610638004483,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/isotri-160_robin_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 397.30721763245714,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/isotri-160_robin_6.jpg"
-        }
-      ]
-    },
     "steklov": {
       "modes": [
         {
@@ -195,6 +149,300 @@
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/isotri-160_steklov_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 4.376950854270835,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 30.591790491306657,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 67.16565381417375,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 130.55048997715937,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 205.30882247769594,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 307.62877479364863,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.1_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 0.3,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 12.296587132871265,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 44.30048022394498,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 83.95472672293013,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 149.30087062349023,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 225.56766278061227,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 328.9354730544315,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-0.3_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 36.1843339803069,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 82.92585545135499,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 132.72170335418934,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 206.26645847198625,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 288.96106380044813,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 397.30721763245646,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-1_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 3.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 94.69413694567415,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 167.29946005244943,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 236.94090943076708,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 329.3040398877424,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 428.5334540562897,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 551.829307759268,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-3_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 263.447577319891,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-10_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 389.9460593541416,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-10_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 501.8047717078025,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-10_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 634.8041044500542,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-10_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 771.4755102718146,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-10_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 930.3892481714473,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-10_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 30.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 596.3775965194616,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-30_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 812.8329602998936,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-30_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 997.1062914547148,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-30_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 1199.3806075299365,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-30_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 1401.658215746777,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-30_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 1623.6411737766475,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/isotri-160_robin-30_6.jpg"
+            }
+          ]
         }
       ]
     }

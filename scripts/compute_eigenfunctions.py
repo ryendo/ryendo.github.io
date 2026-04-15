@@ -550,8 +550,11 @@ def dom_rhombus(angle_deg: float, h: float = 0.025) -> MeshTri:
 
 ROBIN_ALPHA = 1.0  # default Robin parameter (−∂_n u = α u on ∂Ω)
 
+# Parameter grid for the per-domain Robin α slider.
+ROBIN_ALPHAS = [0.1, 0.3, 1.0, 3.0, 10.0, 30.0]
 
-def solve_eigs(mesh: MeshTri, n_eig: int, bc: str) -> tuple[np.ndarray, np.ndarray, Basis]:
+
+def solve_eigs(mesh: MeshTri, n_eig: int, bc: str, *, alpha: float | None = None) -> tuple[np.ndarray, np.ndarray, Basis]:
     """Solve a Laplacian eigenproblem.
 
     bc in {'dirichlet', 'neumann', 'robin', 'steklov'}.
@@ -590,9 +593,10 @@ def solve_eigs(mesh: MeshTri, n_eig: int, bc: str) -> tuple[np.ndarray, np.ndarr
         return vals, vecs, basis
 
     if bc == "robin":
+        a = ROBIN_ALPHA if alpha is None else float(alpha)
         fbasis = FacetBasis(mesh, ElementTriP2())
         B = asm(boundary_mass, fbasis)
-        A = (K + ROBIN_ALPHA * B).tocsr()
+        A = (K + a * B).tocsr()
         # A is SPD when α > 0 (no zero mode), so a positive shift near 0 works.
         sigma = 1e-6
         vals, vecs = eigsh(A, k=n_eig, M=M, sigma=sigma, which="LM")
@@ -1498,7 +1502,7 @@ FAMILIES: list[FamilySpec] = [
         description_ja="中心 (±1.3, 0) の単位円板 2 つを、半幅 n の長方形頸部で連結した領域。n → 0 で第 1, 第 2 Dirichlet 固有値が漸近的に縮退する (Jimbo 1989; Arrieta 1995)。",
         category="collapsing",
         param="n", param_ja="n",
-        param_values=[0.05, 0.1, 0.15, 0.2, 0.3, 0.45, 0.6, 0.9],
+        param_values=[0.02, 0.05, 0.08, 0.12, 0.18, 0.25, 0.35, 0.5, 0.7, 0.9, 1.0],
         member_id_fmt="dumbbell-{p}",
         member_name_en_fmt="Dumbbell n={p}",
         member_name_ja_fmt="ダンベル n={p}",
@@ -1594,7 +1598,46 @@ def compute_domain(
         "boundaries": {},
     }
 
+    def _alpha_tag(a: float) -> str:
+        if abs(a - round(a)) < 1e-9:
+            return str(int(round(a)))
+        return f"{a:g}"
+
     for bc in boundaries:
+        if bc == "robin":
+            # parametric α slider: compute Robin for each α in ROBIN_ALPHAS
+            entries = []
+            for a in ROBIN_ALPHAS:
+                print(f"  solving robin (α={a}) ...", flush=True)
+                try:
+                    vals, vecs, basis = solve_eigs(mesh, spec.n_eig, "robin", alpha=a)
+                except Exception as e:
+                    print(f"    skipped robin α={a}: {e}", flush=True)
+                    continue
+                a_tag = _alpha_tag(a)
+                modes = []
+                for k in range(spec.n_eig):
+                    lam = float(vals[k])
+                    img_path = OUT_IMG / f"{spec.id}_robin-{a_tag}_{k + 1}.jpg"
+                    plot_eigenfunction(
+                        mesh, basis, vecs[:, k], img_path,
+                        title=f"λ_{{{k+1}}} ≈ {lam:.4f} (α={a_tag})",
+                    )
+                    modes.append({
+                        "k": k + 1,
+                        "lambda": lam,
+                        "lambdaExact": None,
+                        "relErr": None,
+                        "image": f"/files/eigenfunctions/img/{spec.id}_robin-{a_tag}_{k + 1}.jpg",
+                    })
+                entries.append({"alpha": a, "modes": modes})
+            if entries:
+                result["boundaries"]["robin"] = {
+                    "alphas": [e["alpha"] for e in entries],
+                    "entries": entries,
+                }
+            continue
+
         print(f"  solving {bc} ...", flush=True)
         try:
             vals, vecs, basis = solve_eigs(mesh, spec.n_eig, bc)
@@ -1640,12 +1683,47 @@ def compute_domain(
     return result
 
 
-def main(selection: list[str] | None = None) -> None:
+def _first_few(bc_info: dict) -> list[float]:
+    """Extract first few λ values from a BC info dict (handles Robin's nested structure)."""
+    if "modes" in bc_info:
+        return [m["lambda"] for m in bc_info["modes"][:4]]
+    if "entries" in bc_info:
+        # Robin: pick the α=1 entry if present, otherwise the first one.
+        entries = bc_info["entries"]
+        pick = next((e for e in entries if abs(float(e.get("alpha", 0)) - 1.0) < 1e-9), entries[0] if entries else None)
+        if pick is None:
+            return []
+        return [m["lambda"] for m in pick["modes"][:4]]
+    return []
+
+
+def main(selection: list[str] | None = None, robin_only: bool = False) -> None:
     index = []
     for spec in DOMAINS:
         if selection and spec.id not in selection:
             continue
-        r = compute_domain(spec)
+        if robin_only:
+            # Recompute only the Robin family, splicing it into the existing
+            # per-domain JSON. Keep Dirichlet/Neumann/Steklov untouched.
+            existing_path = OUT_DATA / f"{spec.id}.json"
+            if not existing_path.exists():
+                r = compute_domain(spec)
+            else:
+                print(f"\n=== {spec.id} ({spec.name_en}) [robin-only] ===", flush=True)
+                mesh = spec.builder()
+                print(f"  mesh: {mesh.p.shape[1]} vertices, {mesh.t.shape[1]} triangles", flush=True)
+                existing = json.loads(existing_path.read_text())
+                # Drop pre-existing robin data (old single-α) and plot images.
+                existing.setdefault("boundaries", {}).pop("robin", None)
+                # reuse compute_domain but only request robin
+                fake = compute_domain(spec, boundaries=("robin",))
+                existing["boundaries"]["robin"] = fake["boundaries"].get("robin", {})
+                existing["familyId"] = spec.family_id
+                existing["familyParam"] = spec.family_param
+                existing_path.write_text(json.dumps(existing, indent=2, ensure_ascii=False))
+                r = existing
+        else:
+            r = compute_domain(spec)
         index.append({
             "id": spec.id,
             "nameEn": spec.name_en,
@@ -1658,7 +1736,7 @@ def main(selection: list[str] | None = None) -> None:
             "familyParam": spec.family_param,
             "mesh": r["mesh"],
             "firstFew": {
-                bc: [m["lambda"] for m in r["boundaries"][bc]["modes"][:4]]
+                bc: _first_few(r["boundaries"][bc])
                 for bc in r["boundaries"]
             },
         })
@@ -1694,5 +1772,7 @@ def main(selection: list[str] | None = None) -> None:
 
 
 if __name__ == "__main__":
-    sel = sys.argv[1:] if len(sys.argv) > 1 else None
-    main(sel)
+    args = sys.argv[1:]
+    robin_only = "--robin-only" in args
+    sel = [a for a in args if not a.startswith("--")]
+    main(sel if sel else None, robin_only=robin_only)

@@ -106,52 +106,6 @@
         }
       ]
     },
-    "robin": {
-      "modes": [
-        {
-          "k": 1,
-          "lambda": 2.2201648963440577,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/pacman-1.0472_robin_1.jpg"
-        },
-        {
-          "k": 2,
-          "lambda": 4.7614954887907555,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/pacman-1.0472_robin_2.jpg"
-        },
-        {
-          "k": 3,
-          "lambda": 7.868287306149645,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/pacman-1.0472_robin_3.jpg"
-        },
-        {
-          "k": 4,
-          "lambda": 11.82361545932994,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/pacman-1.0472_robin_4.jpg"
-        },
-        {
-          "k": 5,
-          "lambda": 16.58152580848962,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/pacman-1.0472_robin_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 17.944991275000636,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/pacman-1.0472_robin_6.jpg"
-        }
-      ]
-    },
     "steklov": {
       "modes": [
         {
@@ -195,6 +149,300 @@
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/pacman-1.0472_steklov_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.26978421577258177,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 2.0781989876328377,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 4.780175577709525,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 8.380843248538868,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 12.844321741631504,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 15.036441551237429,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.1_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 0.3,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.7723160126064366,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 2.7599151349331486,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 5.541632245344287,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 9.215310887214606,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 13.744611878894018,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 15.722157472094517,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-0.3_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 2.220164896344059,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 4.761495488790749,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 7.86828730614965,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 11.82361545932991,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 16.5815258084896,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 17.94499127500061,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-1_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 3.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 4.767613295045334,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 8.394720698079823,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 12.381023756111484,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 17.134103009312835,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 22.406299185460917,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 23.056553834565534,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-3_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 7.857771040293826,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-10_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 12.886382292565957,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-10_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 18.38641977946845,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-10_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 24.662606024548683,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-10_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 31.040464332025426,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-10_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 31.80178522278011,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-10_6.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 30.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 9.580244184832859,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-30_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 15.289787727552936,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-30_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 21.72551596374007,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-30_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 29.02800387252226,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-30_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 36.925252749557856,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-30_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 37.23674957405892,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/pacman-1.0472_robin-30_6.jpg"
+            }
+          ]
         }
       ]
     }

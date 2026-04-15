@@ -162,80 +162,6 @@
         }
       ]
     },
-    "robin": {
-      "modes": [
-        {
-          "k": 1,
-          "lambda": 5.814957742277644,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_1.jpg"
-        },
-        {
-          "k": 2,
-          "lambda": 19.80054715500072,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_2.jpg"
-        },
-        {
-          "k": 3,
-          "lambda": 30.584297509201168,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_3.jpg"
-        },
-        {
-          "k": 4,
-          "lambda": 50.32394331709511,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_4.jpg"
-        },
-        {
-          "k": 5,
-          "lambda": 61.99851586749494,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 90.55882216805908,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_6.jpg"
-        },
-        {
-          "k": 7,
-          "lambda": 99.93872851199103,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_7.jpg"
-        },
-        {
-          "k": 8,
-          "lambda": 111.72584347310958,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_8.jpg"
-        },
-        {
-          "k": 9,
-          "lambda": 141.370029649159,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_9.jpg"
-        },
-        {
-          "k": 10,
-          "lambda": 169.13512388205763,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin_10.jpg"
-        }
-      ]
-    },
     "steklov": {
       "modes": [
         {
@@ -307,6 +233,468 @@
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/right-isoceles-triangle_steklov_10.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.6699462036573649,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 11.0145363068319,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 20.94824694962664,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 40.63630647538646,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 50.70416963619358,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 80.17527031150887,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 89.98752011750778,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 100.0569077376598,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 129.66697073796828,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 159.07901775997195,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 0.3,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 1.939436458372745,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 13.187838876413494,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 23.2768766052053,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 42.903904870595326,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 53.356813520939994,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 82.57274918302973,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 92.27588442168536,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 102.74058972351375,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 132.35213836332142,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 161.37499617754497,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-0.3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 5.814957742277643,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 19.800547155000718,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 30.58429750920116,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 50.3239433170951,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 61.99851586749507,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 90.55882216805931,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 99.93872851199114,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 111.72584347310925,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 141.37002964915905,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 169.13512388205746,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 3.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 13.962022811321738,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 33.495191215791685,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 46.444818676116626,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 67.54697921008736,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 81.80927518282313,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 110.16345854875294,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 118.94513404875703,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 133.74239049384775,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 163.8634287016216,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 189.05796679163643,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 28.300844104468084,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 58.225210476162836,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 76.53687651586179,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 102.32150583262379,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 121.34420853277932,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 154.04775445067415,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 161.9928280119491,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 181.65765469976458,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 215.4557117211349,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 238.41773676315714,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-10_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 30.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 39.86551349217727,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 79.90986704684406,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 103.98293319973051,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 136.25796811261026,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 160.43867110686645,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 200.86929404632502,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 209.16343385463352,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 233.47226446583932,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 274.1101479790658,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 298.91437665036324,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/right-isoceles-triangle_robin-30_10.jpg"
+            }
+          ]
         }
       ]
     }

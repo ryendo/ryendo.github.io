@@ -162,80 +162,6 @@
         }
       ]
     },
-    "robin": {
-      "modes": [
-        {
-          "k": 1,
-          "lambda": 1.273208117717845,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_1.jpg"
-        },
-        {
-          "k": 2,
-          "lambda": 3.7559233966712675,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_2.jpg"
-        },
-        {
-          "k": 3,
-          "lambda": 4.612875392620056,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_3.jpg"
-        },
-        {
-          "k": 4,
-          "lambda": 8.141157384578216,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_4.jpg"
-        },
-        {
-          "k": 5,
-          "lambda": 8.79317705812347,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 11.626506688029524,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_6.jpg"
-        },
-        {
-          "k": 7,
-          "lambda": 13.905125421749279,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_7.jpg"
-        },
-        {
-          "k": 8,
-          "lambda": 15.272679759164138,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_8.jpg"
-        },
-        {
-          "k": 9,
-          "lambda": 19.12238039675169,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_9.jpg"
-        },
-        {
-          "k": 10,
-          "lambda": 20.93910122604191,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/cardioid_robin_10.jpg"
-        }
-      ]
-    },
     "steklov": {
       "modes": [
         {
@@ -307,6 +233,468 @@
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/cardioid_steklov_10.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.16468331943856093,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 2.1030533155010755,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 2.8138679100698742,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 5.9277890198230265,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 6.705745198532136,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 9.92532814533828,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 11.250039600284525,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 12.763565206235018,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 17.443233272968808,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 18.395175855918357,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 0.3,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.4652562404897809,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 2.529507918331211,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 3.2728134514895415,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 6.480779022895543,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 7.232181782100154,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 10.320354921441535,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 11.902667111963797,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 13.374394457832471,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 17.877826630388185,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 19.03571738139679,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-0.3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 1.2732081177178467,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 3.7559233966712697,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 4.612875392620047,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 8.141157384578223,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 8.793177058123462,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 11.626506688029565,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 13.905125421749279,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 15.272679759164134,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 19.122380396751687,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 20.93910122604188,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 3.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 2.433827729588174,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 5.788806894396784,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 6.919105771594131,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 11.198952427164054,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 11.619700707256817,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 14.533502570911836,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 17.805019032021015,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 19.021476294784257,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 21.942858467505,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 24.650373528578953,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 3.41641197371302,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 7.799209547680198,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 9.34934220345522,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 14.729242095644508,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 14.907921970695341,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 18.598650929410034,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 22.75466139762744,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 23.906067652031453,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 26.598882289425912,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 30.289930515196236,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-10_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 30.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 3.8135917727667525,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 8.652456290188299,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 10.447625376904282,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 16.37562748885308,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 16.474123270038096,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 20.704102539550227,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 25.22716412494222,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 26.449549473376546,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 29.291616467999027,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 33.519149907213915,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/cardioid_robin-30_10.jpg"
+            }
+          ]
         }
       ]
     }

@@ -162,80 +162,6 @@
         }
       ]
     },
-    "robin": {
-      "modes": [
-        {
-          "k": 1,
-          "lambda": 4.36507290790992,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_1.jpg"
-        },
-        {
-          "k": 2,
-          "lambda": 11.868757070493682,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_2.jpg"
-        },
-        {
-          "k": 3,
-          "lambda": 21.835992609449736,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_3.jpg"
-        },
-        {
-          "k": 4,
-          "lambda": 26.156740985422463,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_4.jpg"
-        },
-        {
-          "k": 5,
-          "lambda": 40.492052392813285,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_5.jpg"
-        },
-        {
-          "k": 6,
-          "lambda": 48.51584458146234,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_6.jpg"
-        },
-        {
-          "k": 7,
-          "lambda": 62.191345005745056,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_7.jpg"
-        },
-        {
-          "k": 8,
-          "lambda": 67.21438204548407,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_8.jpg"
-        },
-        {
-          "k": 9,
-          "lambda": 79.40925863103169,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_9.jpg"
-        },
-        {
-          "k": 10,
-          "lambda": 93.63051850767158,
-          "lambdaExact": null,
-          "relErr": null,
-          "image": "/files/eigenfunctions/img/30-60-90-triangle_robin_10.jpg"
-        }
-      ]
-    },
     "steklov": {
       "modes": [
         {
@@ -307,6 +233,468 @@
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/30-60-90-triangle_steklov_10.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "alphas": [
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "entries": [
+        {
+          "alpha": 0.1,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 0.5283164614698757,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 5.331702370488752,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 14.168333522582502,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 18.512290952145737,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 31.787977131971505,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 40.44907776338834,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 53.657350265041885,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 58.11120041939574,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 71.15635019019813,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 84.43082930736004,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 0.3,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 1.500259001441038,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 7.0500380418450925,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 16.0818304289968,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 20.375356745274953,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 33.88655409379424,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 42.34786653007788,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 55.65390618065279,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 60.24410881654467,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 73.06848860517597,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 86.56776772853867,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-0.3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 1.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 4.365072907909916,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 11.86875707049368,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 21.835992609449693,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 26.156740985422463,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 40.49205239281328,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 48.51584458146245,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 62.191345005745205,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 67.21438204548404,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 79.4092586310315,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 93.63051850767164,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-1_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 3.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 10.123260197174895,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 21.108941138218167,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 33.55086304251169,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 38.23142564766727,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 54.611139668275875,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 62.52438421569379,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 77.48322077205738,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 83.07756568517601,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 94.65886151766941,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 110.44074057500266,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-3_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 10.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 19.304990882215165,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 36.3763191024655,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 53.85576128565742,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 59.78647454420026,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 80.76757875949883,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 89.94082600302482,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 108.34585302855606,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 114.61628445211585,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 127.22072661468661,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 146.0758720286805,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-10_10.jpg"
+            }
+          ]
+        },
+        {
+          "alpha": 30.0,
+          "modes": [
+            {
+              "k": 1,
+              "lambda": 25.82405234589319,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_1.jpg"
+            },
+            {
+              "k": 2,
+              "lambda": 48.0064904272288,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_2.jpg"
+            },
+            {
+              "k": 3,
+              "lambda": 70.23126436579511,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_3.jpg"
+            },
+            {
+              "k": 4,
+              "lambda": 77.64913735543749,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_4.jpg"
+            },
+            {
+              "k": 5,
+              "lambda": 103.64576014687447,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_5.jpg"
+            },
+            {
+              "k": 6,
+              "lambda": 114.8048596257342,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_6.jpg"
+            },
+            {
+              "k": 7,
+              "lambda": 137.14858542947843,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_7.jpg"
+            },
+            {
+              "k": 8,
+              "lambda": 144.60684386679986,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_8.jpg"
+            },
+            {
+              "k": 9,
+              "lambda": 159.5355088183211,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_9.jpg"
+            },
+            {
+              "k": 10,
+              "lambda": 181.95249635734265,
+              "lambdaExact": null,
+              "relErr": null,
+              "image": "/files/eigenfunctions/img/30-60-90-triangle_robin-30_10.jpg"
+            }
+          ]
         }
       ]
     }
