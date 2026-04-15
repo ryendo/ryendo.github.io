@@ -1,0 +1,456 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import fs from "node:fs";
+import path from "node:path";
+
+const base = import.meta.env.BASE_URL;
+const lang: "en" | "ja" = "en";
+
+export const frontmatter = {
+  title: "Laplacian eigenfunction atlas",
+  description:
+    "A computed atlas of Dirichlet and Neumann Laplacian eigenvalues and eigenfunctions on theoretically-interesting planar domains.",
+  date: "2026-04-15",
+  lang: "en",
+};
+
+const dataDir = path.resolve("./public/files/eigenfunctions/data");
+const indexFile = JSON.parse(
+  fs.readFileSync(path.join(dataDir, "index.json"), "utf-8")
+) as { domains: any[] };
+
+const domains = indexFile.domains.map((entry: any) => {
+  return JSON.parse(
+    fs.readFileSync(path.join(dataDir, `${entry.id}.json`), "utf-8")
+  );
+});
+
+const categoryLabel: Record<string, string> = {
+  basic: "Basic separable",
+  polygon: "Polygonal",
+  "non-convex": "Non-convex",
+  chaotic: "Chaotic billiards",
+  curved: "Curved boundary",
+  sector: "Sectors",
+  collapsing: "Collapsing / thin",
+  isospectral: "Isospectral",
+};
+
+const categoryOrder = [
+  "basic",
+  "polygon",
+  "non-convex",
+  "curved",
+  "sector",
+  "chaotic",
+  "collapsing",
+];
+
+const byCategory = new Map<string, any[]>();
+for (const d of domains) {
+  if (!byCategory.has(d.category)) byCategory.set(d.category, []);
+  byCategory.get(d.category)!.push(d);
+}
+
+const fmt = (x: number) => {
+  if (x === 0) return "0";
+  if (Math.abs(x) < 0.001 || Math.abs(x) >= 100000) return x.toExponential(4);
+  return x.toFixed(6);
+};
+
+const blogLink = `${base}en/blog/`;
+---
+
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  lang={lang}
+  homeLink={`${base}en/`}
+  homeLabel="Profile"
+  blogLink={blogLink}
+  blogLabel="Blog"
+  altLink={`${base}ja/blog/eigenfunction-atlas/`}
+  altLabel="日本語"
+  currentSection="blog"
+>
+  <main class="main-panel">
+    <p>
+      <a href={blogLink}>← Back to blog</a>
+    </p>
+
+    <div class="article-header">
+      <h1 class="article-title">{frontmatter.title}</h1>
+      <div class="article-meta">{frontmatter.date} · {frontmatter.description}</div>
+    </div>
+
+    <div class="article-content">
+      <p>
+        A computed atlas of Dirichlet and Neumann Laplacian eigenvalues and
+        eigenfunctions on theoretically interesting planar domains. Intended
+        as a reference for researchers.
+      </p>
+
+      <div class="eig-controls" id="eig-controls">
+        <div class="eig-search-row">
+          <input
+            id="eig-search"
+            type="search"
+            placeholder="Search domains — e.g. 'stadium', 'l-shape', 'triangle'…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span id="eig-count" class="muted"></span>
+        </div>
+        <div class="eig-bc-row">
+          <label><input type="radio" name="eig-bc" value="dirichlet" checked /> Dirichlet</label>
+          <label><input type="radio" name="eig-bc" value="neumann" /> Neumann</label>
+          <label><input type="radio" name="eig-bc" value="both" /> both</label>
+        </div>
+        <nav class="eig-jump" aria-label="Jump to domain">
+          {domains.map((d: any) => (
+            <a href={`#${d.id}`} data-jump={d.id}>{d.nameEn}</a>
+          ))}
+        </nav>
+      </div>
+
+      <h2>Method</h2>
+      <p>
+        Eigenvalues and eigenfunctions are computed by the Galerkin
+        finite-element method on unstructured triangular meshes (gmsh 4) with
+        P<sub>2</sub> Lagrange elements. The generalised symmetric eigenproblem
+        K u = λ M u is solved in shift-invert mode with ARPACK
+        (scipy.sparse.linalg.eigsh). For the square, the disk, the equilateral
+        triangle, the right isoceles triangle, and the rectangle 2:1,
+        closed-form spectra are known and are reported alongside the numerical
+        values with a relative error.
+      </p>
+      <p>
+        For smooth and polygonal convex domains the low modes are typically
+        accurate to 6–7 digits; on the L-shape the re-entrant corner caps
+        convergence at ~3 digits for the first mode (matching the published
+        Fox–Henrici–Moler benchmark value λ<sub>1</sub> = 9.63972384…).
+      </p>
+      <p class="muted">
+        Full data: <a href={`${base}files/eigenfunctions/data/index.json`}>index.json</a> ·
+        Per-domain JSON: <code>{`/files/eigenfunctions/data/<id>.json`}</code>.
+        Source: <a href="https://github.com/ryendo/ryendo.github.io/blob/main/scripts/compute_eigenfunctions.py"><code>scripts/compute_eigenfunctions.py</code></a>.
+      </p>
+
+      {categoryOrder
+        .filter((c) => byCategory.has(c))
+        .map((cat) => (
+          <section class="eig-category">
+            <h2 class="section-heading">{categoryLabel[cat] ?? cat}</h2>
+
+            {byCategory.get(cat)!.map((d: any) => (
+              <article
+                class="eig-domain"
+                id={d.id}
+                data-name={d.nameEn}
+                data-haystack={`${d.id} ${d.nameEn} ${d.descriptionEn} ${d.category}`.toLowerCase()}
+              >
+                <header class="eig-domain-header">
+                  <h3>
+                    {d.nameEn}
+                    <span class="eig-slug">#{d.id}</span>
+                  </h3>
+                  <p class="eig-desc">{d.descriptionEn}</p>
+                  {d.reference && (
+                    <p class="eig-ref"><strong>Ref.</strong> {d.reference}</p>
+                  )}
+                  <p class="eig-mesh muted">
+                    mesh: {d.mesh.vertices.toLocaleString()} vertices,
+                    {" "}{d.mesh.triangles.toLocaleString()} triangles,
+                    {" "}{d.mesh.element}
+                  </p>
+                </header>
+
+                {(["dirichlet", "neumann"] as const).map((bc) => {
+                  const info = d.boundaries?.[bc];
+                  if (!info) return null;
+                  const modes = info.modes as any[];
+                  return (
+                    <div class="eig-bc-block" data-bc={bc}>
+                      <h4>{bc === "dirichlet" ? "Dirichlet" : "Neumann"} boundary</h4>
+
+                      <div class="eig-viewer">
+                        <figure class="eig-focus">
+                          <img
+                            class="eig-focus-img"
+                            data-modes={JSON.stringify(modes.map((m) => m.image))}
+                            src={modes[0].image}
+                            alt={`${d.nameEn}, ${bc}, focused mode`}
+                          />
+                          <figcaption class="eig-focus-cap">
+                            <span class="eig-focus-k">k = {modes[0].k}</span>
+                            <span
+                              class="eig-focus-lam"
+                              data-lams={JSON.stringify(modes.map((m) => m.lambda))}
+                              data-exact={JSON.stringify(modes.map((m) => m.lambdaExact))}
+                              data-err={JSON.stringify(modes.map((m) => m.relErr))}
+                            >
+                              λ = {fmt(modes[0].lambda)}
+                            </span>
+                          </figcaption>
+                        </figure>
+
+                        <div class="eig-mode-picker" role="tablist" aria-label="Mode number">
+                          {modes.map((m: any, idx: number) => (
+                            <button
+                              type="button"
+                              class={"eig-mode-btn" + (idx === 0 ? " is-active" : "")}
+                              data-idx={idx}
+                              data-k={m.k}
+                              title={`λ = ${fmt(m.lambda)}`}
+                            >k={m.k}</button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <details class="eig-all-modes">
+                        <summary>All modes as grid</summary>
+                        <div class="eig-grid">
+                          {modes.map((m: any) => (
+                            <figure class="eig-mode">
+                              <a href={m.image} target="_blank" rel="noreferrer">
+                                <img
+                                  src={m.image}
+                                  alt={`${d.nameEn}, ${bc}, mode ${m.k}`}
+                                  loading="lazy"
+                                />
+                              </a>
+                              <figcaption>
+                                <span class="mode-k">k = {m.k}</span>
+                                <span class="mode-lam">λ = {fmt(m.lambda)}</span>
+                                {m.lambdaExact !== null && (
+                                  <span class="mode-exact muted">
+                                    exact {fmt(m.lambdaExact)} (rel. err {m.relErr.toExponential(1)})
+                                  </span>
+                                )}
+                              </figcaption>
+                            </figure>
+                          ))}
+                        </div>
+                      </details>
+                    </div>
+                  );
+                })}
+              </article>
+            ))}
+          </section>
+        ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  (() => {
+    const fmt = (x) => {
+      if (x === 0) return "0";
+      if (Math.abs(x) < 0.001 || Math.abs(x) >= 100000) return x.toExponential(4);
+      return x.toFixed(6);
+    };
+    const fmtErr = (x) => {
+      if (x === null || x === undefined) return null;
+      return Number(x).toExponential(1);
+    };
+
+    // Mode picker: swap focus image + caption when a k-button is clicked.
+    document.querySelectorAll(".eig-viewer").forEach((viewer) => {
+      const img = viewer.querySelector(".eig-focus-img");
+      const kCap = viewer.querySelector(".eig-focus-k");
+      const lamCap = viewer.querySelector(".eig-focus-lam");
+      const images = JSON.parse(img.dataset.modes || "[]");
+      const lams = JSON.parse(lamCap.dataset.lams || "[]");
+      const exacts = JSON.parse(lamCap.dataset.exact || "[]");
+      const errs = JSON.parse(lamCap.dataset.err || "[]");
+
+      viewer.querySelectorAll(".eig-mode-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const idx = Number(btn.dataset.idx);
+          img.src = images[idx];
+          kCap.textContent = `k = ${btn.dataset.k}`;
+          let text = `λ = ${fmt(lams[idx])}`;
+          if (exacts[idx] !== null && exacts[idx] !== undefined) {
+            text += `  (exact ${fmt(exacts[idx])}, rel. err ${fmtErr(errs[idx])})`;
+          }
+          lamCap.textContent = text;
+          viewer.querySelectorAll(".eig-mode-btn").forEach((b) => b.classList.toggle("is-active", b === btn));
+        });
+      });
+
+      // Keyboard: left/right arrows cycle when focus is inside this viewer
+      viewer.addEventListener("keydown", (e) => {
+        if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+        const btns = Array.from(viewer.querySelectorAll(".eig-mode-btn"));
+        const cur = btns.findIndex((b) => b.classList.contains("is-active"));
+        const next = e.key === "ArrowRight"
+          ? Math.min(cur + 1, btns.length - 1)
+          : Math.max(cur - 1, 0);
+        btns[next].click();
+        btns[next].focus();
+        e.preventDefault();
+      });
+    });
+
+    // Boundary-condition radio: show only the chosen block (or both).
+    const applyBc = (val) => {
+      document.querySelectorAll(".eig-bc-block").forEach((blk) => {
+        const bc = blk.getAttribute("data-bc");
+        blk.style.display = (val === "both" || bc === val) ? "" : "none";
+      });
+    };
+    document.querySelectorAll('input[name="eig-bc"]').forEach((r) => {
+      r.addEventListener("change", () => applyBc(r.value));
+    });
+
+    // Search: hide non-matching domain cards, update count.
+    const search = document.getElementById("eig-search");
+    const countEl = document.getElementById("eig-count");
+    const allDomains = Array.from(document.querySelectorAll(".eig-domain"));
+    const allJumps = Array.from(document.querySelectorAll(".eig-jump a"));
+    const updateCount = (visible) => {
+      countEl.textContent = `${visible} / ${allDomains.length} domains`;
+    };
+    const applySearch = (q) => {
+      const needle = q.trim().toLowerCase();
+      let visible = 0;
+      const visibleIds = new Set();
+      allDomains.forEach((dom) => {
+        const hay = dom.dataset.haystack || "";
+        const match = !needle || hay.includes(needle);
+        dom.style.display = match ? "" : "none";
+        if (match) { visible++; visibleIds.add(dom.id); }
+      });
+      allJumps.forEach((a) => {
+        const id = a.dataset.jump;
+        a.style.display = visibleIds.has(id) ? "" : "none";
+      });
+      // hide empty category sections
+      document.querySelectorAll(".eig-category").forEach((sec) => {
+        const anyVisible = Array.from(sec.querySelectorAll(".eig-domain")).some((d) => d.style.display !== "none");
+        sec.style.display = anyVisible ? "" : "none";
+      });
+      updateCount(visible);
+    };
+    if (search) {
+      search.addEventListener("input", (e) => applySearch(e.target.value));
+      // keyboard shortcut: '/' focuses the search box
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "/" && document.activeElement !== search && !e.metaKey && !e.ctrlKey && !e.altKey) {
+          search.focus();
+          e.preventDefault();
+        }
+      });
+    }
+    updateCount(allDomains.length);
+  })();
+</script>
+
+<style>
+  .eig-controls {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(6px);
+    padding: 0.6em 0.5em;
+    margin: 1em 0 1.2em;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    z-index: 20;
+  }
+  .eig-search-row { display: flex; align-items: center; gap: 0.7em; }
+  .eig-search-row input {
+    flex: 1; padding: 0.45em 0.7em; font-size: 1em;
+    border: 1px solid #bbb; border-radius: 4px; outline: none;
+    font-family: inherit;
+  }
+  .eig-search-row input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(9,105,218,0.15); }
+  .eig-bc-row { margin-top: 0.55em; font-size: 0.9em; display: flex; gap: 1.1em; align-items: center; }
+  .eig-bc-row label { cursor: pointer; }
+  .eig-jump {
+    margin-top: 0.55em;
+    font-size: 0.8em;
+    display: flex; flex-wrap: wrap; gap: 0.2em 0.7em;
+  }
+  .eig-jump a { color: #555; text-decoration: none; white-space: nowrap; }
+  .eig-jump a:hover { color: var(--accent); text-decoration: underline; }
+
+  .eig-viewer {
+    display: grid;
+    grid-template-columns: minmax(220px, 360px) 1fr;
+    gap: 1em;
+    align-items: start;
+  }
+  @media (max-width: 640px) {
+    .eig-viewer { grid-template-columns: 1fr; }
+  }
+  .eig-focus { margin: 0; }
+  .eig-focus img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid #ddd; border-radius: 4px; background: #fff;
+  }
+  .eig-focus-cap {
+    margin-top: 0.35em;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.85em;
+    display: flex; flex-direction: column; gap: 0.15em;
+  }
+  .eig-focus-k { color: #555; }
+  .eig-focus-lam { color: #000; }
+
+  .eig-mode-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+    gap: 0.3em;
+    align-content: start;
+  }
+  .eig-mode-btn {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.82em;
+    padding: 0.35em 0.2em;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    color: #222;
+  }
+  .eig-mode-btn:hover { background: #f3f3f3; border-color: #888; }
+  .eig-mode-btn.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .eig-all-modes { margin-top: 0.8em; }
+  .eig-all-modes summary {
+    cursor: pointer; font-size: 0.85em; color: #555; padding: 0.2em 0;
+    user-select: none;
+  }
+  .eig-all-modes summary:hover { color: var(--accent); }
+
+  .eig-category { margin-top: 2em; }
+  .eig-domain { margin: 1.2em 0 2.2em; padding: 1em 1.2em; border: 1px solid #e2e2e2; border-radius: 6px; background: #fcfcfc; }
+  .eig-domain-header h3 { margin: 0 0 0.2em; font-size: 1.15em; }
+  .eig-slug { margin-left: 0.5em; color: #888; font-size: 0.75em; font-weight: normal; font-family: ui-monospace, Menlo, monospace; }
+  .eig-desc { margin: 0.3em 0 0.2em; color: #222; }
+  .eig-ref { margin: 0.3em 0; font-size: 0.85em; color: #444; }
+  .eig-mesh { margin: 0.2em 0 0; font-size: 0.82em; }
+
+  .eig-bc-block { margin-top: 1em; }
+  .eig-bc-block h4 { margin: 0.5em 0 0.4em; font-size: 0.95em; color: #333; font-weight: 600; }
+
+  .eig-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.8em;
+  }
+  .eig-mode { margin: 0; display: flex; flex-direction: column; align-items: stretch; }
+  .eig-mode img { width: 100%; height: auto; display: block; border: 1px solid #e0e0e0; border-radius: 3px; background: #fff; }
+  .eig-mode figcaption { display: flex; flex-direction: column; font-size: 0.78em; line-height: 1.35; margin-top: 0.25em; font-family: ui-monospace, Menlo, monospace; }
+  .mode-k { color: #555; }
+  .mode-lam { color: #000; }
+  .mode-exact { font-size: 0.78em; }
+</style>

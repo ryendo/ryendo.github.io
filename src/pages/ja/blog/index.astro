@@ -15,11 +15,27 @@ const homeLink = `${base}ja/`;
 const blogLink = `${base}ja/blog/`;
 const altLink = `${base}en/blog/`;
 
-const posts = ((await Astro.glob("./*.md")) as Post[]).sort(
-  (a, b) =>
-    new Date(b.frontmatter.date).getTime() -
-    new Date(a.frontmatter.date).getTime()
-);
+const mdModules = import.meta.glob<any>("./*.md", { eager: true });
+const astroModules = import.meta.glob<any>("./*.astro", { eager: true });
+
+const posts: Post[] = [
+  ...Object.entries(mdModules).map(([file, mod]) => ({
+    url: mod.url ?? file.replace(/^\.\//, `${blogLink}`).replace(/\.md$/, "/"),
+    frontmatter: mod.frontmatter,
+  })),
+  ...Object.entries(astroModules)
+    .filter(([file]) => !file.endsWith("index.astro"))
+    .map(([file, mod]) => ({
+      url: `${blogLink}${file.replace(/^\.\//, "").replace(/\.astro$/, "/")}`,
+      frontmatter: mod.frontmatter,
+    })),
+]
+  .filter((p) => p.frontmatter && p.frontmatter.date)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).getTime() -
+      new Date(a.frontmatter.date).getTime()
+  );
 ---
 
 <BaseLayout
@@ -30,8 +46,6 @@ const posts = ((await Astro.glob("./*.md")) as Post[]).sort(
   homeLabel="プロフィール"
   blogLink={blogLink}
   blogLabel="ブログ"
-  eigLink={`${base}ja/eigenfunctions/`}
-  eigLabel="固有関数図鑑"
   altLink={altLink}
   currentSection="blog"
 >

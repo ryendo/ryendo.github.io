@@ -9,11 +9,9 @@ interface Props {
   homeLabel: string;
   blogLink?: string;
   blogLabel?: string;
-  eigLink?: string;
-  eigLabel?: string;
   altLink?: string;
   altLabel?: string;
-  currentSection?: "home" | "blog" | "eig";
+  currentSection?: "home" | "blog";
 }
 
 const {
@@ -24,8 +22,6 @@ const {
   homeLabel,
   blogLink,
   blogLabel,
-  eigLink,
-  eigLabel,
   altLink,
   altLabel,
   currentSection,
@@ -62,15 +58,6 @@ const {
               class={currentSection === "blog" ? "is-active" : ""}
             >
               {blogLabel}
-            </a>
-          )}
-
-          {eigLink && eigLabel && (
-            <a
-              href={eigLink}
-              class={currentSection === "eig" ? "is-active" : ""}
-            >
-              {eigLabel}
             </a>
           )}
 
