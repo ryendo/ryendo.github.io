@@ -1,0 +1,72 @@
+{
+  "id": "sphere-2.5",
+  "nameEn": "Sphere S² (R=2.5)",
+  "nameJa": "球面 S² (R=2.5)",
+  "descriptionEn": "Unit spherical harmonics Y_l^m on the round 2-sphere of radius R. Spectrum λ_l = l(l+1)/R² with multiplicity 2l+1.",
+  "descriptionJa": "半径 R の 2-球面上の球面調和関数 Y_l^m。スペクトルは λ_l = l(l+1)/R² で重複度 2l+1。",
+  "category": "manifold",
+  "reference": "",
+  "familyId": "sphere",
+  "familyParam": 2.5,
+  "mesh": {
+    "vertices": 0,
+    "triangles": 0,
+    "element": "analytic (closed form)"
+  },
+  "analytic": true,
+  "dimension": "manifold-2",
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": 0.0,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/sphere-2.5_dirichlet_1.gif",
+          "label": "Y_{00}"
+        },
+        {
+          "k": 2,
+          "lambda": 0.32,
+          "lambdaExact": 0.32,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/sphere-2.5_dirichlet_2.gif",
+          "label": "Y_{10}"
+        },
+        {
+          "k": 3,
+          "lambda": 0.32,
+          "lambdaExact": 0.32,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/sphere-2.5_dirichlet_3.gif",
+          "label": "Y_{11}"
+        },
+        {
+          "k": 4,
+          "lambda": 0.96,
+          "lambdaExact": 0.96,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/sphere-2.5_dirichlet_4.gif",
+          "label": "Y_{20}"
+        },
+        {
+          "k": 5,
+          "lambda": 0.96,
+          "lambdaExact": 0.96,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/sphere-2.5_dirichlet_5.gif",
+          "label": "Y_{21}"
+        },
+        {
+          "k": 6,
+          "lambda": 0.96,
+          "lambdaExact": 0.96,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/sphere-2.5_dirichlet_6.gif",
+          "label": "Y_{22}"
+        }
+      ]
+    }
+  }
+}

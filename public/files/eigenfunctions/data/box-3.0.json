@@ -1,0 +1,72 @@
+{
+  "id": "box-3.0",
+  "nameEn": "Box [0,3.0]×[0,1]×[0,1]",
+  "nameJa": "直方体 [0,3.0]×[0,1]×[0,1]",
+  "descriptionEn": "3D Dirichlet Laplacian on an axis-aligned box. Separable spectrum π²((i/a)² + j² + k²).",
+  "descriptionJa": "軸に沿った直方体上の 3 次元 Dirichlet Laplacian。変数分離スペクトル π²((i/a)² + j² + k²)。",
+  "category": "three-d",
+  "reference": "",
+  "familyId": "box",
+  "familyParam": 3.0,
+  "mesh": {
+    "vertices": 0,
+    "triangles": 0,
+    "element": "analytic (closed form)"
+  },
+  "analytic": true,
+  "dimension": "3d",
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 20.835831513410866,
+          "lambdaExact": 20.835831513410866,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-3.0_dirichlet_1.gif",
+          "label": "(1,1,1)"
+        },
+        {
+          "k": 2,
+          "lambda": 24.12569964710732,
+          "lambdaExact": 24.12569964710732,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-3.0_dirichlet_2.gif",
+          "label": "(2,1,1)"
+        },
+        {
+          "k": 3,
+          "lambda": 29.608813203268074,
+          "lambdaExact": 29.608813203268074,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-3.0_dirichlet_3.gif",
+          "label": "(3,1,1)"
+        },
+        {
+          "k": 4,
+          "lambda": 37.28517218189313,
+          "lambdaExact": 37.28517218189313,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-3.0_dirichlet_4.gif",
+          "label": "(4,1,1)"
+        },
+        {
+          "k": 5,
+          "lambda": 47.15477658298249,
+          "lambdaExact": 47.15477658298249,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-3.0_dirichlet_5.gif",
+          "label": "(5,1,1)"
+        },
+        {
+          "k": 6,
+          "lambda": 50.44464471667894,
+          "lambdaExact": 50.44464471667894,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-3.0_dirichlet_6.gif",
+          "label": "(1,1,2)"
+        }
+      ]
+    }
+  }
+}

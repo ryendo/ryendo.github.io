@@ -1,0 +1,72 @@
+{
+  "id": "box-2.2",
+  "nameEn": "Box [0,2.2]×[0,1]×[0,1]",
+  "nameJa": "直方体 [0,2.2]×[0,1]×[0,1]",
+  "descriptionEn": "3D Dirichlet Laplacian on an axis-aligned box. Separable spectrum π²((i/a)² + j² + k²).",
+  "descriptionJa": "軸に沿った直方体上の 3 次元 Dirichlet Laplacian。変数分離スペクトル π²((i/a)² + j² + k²)。",
+  "category": "three-d",
+  "reference": "",
+  "familyId": "box",
+  "familyParam": 2.2,
+  "mesh": {
+    "vertices": 0,
+    "triangles": 0,
+    "element": "analytic (closed form)"
+  },
+  "analytic": true,
+  "dimension": "3d",
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 21.77838326521371,
+          "lambdaExact": 21.77838326521371,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-2.2_dirichlet_1.gif",
+          "label": "(1,1,1)"
+        },
+        {
+          "k": 2,
+          "lambda": 27.89590665431868,
+          "lambdaExact": 27.89590665431868,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-2.2_dirichlet_2.gif",
+          "label": "(2,1,1)"
+        },
+        {
+          "k": 3,
+          "lambda": 38.09177896949364,
+          "lambdaExact": 38.09177896949364,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-2.2_dirichlet_3.gif",
+          "label": "(3,1,1)"
+        },
+        {
+          "k": 4,
+          "lambda": 51.38719646848178,
+          "lambdaExact": 51.38719646848178,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-2.2_dirichlet_4.gif",
+          "label": "(1,1,2)"
+        },
+        {
+          "k": 5,
+          "lambda": 51.38719646848178,
+          "lambdaExact": 51.38719646848178,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-2.2_dirichlet_5.gif",
+          "label": "(1,2,1)"
+        },
+        {
+          "k": 6,
+          "lambda": 52.36600021073858,
+          "lambdaExact": 52.36600021073858,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/box-2.2_dirichlet_6.gif",
+          "label": "(4,1,1)"
+        }
+      ]
+    }
+  }
+}

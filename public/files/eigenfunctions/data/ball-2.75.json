@@ -1,0 +1,72 @@
+{
+  "id": "ball-2.75",
+  "nameEn": "Ball B³ (R=2.75)",
+  "nameJa": "球体 B³ (R=2.75)",
+  "descriptionEn": "3D Dirichlet Laplacian on the open ball of radius R. Eigenvalues are squares of the zeros of spherical Bessel j_l.",
+  "descriptionJa": "半径 R の開球上の 3 次元 Dirichlet Laplacian。固有値は球ベッセル j_l の零点の二乗。",
+  "category": "three-d",
+  "reference": "",
+  "familyId": "ball",
+  "familyParam": 2.75,
+  "mesh": {
+    "vertices": 0,
+    "triangles": 0,
+    "element": "analytic (closed form)"
+  },
+  "analytic": true,
+  "dimension": "3d",
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 1.3050716563435831,
+          "lambdaExact": 1.3050716563435831,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/ball-2.75_dirichlet_1.gif",
+          "label": "(l=0,n=1,m=0)"
+        },
+        {
+          "k": 2,
+          "lambda": 2.669848404156847,
+          "lambdaExact": 2.669848404156847,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/ball-2.75_dirichlet_2.gif",
+          "label": "(l=1,n=1,m=0)"
+        },
+        {
+          "k": 3,
+          "lambda": 2.669848404156847,
+          "lambdaExact": 2.669848404156847,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/ball-2.75_dirichlet_3.gif",
+          "label": "(l=1,n=1,m=1)"
+        },
+        {
+          "k": 4,
+          "lambda": 4.392391658085199,
+          "lambdaExact": 4.392391658085199,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/ball-2.75_dirichlet_4.gif",
+          "label": "(l=2,n=1,m=0)"
+        },
+        {
+          "k": 5,
+          "lambda": 4.392391658085199,
+          "lambdaExact": 4.392391658085199,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/ball-2.75_dirichlet_5.gif",
+          "label": "(l=2,n=1,m=1)"
+        },
+        {
+          "k": 6,
+          "lambda": 4.392391658085199,
+          "lambdaExact": 4.392391658085199,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/ball-2.75_dirichlet_6.gif",
+          "label": "(l=2,n=1,m=2)"
+        }
+      ]
+    }
+  }
+}

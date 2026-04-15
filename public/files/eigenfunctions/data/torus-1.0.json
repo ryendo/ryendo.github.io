@@ -1,0 +1,72 @@
+{
+  "id": "torus-1.0",
+  "nameEn": "Flat torus T² (a/b=1.0)",
+  "nameJa": "平坦トーラス T² (a/b=1.0)",
+  "descriptionEn": "Flat torus ℝ²/(aZ × bZ) with a/b = e. Spectrum 4π²(m²/a² + n²/b²); eigenfunctions cos/sin products.",
+  "descriptionJa": "平坦トーラス ℝ²/(aZ × bZ)（a/b = e）。スペクトル 4π²(m²/a² + n²/b²)、固有関数は cos/sin の積。",
+  "category": "manifold",
+  "reference": "",
+  "familyId": "torus",
+  "familyParam": 1.0,
+  "mesh": {
+    "vertices": 0,
+    "triangles": 0,
+    "element": "analytic (closed form)"
+  },
+  "analytic": true,
+  "dimension": "manifold-2",
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": 0.0,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/torus-1.0_dirichlet_1.gif",
+          "label": "(0,0,cc)"
+        },
+        {
+          "k": 2,
+          "lambda": 39.47841760435743,
+          "lambdaExact": 39.47841760435743,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/torus-1.0_dirichlet_2.gif",
+          "label": "(0,1,cc)"
+        },
+        {
+          "k": 3,
+          "lambda": 39.47841760435743,
+          "lambdaExact": 39.47841760435743,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/torus-1.0_dirichlet_3.gif",
+          "label": "(0,1,cs)"
+        },
+        {
+          "k": 4,
+          "lambda": 39.47841760435743,
+          "lambdaExact": 39.47841760435743,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/torus-1.0_dirichlet_4.gif",
+          "label": "(1,0,cc)"
+        },
+        {
+          "k": 5,
+          "lambda": 39.47841760435743,
+          "lambdaExact": 39.47841760435743,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/torus-1.0_dirichlet_5.gif",
+          "label": "(1,0,sc)"
+        },
+        {
+          "k": 6,
+          "lambda": 78.95683520871486,
+          "lambdaExact": 78.95683520871486,
+          "relErr": 0.0,
+          "image": "/files/eigenfunctions/img/torus-1.0_dirichlet_6.gif",
+          "label": "(1,1,cc)"
+        }
+      ]
+    }
+  }
+}

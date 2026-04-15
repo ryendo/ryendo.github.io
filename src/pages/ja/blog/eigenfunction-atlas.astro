@@ -46,8 +46,10 @@ const categoryLabel: Record<string, string> = {
   sector: "扇形",
   collapsing: "細領域",
   isospectral: "同スペクトル",
+  "three-d": "3 次元領域",
+  manifold: "閉 2-多様体",
 };
-const categoryOrder = ["basic", "polygon", "non-convex", "curved", "sector", "chaotic", "collapsing"];
+const categoryOrder = ["basic", "polygon", "non-convex", "curved", "sector", "chaotic", "collapsing", "three-d", "manifold"];
 
 const fmt = (x: number) => {
   if (x === 0) return "0";
