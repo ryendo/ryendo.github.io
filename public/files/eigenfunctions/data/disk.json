@@ -5,7 +5,7 @@
   "descriptionEn": "Radius 1. Eigenvalues are squares of zeros of Bessel J_m.",
   "descriptionJa": "半径 1 の円板。固有値は第1種ベッセル関数 J_m の零点の二乗で与えられる。",
   "category": "basic",
-  "reference": "Courant–Hilbert (1953), §V.5",
+  "reference": "Courant–Hilbert (1953), §V.5; Girouard–Polterovich, J. Spectral Theory 7 (2017).",
   "mesh": {
     "vertices": 6202,
     "triangles": 12146,
@@ -16,72 +16,72 @@
       "modes": [
         {
           "k": 1,
-          "lambda": 5.783770421984682,
+          "lambda": 5.783770421984683,
           "lambdaExact": 5.783185962946785,
-          "relErr": 0.00010106177488361134,
+          "relErr": 0.00010106177488376491,
           "image": "/files/eigenfunctions/img/disk_dirichlet_1.png"
         },
         {
           "k": 2,
-          "lambda": 14.683455131043383,
+          "lambda": 14.68345513104334,
           "lambdaExact": 14.681970642123895,
-          "relErr": 0.00010110965044627395,
+          "relErr": 0.00010110965044337021,
           "image": "/files/eigenfunctions/img/disk_dirichlet_2.png"
         },
         {
           "k": 3,
-          "lambda": 14.683455272842556,
+          "lambda": 14.68345527284256,
           "lambdaExact": 14.681970642123895,
-          "relErr": 0.00010111930849400803,
+          "relErr": 0.00010111930849425001,
           "image": "/files/eigenfunctions/img/disk_dirichlet_3.png"
         },
         {
           "k": 4,
-          "lambda": 26.37728667565356,
+          "lambda": 26.377286675653604,
           "lambdaExact": 26.374616427163392,
-          "relErr": 0.00010124312129972633,
+          "relErr": 0.00010124312130134276,
           "image": "/files/eigenfunctions/img/disk_dirichlet_4.png"
         },
         {
           "k": 5,
-          "lambda": 26.377286731375552,
+          "lambda": 26.377286731375538,
           "lambdaExact": 26.374616427163392,
-          "relErr": 0.00010124523401255881,
+          "relErr": 0.00010124523401202,
           "image": "/files/eigenfunctions/img/disk_dirichlet_5.png"
         },
         {
           "k": 6,
-          "lambda": 30.474349621295268,
+          "lambda": 30.474349621295225,
           "lambdaExact": 30.471262343662087,
-          "relErr": 0.00010131768084833926,
+          "relErr": 0.00010131768084694015,
           "image": "/files/eigenfunctions/img/disk_dirichlet_6.png"
         },
         {
           "k": 7,
-          "lambda": 40.71059698545507,
+          "lambda": 40.71059698545506,
           "lambdaExact": 40.70646581820033,
-          "relErr": 0.00010148675822634885,
+          "relErr": 0.00010148675822617431,
           "image": "/files/eigenfunctions/img/disk_dirichlet_7.png"
         },
         {
           "k": 8,
-          "lambda": 40.71059806190956,
+          "lambda": 40.710598061909565,
           "lambdaExact": 40.70646581820033,
-          "relErr": 0.00010151320253848887,
+          "relErr": 0.00010151320253866343,
           "image": "/files/eigenfunctions/img/disk_dirichlet_8.png"
         },
         {
           "k": 9,
-          "lambda": 49.22346279283893,
+          "lambda": 49.22346279283884,
           "lambdaExact": 49.2184563216946,
-          "relErr": 0.00010171938574433083,
+          "relErr": 0.00010171938574245408,
           "image": "/files/eigenfunctions/img/disk_dirichlet_9.png"
         },
         {
           "k": 10,
-          "lambda": 49.223463453033695,
+          "lambda": 49.22346345303367,
           "lambdaExact": 49.2184563216946,
-          "relErr": 0.00010173279930529908,
+          "relErr": 0.000101732799304866,
           "image": "/files/eigenfunctions/img/disk_dirichlet_10.png"
         }
       ]
@@ -97,7 +97,7 @@
         },
         {
           "k": 2,
-          "lambda": 3.390298103001171,
+          "lambda": 3.39029810300117,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/disk_neumann_2.png"
@@ -111,28 +111,28 @@
         },
         {
           "k": 4,
-          "lambda": 9.32930012272844,
+          "lambda": 9.329300122728426,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/disk_neumann_4.png"
         },
         {
           "k": 5,
-          "lambda": 9.329300122949036,
+          "lambda": 9.32930012294903,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/disk_neumann_5.png"
         },
         {
           "k": 6,
-          "lambda": 14.683445509230017,
+          "lambda": 14.683445509230042,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/disk_neumann_6.png"
         },
         {
           "k": 7,
-          "lambda": 17.651762421077613,
+          "lambda": 17.651762421077635,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/disk_neumann_7.png"
@@ -146,17 +146,165 @@
         },
         {
           "k": 9,
-          "lambda": 28.27921742480619,
+          "lambda": 28.27921742480616,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/disk_neumann_9.png"
         },
         {
           "k": 10,
-          "lambda": 28.279217439495234,
+          "lambda": 28.279217439495184,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/disk_neumann_10.png"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 1.5771203474296114,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 5.78371646452772,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 5.783716464602332,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 12.379783627248235,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 12.379783627764699,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 16.643762983205697,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 21.27776765969538,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 21.277767856799986,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 30.474278351848707,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 30.474278355584946,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_robin_10.png"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": 0.0,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_steklov_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 1.0000250981070502,
+          "lambdaExact": 1.0,
+          "relErr": 2.509810705020321e-05,
+          "image": "/files/eigenfunctions/img/disk_steklov_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 1.0000250981070675,
+          "lambdaExact": 1.0,
+          "relErr": 2.509810706752269e-05,
+          "image": "/files/eigenfunctions/img/disk_steklov_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 2.0000501920157765,
+          "lambdaExact": 2.0,
+          "relErr": 2.509600788824784e-05,
+          "image": "/files/eigenfunctions/img/disk_steklov_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 2.0000501920163454,
+          "lambdaExact": 2.0,
+          "relErr": 2.509600817268698e-05,
+          "image": "/files/eigenfunctions/img/disk_steklov_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 3.000075335894287,
+          "lambdaExact": 3.0,
+          "relErr": 2.511196476229216e-05,
+          "image": "/files/eigenfunctions/img/disk_steklov_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 3.000075352486685,
+          "lambdaExact": 3.0,
+          "relErr": 2.5117495561666203e-05,
+          "image": "/files/eigenfunctions/img/disk_steklov_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 4.000100818109317,
+          "lambdaExact": 4.0,
+          "relErr": 2.5204527329236726e-05,
+          "image": "/files/eigenfunctions/img/disk_steklov_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 4.000100818398959,
+          "lambdaExact": 4.0,
+          "relErr": 2.520459973975875e-05,
+          "image": "/files/eigenfunctions/img/disk_steklov_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 5.000127218788498,
+          "lambdaExact": 5.0,
+          "relErr": 2.5443757699683544e-05,
+          "image": "/files/eigenfunctions/img/disk_steklov_10.png"
         }
       ]
     }

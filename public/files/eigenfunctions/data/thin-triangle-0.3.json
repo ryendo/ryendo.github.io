@@ -1,0 +1,256 @@
+{
+  "id": "thin-triangle-0.3",
+  "nameEn": "Isoceles triangle (h=0.3)",
+  "nameJa": "二等辺三角形 (h=0.3)",
+  "descriptionEn": "Base 1, height 0.3.",
+  "descriptionJa": "底辺 1、高さ 0.3 の二等辺三角形。",
+  "category": "collapsing",
+  "reference": "",
+  "mesh": {
+    "vertices": 523,
+    "triangles": 934,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 202.83768508516113,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 351.0522517499567,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 486.5115934101892,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 657.4466462393269,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 660.5407376938649,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 845.9089807485925,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 950.6158841414205,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 1064.7438618655126,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_dirichlet_8.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 21.369550664079103,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 52.15074209098479,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 111.85703546027507,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 151.5234706579268,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 204.70328110545546,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 266.9055060426867,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 347.5658060771474,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_neumann_8.png"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 12.62276841913005,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_robin_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 43.05182710443658,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_robin_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 78.2223242185382,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_robin_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 140.884831754041,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_robin_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 175.11109009995246,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_robin_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 230.88763635009286,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_robin_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 297.72399327473545,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_robin_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 369.5108657334486,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_robin_8.png"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_steklov_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 0.7454200571135791,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_steklov_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 1.760924892288323,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_steklov_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 3.731670927072862,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_steklov_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 5.25254990616873,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_steklov_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 7.97610756654382,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_steklov_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 8.368772755620407,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_steklov_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 11.082496889617884,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle-0.3_steklov_8.png"
+        }
+      ]
+    }
+  }
+}

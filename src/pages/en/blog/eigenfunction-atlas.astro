@@ -7,9 +7,9 @@ const base = import.meta.env.BASE_URL;
 const lang: "en" | "ja" = "en";
 
 export const frontmatter = {
-  title: "Laplacian eigenfunction atlas",
+  title: "Laplacian eigenfunction database",
   description:
-    "A computed atlas of Dirichlet and Neumann Laplacian eigenvalues and eigenfunctions on theoretically-interesting planar domains.",
+    "Numerical database of Dirichlet, Neumann, Robin and Steklov Laplacian eigenvalues and eigenfunctions on a family of planar domains.",
   date: "2026-04-15",
   lang: "en",
 };
@@ -84,10 +84,17 @@ const blogLink = `${base}en/blog/`;
     </div>
 
     <div class="article-content">
+      <div class="eig-beta">
+        <strong>Beta.</strong> This is a beta release. Numerical values,
+        domain definitions, references, and the user interface are still
+        subject to change; please verify any value you rely on against the
+        per-domain JSON file and report discrepancies.
+      </div>
+
       <p>
-        A computed atlas of Dirichlet and Neumann Laplacian eigenvalues and
-        eigenfunctions on theoretically interesting planar domains. Intended
-        as a reference for researchers.
+        Numerical database of the low eigenvalues and eigenfunctions of the
+        Laplace operator on a family of planar domains Ω ⊂ ℝ², under
+        Dirichlet, Neumann, Robin (α = 1) and Steklov boundary conditions.
       </p>
 
       <div class="eig-controls" id="eig-controls">
@@ -104,7 +111,9 @@ const blogLink = `${base}en/blog/`;
         <div class="eig-bc-row">
           <label><input type="radio" name="eig-bc" value="dirichlet" checked /> Dirichlet</label>
           <label><input type="radio" name="eig-bc" value="neumann" /> Neumann</label>
-          <label><input type="radio" name="eig-bc" value="both" /> both</label>
+          <label><input type="radio" name="eig-bc" value="robin" /> Robin (α=1)</label>
+          <label><input type="radio" name="eig-bc" value="steklov" /> Steklov</label>
+          <label><input type="radio" name="eig-bc" value="all" /> all</label>
         </div>
         <nav class="eig-jump" aria-label="Jump to domain">
           {domains.map((d: any) => (
@@ -113,22 +122,59 @@ const blogLink = `${base}en/blog/`;
         </nav>
       </div>
 
-      <h2>Method</h2>
+      <h2>Eigenvalue problems</h2>
+      <ul class="eig-list">
+        <li><strong>Dirichlet</strong>: &nbsp;−Δu = λu in Ω,&nbsp; u = 0 on ∂Ω.</li>
+        <li><strong>Neumann</strong>: &nbsp;−Δu = λu in Ω,&nbsp; ∂<sub>ν</sub>u = 0 on ∂Ω.</li>
+        <li><strong>Robin</strong> (α = 1): &nbsp;−Δu = λu in Ω,&nbsp; ∂<sub>ν</sub>u + α u = 0 on ∂Ω.</li>
+        <li><strong>Steklov</strong>: &nbsp;Δu = 0 in Ω,&nbsp; ∂<sub>ν</sub>u = σ u on ∂Ω; equivalently, σ is an eigenvalue of the Dirichlet-to-Neumann operator on ∂Ω.</li>
+      </ul>
+
+      <h2>Discretisation</h2>
       <p>
-        Eigenvalues and eigenfunctions are computed by the Galerkin
-        finite-element method on unstructured triangular meshes (gmsh 4) with
-        P<sub>2</sub> Lagrange elements. The generalised symmetric eigenproblem
-        K u = λ M u is solved in shift-invert mode with ARPACK
-        (scipy.sparse.linalg.eigsh). For the square, the disk, the equilateral
-        triangle, the right isoceles triangle, and the rectangle 2:1,
-        closed-form spectra are known and are reported alongside the numerical
-        values with a relative error.
+        The approximation is by the P<sub>2</sub> Lagrange finite element
+        method on unstructured triangular meshes (gmsh 4).
       </p>
       <p>
-        For smooth and polygonal convex domains the low modes are typically
-        accurate to 6–7 digits; on the L-shape the re-entrant corner caps
-        convergence at ~3 digits for the first mode (matching the published
-        Fox–Henrici–Moler benchmark value λ<sub>1</sub> = 9.63972384…).
+        For Dirichlet, Neumann and Robin we assemble the stiffness matrix K
+        and the mass matrix M; the Dirichlet degrees of freedom are
+        eliminated by condensation and the generalised eigenproblem K u =
+        λ M u is solved in shift-and-invert mode by ARPACK
+        (scipy.sparse.linalg.eigsh). The Robin problem is K + α B on the
+        left-hand side, where B is the boundary (trace) mass matrix assembled
+        on the facet basis.
+      </p>
+      <p>
+        For Steklov we use the Schur-complement reduction: writing
+        K = [K<sub>II</sub>, K<sub>IB</sub>; K<sub>BI</sub>, K<sub>BB</sub>]
+        with I the interior and B the boundary degrees of freedom, the
+        discrete Dirichlet-to-Neumann operator S = K<sub>BB</sub> −
+        K<sub>BI</sub> K<sub>II</sub><sup>-1</sup> K<sub>IB</sub> is formed
+        column-by-column and the (dense) generalised eigenproblem S u =
+        σ M<sub>∂</sub> u is solved. Interior values are recovered by
+        harmonic extension.
+      </p>
+
+      <h2>Closed-form spectra and accuracy</h2>
+      <p>
+        Analytic eigenvalues are reported alongside the numerical values,
+        together with the relative error, for:
+      </p>
+      <ul class="eig-list">
+        <li>Dirichlet Laplacian on the rectangle, the disk (zeros of Bessel functions J<sub>m</sub>), the equilateral triangle (Lamé 1833; McCartin, SIAM Rev. 2003), and the right isoceles triangle.</li>
+        <li>Steklov Laplacian on the disk: σ<sub>k</sub> = k (k ≥ 0), with multiplicity 2 for k ≥ 1 (Girouard–Polterovich, <em>J. Spectral Theory</em> 7, 2017).</li>
+      </ul>
+      <p>
+        The a posteriori error on smooth or polygonal convex domains is
+        typically 10<sup>−6</sup>–10<sup>−7</sup> for the first few Dirichlet
+        modes. On the L-shaped domain the re-entrant corner generates an
+        r<sup>2/3</sup> singularity of the eigenfunction and the
+        non-isoparametric P<sub>2</sub> rate on the first mode is about
+        10<sup>−3</sup>; the computed value λ<sub>1</sub> ≈ 9.6397 agrees with
+        the Fox–Henrici–Moler reference value 9.63972384… to three digits.
+        On curved boundaries, the polygonal approximation of ∂Ω dominates the
+        error: on the unit disk this caps the Dirichlet error at ~10<sup>−4</sup>
+        and the Steklov error at ~10<sup>−5</sup>.
       </p>
       <p class="muted">
         Full data: <a href={`${base}files/eigenfunctions/data/index.json`}>index.json</a> ·
@@ -165,13 +211,19 @@ const blogLink = `${base}en/blog/`;
                   </p>
                 </header>
 
-                {(["dirichlet", "neumann"] as const).map((bc) => {
+                {(["dirichlet", "neumann", "robin", "steklov"] as const).map((bc) => {
                   const info = d.boundaries?.[bc];
                   if (!info) return null;
                   const modes = info.modes as any[];
+                  const bcLabel = ({
+                    dirichlet: "Dirichlet",
+                    neumann: "Neumann",
+                    robin: "Robin (α=1)",
+                    steklov: "Steklov",
+                  } as const)[bc];
                   return (
                     <div class="eig-bc-block" data-bc={bc}>
-                      <h4>{bc === "dirichlet" ? "Dirichlet" : "Neumann"} boundary</h4>
+                      <h4>{bcLabel} boundary</h4>
 
                       <div class="eig-viewer">
                         <figure class="eig-focus">
@@ -224,7 +276,7 @@ const blogLink = `${base}en/blog/`;
                                 <span class="mode-lam">λ = {fmt(m.lambda)}</span>
                                 {m.lambdaExact !== null && (
                                   <span class="mode-exact muted">
-                                    exact {fmt(m.lambdaExact)} (rel. err {m.relErr.toExponential(1)})
+                                    exact {fmt(m.lambdaExact)}{m.relErr !== null ? ` (rel. err ${m.relErr.toExponential(1)})` : ""}
                                   </span>
                                 )}
                               </figcaption>
@@ -297,7 +349,7 @@ const blogLink = `${base}en/blog/`;
     const applyBc = (val) => {
       document.querySelectorAll(".eig-bc-block").forEach((blk) => {
         const bc = blk.getAttribute("data-bc");
-        blk.style.display = (val === "both" || bc === val) ? "" : "none";
+        blk.style.display = (val === "all" || val === "both" || bc === val) ? "" : "none";
       });
     };
     document.querySelectorAll('input[name="eig-bc"]').forEach((r) => {
@@ -431,6 +483,28 @@ const blogLink = `${base}en/blog/`;
   }
   .eig-all-modes summary:hover { color: var(--accent); }
 
+  .eig-beta {
+    margin: 0.5em 0 1em;
+    padding: 0.7em 1em;
+    border-left: 4px solid #d97706;
+    background: #fff7ed;
+    color: #7c2d12;
+    font-size: 0.93em;
+    border-radius: 3px;
+  }
+  .eig-beta strong {
+    display: inline-block;
+    background: #d97706;
+    color: #fff;
+    padding: 0.05em 0.45em;
+    border-radius: 3px;
+    margin-right: 0.4em;
+    font-size: 0.88em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .eig-list { margin: 0.2em 0 0.6em; padding-left: 1.2em; }
+  .eig-list li { margin: 0.15em 0; }
   .eig-category { margin-top: 2em; }
   .eig-domain { margin: 1.2em 0 2.2em; padding: 1em 1.2em; border: 1px solid #e2e2e2; border-radius: 6px; background: #fcfcfc; }
   .eig-domain-header h3 { margin: 0 0 0.2em; font-size: 1.15em; }

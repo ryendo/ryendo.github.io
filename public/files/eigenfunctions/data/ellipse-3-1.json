@@ -1,0 +1,312 @@
+{
+  "id": "ellipse-3-1",
+  "nameEn": "Ellipse 3:1",
+  "nameJa": "楕円 3:1",
+  "descriptionEn": "Semi-axes (1, 1/3). Eigenfunctions are products of angular and radial Mathieu functions.",
+  "descriptionJa": "半軸 (1, 1/3)。固有関数は角度および動径 Mathieu 関数の積で表される。",
+  "category": "curved",
+  "reference": "",
+  "mesh": {
+    "vertices": 6701,
+    "triangles": 13040,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 27.97458226612274,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 41.35760356930646,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 58.58706625531946,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 79.94144713251055,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 99.28060510525614,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 105.61361082865308,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 121.86453795437791,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 135.73503300601539,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 147.8817286707419,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 170.39512078939276,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 3.537041602488553,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 11.952996387849122,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 25.10095123776582,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 26.520243372967467,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 38.835293974726575,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 42.93396864933602,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 54.568003155131755,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 65.41763598792511,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 73.97371568207723,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_neumann_10.png"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 3.7242558100459746,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 8.457708957721978,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 17.26854498268386,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 30.63552273251715,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 32.58595751848781,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 45.50994353939756,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 48.64469119138372,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 61.777566279622405,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 71.2979290196704,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 81.65131493535756,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_robin_10.png"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 0.5973854738561835,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 1.868950553058071,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 3.278268394526115,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 3.444348448371865,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 4.179948329283379,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 5.071592288073242,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 5.2022802381991005,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 6.3272604807642985,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 6.655222054369817,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3-1_steklov_10.png"
+        }
+      ]
+    }
+  }
+}

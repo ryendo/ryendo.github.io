@@ -2,8 +2,8 @@
   "id": "l-shape",
   "nameEn": "L-shape",
   "nameJa": "L字型領域",
-  "descriptionEn": "[-1,1]² with lower-right quadrant removed. Reference benchmark: eigenfunctions have a r^{2/3} corner singularity at the re-entrant corner (Fox–Henrici–Moler 1967).",
-  "descriptionJa": "[-1,1]² から右下の象限を除いた領域。凹角での r^{2/3} 型特異性を持つ古典的ベンチマーク（Fox–Henrici–Moler 1967）。",
+  "descriptionEn": "[-1,1]² with the lower-right quadrant removed. The eigenfunctions have an r^{2/3} corner singularity at the re-entrant corner (Fox–Henrici–Moler 1967).",
+  "descriptionJa": "[-1,1]² から右下の象限を除いた領域。凹角 (re-entrant corner) において固有関数は r^{2/3} 型の特異性をもつ（Fox–Henrici–Moler 1967）。",
   "category": "non-convex",
   "reference": "Fox–Henrici–Moler, SIAM J. Numer. Anal. 4 (1967).",
   "mesh": {
@@ -16,21 +16,21 @@
       "modes": [
         {
           "k": 1,
-          "lambda": 9.641979221924858,
+          "lambda": 9.64197922192485,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_dirichlet_1.png"
         },
         {
           "k": 2,
-          "lambda": 15.197261161496675,
+          "lambda": 15.197261161496643,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_dirichlet_2.png"
         },
         {
           "k": 3,
-          "lambda": 19.739211055422437,
+          "lambda": 19.739211055422388,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_dirichlet_3.png"
@@ -44,28 +44,28 @@
         },
         {
           "k": 5,
-          "lambda": 31.918143315191088,
+          "lambda": 31.91814331519107,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_dirichlet_5.png"
         },
         {
           "k": 6,
-          "lambda": 41.478665652649774,
+          "lambda": 41.47866565264978,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_dirichlet_6.png"
         },
         {
           "k": 7,
-          "lambda": 44.94855687232505,
+          "lambda": 44.94855687232495,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_dirichlet_7.png"
         },
         {
           "k": 8,
-          "lambda": 49.34805590875763,
+          "lambda": 49.3480559087575,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_dirichlet_8.png"
@@ -83,52 +83,172 @@
         },
         {
           "k": 2,
-          "lambda": 1.475967298984336,
+          "lambda": 1.4759672989843349,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_neumann_2.png"
         },
         {
           "k": 3,
-          "lambda": 3.534032172176383,
+          "lambda": 3.53403217217639,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_neumann_3.png"
         },
         {
           "k": 4,
-          "lambda": 9.869604661332092,
+          "lambda": 9.869604661332103,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_neumann_4.png"
         },
         {
           "k": 5,
-          "lambda": 9.86960469357848,
+          "lambda": 9.869604693578479,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_neumann_5.png"
         },
         {
           "k": 6,
-          "lambda": 11.389480966987152,
+          "lambda": 11.389480966987154,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_neumann_6.png"
         },
         {
           "k": 7,
-          "lambda": 12.573503647461042,
+          "lambda": 12.573503647461065,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_neumann_7.png"
         },
         {
           "k": 8,
-          "lambda": 19.73921102495556,
+          "lambda": 19.739211024955555,
           "lambdaExact": null,
           "relErr": null,
           "image": "/files/eigenfunctions/img/l-shape_neumann_8.png"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 2.1006972771022348,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_robin_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 4.3406682663410265,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_robin_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 6.752067277387683,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_robin_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 13.249732494657966,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_robin_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 13.332203615415231,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_robin_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 15.989478117381465,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_robin_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 17.275342354258505,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_robin_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 24.558153750296945,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_robin_8.png"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_steklov_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 0.3872912883732778,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_steklov_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 0.7959482175741392,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_steklov_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 1.5807017710284441,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_steklov_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 1.5899691656662025,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_steklov_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 2.187916037772607,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_steklov_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 2.3348604462430957,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_steklov_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 3.062536557754176,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_steklov_8.png"
         }
       ]
     }

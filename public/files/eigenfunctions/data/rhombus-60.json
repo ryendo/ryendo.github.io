@@ -1,0 +1,312 @@
+{
+  "id": "rhombus-60",
+  "nameEn": "Rhombus (60°)",
+  "nameJa": "菱形 (60°)",
+  "descriptionEn": "Unit-side rhombus with interior angles 60° and 120°. Obtained by gluing two equilateral triangles along a common edge.",
+  "descriptionJa": "一辺 1 の菱形で、内角は 60° と 120°。正三角形を 2 つ貼り合わせたものに一致。",
+  "category": "polygon",
+  "reference": "",
+  "mesh": {
+    "vertices": 2601,
+    "triangles": 5000,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 24.89858128853124,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 52.63790835247752,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 71.71132880855929,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 83.82891995515993,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 122.82196726545067,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 122.82196726545085,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 140.45113728766137,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 169.22918198778092,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 169.77152470747512,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 210.5527228745446,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 7.155340505804321,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 17.54596397972646,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 17.545963979726974,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 37.491368566397135,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 47.6294040611168,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 52.63790835247127,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 70.18389188611667,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 70.1838918861169,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 90.05851094165078,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_neumann_10.png"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 3.8992317693443415,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 13.563514586873396,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 23.307260630532657,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 25.70997628563594,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 46.30383527384731,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 53.97296189552055,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 61.043341562925185,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 77.165078180103,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 78.12464265155151,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 100.15843173537459,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_robin_10.png"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 0.8161528045349035,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 1.6865338410526478,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 2.287649983878531,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 3.56000795869098,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 4.414790263207521,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 5.03933397539437,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 5.939512882255848,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 6.703620030500809,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 7.430997955637362,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rhombus-60_steklov_10.png"
+        }
+      ]
+    }
+  }
+}

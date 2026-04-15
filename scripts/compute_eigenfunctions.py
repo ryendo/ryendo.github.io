@@ -43,11 +43,19 @@ import pygmsh
 from skfem import (
     MeshTri,
     Basis,
+    FacetBasis,
     ElementTriP2,
+    BilinearForm,
     asm,
     condense,
 )
 from skfem.models.poisson import laplace, mass
+
+
+@BilinearForm
+def boundary_mass(u, v, w):
+    # assembled on a FacetBasis -> matrix is zero except on boundary DoFs
+    return u * v
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -189,14 +197,19 @@ def dom_annulus(r_in: float = 0.5, h: float = 0.03) -> MeshTri:
     return _mesh_from_pygmsh(build, h)
 
 
-def dom_ellipse_2_1(h: float = 0.03) -> MeshTri:
-    # semi-axes a=1, b=0.5 ; approximate as polygon
-    N = 120
-    pts = [[math.cos(2 * math.pi * k / N), 0.5 * math.sin(2 * math.pi * k / N)]
+def _ellipse_mesh(a: float, b: float, h: float) -> MeshTri:
+    # semi-axes (a,b), polygonal approximation
+    # scale polygon density with the inverse of the smaller semi-axis
+    N = max(120, int(120 * max(1.0, a / max(b, 1e-3))))
+    pts = [[a * math.cos(2 * math.pi * k / N), b * math.sin(2 * math.pi * k / N)]
            for k in range(N)]
     def build(geom, h):
         geom.add_polygon(pts, mesh_size=h)
     return _mesh_from_pygmsh(build, h)
+
+
+def dom_ellipse_2_1(h: float = 0.03) -> MeshTri:
+    return _ellipse_mesh(1.0, 0.5, h)
 
 
 def dom_sector(angle: float, h: float = 0.03) -> MeshTri:
@@ -334,16 +347,223 @@ def dom_thin_triangle(h_base: float = 0.05, height: float = 0.15) -> MeshTri:
     return _mesh_from_pygmsh(build, min(h_base, height / 4))
 
 
+def dom_pacman(open_angle: float, h: float = 0.03) -> MeshTri:
+    """Unit disk with a circular sector of opening `open_angle` (rad) removed
+    (Pac-Man domain). The re-entrant angle at the origin is 2π − open_angle."""
+    # Boundary: origin → (cos α, sin α) arc to (cos(2π−α), sin(−α)) → origin,
+    # where α = (2π − open_angle)/2 is the half-angle of the kept sector.
+    kept = 2 * math.pi - open_angle  # reflex angle kept as the domain
+    # Build as polygon approximation of the arc.
+    N = 160
+    t_start = open_angle / 2
+    t_end = 2 * math.pi - open_angle / 2
+    arc = [[math.cos(t), math.sin(t)] for t in np.linspace(t_start, t_end, N + 1)]
+    pts = [[0.0, 0.0]] + arc
+    def build(geom, h):
+        geom.add_polygon(pts, mesh_size=h)
+    return _mesh_from_pygmsh(build, h)
+
+
+def dom_non_concentric_annulus(
+    r_out: float = 1.0, r_in: float = 0.25,
+    offset: tuple[float, float] = (0.4, 0.0), h: float = 0.025,
+) -> MeshTri:
+    def build(geom, h):
+        outer = geom.add_circle([0, 0], r_out, mesh_size=h, num_sections=96, make_surface=False)
+        inner = geom.add_circle(list(offset) + [0.0], r_in, mesh_size=h,
+                                num_sections=64, make_surface=False)
+        geom.add_plane_surface(outer.curve_loop, holes=[inner.curve_loop])
+    return _mesh_from_pygmsh(build, h)
+
+
+def dom_dumbbell(r: float = 1.0, sep: float = 2.6, neck: float = 0.25,
+                 h: float = 0.05) -> MeshTri:
+    """Two disks of radius r, centres at (±sep/2, 0), joined by a straight
+    rectangular channel of full width 2·neck along the x-axis."""
+    N = 60
+    ptsL = [[-sep / 2 + r * math.cos(t), r * math.sin(t)] for t in np.linspace(0, 2 * math.pi, N, endpoint=False)]
+    ptsR = [[+sep / 2 + r * math.cos(t), r * math.sin(t)] for t in np.linspace(0, 2 * math.pi, N, endpoint=False)]
+    # Build left disk, right disk, and rectangle as three separate surfaces
+    # then take the union.
+    def build(geom, h):
+        p_left = geom.add_polygon(ptsL, mesh_size=h, make_surface=False)
+        p_right = geom.add_polygon(ptsR, mesh_size=h, make_surface=False)
+        rect_pts = [
+            [-sep / 2, -neck], [sep / 2, -neck],
+            [sep / 2, neck], [-sep / 2, neck],
+        ]
+        p_rect = geom.add_polygon(rect_pts, mesh_size=h, make_surface=False)
+        s_left = geom.add_plane_surface(p_left.curve_loop)
+        s_right = geom.add_plane_surface(p_right.curve_loop)
+        s_rect = geom.add_plane_surface(p_rect.curve_loop)
+        geom.boolean_union([s_left, s_right, s_rect])
+    # Boolean union needs OCC; fall back to constructing the outline by hand
+    # (union of two disks and rectangle). Build the outline polygon directly:
+    # the boundary is: top of left disk → top-left of rectangle → top-right of
+    # rectangle → top of right disk → bottom of right → bottom-right of rect →
+    # bottom-left of rect → bottom of left → close.
+    # Circles stop at x = ±sep/2 (the channel entry points). Angle where disk
+    # centred at (-sep/2, 0) intersects x = -sep/2 + 0 ... actually the disk
+    # centred at (-sep/2, 0) with radius r passes through the channel at y =
+    # ±neck provided r > neck. Find the angle φ with y = neck:
+    phi = math.asin(neck / r)  # angle above/below x-axis where y=±neck on disk
+    left_cx = -sep / 2
+    right_cx = +sep / 2
+
+    # upper-left arc: from angle π (leftmost) going clockwise(?) to angle φ
+    # We'll go CCW along the outline:
+    # start at (left_cx + r cos(−π + φ), r sin(−π + φ)) = top-left-ish of
+    # left disk? Simpler: parameterise each arc explicitly and concatenate.
+
+    M = 80
+    # Left disk: arc from angle φ (upper-channel side) going CCW around the
+    # back to −φ (lower-channel side): angles from φ through π (back of disk)
+    # to 2π − φ.
+    left_arc_angles = np.linspace(phi, 2 * math.pi - phi, M)
+    left_arc = [[left_cx + r * math.cos(t), r * math.sin(t)] for t in left_arc_angles]
+
+    # Right disk: arc from angle (π − φ) going CCW around to (π + φ).
+    right_arc_angles = np.linspace(math.pi - phi, math.pi + phi, M)
+    # but we need to traverse in the sense CCW along the combined boundary.
+    # The overall outline CCW: starting at upper-right channel corner of
+    # left disk (left_cx + r cos φ, neck) moving right along top of channel
+    # to (right_cx − r cos φ, neck) (upper-left channel corner of right disk)
+    # then CCW around the right disk to (right_cx − r cos φ, −neck) then back
+    # along bottom of channel to (left_cx + r cos φ, −neck) then CCW around
+    # left disk back to start.
+
+    # Points:
+    # top-channel: (left_cx + r cosφ, +neck) → (right_cx − r cosφ, +neck)
+    # right-disk arc: angles from π − φ through 0 (rightmost) to −(π − φ)
+    right_arc_angles = np.linspace(math.pi - phi, -(math.pi - phi), M)
+    right_arc = [[right_cx + r * math.cos(t), r * math.sin(t)] for t in right_arc_angles]
+    # bottom-channel: (right_cx − r cosφ, −neck) → (left_cx + r cosφ, −neck)
+    # left-disk arc: angles from 2π − (−(π − φ)) ... easier: from −(π − φ) + 2π
+    # through π back to π − φ + 2π? Let me just parameterise:
+    # angles from (π + φ) going CCW (increasing) to (3π − φ) =
+    # same as (π + φ) through 2π to (2π − φ) + 2π etc. Simplify:
+    left_arc_angles = np.linspace(2 * math.pi - phi, math.pi + phi, M)  # CCW
+    # Wait: at start, left disk point is (left_cx + r cosφ, -neck). That corresponds
+    # to angle −φ on the left disk or equivalently 2π − φ. Going CCW we
+    # increase the angle, and we should return to +φ (via the back of the
+    # disk at angle π). But CCW on disk centred to the left, viewed from
+    # outside, is clockwise in the standard angle parameterisation. Let me
+    # use the outward normal: for the LEFT part of the dumbbell the outline
+    # goes counter-clockwise around the whole shape, which means around the
+    # left disk we go CLOCKWISE in the angle parameterisation (increasing y
+    # at angle π). So angle goes from 2π − φ DECREASING through π to φ.
+    left_arc_angles = np.linspace(2 * math.pi - phi, phi, M)
+    left_arc_pts = [[left_cx + r * math.cos(t), r * math.sin(t)] for t in left_arc_angles]
+
+    outline = []
+    outline.append([left_cx + r * math.cos(phi), neck])          # start
+    outline.append([right_cx - r * math.cos(phi), neck])          # top-right of channel
+    outline.extend(right_arc)                                     # around right disk
+    outline.append([right_cx - r * math.cos(phi), -neck])         # bottom-right
+    outline.append([left_cx + r * math.cos(phi), -neck])          # bottom-left
+    outline.extend(left_arc_pts[1:-1])                            # around left disk
+    # de-duplicate adjacent points
+    dedup = [outline[0]]
+    for p in outline[1:]:
+        if abs(p[0] - dedup[-1][0]) + abs(p[1] - dedup[-1][1]) > 1e-10:
+            dedup.append(p)
+
+    def build2(geom, h):
+        geom.add_polygon(dedup, mesh_size=h)
+    return _mesh_from_pygmsh(build2, h)
+
+
+def dom_reuleaux_triangle(h: float = 0.02) -> MeshTri:
+    """Reuleaux triangle of side 1: intersection of three unit disks centred
+    at the vertices of an equilateral triangle of side 1. Constant width 1."""
+    # Equilateral vertices at (0,0), (1,0), (1/2, √3/2).
+    V = [(0.0, 0.0), (1.0, 0.0), (0.5, math.sqrt(3) / 2)]
+    # Boundary: three circular arcs; each arc is on the unit circle centred
+    # at the opposite vertex. Go CCW around the triangle:
+    # arc from V_A = V0 to V_B = V1, centred at V_C = V2 (angle goes from
+    # angle(V0 − V2) to angle(V1 − V2), unit radius).
+    def ang(p, c):
+        return math.atan2(p[1] - c[1], p[0] - c[0])
+    order = [(0, 1, 2), (1, 2, 0), (2, 0, 1)]
+    M = 80
+    outline = []
+    for a_idx, b_idx, c_idx in order:
+        A, B, C = V[a_idx], V[b_idx], V[c_idx]
+        aA = ang(A, C); aB = ang(B, C)
+        # ensure CCW on the boundary: reflex-free arc is the short one
+        if aB < aA:
+            aB += 2 * math.pi
+        ts = np.linspace(aA, aB, M)
+        for t in ts[:-1]:
+            outline.append([C[0] + math.cos(t), C[1] + math.sin(t)])
+    def build(geom, h):
+        geom.add_polygon(outline, mesh_size=h)
+    return _mesh_from_pygmsh(build, h)
+
+
+def dom_robnik(eps: float, h: float = 0.02) -> MeshTri:
+    """Robnik billiard: image of the unit disk |w| < 1 under the conformal
+    map z = w + eps w². A one-parameter family interpolating between the
+    disk (integrable, eps = 0) and increasingly chaotic billiards. For eps ≥
+    1/2 the map is no longer injective; we keep eps ∈ [0, 1/2)."""
+    if not (0 <= eps < 0.5):
+        raise ValueError("Robnik eps must satisfy 0 ≤ eps < 1/2")
+    N = 240
+    pts = []
+    for k in range(N):
+        th = 2 * math.pi * k / N
+        w = complex(math.cos(th), math.sin(th))
+        z = w + eps * w * w
+        pts.append([z.real, z.imag])
+    def build(geom, h):
+        geom.add_polygon(pts, mesh_size=h)
+    return _mesh_from_pygmsh(build, h)
+
+
+def dom_trapezoid(h: float = 0.025) -> MeshTri:
+    # Isoceles trapezoid, bases 1 and 2, height 1
+    def build(geom, h):
+        geom.add_polygon([[-1, 0], [1, 0], [0.5, 1], [-0.5, 1]], mesh_size=h)
+    return _mesh_from_pygmsh(build, h)
+
+
+def dom_rhombus(angle_deg: float, h: float = 0.025) -> MeshTri:
+    # Rhombus with a small interior angle `angle_deg` at (0,0). Diagonals of length 2.
+    a = math.radians(angle_deg)
+    side = 1.0
+    pts = [
+        [0.0, 0.0],
+        [side, 0.0],
+        [side + side * math.cos(a), side * math.sin(a)],
+        [side * math.cos(a), side * math.sin(a)],
+    ]
+    def build(geom, h):
+        geom.add_polygon(pts, mesh_size=h)
+    return _mesh_from_pygmsh(build, h)
+
+
 # ---------------------------------------------------------------------------
 # FEM eigensolver
 # ---------------------------------------------------------------------------
 
 
-def solve_eigs(mesh: MeshTri, n_eig: int, bc: str) -> tuple[np.ndarray, np.ndarray, Basis]:
-    """Solve the Laplacian eigenproblem.
+ROBIN_ALPHA = 1.0  # default Robin parameter (−∂_n u = α u on ∂Ω)
 
-    bc in {'dirichlet','neumann'}.
-    Returns (eigenvalues ascending, eigenvectors columns, Basis).
+
+def solve_eigs(mesh: MeshTri, n_eig: int, bc: str) -> tuple[np.ndarray, np.ndarray, Basis]:
+    """Solve a Laplacian eigenproblem.
+
+    bc in {'dirichlet', 'neumann', 'robin', 'steklov'}.
+    Returns (eigenvalues ascending, eigenvector columns shaped (N_dof, k), Basis).
+
+    Weak forms (integration by parts):
+        Dirichlet:  ∫∇u·∇v = λ ∫ u v,                 u = 0 on ∂Ω
+        Neumann:    ∫∇u·∇v = λ ∫ u v,                 ∂_n u = 0 on ∂Ω
+        Robin:      ∫∇u·∇v + α ∫_∂Ω u v = λ ∫ u v,    ∂_n u + α u = 0 on ∂Ω
+        Steklov:    ∫∇u·∇v = σ ∫_∂Ω u v,              Δu = 0 in Ω, ∂_n u = σ u on ∂Ω
+
+    Conventions: λ ≥ 0. For Steklov the eigenvalue parameter is written σ
+    here for clarity (the gallery UI shows them in the same "λ" column).
     """
     basis = Basis(mesh, ElementTriP2())
     K = asm(laplace, basis)
@@ -351,28 +571,95 @@ def solve_eigs(mesh: MeshTri, n_eig: int, bc: str) -> tuple[np.ndarray, np.ndarr
 
     if bc == "dirichlet":
         D = basis.get_dofs()  # all boundary dofs
-        # condense: removes Dirichlet dofs; returns reduced matrices
         Kc, Mc, _, I = condense(K, M, D=D)
-        sigma = 1e-6  # shift near 0 to find smallest eigenvalues
+        sigma = 1e-6
         vals, vecs = eigsh(Kc, k=n_eig, M=Mc, sigma=sigma, which="LM")
-        # expand back to full dof vector
         full = np.zeros((basis.N, n_eig))
         full[I, :] = vecs
         order = np.argsort(vals)
         return vals[order], full[:, order], basis
-    elif bc == "neumann":
-        # K is singular (constant in kernel); add small shift via sigma
+
+    if bc == "neumann":
         sigma = -1e-4
         vals, vecs = eigsh(K, k=n_eig, M=M, sigma=sigma, which="LM")
         order = np.argsort(vals)
-        vals = vals[order]
-        vecs = vecs[:, order]
-        # first eigenvalue should be ~0; replace with exactly 0
+        vals = vals[order]; vecs = vecs[:, order]
         if abs(vals[0]) < 1e-6:
             vals[0] = 0.0
         return vals, vecs, basis
-    else:
-        raise ValueError(bc)
+
+    if bc == "robin":
+        fbasis = FacetBasis(mesh, ElementTriP2())
+        B = asm(boundary_mass, fbasis)
+        A = (K + ROBIN_ALPHA * B).tocsr()
+        # A is SPD when α > 0 (no zero mode), so a positive shift near 0 works.
+        sigma = 1e-6
+        vals, vecs = eigsh(A, k=n_eig, M=M, sigma=sigma, which="LM")
+        order = np.argsort(vals)
+        return vals[order], vecs[:, order], basis
+
+    if bc == "steklov":
+        fbasis = FacetBasis(mesh, ElementTriP2())
+        B = asm(boundary_mass, fbasis)
+        # Split DoFs into interior (I) and boundary (D). Reduce K u = σ B u to
+        # a problem on the boundary DoFs only, via the Dirichlet-to-Neumann
+        # Schur complement S = K_BB − K_BI K_II^{-1} K_IB.
+        Dset = basis.get_dofs().flatten()
+        allN = basis.N
+        mask = np.zeros(allN, dtype=bool); mask[Dset] = True
+        Didx = np.where(mask)[0]
+        Iidx = np.where(~mask)[0]
+        Kcsr = K.tocsr()
+        K_II = Kcsr[Iidx][:, Iidx].tocsc()
+        K_IB = Kcsr[Iidx][:, Didx].tocsc()
+        K_BB = Kcsr[Didx][:, Didx].tocsc()
+        Bcsr = B.tocsr()
+        M_B = Bcsr[Didx][:, Didx].tocsc()
+
+        from scipy.sparse.linalg import splu, LinearOperator
+        lu = splu(K_II.tocsc())
+
+        from scipy.sparse.linalg import aslinearoperator
+        K_BB_op = aslinearoperator(K_BB)
+        K_IB_op = aslinearoperator(K_IB)
+
+        nB = Didx.size
+
+        def matvec(x):
+            # S x = K_BB x − K_BI (K_II^{-1} (K_IB x))
+            y1 = K_IB @ x
+            y2 = lu.solve(y1)
+            y3 = (K_IB.T) @ y2
+            return (K_BB @ x) - y3
+
+        S = LinearOperator((nB, nB), matvec=matvec, dtype=float)
+        # S has a 1-D kernel (constants) with σ = 0. Shift-invert near 0.
+        # eigsh needs the inverse of (S − σ M_B); we can't factor S as a
+        # sparse matrix directly because S is an implicit operator. Instead
+        # build S densely (nB is small) and solve generalised eigenproblem.
+        S_dense = np.zeros((nB, nB))
+        I_nB = np.eye(nB)
+        for j in range(nB):
+            S_dense[:, j] = matvec(I_nB[:, j])
+        # Symmetrise (tiny roundoff asymmetry)
+        S_dense = 0.5 * (S_dense + S_dense.T)
+        from scipy.linalg import eigh
+        vals_all, vecs_all = eigh(S_dense, M_B.toarray())
+        # take the n_eig smallest
+        order = np.argsort(vals_all)
+        vals = vals_all[order][:n_eig]
+        vecs_bdry = vecs_all[:, order][:, :n_eig]
+        if abs(vals[0]) < 1e-8:
+            vals[0] = 0.0
+
+        # Reconstruct interior DoFs: u_I = −K_II^{-1} K_IB u_B (harmonic ext.)
+        full = np.zeros((allN, n_eig))
+        full[Didx, :] = vecs_bdry
+        rhs = -(K_IB @ vecs_bdry)
+        full[Iidx, :] = lu.solve(rhs)
+        return vals, full, basis
+
+    raise ValueError(bc)
 
 
 # ---------------------------------------------------------------------------
@@ -433,7 +720,8 @@ class DomainSpec:
     category: str
     builder: Callable[[], MeshTri]
     n_eig: int = 8
-    analytical: Callable[[int], list[float]] | None = None  # returns sorted λ₁..λ_n
+    analytical: Callable[[int], list[float]] | None = None  # Dirichlet, sorted λ₁..λ_n
+    analytical_steklov: Callable[[int], list[float]] | None = None  # Steklov, sorted
     reference: str = ""
 
 
@@ -451,6 +739,18 @@ def analytic_rectangle_2_1(n: int) -> list[float]:
     for i in range(1, 15):
         for j in range(1, 15):
             vals.append(math.pi ** 2 * ((i / 2.0) ** 2 + j ** 2))
+    vals.sort()
+    return vals[:n]
+
+
+def analytic_steklov_disk(n: int) -> list[float]:
+    # Steklov spectrum of the unit disk: σ_k = k, with multiplicity 1 for
+    # k = 0 (constants) and 2 for k ≥ 1 (e.g. r^k cos(k θ), r^k sin(k θ)).
+    # See Girouard–Polterovich, J. Spectral Theory 7 (2017).
+    vals = [0.0]
+    for k in range(1, n + 2):
+        vals.append(float(k))
+        vals.append(float(k))
     vals.sort()
     return vals[:n]
 
@@ -544,7 +844,8 @@ DOMAINS: list[DomainSpec] = [
         builder=lambda: dom_disk(0.025),
         n_eig=10,
         analytical=analytic_disk,
-        reference="Courant–Hilbert (1953), §V.5",
+        analytical_steklov=analytic_steklov_disk,
+        reference="Courant–Hilbert (1953), §V.5; Girouard–Polterovich, J. Spectral Theory 7 (2017).",
     ),
     DomainSpec(
         id="equilateral-triangle",
@@ -614,8 +915,8 @@ DOMAINS: list[DomainSpec] = [
         id="l-shape",
         name_en="L-shape",
         name_ja="L字型領域",
-        description_en="[-1,1]² with lower-right quadrant removed. Reference benchmark: eigenfunctions have a r^{2/3} corner singularity at the re-entrant corner (Fox–Henrici–Moler 1967).",
-        description_ja="[-1,1]² から右下の象限を除いた領域。凹角での r^{2/3} 型特異性を持つ古典的ベンチマーク（Fox–Henrici–Moler 1967）。",
+        description_en="[-1,1]² with the lower-right quadrant removed. The eigenfunctions have an r^{2/3} corner singularity at the re-entrant corner (Fox–Henrici–Moler 1967).",
+        description_ja="[-1,1]² から右下の象限を除いた領域。凹角 (re-entrant corner) において固有関数は r^{2/3} 型の特異性をもつ（Fox–Henrici–Moler 1967）。",
         category="non-convex",
         builder=lambda: dom_l_shape(0.025),
         n_eig=8,
@@ -625,8 +926,8 @@ DOMAINS: list[DomainSpec] = [
         id="stadium",
         name_en="Bunimovich stadium",
         name_ja="ブニモヴィッチ・スタジアム",
-        description_en="Rectangle [-1,1]×[-1,1] with unit semicircular caps. Classical billiard of Bunimovich (1974): fully hyperbolic, a touchstone for quantum chaos; level spacing follows GOE.",
-        description_ja="幅 2 の長方形に半径 1 の半円を両端に付加。ブニモヴィッチの完全カオスビリヤード (1974)。量子カオスの試金石で、準位間隔は GOE 分布に従う。",
+        description_en="Rectangle [-1,1]² capped by unit semicircles. The classical billiard is ergodic and K-mixing (Bunimovich 1974); the quantum level-spacing statistics agree with GOE random matrix theory (Bohigas–Giannoni–Schmit conjecture).",
+        description_ja="長方形 [-1,1]² の両端に半径 1 の半円を付加した領域。古典ビリヤードはエルゴード的かつ K 型混合 (Bunimovich 1974)；量子スペクトルの準位間隔は GOE の予想 (Bohigas–Giannoni–Schmit) に従う。",
         category="chaotic",
         builder=lambda: dom_stadium(0.03),
         n_eig=10,
@@ -636,8 +937,8 @@ DOMAINS: list[DomainSpec] = [
         id="sinai-billiard",
         name_en="Sinai billiard",
         name_ja="シナイ・ビリヤード",
-        description_en="Square [-1,1]² with a central disk of radius 0.3 removed. First proven K-system (Sinai 1970).",
-        description_ja="[-1,1]² から中心の半径 0.3 の円板を除いた領域。最初に証明された K-系 (Sinai 1970)。",
+        description_en="Square [-1,1]² with a central disk of radius 0.3 removed. The classical billiard is a K-system (Sinai 1970); a model for the Boltzmann–Gibbs ergodic hypothesis.",
+        description_ja="[-1,1]² から中心の半径 0.3 の円板を除いた領域。古典ビリヤードは K 系 (Sinai 1970) で、Boltzmann–Gibbs のエルゴード仮説に対するモデル。",
         category="chaotic",
         builder=lambda: dom_sinai(0.03),
         n_eig=10,
@@ -647,8 +948,8 @@ DOMAINS: list[DomainSpec] = [
         id="cardioid",
         name_en="Cardioid",
         name_ja="カージオイド",
-        description_en="r = 1 − cos θ. Robnik billiard: fully chaotic (ergodic & mixing) for the classical flow; a benchmark for the Bohigas–Giannoni–Schmit conjecture.",
-        description_ja="r = 1 − cos θ。ロブニク・ビリヤードで、古典フローは完全にカオス的（エルゴード的かつ混合的）。BGS 予想の試金石の一つ。",
+        description_en="r = 1 − cos θ. The classical billiard is ergodic, mixing and K (Markarian 1993); extensively studied in quantum chaos (Robnik 1983; Bäcker–Steiner 1998).",
+        description_ja="r = 1 − cos θ。古典ビリヤードはエルゴード的で混合的、かつ K 系 (Markarian 1993)；量子カオスの文脈で詳しく調べられている (Robnik 1983; Bäcker–Steiner 1998)。",
         category="chaotic",
         builder=lambda: dom_cardioid(0.02),
         n_eig=10,
@@ -688,12 +989,204 @@ DOMAINS: list[DomainSpec] = [
         id="thin-triangle",
         name_en="Thin isoceles triangle (h=0.15)",
         name_ja="細長い二等辺三角形 (h=0.15)",
-        description_en="Base 1, height 0.15. Illustrates thin-domain asymptotics: the first eigenfunction concentrates along the ridge; the spectrum is governed by a 1D Schrödinger operator with potential 1/h(x)² (Friedlander–Solomyak 2009; Freitas–Krejčiřík 2008).",
-        description_ja="底辺 1、高さ 0.15。細領域極限では第一固有関数は「尾根」に局在し、スペクトルは 1 次元シュレディンガー作用素（ポテンシャル 1/h(x)²）で支配される（Friedlander–Solomyak 2009 / Freitas–Krejčiřík 2008）。",
+        description_en="Base 1, height 0.15. Illustrates thin-domain asymptotics: as the height h → 0, the eigenvalues are governed by a 1D Schrödinger operator with potential 1/h(x)² (Friedlander–Solomyak 2009; Freitas–Krejčiřík 2008).",
+        description_ja="底辺 1、高さ 0.15。細領域極限 h → 0 では、スペクトルは 1 次元 Schrödinger 作用素（ポテンシャル 1/h(x)²）で支配される（Friedlander–Solomyak 2009; Freitas–Krejčiřík 2008）。",
         category="collapsing",
         builder=lambda: dom_thin_triangle(0.015, 0.15),
         n_eig=6,
         reference="Friedlander–Solomyak, ESAIM COCV (2009); Freitas–Krejčiřík, J. Diff. Eq. (2008).",
+    ),
+    # --- polygon sequence → disk ---
+    DomainSpec(
+        id="octagon",
+        name_en="Regular octagon",
+        name_ja="正八角形",
+        description_en="Inscribed in the unit circle.",
+        description_ja="単位円に内接する正八角形。",
+        category="polygon",
+        builder=lambda: dom_regular_polygon(8, 0.025),
+        n_eig=10,
+    ),
+    DomainSpec(
+        id="decagon",
+        name_en="Regular decagon",
+        name_ja="正十角形",
+        description_en="Inscribed in the unit circle.",
+        description_ja="単位円に内接する正十角形。",
+        category="polygon",
+        builder=lambda: dom_regular_polygon(10, 0.025),
+        n_eig=10,
+    ),
+    DomainSpec(
+        id="dodecagon",
+        name_en="Regular dodecagon",
+        name_ja="正十二角形",
+        description_en="Inscribed in the unit circle. Polygonal approximation of the disk.",
+        description_ja="単位円に内接する正十二角形。円板の多角形近似。",
+        category="polygon",
+        builder=lambda: dom_regular_polygon(12, 0.022),
+        n_eig=10,
+    ),
+    # --- sectors ---
+    DomainSpec(
+        id="sector-30",
+        name_en="30° circular sector",
+        name_ja="30° 扇形",
+        description_en="Unit disk sector of opening π/6. Separable; eigenvalues are squares of zeros of J_{6k}.",
+        description_ja="半径 1、開き角 π/6 の扇形。変数分離可能で、固有値は J_{6k} の零点の二乗。",
+        category="sector",
+        builder=lambda: dom_sector(math.pi / 6, 0.02),
+        n_eig=8,
+    ),
+    DomainSpec(
+        id="sector-120",
+        name_en="120° circular sector",
+        name_ja="120° 扇形",
+        description_en="Unit disk sector of opening 2π/3.",
+        description_ja="半径 1、開き角 2π/3 の扇形。",
+        category="sector",
+        builder=lambda: dom_sector(2 * math.pi / 3, 0.02),
+        n_eig=10,
+    ),
+    DomainSpec(
+        id="pacman-90",
+        name_en="Pac-Man (opening π/2)",
+        name_ja="Pac-Man (開口 π/2)",
+        description_en="Unit disk with a sector of angle π/2 removed. Re-entrant angle 3π/2 at the origin produces an r^{2/3} corner singularity.",
+        description_ja="単位円板から開き角 π/2 の扇形を除いた領域。原点での凹角 3π/2 により r^{2/3} 型特異性が生じる。",
+        category="non-convex",
+        builder=lambda: dom_pacman(math.pi / 2, 0.02),
+        n_eig=10,
+    ),
+    # --- ellipses ---
+    DomainSpec(
+        id="ellipse-3-1",
+        name_en="Ellipse 3:1",
+        name_ja="楕円 3:1",
+        description_en="Semi-axes (1, 1/3). Eigenfunctions are products of angular and radial Mathieu functions.",
+        description_ja="半軸 (1, 1/3)。固有関数は角度および動径 Mathieu 関数の積で表される。",
+        category="curved",
+        builder=lambda: _ellipse_mesh(1.0, 1.0 / 3.0, 0.02),
+        n_eig=10,
+    ),
+    DomainSpec(
+        id="ellipse-5-1",
+        name_en="Ellipse 5:1",
+        name_ja="楕円 5:1",
+        description_en="Semi-axes (1, 0.2). Anisotropic domain between a disk and a thin strip.",
+        description_ja="半軸 (1, 0.2)。円板と細い帯の中間の異方的な領域。",
+        category="curved",
+        builder=lambda: _ellipse_mesh(1.0, 0.2, 0.015),
+        n_eig=10,
+    ),
+    # --- non-concentric annulus ---
+    DomainSpec(
+        id="annulus-offcenter",
+        name_en="Non-concentric annulus",
+        name_ja="非同心円環",
+        description_en="Unit disk with an interior disk of radius 0.25 centred at (0.4, 0) removed. Symmetry-broken variant of the annulus.",
+        description_ja="単位円板から、中心 (0.4, 0)、半径 0.25 の内側円板を除いた領域。同心円環の対称性を破った変種。",
+        category="non-convex",
+        builder=lambda: dom_non_concentric_annulus(1.0, 0.25, (0.4, 0.0), 0.022),
+        n_eig=10,
+    ),
+    # --- dumbbell (collapsing connector) ---
+    DomainSpec(
+        id="dumbbell",
+        name_en="Dumbbell",
+        name_ja="ダンベル",
+        description_en="Two unit disks centred at (±1.3, 0) connected by a rectangular neck of half-width 0.25. Classical example for the appearance of near-degenerate eigenpairs as the neck narrows (Arrieta–Hale–Han 1991; Jimbo 1989).",
+        description_ja="中心 (±1.3, 0) の単位円板 2 つを、幅 0.5 の長方形の頸部で連結した領域。頸部を細くする極限で固有値がほぼ縮退する古典例 (Arrieta–Hale–Han 1991; Jimbo 1989)。",
+        category="collapsing",
+        builder=lambda: dom_dumbbell(1.0, 2.6, 0.25, 0.05),
+        n_eig=10,
+        reference="Jimbo, J. Diff. Eq. 77 (1989); Arrieta, J. Diff. Eq. 118 (1995).",
+    ),
+    # --- Reuleaux triangle (constant width) ---
+    DomainSpec(
+        id="reuleaux-triangle",
+        name_en="Reuleaux triangle",
+        name_ja="Reuleaux 三角形",
+        description_en="Intersection of three unit disks centred at the vertices of an equilateral triangle of side 1; a curve of constant width (Reuleaux 1875).",
+        description_ja="一辺 1 の正三角形の各頂点を中心とする単位円板 3 つの共通部分。定幅図形 (Reuleaux 1875)。",
+        category="curved",
+        builder=lambda: dom_reuleaux_triangle(0.015),
+        n_eig=10,
+    ),
+    # --- Robnik family (integrable → chaotic) ---
+    DomainSpec(
+        id="robnik-0.15",
+        name_en="Robnik billiard (ε=0.15)",
+        name_ja="Robnik ビリヤード (ε=0.15)",
+        description_en="Image of the unit disk under the conformal map z = w + εw² with ε = 0.15. A smooth one-parameter deformation of the disk introduced by Robnik (1983); classical flow is soft-chaotic with mixed phase space.",
+        description_ja="共形写像 z = w + εw² (ε = 0.15) による単位円板の像。Robnik (1983) が導入した円板の滑らかな 1-パラメータ変形族。古典フローは混合相空間をもつ弱カオス。",
+        category="chaotic",
+        builder=lambda: dom_robnik(0.15, 0.02),
+        n_eig=10,
+        reference="Robnik, J. Phys. A 16 (1983).",
+    ),
+    DomainSpec(
+        id="robnik-0.3",
+        name_en="Robnik billiard (ε=0.3)",
+        name_ja="Robnik ビリヤード (ε=0.3)",
+        description_en="Image of the unit disk under z = w + εw² with ε = 0.3. The classical billiard is chaotic (Markarian) but not yet limiting to the cardioid (ε = 1/2).",
+        description_ja="z = w + εw² (ε = 0.3) による単位円板の像。古典的にはカオス的 (Markarian) であるが、ε = 1/2 で得られるカージオイドにはまだ達していない。",
+        category="chaotic",
+        builder=lambda: dom_robnik(0.3, 0.02),
+        n_eig=10,
+        reference="Robnik, J. Phys. A 16 (1983); Markarian, Nonlinearity 6 (1993).",
+    ),
+    # --- additional thin triangles for the asymptotic family ---
+    DomainSpec(
+        id="thin-triangle-0.3",
+        name_en="Isoceles triangle (h=0.3)",
+        name_ja="二等辺三角形 (h=0.3)",
+        description_en="Base 1, height 0.3.",
+        description_ja="底辺 1、高さ 0.3 の二等辺三角形。",
+        category="collapsing",
+        builder=lambda: dom_thin_triangle(0.02, 0.3),
+        n_eig=8,
+    ),
+    DomainSpec(
+        id="thin-triangle-0.05",
+        name_en="Thin isoceles triangle (h=0.05)",
+        name_ja="細長い二等辺三角形 (h=0.05)",
+        description_en="Base 1, height 0.05. Used as the thinnest member of the asymptotic family h → 0.",
+        description_ja="底辺 1、高さ 0.05 の細長い二等辺三角形。漸近族 h → 0 のうち最も細いもの。",
+        category="collapsing",
+        builder=lambda: dom_thin_triangle(0.008, 0.05),
+        n_eig=6,
+    ),
+    # --- trapezoid, rhombus ---
+    DomainSpec(
+        id="trapezoid-iso",
+        name_en="Isoceles trapezoid",
+        name_ja="等脚台形",
+        description_en="Isoceles trapezoid with parallel bases 2 and 1, height 1.",
+        description_ja="平行な底辺 2 と 1、高さ 1 の等脚台形。",
+        category="polygon",
+        builder=lambda: dom_trapezoid(0.025),
+        n_eig=10,
+    ),
+    DomainSpec(
+        id="rhombus-60",
+        name_en="Rhombus (60°)",
+        name_ja="菱形 (60°)",
+        description_en="Unit-side rhombus with interior angles 60° and 120°. Obtained by gluing two equilateral triangles along a common edge.",
+        description_ja="一辺 1 の菱形で、内角は 60° と 120°。正三角形を 2 つ貼り合わせたものに一致。",
+        category="polygon",
+        builder=lambda: dom_rhombus(60.0, 0.02),
+        n_eig=10,
+    ),
+    DomainSpec(
+        id="rhombus-30",
+        name_en="Rhombus (30°)",
+        name_ja="菱形 (30°)",
+        description_en="Unit-side rhombus with acute angle 30°; exhibits strong directional anisotropy.",
+        description_ja="一辺 1 の菱形で、鋭角は 30°。強い方向異方性をもつ。",
+        category="polygon",
+        builder=lambda: dom_rhombus(30.0, 0.018),
+        n_eig=10,
     ),
 ]
 
@@ -703,7 +1196,10 @@ DOMAINS: list[DomainSpec] = [
 # ---------------------------------------------------------------------------
 
 
-def compute_domain(spec: DomainSpec, boundaries: Iterable[str] = ("dirichlet", "neumann")) -> dict:
+def compute_domain(
+    spec: DomainSpec,
+    boundaries: Iterable[str] = ("dirichlet", "neumann", "robin", "steklov"),
+) -> dict:
     print(f"\n=== {spec.id} ({spec.name_en}) ===", flush=True)
     mesh = spec.builder()
     print(f"  mesh: {mesh.p.shape[1]} vertices, {mesh.t.shape[1]} triangles", flush=True)
@@ -728,9 +1224,14 @@ def compute_domain(spec: DomainSpec, boundaries: Iterable[str] = ("dirichlet", "
         print(f"  solving {bc} ...", flush=True)
         vals, vecs, basis = solve_eigs(mesh, spec.n_eig, bc)
         analytic = None
-        if bc == "dirichlet" and spec.analytical is not None:
+        source = None
+        if bc == "dirichlet":
+            source = spec.analytical
+        elif bc == "steklov":
+            source = spec.analytical_steklov
+        if source is not None:
             try:
-                analytic = spec.analytical(spec.n_eig)
+                analytic = source(spec.n_eig)
             except Exception as e:
                 print(f"    analytic failed: {e}")
                 analytic = None
