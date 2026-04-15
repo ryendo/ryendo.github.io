@@ -4,10 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 const base = import.meta.env.BASE_URL;
-const lang: "en" | "ja" = "ja";
 
 export const frontmatter = {
-  title: "ラプラシアン固有関数データベース",
+  title: "固有関数データベース (β版)",
   description:
     "平面領域上のラプラシアンの Dirichlet / Neumann / Robin / Steklov 固有値・固有関数の数値データベース。",
   date: "2026-04-15",
@@ -15,18 +14,31 @@ export const frontmatter = {
 };
 
 const dataDir = path.resolve("./public/files/eigenfunctions/data");
-const indexFile = JSON.parse(
-  fs.readFileSync(path.join(dataDir, "index.json"), "utf-8")
-) as { domains: any[] };
-
-const domains = indexFile.domains.map((entry: any) => {
-  return JSON.parse(
-    fs.readFileSync(path.join(dataDir, `${entry.id}.json`), "utf-8")
+let indexFile: { domains: any[]; individuals: any[]; families: any[] };
+try {
+  indexFile = JSON.parse(
+    fs.readFileSync(path.join(dataDir, "index.json"), "utf-8")
   );
-});
+} catch {
+  indexFile = { domains: [], individuals: [], families: [] };
+}
+
+const domainById = new Map<string, any>();
+for (const entry of indexFile.domains) {
+  try {
+    const full = JSON.parse(fs.readFileSync(path.join(dataDir, `${entry.id}.json`), "utf-8"));
+    domainById.set(entry.id, full);
+  } catch {}
+}
+const individuals = indexFile.individuals.map((e) => domainById.get(e.id)).filter(Boolean);
+const families = indexFile.families.map((fam) => ({
+  ...fam,
+  members: fam.memberIds.map((id: string) => domainById.get(id)).filter(Boolean),
+}));
+const totalDomains = individuals.length + families.reduce((acc, f) => acc + f.members.length, 0);
 
 const categoryLabel: Record<string, string> = {
-  basic: "基本（変数分離）",
+  basic: "基本",
   polygon: "多角形",
   "non-convex": "非凸",
   chaotic: "カオス的ビリヤード",
@@ -35,22 +47,7 @@ const categoryLabel: Record<string, string> = {
   collapsing: "細領域",
   isospectral: "同スペクトル",
 };
-
-const categoryOrder = [
-  "basic",
-  "polygon",
-  "non-convex",
-  "curved",
-  "sector",
-  "chaotic",
-  "collapsing",
-];
-
-const byCategory = new Map<string, any[]>();
-for (const d of domains) {
-  if (!byCategory.has(d.category)) byCategory.set(d.category, []);
-  byCategory.get(d.category)!.push(d);
-}
+const categoryOrder = ["basic", "polygon", "non-convex", "curved", "sector", "chaotic", "collapsing"];
 
 const fmt = (x: number) => {
   if (x === 0) return "0";
@@ -58,13 +55,33 @@ const fmt = (x: number) => {
   return x.toFixed(6);
 };
 
+const indivByCat = new Map<string, any[]>();
+for (const d of individuals) {
+  if (!indivByCat.has(d.category)) indivByCat.set(d.category, []);
+  indivByCat.get(d.category)!.push(d);
+}
+const famByCat = new Map<string, any[]>();
+for (const f of families) {
+  if (!famByCat.has(f.category)) famByCat.set(f.category, []);
+  famByCat.get(f.category)!.push(f);
+}
+
 const blogLink = `${base}ja/blog/`;
+
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://ryendo.github.io";
+const shareUrl = new URL(Astro.url.pathname, site).toString();
+const shareText = `${frontmatter.title} — ${frontmatter.description}`;
+const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+const bskyUrl = `https://bsky.app/intent/compose?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+const mastodonUrl = `https://toot.kytta.dev/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 ---
 
 <BaseLayout
   title={frontmatter.title}
   description={frontmatter.description}
-  lang={lang}
+  lang="ja"
   homeLink={`${base}ja/`}
   homeLabel="プロフィール"
   blogLink={blogLink}
@@ -72,28 +89,80 @@ const blogLink = `${base}ja/blog/`;
   altLink={`${base}en/blog/eigenfunction-atlas/`}
   altLabel="English"
   currentSection="blog"
+  ogImage="/files/eigenfunctions/og-cover.jpg"
+  ogType="article"
+  useKatex={true}
 >
   <main class="main-panel">
-    <p>
-      <a href={blogLink}>← ブログ一覧に戻る</a>
-    </p>
+    <p><a href={blogLink}>← ブログ一覧に戻る</a></p>
 
     <div class="article-header">
       <h1 class="article-title">{frontmatter.title}</h1>
-      <div class="article-meta">{frontmatter.date} · {frontmatter.description}</div>
+      <div class="article-meta">{frontmatter.date} · {totalDomains} 領域</div>
     </div>
 
     <div class="article-content">
       <div class="eig-beta">
-        <strong>Beta</strong>本図鑑はベータ版です。数値、領域の定義、参考文献、
-        UI は今後変更する可能性があります。実際に利用される場合は対応する領域の
-        JSON ファイルに対して照合し、差異があればご連絡ください。
+        <strong>Beta</strong>本データベースは β 版です。数値、領域の定義、
+        参考文献、UI は今後変更する可能性があります。実際に利用される場合は
+        対応する領域の JSON ファイルに対して照合し、差異があればご連絡ください。
       </div>
 
-      <p>
-        平面領域 Ω ⊂ ℝ² のラプラス作用素について、
-        ディリクレ・ノイマン・ロビン (α = 1)・ステクロフ境界条件の下での
-        低次固有値および固有関数の数値データベース。
+      <div set:html={`
+        <p>
+          平面領域 $\\Omega \\subset \\mathbb{R}^2$ のラプラス作用素について、
+          Dirichlet・Neumann・Robin ($\\alpha = 1$)・Steklov の 4 種類の境界条件の下での
+          低次固有値および固有関数の数値データベース。
+        </p>
+
+        <h2>扱う固有値問題</h2>
+        <ul class="eig-list">
+          <li><strong>Dirichlet</strong>: $-\\Delta u = \\lambda u$ (Ω), $u = 0$ (∂Ω).</li>
+          <li><strong>Neumann</strong>: $-\\Delta u = \\lambda u$ (Ω), $\\partial_\\nu u = 0$ (∂Ω).</li>
+          <li><strong>Robin</strong> ($\\alpha = 1$): $-\\Delta u = \\lambda u$ (Ω), $\\partial_\\nu u + \\alpha u = 0$ (∂Ω).</li>
+          <li><strong>Steklov</strong>: $\\Delta u = 0$ (Ω), $\\partial_\\nu u = \\sigma u$ (∂Ω)。同値に、$\\sigma$ は ∂Ω 上の Dirichlet-to-Neumann 作用素の固有値。</li>
+        </ul>
+
+        <h2>離散化</h2>
+        <p>
+          非構造三角形メッシュ (gmsh 4) 上の $P_2$ Lagrange 有限要素法による
+          離散化を用いる。Dirichlet・Neumann・Robin の場合、剛性行列 $K$ と
+          質量行列 $M$ を組み立て、Dirichlet 自由度は condensation で除去したのち、
+          一般化固有値問題 $K u = \\lambda M u$ を ARPACK
+          (scipy.sparse.linalg.eigsh) の shift-and-invert モードで解く。
+          Robin の場合は $(K + \\alpha B) u = \\lambda M u$ とする ($B$ は
+          facet basis 上で組み立てた境界 (トレース) 質量行列)。Steklov に
+          ついては Schur 補による縮約を用いる：
+          $$ S = K_{BB} - K_{BI} K_{II}^{-1} K_{IB} $$
+          は離散化された Dirichlet-to-Neumann 作用素であり、
+          $S u_\\partial = \\sigma M_\\partial u_\\partial$ を密行列で解いたのち、
+          内点値は調和拡張で復元する。
+        </p>
+
+        <h2>閉形式スペクトルと精度</h2>
+        <p>
+          閉形式解が既知のものについては、数値値と並べて相対誤差を示している：
+          矩形・単位円板 ($J_m$ の零点の二乗)・正三角形 (Lamé 1833;
+          McCartin, <em>SIAM Rev.</em> 2003)・直角二等辺三角形の Dirichlet
+          固有値；および単位円板の Steklov 固有値 ($\\sigma_k = k$,
+          $k \\ge 1$ に対して重複度 2；Girouard–Polterovich, <em>J. Spectral
+          Theory</em> 7, 2017)。
+        </p>
+        <p>
+          滑らかな領域または凸多角形領域では、低次の Dirichlet モードの
+          相対誤差は概ね $10^{-6}$–$10^{-7}$。L 字領域では凹角における
+          $r^{2/3}$ 型特異性のため、非等方的 $P_2$ の第 1 モードでの精度は
+          約 $10^{-3}$ に制限される (Fox–Henrici–Moler ベンチマーク
+          $\\lambda_1 = 9.63972384\\ldots$ と 3 桁一致)。単位円板では境界の
+          多角形近似が誤差を支配し、Dirichlet モードで約 $10^{-4}$、
+          Steklov モードで約 $10^{-5}$ で頭打ちとなる。
+        </p>
+      `} />
+
+      <p class="muted">
+        全データ: <a href={`${base}files/eigenfunctions/data/index.json`}>index.json</a> ／
+        各領域: <code>{`/files/eigenfunctions/data/<id>.json`}</code>。
+        計算コード: <a href="https://github.com/ryendo/ryendo.github.io/blob/main/scripts/compute_eigenfunctions.py"><code>scripts/compute_eigenfunctions.py</code></a>
       </p>
 
       <div class="eig-controls" id="eig-controls">
@@ -101,397 +170,351 @@ const blogLink = `${base}ja/blog/`;
           <input
             id="eig-search"
             type="search"
-            placeholder="領域を検索 — 例: 'スタジアム', 'L字', '三角形'…"
+            placeholder="検索 — 例: 'スタジアム', 'L字', '菱形'…"
             autocomplete="off"
             spellcheck="false"
           />
           <span id="eig-count" class="muted"></span>
         </div>
         <div class="eig-bc-row">
-          <label><input type="radio" name="eig-bc" value="dirichlet" checked /> ディリクレ</label>
-          <label><input type="radio" name="eig-bc" value="neumann" /> ノイマン</label>
-          <label><input type="radio" name="eig-bc" value="robin" /> ロビン (α=1)</label>
-          <label><input type="radio" name="eig-bc" value="steklov" /> ステクロフ</label>
+          <label><input type="radio" name="eig-bc" value="dirichlet" checked /> Dirichlet</label>
+          <label><input type="radio" name="eig-bc" value="neumann" /> Neumann</label>
+          <label><input type="radio" name="eig-bc" value="robin" /> Robin (α=1)</label>
+          <label><input type="radio" name="eig-bc" value="steklov" /> Steklov</label>
           <label><input type="radio" name="eig-bc" value="all" /> 全て</label>
         </div>
-        <nav class="eig-jump" aria-label="領域にジャンプ">
-          {domains.map((d: any) => (
-            <a href={`#${d.id}`} data-jump={d.id}>{d.nameJa}</a>
-          ))}
-        </nav>
       </div>
 
-      <h2>扱う固有値問題</h2>
-      <ul class="eig-list">
-        <li><strong>Dirichlet</strong>: &nbsp;−Δu = λu (Ω)、&nbsp;u = 0 (∂Ω)</li>
-        <li><strong>Neumann</strong>: &nbsp;−Δu = λu (Ω)、&nbsp;∂<sub>ν</sub>u = 0 (∂Ω)</li>
-        <li><strong>Robin</strong> (α = 1): &nbsp;−Δu = λu (Ω)、&nbsp;∂<sub>ν</sub>u + αu = 0 (∂Ω)</li>
-        <li><strong>Steklov</strong>: &nbsp;Δu = 0 (Ω)、&nbsp;∂<sub>ν</sub>u = σu (∂Ω)。同値に、σ は ∂Ω 上の Dirichlet-to-Neumann 作用素の固有値。</li>
-      </ul>
+      {/* INDIVIDUAL DOMAINS */}
+      {categoryOrder.filter((c) => indivByCat.has(c)).map((cat) => (
+        <section class="eig-category" data-cat={cat}>
+          <h2 class="section-heading">{categoryLabel[cat] ?? cat} — 個別領域</h2>
 
-      <h2>離散化</h2>
-      <p>
-        非構造三角形メッシュ（gmsh 4）上の P<sub>2</sub> Lagrange 有限要素法に
-        よる離散化を用いる。
-      </p>
-      <p>
-        Dirichlet・Neumann・Robin の場合は、剛性行列 K と質量行列 M を組み立て、
-        Dirichlet 自由度は condensation で除去したのち、一般化固有値問題
-        K u = λ M u を ARPACK（scipy.sparse.linalg.eigsh）の
-        shift-and-invert モードで解く。Robin の場合は K → K + αB とする
-        （B はファセット基底上で組み立てた境界 (トレース) 質量行列）。
-      </p>
-      <p>
-        Steklov については Schur 補による縮約を用いる。すなわち、
-        自由度を内点 I と境界 B に分けて
-        K = [K<sub>II</sub>, K<sub>IB</sub>; K<sub>BI</sub>, K<sub>BB</sub>] と書き、
-        離散化された Dirichlet-to-Neumann 作用素
-        S = K<sub>BB</sub> − K<sub>BI</sub> K<sub>II</sub><sup>-1</sup> K<sub>IB</sub>
-        を列ごとに構成し、稠密な一般化固有値問題
-        S u = σ M<sub>∂</sub> u を解く。内点値は調和拡張で復元する。
-      </p>
+          {indivByCat.get(cat)!.map((d: any) => (
+            <article class="eig-domain" id={d.id}
+              data-name={d.nameJa}
+              data-haystack={`${d.id} ${d.nameEn} ${d.nameJa} ${d.descriptionJa} ${d.category}`.toLowerCase()}
+            >
+              <header class="eig-domain-header">
+                <h3>{d.nameJa}<span class="eig-slug">#{d.id}</span></h3>
+                <p class="eig-desc">{d.descriptionJa}</p>
+                {d.reference && <p class="eig-ref"><strong>参考文献</strong> {d.reference}</p>}
+                <p class="eig-mesh muted">
+                  メッシュ: {d.mesh.vertices.toLocaleString()} 頂点、
+                  {d.mesh.triangles.toLocaleString()} 三角形、
+                  {d.mesh.element}
+                </p>
+              </header>
 
-      <h2>閉形式スペクトルと精度</h2>
-      <p>
-        閉形式解が既知のものについては、数値値と並べて相対誤差も表示している：
-      </p>
-      <ul class="eig-list">
-        <li>Dirichlet Laplacian: 矩形・円板（Bessel 関数 J<sub>m</sub> の零点）・正三角形（Lamé 1833; McCartin, SIAM Rev. 2003）・直角二等辺三角形。</li>
-        <li>Steklov Laplacian: 単位円板 σ<sub>k</sub> = k (k ≥ 0), k ≥ 1 に対して重複度 2（Girouard–Polterovich, <em>J. Spectral Theory</em> 7, 2017）。</li>
-      </ul>
-      <p>
-        滑らかな領域または凸多角形領域では、低次の Dirichlet モードの
-        相対誤差は概ね 10<sup>−6</sup>–10<sup>−7</sup> である。
-        L 字領域では凹角における r<sup>2/3</sup> 型特異性のため
-        非等方的 P<sub>2</sub> の第 1 モードでの精度は約 10<sup>−3</sup> に制限され、
-        得られた λ<sub>1</sub> ≈ 9.6397 は Fox–Henrici–Moler による参照値
-        9.63972384… と 3 桁まで一致する。曲線境界の領域では ∂Ω の多角形近似が
-        誤差を支配する：単位円板の Dirichlet モードでは約 10<sup>−4</sup>、
-        Steklov モードでは約 10<sup>−5</sup> で頭打ちとなる。
-      </p>
-      <p class="muted">
-        全データ: <a href={`${base}files/eigenfunctions/data/index.json`}>index.json</a> ／
-        各領域: <code>{`/files/eigenfunctions/data/<id>.json`}</code>。
-        計算コード: <a href="https://github.com/ryendo/ryendo.github.io/blob/main/scripts/compute_eigenfunctions.py"><code>scripts/compute_eigenfunctions.py</code></a>
-      </p>
+              {(["dirichlet", "neumann", "robin", "steklov"] as const).map((bc) => {
+                const info = d.boundaries?.[bc];
+                if (!info) return null;
+                const modes = info.modes as any[];
+                const bcLabel = ({ dirichlet: "Dirichlet", neumann: "Neumann", robin: "Robin (α=1)", steklov: "Steklov" } as const)[bc];
+                return (
+                  <div class="eig-bc-block" data-bc={bc}>
+                    <h4>{bcLabel} 境界条件</h4>
+                    <div class="eig-viewer">
+                      <figure class="eig-focus">
+                        <img class="eig-focus-img"
+                          data-modes={JSON.stringify(modes.map((m) => m.image))}
+                          src={modes[0].image}
+                          alt={`${d.nameJa}, ${bc}, 選択モード`} />
+                        <figcaption class="eig-focus-cap">
+                          <span class="eig-focus-k">k = {modes[0].k}</span>
+                          <span class="eig-focus-lam"
+                            data-lams={JSON.stringify(modes.map((m) => m.lambda))}
+                            data-exact={JSON.stringify(modes.map((m) => m.lambdaExact))}
+                            data-err={JSON.stringify(modes.map((m) => m.relErr))}
+                          >λ = {fmt(modes[0].lambda)}</span>
+                        </figcaption>
+                      </figure>
+                      <div class="eig-mode-picker" role="tablist" aria-label="モード番号">
+                        {modes.map((m: any, idx: number) => (
+                          <button type="button"
+                            class={"eig-mode-btn" + (idx === 0 ? " is-active" : "")}
+                            data-idx={idx}
+                            data-k={m.k}
+                            title={`λ = ${fmt(m.lambda)}`}
+                          >k={m.k}</button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </article>
+          ))}
+        </section>
+      ))}
 
-      {categoryOrder
-        .filter((c) => byCategory.has(c))
-        .map((cat) => (
-          <section class="eig-category">
-            <h2 class="section-heading">{categoryLabel[cat] ?? cat}</h2>
+      {/* FAMILIES */}
+      {categoryOrder.filter((c) => famByCat.has(c)).map((cat) => (
+        <section class="eig-category" data-cat={cat}>
+          <h2 class="section-heading">{categoryLabel[cat] ?? cat} — パラメトリック族</h2>
 
-            {byCategory.get(cat)!.map((d: any) => (
-              <article
-                class="eig-domain"
-                id={d.id}
-                data-name={d.nameJa}
-                data-haystack={`${d.id} ${d.nameEn} ${d.nameJa} ${d.descriptionJa} ${d.category}`.toLowerCase()}
+          {famByCat.get(cat)!.map((fam: any) => {
+            const membersData = fam.members.map((m: any) => ({
+              id: m.id, param: m.familyParam,
+              boundaries: {
+                dirichlet: (m.boundaries?.dirichlet?.modes ?? []).map((mm: any) => ({ k: mm.k, lambda: mm.lambda, lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image })),
+                neumann:   (m.boundaries?.neumann?.modes   ?? []).map((mm: any) => ({ k: mm.k, lambda: mm.lambda, lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image })),
+                robin:     (m.boundaries?.robin?.modes     ?? []).map((mm: any) => ({ k: mm.k, lambda: mm.lambda, lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image })),
+                steklov:   (m.boundaries?.steklov?.modes   ?? []).map((mm: any) => ({ k: mm.k, lambda: mm.lambda, lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image })),
+              },
+              mesh: m.mesh,
+            }));
+            const haystack = `${fam.id} ${fam.nameEn} ${fam.nameJa} ${fam.descriptionJa} ${fam.category} ${fam.members.map((m: any) => m.id).join(" ")}`.toLowerCase();
+
+            return (
+              <article class="eig-domain eig-family" id={fam.id}
+                data-family-id={fam.id}
+                data-name={fam.nameJa}
+                data-haystack={haystack}
               >
                 <header class="eig-domain-header">
-                  <h3>
-                    {d.nameJa}
-                    <span class="eig-slug">#{d.id}</span>
-                  </h3>
-                  <p class="eig-desc">{d.descriptionJa}</p>
-                  {d.reference && (
-                    <p class="eig-ref"><strong>参考文献</strong> {d.reference}</p>
-                  )}
-                  <p class="eig-mesh muted">
-                    メッシュ: {d.mesh.vertices.toLocaleString()} 頂点、
-                    {d.mesh.triangles.toLocaleString()} 三角形、
-                    {d.mesh.element}
-                  </p>
+                  <h3>{fam.nameJa}<span class="eig-slug">#{fam.id}</span></h3>
+                  <p class="eig-desc">{fam.descriptionJa}</p>
+                  {fam.reference && <p class="eig-ref"><strong>参考文献</strong> {fam.reference}</p>}
                 </header>
 
-                {(["dirichlet", "neumann", "robin", "steklov"] as const).map((bc) => {
-                  const info = d.boundaries?.[bc];
-                  if (!info) return null;
-                  const modes = info.modes as any[];
-                  const bcLabel = ({
-                    dirichlet: "ディリクレ",
-                    neumann: "ノイマン",
-                    robin: "ロビン (α=1)",
-                    steklov: "ステクロフ",
-                  } as const)[bc];
-                  return (
-                    <div class="eig-bc-block" data-bc={bc}>
-                      <h4>{bcLabel}境界条件</h4>
+                <div class="eig-family-slider">
+                  <label>
+                    <span class="eig-param-label">{fam.paramJa ?? fam.param} = </span>
+                    <output class="eig-param-value">{fam.paramValues[0]}</output>
+                  </label>
+                  <input type="range" class="eig-param-range"
+                    min="0" max={fam.paramValues.length - 1} step="1" value="0" />
+                  <span class="eig-param-count muted">1 / {fam.paramValues.length}</span>
+                </div>
 
-                      <div class="eig-viewer">
-                        <figure class="eig-focus">
-                          <img
-                            class="eig-focus-img"
-                            data-modes={JSON.stringify(modes.map((m) => m.image))}
-                            src={modes[0].image}
-                            alt={`${d.nameJa}, ${bc}, 選択モード`}
-                          />
-                          <figcaption class="eig-focus-cap">
-                            <span class="eig-focus-k">k = {modes[0].k}</span>
-                            <span
-                              class="eig-focus-lam"
-                              data-lams={JSON.stringify(modes.map((m) => m.lambda))}
-                              data-exact={JSON.stringify(modes.map((m) => m.lambdaExact))}
-                              data-err={JSON.stringify(modes.map((m) => m.relErr))}
-                            >
-                              λ = {fmt(modes[0].lambda)}
-                            </span>
-                          </figcaption>
-                        </figure>
+                <script type="application/json" class="eig-family-payload"
+                  set:html={JSON.stringify({ paramValues: fam.paramValues, paramLabel: fam.paramJa ?? fam.param, members: membersData })} />
 
-                        <div class="eig-mode-picker" role="tablist" aria-label="モード番号">
-                          {modes.map((m: any, idx: number) => (
-                            <button
-                              type="button"
-                              class={"eig-mode-btn" + (idx === 0 ? " is-active" : "")}
-                              data-idx={idx}
-                              data-k={m.k}
-                              title={`λ = ${fmt(m.lambda)}`}
-                            >k={m.k}</button>
-                          ))}
+                <div class="eig-family-view">
+                  <p class="eig-mesh muted" data-role="mesh-info"></p>
+                  {(["dirichlet", "neumann", "robin", "steklov"] as const).map((bc) => {
+                    const bcLabel = ({ dirichlet: "Dirichlet", neumann: "Neumann", robin: "Robin (α=1)", steklov: "Steklov" } as const)[bc];
+                    return (
+                      <div class="eig-bc-block" data-bc={bc}>
+                        <h4>{bcLabel} 境界条件</h4>
+                        <div class="eig-viewer" data-family-viewer={bc}>
+                          <figure class="eig-focus">
+                            <img class="eig-focus-img" alt={`${fam.nameJa}, ${bc}, 選択モード`} loading="lazy" />
+                            <figcaption class="eig-focus-cap">
+                              <span class="eig-focus-k">k = 1</span>
+                              <span class="eig-focus-lam">λ = —</span>
+                            </figcaption>
+                          </figure>
+                          <div class="eig-mode-picker" role="tablist" aria-label="モード番号"></div>
                         </div>
                       </div>
-
-                      <details class="eig-all-modes">
-                        <summary>全モードを一覧表示</summary>
-                        <div class="eig-grid">
-                          {modes.map((m: any) => (
-                            <figure class="eig-mode">
-                              <a href={m.image} target="_blank" rel="noreferrer">
-                                <img
-                                  src={m.image}
-                                  alt={`${d.nameJa}, ${bc}, モード ${m.k}`}
-                                  loading="lazy"
-                                />
-                              </a>
-                              <figcaption>
-                                <span class="mode-k">k = {m.k}</span>
-                                <span class="mode-lam">λ = {fmt(m.lambda)}</span>
-                                {m.lambdaExact !== null && (
-                                  <span class="mode-exact muted">
-                                    厳密 {fmt(m.lambdaExact)}{m.relErr !== null ? `（相対誤差 ${m.relErr.toExponential(1)}）` : ""}
-                                  </span>
-                                )}
-                              </figcaption>
-                            </figure>
-                          ))}
-                        </div>
-                      </details>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </article>
-            ))}
-          </section>
-        ))}
+            );
+          })}
+        </section>
+      ))}
+    </div>
+
+    <div class="share-row">
+      <span class="share-label">シェア</span>
+      <a class="share-btn" href={xUrl} target="_blank" rel="noreferrer">X</a>
+      <a class="share-btn" href={bskyUrl} target="_blank" rel="noreferrer">Bluesky</a>
+      <a class="share-btn" href={mastodonUrl} target="_blank" rel="noreferrer">Mastodon</a>
+      <a class="share-btn" href={linkedinUrl} target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="share-btn" href={facebookUrl} target="_blank" rel="noreferrer">Facebook</a>
+      <button class="share-btn" type="button" data-copy={shareUrl} onclick="(async()=>{try{await navigator.clipboard.writeText(this.dataset.copy);this.textContent='✓';setTimeout(()=>{this.textContent='URL'},1200);}catch(e){}})()">URL</button>
     </div>
   </main>
 </BaseLayout>
 
 <script is:inline>
-  (() => {
-    const fmt = (x) => {
-      if (x === 0) return "0";
-      if (Math.abs(x) < 0.001 || Math.abs(x) >= 100000) return x.toExponential(4);
-      return x.toFixed(6);
-    };
-    const fmtErr = (x) => {
-      if (x === null || x === undefined) return null;
-      return Number(x).toExponential(1);
-    };
+(() => {
+  const fmt = (x) => {
+    if (x === 0) return "0";
+    if (Math.abs(x) < 0.001 || Math.abs(x) >= 100000) return x.toExponential(4);
+    return x.toFixed(6);
+  };
+  const fmtErr = (x) => (x === null || x === undefined) ? null : Number(x).toExponential(1);
 
-    document.querySelectorAll(".eig-viewer").forEach((viewer) => {
-      const img = viewer.querySelector(".eig-focus-img");
-      const kCap = viewer.querySelector(".eig-focus-k");
-      const lamCap = viewer.querySelector(".eig-focus-lam");
-      const images = JSON.parse(img.dataset.modes || "[]");
-      const lams = JSON.parse(lamCap.dataset.lams || "[]");
-      const exacts = JSON.parse(lamCap.dataset.exact || "[]");
-      const errs = JSON.parse(lamCap.dataset.err || "[]");
-
-      viewer.querySelectorAll(".eig-mode-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const idx = Number(btn.dataset.idx);
-          img.src = images[idx];
-          kCap.textContent = `k = ${btn.dataset.k}`;
-          let text = `λ = ${fmt(lams[idx])}`;
-          if (exacts[idx] !== null && exacts[idx] !== undefined) {
-            text += `  (厳密 ${fmt(exacts[idx])}, 相対誤差 ${fmtErr(errs[idx])})`;
-          }
-          lamCap.textContent = text;
-          viewer.querySelectorAll(".eig-mode-btn").forEach((b) => b.classList.toggle("is-active", b === btn));
-        });
-      });
-
-      viewer.addEventListener("keydown", (e) => {
-        if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-        const btns = Array.from(viewer.querySelectorAll(".eig-mode-btn"));
-        const cur = btns.findIndex((b) => b.classList.contains("is-active"));
-        const next = e.key === "ArrowRight"
-          ? Math.min(cur + 1, btns.length - 1)
-          : Math.max(cur - 1, 0);
-        btns[next].click();
-        btns[next].focus();
-        e.preventDefault();
-      });
-    });
-
-    const applyBc = (val) => {
-      document.querySelectorAll(".eig-bc-block").forEach((blk) => {
-        const bc = blk.getAttribute("data-bc");
-        blk.style.display = (val === "all" || val === "both" || bc === val) ? "" : "none";
-      });
-    };
-    document.querySelectorAll('input[name="eig-bc"]').forEach((r) => {
-      r.addEventListener("change", () => applyBc(r.value));
-    });
-
-    const search = document.getElementById("eig-search");
-    const countEl = document.getElementById("eig-count");
-    const allDomains = Array.from(document.querySelectorAll(".eig-domain"));
-    const allJumps = Array.from(document.querySelectorAll(".eig-jump a"));
-    const updateCount = (visible) => {
-      countEl.textContent = `${visible} / ${allDomains.length} 領域`;
-    };
-    const applySearch = (q) => {
-      const needle = q.trim().toLowerCase();
-      let visible = 0;
-      const visibleIds = new Set();
-      allDomains.forEach((dom) => {
-        const hay = dom.dataset.haystack || "";
-        const match = !needle || hay.includes(needle);
-        dom.style.display = match ? "" : "none";
-        if (match) { visible++; visibleIds.add(dom.id); }
-      });
-      allJumps.forEach((a) => {
-        const id = a.dataset.jump;
-        a.style.display = visibleIds.has(id) ? "" : "none";
-      });
-      document.querySelectorAll(".eig-category").forEach((sec) => {
-        const anyVisible = Array.from(sec.querySelectorAll(".eig-domain")).some((d) => d.style.display !== "none");
-        sec.style.display = anyVisible ? "" : "none";
-      });
-      updateCount(visible);
-    };
-    if (search) {
-      search.addEventListener("input", (e) => applySearch(e.target.value));
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "/" && document.activeElement !== search && !e.metaKey && !e.ctrlKey && !e.altKey) {
-          search.focus();
-          e.preventDefault();
+  document.querySelectorAll(".eig-domain:not(.eig-family) .eig-viewer").forEach((viewer) => {
+    const img = viewer.querySelector(".eig-focus-img");
+    const kCap = viewer.querySelector(".eig-focus-k");
+    const lamCap = viewer.querySelector(".eig-focus-lam");
+    if (!img || !lamCap) return;
+    const images = JSON.parse(img.dataset.modes || "[]");
+    const lams = JSON.parse(lamCap.dataset.lams || "[]");
+    const exacts = JSON.parse(lamCap.dataset.exact || "[]");
+    const errs = JSON.parse(lamCap.dataset.err || "[]");
+    viewer.querySelectorAll(".eig-mode-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.dataset.idx);
+        img.src = images[idx];
+        kCap.textContent = `k = ${btn.dataset.k}`;
+        let text = `λ = ${fmt(lams[idx])}`;
+        if (exacts[idx] !== null && exacts[idx] !== undefined) {
+          const e = fmtErr(errs[idx]);
+          text += e ? `  (厳密 ${fmt(exacts[idx])}, 相対誤差 ${e})` : `  (厳密 ${fmt(exacts[idx])})`;
         }
+        lamCap.textContent = text;
+        viewer.querySelectorAll(".eig-mode-btn").forEach((b) => b.classList.toggle("is-active", b === btn));
       });
+    });
+    viewer.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const btns = Array.from(viewer.querySelectorAll(".eig-mode-btn"));
+      const cur = btns.findIndex((b) => b.classList.contains("is-active"));
+      const next = e.key === "ArrowRight"
+        ? Math.min(cur + 1, btns.length - 1)
+        : Math.max(cur - 1, 0);
+      btns[next].click(); btns[next].focus(); e.preventDefault();
+    });
+  });
+
+  const familyState = new WeakMap();
+  const renderFamilyBC = (card, bcBlock, member, bc) => {
+    const modes = member.boundaries[bc] || [];
+    const viewer = bcBlock.querySelector(".eig-viewer");
+    if (!viewer) return;
+    const img = viewer.querySelector(".eig-focus-img");
+    const kCap = viewer.querySelector(".eig-focus-k");
+    const lamCap = viewer.querySelector(".eig-focus-lam");
+    const picker = viewer.querySelector(".eig-mode-picker");
+    if (!modes.length) { bcBlock.style.display = "none"; return; }
+    bcBlock.style.display = "";
+
+    const st = familyState.get(card) || { selectedIdx: {} };
+    let idx = st.selectedIdx[bc] ?? 0;
+    if (idx >= modes.length) idx = 0;
+
+    img.src = modes[idx].image;
+    img.alt = `${card.dataset.name}, ${bc}, k=${modes[idx].k}`;
+    kCap.textContent = `k = ${modes[idx].k}`;
+    let text = `λ = ${fmt(modes[idx].lambda)}`;
+    if (modes[idx].lambdaExact !== null && modes[idx].lambdaExact !== undefined) {
+      const e = fmtErr(modes[idx].relErr);
+      text += e ? `  (厳密 ${fmt(modes[idx].lambdaExact)}, 相対誤差 ${e})` : `  (厳密 ${fmt(modes[idx].lambdaExact)})`;
     }
-    updateCount(allDomains.length);
-  })();
+    lamCap.textContent = text;
+
+    picker.innerHTML = "";
+    modes.forEach((m, i) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "eig-mode-btn" + (i === idx ? " is-active" : "");
+      btn.dataset.idx = String(i);
+      btn.dataset.k = String(m.k);
+      btn.title = `λ = ${fmt(m.lambda)}`;
+      btn.textContent = `k=${m.k}`;
+      btn.addEventListener("click", () => {
+        const s = familyState.get(card) || { selectedIdx: {} };
+        s.selectedIdx[bc] = i;
+        familyState.set(card, s);
+        renderFamilyBC(card, bcBlock, member, bc);
+      });
+      picker.appendChild(btn);
+    });
+  };
+
+  document.querySelectorAll(".eig-family").forEach((card) => {
+    const payloadEl = card.querySelector(".eig-family-payload");
+    if (!payloadEl) return;
+    const payload = JSON.parse(payloadEl.textContent || "{}");
+    const slider = card.querySelector(".eig-param-range");
+    const valueOut = card.querySelector(".eig-param-value");
+    const countOut = card.querySelector(".eig-param-count");
+    const meshEl = card.querySelector('[data-role="mesh-info"]');
+    familyState.set(card, { selectedIdx: {} });
+
+    const render = () => {
+      const idx = Number(slider.value);
+      const member = payload.members[idx];
+      const paramVal = payload.paramValues[idx];
+      valueOut.textContent = typeof paramVal === "number" ? (paramVal.toString().length > 6 ? paramVal.toFixed(4) : paramVal) : paramVal;
+      if (countOut) countOut.textContent = `${idx + 1} / ${payload.members.length}`;
+      if (meshEl && member && member.mesh) {
+        meshEl.textContent =
+          `メッシュ: ${member.mesh.vertices.toLocaleString()} 頂点、${member.mesh.triangles.toLocaleString()} 三角形、${member.mesh.element}`;
+      }
+      if (!member) return;
+      card.querySelectorAll(".eig-bc-block").forEach((bcBlock) => {
+        const bc = bcBlock.getAttribute("data-bc");
+        renderFamilyBC(card, bcBlock, member, bc);
+      });
+    };
+    slider.addEventListener("input", render);
+    card.addEventListener("keydown", (e) => {
+      if (e.target.classList.contains("eig-mode-btn")) return;
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const cur = Number(slider.value);
+      const next = e.key === "ArrowRight"
+        ? Math.min(cur + 1, payload.members.length - 1)
+        : Math.max(cur - 1, 0);
+      slider.value = String(next);
+      render(); e.preventDefault();
+    });
+    render();
+  });
+
+  const applyBc = (val) => {
+    document.querySelectorAll(".eig-bc-block").forEach((blk) => {
+      const bc = blk.getAttribute("data-bc");
+      blk.style.display = (val === "all" || bc === val) ? "" : "none";
+    });
+  };
+  document.querySelectorAll('input[name="eig-bc"]').forEach((r) => {
+    r.addEventListener("change", () => applyBc(r.value));
+  });
+
+  const search = document.getElementById("eig-search");
+  const countEl = document.getElementById("eig-count");
+  const allCards = Array.from(document.querySelectorAll(".eig-domain"));
+  const updateCount = (visible) => {
+    if (countEl) countEl.textContent = `${visible} / ${allCards.length} 項目`;
+  };
+  const applySearch = (q) => {
+    const needle = q.trim().toLowerCase();
+    let visible = 0;
+    allCards.forEach((c) => {
+      const hay = c.dataset.haystack || "";
+      const match = !needle || hay.includes(needle);
+      c.style.display = match ? "" : "none";
+      if (match) visible++;
+    });
+    document.querySelectorAll(".eig-category").forEach((sec) => {
+      const anyVisible = Array.from(sec.querySelectorAll(".eig-domain")).some((c) => c.style.display !== "none");
+      sec.style.display = anyVisible ? "" : "none";
+    });
+    updateCount(visible);
+  };
+  if (search) {
+    search.addEventListener("input", (e) => applySearch(e.target.value));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "/" && document.activeElement !== search && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        search.focus(); e.preventDefault();
+      }
+    });
+  }
+  updateCount(allCards.length);
+})();
 </script>
 
 <style>
-  .eig-controls {
-    position: sticky;
-    top: 0;
-    background: rgba(255,255,255,0.97);
-    backdrop-filter: blur(6px);
-    padding: 0.6em 0.5em;
-    margin: 1em 0 1.2em;
-    border: 1px solid #e2e2e2;
-    border-radius: 6px;
-    z-index: 20;
-  }
-  .eig-search-row { display: flex; align-items: center; gap: 0.7em; }
-  .eig-search-row input {
-    flex: 1; padding: 0.45em 0.7em; font-size: 1em;
-    border: 1px solid #bbb; border-radius: 4px; outline: none;
-    font-family: inherit;
-  }
-  .eig-search-row input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(9,105,218,0.15); }
-  .eig-bc-row { margin-top: 0.55em; font-size: 0.9em; display: flex; gap: 1.1em; align-items: center; }
-  .eig-bc-row label { cursor: pointer; }
-  .eig-jump {
-    margin-top: 0.55em;
-    font-size: 0.8em;
-    display: flex; flex-wrap: wrap; gap: 0.2em 0.7em;
-  }
-  .eig-jump a { color: #555; text-decoration: none; white-space: nowrap; }
-  .eig-jump a:hover { color: var(--accent); text-decoration: underline; }
-
-  .eig-viewer {
-    display: grid;
-    grid-template-columns: minmax(220px, 360px) 1fr;
-    gap: 1em;
-    align-items: start;
-  }
-  @media (max-width: 640px) {
-    .eig-viewer { grid-template-columns: 1fr; }
-  }
-  .eig-focus { margin: 0; }
-  .eig-focus img {
-    width: 100%; height: auto; display: block;
-    border: 1px solid #ddd; border-radius: 4px; background: #fff;
-  }
-  .eig-focus-cap {
-    margin-top: 0.35em;
-    font-family: ui-monospace, Menlo, monospace;
-    font-size: 0.85em;
-    display: flex; flex-direction: column; gap: 0.15em;
-  }
-  .eig-focus-k { color: #555; }
-  .eig-focus-lam { color: #000; }
-
-  .eig-mode-picker {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
-    gap: 0.3em;
-    align-content: start;
-  }
-  .eig-mode-btn {
-    font-family: ui-monospace, Menlo, monospace;
-    font-size: 0.82em;
-    padding: 0.35em 0.2em;
-    border: 1px solid #ccc;
-    background: #fff;
-    border-radius: 3px;
-    cursor: pointer;
-    text-align: center;
-    color: #222;
-  }
-  .eig-mode-btn:hover { background: #f3f3f3; border-color: #888; }
-  .eig-mode-btn.is-active {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-    font-weight: 600;
-  }
-
-  .eig-all-modes { margin-top: 0.8em; }
-  .eig-all-modes summary {
-    cursor: pointer; font-size: 0.85em; color: #555; padding: 0.2em 0;
-    user-select: none;
-  }
-  .eig-all-modes summary:hover { color: var(--accent); }
-
-  .eig-beta {
-    margin: 0.5em 0 1em;
-    padding: 0.7em 1em;
-    border-left: 4px solid #d97706;
-    background: #fff7ed;
-    color: #7c2d12;
-    font-size: 0.93em;
-    border-radius: 3px;
-  }
-  .eig-beta strong {
-    display: inline-block;
-    background: #d97706;
-    color: #fff;
-    padding: 0.05em 0.45em;
-    border-radius: 3px;
-    margin-right: 0.4em;
-    font-size: 0.88em;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
+  .eig-beta { margin: 0.5em 0 1em; padding: 0.7em 1em; border-left: 4px solid #d97706; background: #fff7ed; color: #7c2d12; font-size: 0.93em; border-radius: 3px; }
+  .eig-beta strong { display: inline-block; background: #d97706; color: #fff; padding: 0.05em 0.45em; border-radius: 3px; margin-right: 0.4em; font-size: 0.88em; letter-spacing: 0.04em; text-transform: uppercase; }
   .eig-list { margin: 0.2em 0 0.6em; padding-left: 1.2em; }
   .eig-list li { margin: 0.15em 0; }
+
+  .eig-controls { position: sticky; top: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(6px); padding: 0.6em 0.5em; margin: 1em 0 1.2em; border: 1px solid #e2e2e2; border-radius: 6px; z-index: 20; }
+  .eig-search-row { display: flex; align-items: center; gap: 0.7em; }
+  .eig-search-row input { flex: 1; padding: 0.45em 0.7em; font-size: 1em; border: 1px solid #bbb; border-radius: 4px; outline: none; font-family: inherit; }
+  .eig-search-row input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(9,105,218,0.15); }
+  .eig-bc-row { margin-top: 0.55em; font-size: 0.9em; display: flex; gap: 1.1em; align-items: center; flex-wrap: wrap; }
+  .eig-bc-row label { cursor: pointer; }
+
   .eig-category { margin-top: 2em; }
   .eig-domain { margin: 1.2em 0 2.2em; padding: 1em 1.2em; border: 1px solid #e2e2e2; border-radius: 6px; background: #fcfcfc; }
   .eig-domain-header h3 { margin: 0 0 0.2em; font-size: 1.15em; }
@@ -500,18 +523,32 @@ const blogLink = `${base}ja/blog/`;
   .eig-ref { margin: 0.3em 0; font-size: 0.85em; color: #444; }
   .eig-mesh { margin: 0.2em 0 0; font-size: 0.82em; }
 
+  .eig-family-slider { display: flex; align-items: center; gap: 0.8em; margin: 0.8em 0; padding: 0.5em 0.7em; background: #f1f5f9; border-radius: 4px; }
+  .eig-family-slider label { font-family: ui-monospace, Menlo, monospace; font-size: 0.92em; }
+  .eig-family-slider .eig-param-label { color: #555; }
+  .eig-family-slider .eig-param-value { font-weight: 600; }
+  .eig-family-slider .eig-param-range { flex: 1; }
+  .eig-family-slider .eig-param-count { font-size: 0.8em; font-family: ui-monospace, Menlo, monospace; }
+  .eig-family-payload { display: none; }
+
   .eig-bc-block { margin-top: 1em; }
   .eig-bc-block h4 { margin: 0.5em 0 0.4em; font-size: 0.95em; color: #333; font-weight: 600; }
 
-  .eig-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.8em;
-  }
-  .eig-mode { margin: 0; display: flex; flex-direction: column; align-items: stretch; }
-  .eig-mode img { width: 100%; height: auto; display: block; border: 1px solid #e0e0e0; border-radius: 3px; background: #fff; }
-  .eig-mode figcaption { display: flex; flex-direction: column; font-size: 0.78em; line-height: 1.35; margin-top: 0.25em; font-family: ui-monospace, Menlo, monospace; }
-  .mode-k { color: #555; }
-  .mode-lam { color: #000; }
-  .mode-exact { font-size: 0.78em; }
+  .eig-viewer { display: grid; grid-template-columns: minmax(220px, 320px) 1fr; gap: 1em; align-items: start; }
+  @media (max-width: 640px) { .eig-viewer { grid-template-columns: 1fr; } }
+  .eig-focus { margin: 0; }
+  .eig-focus img { width: 100%; height: auto; display: block; border: 1px solid #ddd; border-radius: 4px; background: #fff; }
+  .eig-focus-cap { margin-top: 0.35em; font-family: ui-monospace, Menlo, monospace; font-size: 0.85em; display: flex; flex-direction: column; gap: 0.15em; }
+  .eig-focus-k { color: #555; }
+  .eig-focus-lam { color: #000; }
+
+  .eig-mode-picker { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: 0.3em; align-content: start; }
+  .eig-mode-btn { font-family: ui-monospace, Menlo, monospace; font-size: 0.82em; padding: 0.35em 0.2em; border: 1px solid #ccc; background: #fff; border-radius: 3px; cursor: pointer; text-align: center; color: #222; }
+  .eig-mode-btn:hover { background: #f3f3f3; border-color: #888; }
+  .eig-mode-btn.is-active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
+  .share-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4em; margin: 2em 0 1em; padding-top: 1em; border-top: 1px solid #e2e2e2; font-size: 0.9em; }
+  .share-label { color: #555; margin-right: 0.3em; }
+  .share-btn { display: inline-block; padding: 0.25em 0.7em; background: #f3f4f6; color: #111827; border: 1px solid #d1d5db; border-radius: 3px; text-decoration: none; font-size: 0.9em; cursor: pointer; font-family: inherit; }
+  .share-btn:hover { background: #e5e7eb; color: var(--accent); }
 </style>

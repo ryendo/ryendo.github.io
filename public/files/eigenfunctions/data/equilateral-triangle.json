@@ -3,12 +3,14 @@
   "nameEn": "Equilateral triangle",
   "nameJa": "正三角形",
   "descriptionEn": "Side 1. Lamé (1833) derived the closed-form spectrum λ_{m,n} = (16π²/9)(m² + n² + mn).",
-  "descriptionJa": "一辺 1。ラメ (1833) が閉形式解 λ_{m,n} = (16π²/9)(m² + n² + mn) を導いた。",
+  "descriptionJa": "一辺 1。Lamé (1833) が閉形式解 λ_{m,n} = (16π²/9)(m² + n² + mn) を導いた。",
   "category": "polygon",
   "reference": "Lamé (1833); McCartin, SIAM Rev. 45 (2003).",
+  "familyId": null,
+  "familyParam": null,
   "mesh": {
-    "vertices": 861,
-    "triangles": 1600,
+    "vertices": 351,
+    "triangles": 625,
     "element": "P2 Lagrange"
   },
   "boundaries": {
@@ -16,73 +18,73 @@
       "modes": [
         {
           "k": 1,
-          "lambda": 52.63793458135314,
+          "lambda": 52.63818071863448,
           "lambdaExact": 52.637890139143245,
-          "relErr": 8.443007457268333e-07,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_1.png"
+          "relErr": 5.520348373899523e-06,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_1.jpg"
         },
         {
           "k": 2,
-          "lambda": 122.82228890657011,
+          "lambda": 122.82529819286044,
           "lambdaExact": 122.82174365800091,
-          "relErr": 4.439348872251693e-06,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_2.png"
+          "relErr": 2.8940599226711136e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_2.jpg"
         },
         {
           "k": 3,
-          "lambda": 122.82228890657069,
+          "lambda": 122.82529819286079,
           "lambdaExact": 122.82174365800091,
-          "relErr": 4.439348876995519e-06,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_3.png"
+          "relErr": 2.894059922948801e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_3.jpg"
         },
         {
           "k": 4,
-          "lambda": 210.55439217956817,
+          "lambda": 210.56994808557008,
           "lambdaExact": 210.55156055657298,
-          "relErr": 1.3448596570375582e-05,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_4.png"
+          "relErr": 8.733029073016574e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_4.jpg"
         },
         {
           "k": 5,
-          "lambda": 228.10090035356842,
+          "lambda": 228.11944257675393,
           "lambdaExact": 228.0975239362874,
-          "relErr": 1.4802516146450257e-05,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_5.png"
+          "relErr": 9.609328539953929e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_5.jpg"
         },
         {
           "k": 6,
-          "lambda": 228.10090035356868,
+          "lambda": 228.119442576755,
           "lambdaExact": 228.0975239362874,
-          "relErr": 1.4802516147571686e-05,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_6.png"
+          "relErr": 9.609328540427422e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_6.jpg"
         },
         {
           "k": 7,
-          "lambda": 333.38436376534685,
+          "lambda": 333.4447560651992,
           "lambdaExact": 333.37330421457386,
-          "relErr": 3.317467425605747e-05,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_7.png"
+          "relErr": 0.0002143298510169897,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_7.jpg"
         },
         {
           "k": 8,
-          "lambda": 333.38436376534713,
+          "lambda": 333.4447560651995,
           "lambdaExact": 333.37330421457386,
-          "relErr": 3.317467425691002e-05,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_8.png"
+          "relErr": 0.00021432985101784224,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_8.jpg"
         },
         {
           "k": 9,
-          "lambda": 368.4791585955719,
+          "lambda": 368.55515387943944,
           "lambdaExact": 368.46523097400274,
-          "relErr": 3.779901167974591e-05,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_9.png"
+          "relErr": 0.00024404719326978478,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_9.jpg"
         },
         {
           "k": 10,
-          "lambda": 368.4791585955723,
+          "lambda": 368.55515387943984,
           "lambdaExact": 368.46523097400274,
-          "relErr": 3.77990116808258e-05,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_10.png"
+          "relErr": 0.00024404719327086467,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_10.jpg"
         }
       ]
     },
@@ -93,70 +95,70 @@
           "lambda": 0.0,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_1.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_1.jpg"
         },
         {
           "k": 2,
-          "lambda": 17.54596484435422,
+          "lambda": 17.545972971530404,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_2.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_2.jpg"
         },
         {
           "k": 3,
-          "lambda": 17.545964844354472,
+          "lambda": 17.545972971530517,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_3.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_3.jpg"
         },
         {
           "k": 4,
-          "lambda": 52.637934581356,
+          "lambda": 52.63818071863598,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_4.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_4.jpg"
         },
         {
           "k": 5,
-          "lambda": 70.18394712739403,
+          "lambda": 70.18446525333745,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_5.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_5.jpg"
         },
         {
           "k": 6,
-          "lambda": 70.18394712739416,
+          "lambda": 70.18446525333773,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_6.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_6.jpg"
         },
         {
           "k": 7,
-          "lambda": 122.822288906573,
+          "lambda": 122.82529819286172,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_7.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_7.jpg"
         },
         {
           "k": 8,
-          "lambda": 122.82228890657323,
+          "lambda": 122.82529819286182,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_8.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_8.jpg"
         },
         {
           "k": 9,
-          "lambda": 157.91473425403197,
+          "lambda": 157.92059836045408,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_9.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_9.jpg"
         },
         {
           "k": 10,
-          "lambda": 157.91473425403223,
+          "lambda": 157.92059836045445,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_10.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_10.jpg"
         }
       ]
     },
@@ -164,73 +166,73 @@
       "modes": [
         {
           "k": 1,
-          "lambda": 6.073963855116102,
+          "lambda": 6.073963897491077,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_1.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_1.jpg"
         },
         {
           "k": 2,
-          "lambda": 27.894801925555527,
+          "lambda": 27.894822620750332,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_2.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_2.jpg"
         },
         {
           "k": 3,
-          "lambda": 27.894801925555857,
+          "lambda": 27.894822620750542,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_3.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_3.jpg"
         },
         {
           "k": 4,
-          "lambda": 65.57937286859976,
+          "lambda": 65.5797177364697,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_4.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_4.jpg"
         },
         {
           "k": 5,
-          "lambda": 81.14250662724118,
+          "lambda": 81.14319500949924,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_5.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_5.jpg"
         },
         {
           "k": 6,
-          "lambda": 81.14250662724169,
+          "lambda": 81.14319500949941,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_6.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_6.jpg"
         },
         {
           "k": 7,
-          "lambda": 136.11178910027058,
+          "lambda": 136.11530485853993,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_7.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_7.jpg"
         },
         {
           "k": 8,
-          "lambda": 136.1117891002708,
+          "lambda": 136.11530485854018,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_8.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_8.jpg"
         },
         {
           "k": 9,
-          "lambda": 169.02702494103127,
+          "lambda": 169.03369825686465,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_9.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_9.jpg"
         },
         {
           "k": 10,
-          "lambda": 169.02703207571813,
+          "lambda": 169.03374460435361,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_10.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_robin_10.jpg"
         }
       ]
     },
@@ -241,70 +243,70 @@
           "lambda": 0.0,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_1.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_1.jpg"
         },
         {
           "k": 2,
-          "lambda": 1.2908205421684218,
+          "lambda": 1.2908205987530865,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_2.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_2.jpg"
         },
         {
           "k": 3,
-          "lambda": 1.290820542168464,
+          "lambda": 1.290820598753094,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_3.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_3.jpg"
         },
         {
           "k": 4,
-          "lambda": 3.4641036277180266,
+          "lambda": 3.4641147340242764,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_4.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_4.jpg"
         },
         {
           "k": 5,
-          "lambda": 5.134865938302727,
+          "lambda": 5.134903659956962,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_5.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_5.jpg"
         },
         {
           "k": 6,
-          "lambda": 5.134865938302761,
+          "lambda": 5.134903659956994,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_6.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_6.jpg"
         },
         {
           "k": 7,
-          "lambda": 7.361281330493451,
+          "lambda": 7.361491914469489,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_7.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_7.jpg"
         },
         {
           "k": 8,
-          "lambda": 7.361281330493544,
+          "lambda": 7.3614919144695445,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_8.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_8.jpg"
         },
         {
           "k": 9,
-          "lambda": 9.41782130612238,
+          "lambda": 9.418138910245268,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_9.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_9.jpg"
         },
         {
           "k": 10,
-          "lambda": 9.417951141784558,
+          "lambda": 9.41897534180343,
           "lambdaExact": null,
           "relErr": null,
-          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_10.png"
+          "image": "/files/eigenfunctions/img/equilateral-triangle_steklov_10.jpg"
         }
       ]
     }

@@ -1,0 +1,202 @@
+{
+  "id": "sector-1.25664",
+  "nameEn": "Sector α=1.25664",
+  "nameJa": "扇形 α=1.25664",
+  "descriptionEn": "Unit disk sector of opening α. The eigenfunctions are J_{kπ/α}(√λ r) sin(kπθ/α).",
+  "descriptionJa": "半径 1、開き角 α の扇形。固有関数は J_{kπ/α}(√λ r) sin(kπθ/α)。",
+  "category": "sector",
+  "reference": "",
+  "familyId": "sector",
+  "familyParam": 1.2566370614359172,
+  "mesh": {
+    "vertices": 516,
+    "triangles": 948,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 33.25210689262463,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_dirichlet_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 77.01984475579209,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_dirichlet_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 82.80640947155516,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_dirichlet_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 136.03243245153362,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_dirichlet_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 152.0194073780123,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_dirichlet_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 152.40607026877797,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_dirichlet_6.jpg"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_neumann_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 13.210717461748747,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_neumann_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 14.69708050498336,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_neumann_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 41.20217915629621,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_neumann_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 49.26929947302945,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_neumann_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 54.32888979011821,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_neumann_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 4.55132559503383,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_robin_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 20.301159602363683,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_robin_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 22.288030996633353,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_robin_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 49.500770247147614,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_robin_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 58.06747831235876,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_robin_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 62.03987790325154,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_robin_6.jpg"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_steklov_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 1.4492984146394228,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_steklov_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 1.457419873052387,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_steklov_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 3.8019496223974913,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_steklov_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 4.408704995789979,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_steklov_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 5.096102700886044,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-1.25664_steklov_6.jpg"
+        }
+      ]
+    }
+  }
+}

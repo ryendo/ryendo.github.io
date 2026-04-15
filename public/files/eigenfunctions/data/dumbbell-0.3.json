@@ -1,0 +1,202 @@
+{
+  "id": "dumbbell-0.3",
+  "nameEn": "Dumbbell n=0.3",
+  "nameJa": "ダンベル n=0.3",
+  "descriptionEn": "Two unit disks centred at (±1.3, 0) connected by a rectangular channel of half-width n. As n → 0 the first two Dirichlet eigenvalues become asymptotically degenerate (Jimbo 1989; Arrieta 1995).",
+  "descriptionJa": "中心 (±1.3, 0) の単位円板 2 つを、半幅 n の長方形頸部で連結した領域。n → 0 で第 1, 第 2 Dirichlet 固有値が漸近的に縮退する (Jimbo 1989; Arrieta 1995)。",
+  "category": "collapsing",
+  "reference": "Jimbo, J. Diff. Eq. 77 (1989); Arrieta, J. Diff. Eq. 118 (1995).",
+  "familyId": "dumbbell",
+  "familyParam": 0.3,
+  "mesh": {
+    "vertices": 5958,
+    "triangles": 11578,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 5.666426935831602,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_dirichlet_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 5.679995641953841,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_dirichlet_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 13.917779860344027,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_dirichlet_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 14.064699127940242,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_dirichlet_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 14.687852141154396,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_dirichlet_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 14.687876914852193,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_dirichlet_6.jpg"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_neumann_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 0.25954313999828665,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_neumann_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 2.7579266915697516,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_neumann_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 3.4361380485545943,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_neumann_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 3.440802313433626,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_neumann_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 4.201617346703079,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_neumann_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 1.5149498056589732,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_robin_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 1.7421234589085028,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_robin_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 4.928886273568729,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_robin_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 5.817950548903763,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_robin_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 5.821305465194701,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_robin_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 6.27710155641275,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_robin_6.jpg"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_steklov_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 0.13177308031571783,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_steklov_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 0.9298697518849267,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_steklov_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 1.0151771666708043,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_steklov_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 1.016742519397382,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_steklov_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 1.3073700506431207,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.3_steklov_6.jpg"
+        }
+      ]
+    }
+  }
+}

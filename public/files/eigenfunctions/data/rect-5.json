@@ -1,0 +1,202 @@
+{
+  "id": "rect-5",
+  "nameEn": "Rectangle r=5",
+  "nameJa": "長方形 r=5",
+  "descriptionEn": "Rectangle [0, r] × [0, 1]. Separable spectrum λ_{m,n} = π²((m/r)² + n²).",
+  "descriptionJa": "長方形 [0, r] × [0, 1]。変数分離可能で λ_{m,n} = π²((m/r)² + n²)。",
+  "category": "curved",
+  "reference": "",
+  "familyId": "rect",
+  "familyParam": 5.0,
+  "mesh": {
+    "vertices": 2473,
+    "triangles": 4704,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 10.264393505727874,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_dirichlet_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 11.448748231460796,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_dirichlet_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 13.422673654544086,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_dirichlet_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 16.186171471613633,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_dirichlet_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 19.73924470182219,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_dirichlet_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 24.081898732342395,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_dirichlet_6.jpg"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_neumann_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 0.39478417634175456,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_neumann_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 1.5791367232832267,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_neumann_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 3.5530578014092593,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_neumann_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 6.316548040054724,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_neumann_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 9.869608565150742,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_neumann_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 1.9158021340432057,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_robin_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 2.6138479166193727,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_robin_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 3.9353115865458124,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_robin_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 5.972609270279984,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_robin_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 8.76802334800614,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_robin_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 12.338738974936739,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_robin_6.jpg"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_steklov_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 0.13594478815670538,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_steklov_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 0.5271551534187804,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_steklov_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 1.1148812786036268,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_steklov_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 1.57035491653763,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_steklov_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 1.5712412739232153,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rect-5_steklov_6.jpg"
+        }
+      ]
+    }
+  }
+}

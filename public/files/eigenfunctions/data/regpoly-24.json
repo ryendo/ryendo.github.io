@@ -1,0 +1,202 @@
+{
+  "id": "regpoly-24",
+  "nameEn": "Regular 24-gon",
+  "nameJa": "正 24 角形",
+  "descriptionEn": "Regular n-gon inscribed in the unit circle. As n → ∞, the spectrum converges to that of the unit disk.",
+  "descriptionJa": "単位円に内接する正 n 角形。n → ∞ で固有値は単位円板の固有値に収束する。",
+  "category": "polygon",
+  "reference": "",
+  "familyId": "regpoly",
+  "familyParam": 24,
+  "mesh": {
+    "vertices": 2007,
+    "triangles": 3868,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 5.851865842082545,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_dirichlet_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 14.856306082138827,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_dirichlet_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 14.856309547565216,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_dirichlet_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 26.687753861831858,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_dirichlet_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 26.687759377745557,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_dirichlet_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 30.833033648490844,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_dirichlet_6.jpg"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_neumann_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 3.4284943584792416,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_neumann_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 3.4284944855349426,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_neumann_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 9.433267741286643,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_neumann_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 9.433268311505296,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_neumann_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 14.850927571331829,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_neumann_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 1.5916137022253838,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_robin_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 5.843696511095798,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_robin_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 5.843696589531982,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_robin_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 12.511783057069675,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_robin_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 12.511783478495934,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_robin_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 16.82840349803079,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_robin_6.jpg"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_steklov_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 1.0026613371523956,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_steklov_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 1.0026613843597119,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_steklov_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 2.0048831171386325,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_steklov_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 2.0048832836551984,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_steklov_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 3.0065882898940464,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/regpoly-24_steklov_6.jpg"
+        }
+      ]
+    }
+  }
+}

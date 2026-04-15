@@ -1,0 +1,202 @@
+{
+  "id": "robnik-0.4",
+  "nameEn": "Robnik ε=0.4",
+  "nameJa": "Robnik ε=0.4",
+  "descriptionEn": "Image of the unit disk under the conformal map z = w + εw². Interpolates between the integrable disk (ε = 0) and increasingly chaotic billiards; ε = 1/2 yields the cardioid.",
+  "descriptionJa": "共形写像 z = w + εw² による単位円板の像。ε = 0 の可積分な円板から ε = 1/2 で Cardioid に至る 1 パラメータ族。",
+  "category": "chaotic",
+  "reference": "Robnik, J. Phys. A 16 (1983).",
+  "familyId": "robnik",
+  "familyParam": 0.4,
+  "mesh": {
+    "vertices": 10867,
+    "triangles": 21408,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 4.49437234613842,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_dirichlet_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 10.416300612323429,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_dirichlet_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 12.242777689316958,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_dirichlet_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 19.61573418690821,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_dirichlet_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 19.708805626485017,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_dirichlet_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 24.536352744066544,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_dirichlet_6.jpg"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_neumann_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 2.20501338819756,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_neumann_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 2.9003156148770777,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_neumann_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 6.609207446451582,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_neumann_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 7.269621593216279,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_neumann_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 11.095561082247867,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_neumann_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 1.3499036952575163,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_robin_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 4.222397029373241,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_robin_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 5.028267599233778,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_robin_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 9.27040723459098,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_robin_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 9.765292861796881,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_robin_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 13.082006162125632,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_robin_6.jpg"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_steklov_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 0.761337531555547,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_steklov_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 0.938402993250438,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_steklov_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 1.624730821535416,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_steklov_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 1.8002361726701006,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_steklov_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 2.4875856225379707,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/robnik-0.4_steklov_6.jpg"
+        }
+      ]
+    }
+  }
+}

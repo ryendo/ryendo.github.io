@@ -6,6 +6,7 @@ type Frontmatter = {
   description: string;
   date: string;
   lang: "ja" | "en";
+  ogImage?: string;
 };
 
 const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
@@ -19,6 +20,15 @@ const blogLink = `${base}${isJa ? "ja/blog/" : "en/blog/"}`;
 const pathParts = Astro.url.pathname.split("/").filter(Boolean);
 const slug = pathParts[pathParts.length - 1] ?? "";
 const altLink = `${base}${isJa ? "en" : "ja"}/blog/${slug}/`;
+
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://ryendo.github.io";
+const shareUrl = new URL(Astro.url.pathname, site).toString();
+const shareText = `${frontmatter.title} — ${frontmatter.description}`;
+const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+const bskyUrl = `https://bsky.app/intent/compose?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+const mastodonUrl = `https://toot.kytta.dev/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 ---
 
 <BaseLayout
@@ -31,6 +41,9 @@ const altLink = `${base}${isJa ? "en" : "ja"}/blog/${slug}/`;
   blogLabel={isJa ? "ブログ" : "Blog"}
   altLink={altLink}
   currentSection="blog"
+  ogImage={frontmatter.ogImage}
+  ogType="article"
+  useKatex={true}
 >
   <main class="main-panel">
     <p>
@@ -47,5 +60,42 @@ const altLink = `${base}${isJa ? "en" : "ja"}/blog/${slug}/`;
     <div class="article-content">
       <slot />
     </div>
+
+    <div class="share-row">
+      <span class="share-label">{isJa ? "シェア" : "Share"}</span>
+      <a class="share-btn" href={xUrl} target="_blank" rel="noreferrer" aria-label="Share on X">X</a>
+      <a class="share-btn" href={bskyUrl} target="_blank" rel="noreferrer" aria-label="Share on Bluesky">Bluesky</a>
+      <a class="share-btn" href={mastodonUrl} target="_blank" rel="noreferrer" aria-label="Share on Mastodon">Mastodon</a>
+      <a class="share-btn" href={linkedinUrl} target="_blank" rel="noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
+      <a class="share-btn" href={facebookUrl} target="_blank" rel="noreferrer" aria-label="Share on Facebook">Facebook</a>
+      <button class="share-btn" type="button" data-copy={shareUrl} onclick="(async()=>{try{await navigator.clipboard.writeText(this.dataset.copy);this.textContent='✓';setTimeout(()=>{this.textContent='URL'},1200);}catch(e){}})()">URL</button>
+    </div>
   </main>
 </BaseLayout>
+
+<style>
+  .share-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4em;
+    margin: 2em 0 1em;
+    padding-top: 1em;
+    border-top: 1px solid #e2e2e2;
+    font-size: 0.9em;
+  }
+  .share-label { color: #555; margin-right: 0.3em; }
+  .share-btn {
+    display: inline-block;
+    padding: 0.25em 0.7em;
+    background: #f3f4f6;
+    color: #111827;
+    border: 1px solid #d1d5db;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.9em;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .share-btn:hover { background: #e5e7eb; color: var(--accent); }
+</style>

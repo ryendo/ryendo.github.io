@@ -1,0 +1,202 @@
+{
+  "id": "dumbbell-0.05",
+  "nameEn": "Dumbbell n=0.05",
+  "nameJa": "ダンベル n=0.05",
+  "descriptionEn": "Two unit disks centred at (±1.3, 0) connected by a rectangular channel of half-width n. As n → 0 the first two Dirichlet eigenvalues become asymptotically degenerate (Jimbo 1989; Arrieta 1995).",
+  "descriptionJa": "中心 (±1.3, 0) の単位円板 2 つを、半幅 n の長方形頸部で連結した領域。n → 0 で第 1, 第 2 Dirichlet 固有値が漸近的に縮退する (Jimbo 1989; Arrieta 1995)。",
+  "category": "collapsing",
+  "reference": "Jimbo, J. Diff. Eq. 77 (1989); Arrieta, J. Diff. Eq. 118 (1995).",
+  "familyId": "dumbbell",
+  "familyParam": 0.05,
+  "mesh": {
+    "vertices": 4987,
+    "triangles": 9638,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 5.786386961559091,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_dirichlet_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 5.786387642657773,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_dirichlet_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 14.682938195436206,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_dirichlet_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 14.682941086374177,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_dirichlet_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 14.697150120873467,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_dirichlet_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 14.6971507734741,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_dirichlet_6.jpg"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_neumann_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 0.07501445738233932,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_neumann_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 3.2823275117633575,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_neumann_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 3.3949635003988687,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_neumann_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 3.394963915587704,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_neumann_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 3.5994827010192143,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_neumann_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 1.619352281143896,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_robin_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 1.6340870091174824,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_robin_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 5.789684933642692,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_robin_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 5.789685232030247,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_robin_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 5.897168447942137,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_robin_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 5.962839304975608,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_robin_6.jpg"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_steklov_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 0.03747360873166884,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_steklov_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 0.6376523561848882,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_steklov_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 1.0007908890146677,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_steklov_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 1.0007910321799278,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_steklov_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 1.0501819427673762,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/dumbbell-0.05_steklov_6.jpg"
+        }
+      ]
+    }
+  }
+}

@@ -4,10 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 const base = import.meta.env.BASE_URL;
-const lang: "en" | "ja" = "en";
 
 export const frontmatter = {
-  title: "Laplacian eigenfunction database",
+  title: "Eigenfunction database (β)",
   description:
     "Numerical database of Dirichlet, Neumann, Robin and Steklov Laplacian eigenvalues and eigenfunctions on a family of planar domains.",
   date: "2026-04-15",
@@ -15,18 +14,43 @@ export const frontmatter = {
 };
 
 const dataDir = path.resolve("./public/files/eigenfunctions/data");
-const indexFile = JSON.parse(
-  fs.readFileSync(path.join(dataDir, "index.json"), "utf-8")
-) as { domains: any[] };
-
-const domains = indexFile.domains.map((entry: any) => {
-  return JSON.parse(
-    fs.readFileSync(path.join(dataDir, `${entry.id}.json`), "utf-8")
+let indexFile: { domains: any[]; individuals: any[]; families: any[] };
+try {
+  indexFile = JSON.parse(
+    fs.readFileSync(path.join(dataDir, "index.json"), "utf-8")
   );
-});
+} catch {
+  indexFile = { domains: [], individuals: [], families: [] };
+}
+
+// Load full per-domain data for each entry referenced in the index.
+const domainById = new Map<string, any>();
+for (const entry of indexFile.domains) {
+  try {
+    const full = JSON.parse(
+      fs.readFileSync(path.join(dataDir, `${entry.id}.json`), "utf-8")
+    );
+    domainById.set(entry.id, full);
+  } catch (e) {
+    // file missing (partial run) — skip
+  }
+}
+
+const individuals = indexFile.individuals
+  .map((e) => domainById.get(e.id))
+  .filter(Boolean);
+
+const families = indexFile.families.map((fam) => ({
+  ...fam,
+  members: fam.memberIds
+    .map((id: string) => domainById.get(id))
+    .filter(Boolean),
+}));
+
+const totalDomains = individuals.length + families.reduce((acc, f) => acc + f.members.length, 0);
 
 const categoryLabel: Record<string, string> = {
-  basic: "Basic separable",
+  basic: "Basic",
   polygon: "Polygonal",
   "non-convex": "Non-convex",
   chaotic: "Chaotic billiards",
@@ -35,6 +59,24 @@ const categoryLabel: Record<string, string> = {
   collapsing: "Collapsing / thin",
   isospectral: "Isospectral",
 };
+
+const fmt = (x: number) => {
+  if (x === 0) return "0";
+  if (Math.abs(x) < 0.001 || Math.abs(x) >= 100000) return x.toExponential(4);
+  return x.toFixed(6);
+};
+
+// Sort individuals by category, then families by category.
+const indivByCat = new Map<string, any[]>();
+for (const d of individuals) {
+  if (!indivByCat.has(d.category)) indivByCat.set(d.category, []);
+  indivByCat.get(d.category)!.push(d);
+}
+const famByCat = new Map<string, any[]>();
+for (const f of families) {
+  if (!famByCat.has(f.category)) famByCat.set(f.category, []);
+  famByCat.get(f.category)!.push(f);
+}
 
 const categoryOrder = [
   "basic",
@@ -46,25 +88,22 @@ const categoryOrder = [
   "collapsing",
 ];
 
-const byCategory = new Map<string, any[]>();
-for (const d of domains) {
-  if (!byCategory.has(d.category)) byCategory.set(d.category, []);
-  byCategory.get(d.category)!.push(d);
-}
-
-const fmt = (x: number) => {
-  if (x === 0) return "0";
-  if (Math.abs(x) < 0.001 || Math.abs(x) >= 100000) return x.toExponential(4);
-  return x.toFixed(6);
-};
-
 const blogLink = `${base}en/blog/`;
+
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://ryendo.github.io";
+const shareUrl = new URL(Astro.url.pathname, site).toString();
+const shareText = `${frontmatter.title} — ${frontmatter.description}`;
+const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+const bskyUrl = `https://bsky.app/intent/compose?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+const mastodonUrl = `https://toot.kytta.dev/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 ---
 
 <BaseLayout
   title={frontmatter.title}
   description={frontmatter.description}
-  lang={lang}
+  lang="en"
   homeLink={`${base}en/`}
   homeLabel="Profile"
   blogLink={blogLink}
@@ -72,29 +111,84 @@ const blogLink = `${base}en/blog/`;
   altLink={`${base}ja/blog/eigenfunction-atlas/`}
   altLabel="日本語"
   currentSection="blog"
+  ogImage="/files/eigenfunctions/og-cover.jpg"
+  ogType="article"
+  useKatex={true}
 >
   <main class="main-panel">
-    <p>
-      <a href={blogLink}>← Back to blog</a>
-    </p>
+    <p><a href={blogLink}>← Back to blog</a></p>
 
     <div class="article-header">
       <h1 class="article-title">{frontmatter.title}</h1>
-      <div class="article-meta">{frontmatter.date} · {frontmatter.description}</div>
+      <div class="article-meta">{frontmatter.date} · {totalDomains} domains</div>
     </div>
 
     <div class="article-content">
       <div class="eig-beta">
-        <strong>Beta.</strong> This is a beta release. Numerical values,
-        domain definitions, references, and the user interface are still
-        subject to change; please verify any value you rely on against the
-        per-domain JSON file and report discrepancies.
+        <strong>Beta</strong>This is a β release. Numerical values, domain
+        definitions, references, and the user interface are still subject to
+        change; please verify any value you rely on against the per-domain
+        JSON file and report discrepancies.
       </div>
 
-      <p>
-        Numerical database of the low eigenvalues and eigenfunctions of the
-        Laplace operator on a family of planar domains Ω ⊂ ℝ², under
-        Dirichlet, Neumann, Robin (α = 1) and Steklov boundary conditions.
+      <div set:html={`
+        <p>
+          Numerical database of the low eigenvalues and eigenfunctions of the
+          Laplace operator on a collection of planar domains $\\Omega \\subset \\mathbb{R}^2$,
+          under Dirichlet, Neumann, Robin ($\\alpha = 1$) and Steklov boundary
+          conditions.
+        </p>
+
+        <h2>Eigenvalue problems</h2>
+        <ul class="eig-list">
+          <li><strong>Dirichlet</strong>: $-\\Delta u = \\lambda u$ in $\\Omega$, $u = 0$ on $\\partial\\Omega$.</li>
+          <li><strong>Neumann</strong>: $-\\Delta u = \\lambda u$ in $\\Omega$, $\\partial_\\nu u = 0$ on $\\partial\\Omega$.</li>
+          <li><strong>Robin</strong> ($\\alpha = 1$): $-\\Delta u = \\lambda u$ in $\\Omega$, $\\partial_\\nu u + \\alpha u = 0$ on $\\partial\\Omega$.</li>
+          <li><strong>Steklov</strong>: $\\Delta u = 0$ in $\\Omega$, $\\partial_\\nu u = \\sigma u$ on $\\partial\\Omega$; equivalently, $\\sigma$ is an eigenvalue of the Dirichlet-to-Neumann operator on $\\partial\\Omega$.</li>
+        </ul>
+
+        <h2>Discretisation</h2>
+        <p>
+          The approximation is by the $P_2$ Lagrange finite element method on
+          unstructured triangular meshes (gmsh 4). For Dirichlet, Neumann and
+          Robin we assemble the stiffness matrix $K$ and the mass matrix $M$;
+          the Dirichlet degrees of freedom are eliminated by condensation and
+          the generalised eigenproblem $K u = \\lambda M u$ is solved in
+          shift-and-invert mode by ARPACK (scipy.sparse.linalg.eigsh). The
+          Robin problem is $(K + \\alpha B) u = \\lambda M u$, where $B$ is the
+          boundary mass matrix assembled on the facet basis. For Steklov we
+          reduce to the boundary by the Schur complement
+          $$ S = K_{BB} - K_{BI} K_{II}^{-1} K_{IB} $$
+          (the discrete Dirichlet-to-Neumann operator) and solve the dense
+          generalised eigenproblem $S u_\\partial = \\sigma M_\\partial u_\\partial$;
+          interior values are recovered by harmonic extension.
+        </p>
+
+        <h2>Closed-form spectra and accuracy</h2>
+        <p>
+          Analytic eigenvalues are reported alongside the numerical values,
+          together with the relative error, for: Dirichlet on the rectangle,
+          the disk (squares of zeros of $J_m$), the equilateral triangle
+          (Lamé 1833; McCartin, <em>SIAM Rev.</em> 2003), and the right
+          isoceles triangle; and Steklov on the disk ($\\sigma_k = k$,
+          multiplicity 2 for $k \\ge 1$; Girouard–Polterovich, <em>J. Spectral
+          Theory</em> 7, 2017).
+        </p>
+        <p>
+          The a posteriori error on smooth or polygonal convex domains is
+          typically $10^{-6}$–$10^{-7}$ for the first few Dirichlet modes. On
+          the L-shape the re-entrant corner generates an $r^{2/3}$ singularity
+          of the eigenfunction and caps the non-isoparametric $P_2$ rate on
+          the first mode at $\\sim 10^{-3}$. On the unit disk the polygonal
+          approximation of $\\partial\\Omega$ caps the Dirichlet error at
+          $\\sim 10^{-4}$ and the Steklov error at $\\sim 10^{-5}$.
+        </p>
+      `} />
+
+      <p class="muted">
+        Full data: <a href={`${base}files/eigenfunctions/data/index.json`}>index.json</a> ·
+        Per-domain JSON: <code>{`/files/eigenfunctions/data/<id>.json`}</code>.
+        Source: <a href="https://github.com/ryendo/ryendo.github.io/blob/main/scripts/compute_eigenfunctions.py"><code>scripts/compute_eigenfunctions.py</code></a>.
       </p>
 
       <div class="eig-controls" id="eig-controls">
@@ -102,7 +196,7 @@ const blogLink = `${base}en/blog/`;
           <input
             id="eig-search"
             type="search"
-            placeholder="Search domains — e.g. 'stadium', 'l-shape', 'triangle'…"
+            placeholder="Search — e.g. 'stadium', 'L-shape', 'rhombus'…"
             autocomplete="off"
             spellcheck="false"
           />
@@ -115,80 +209,16 @@ const blogLink = `${base}en/blog/`;
           <label><input type="radio" name="eig-bc" value="steklov" /> Steklov</label>
           <label><input type="radio" name="eig-bc" value="all" /> all</label>
         </div>
-        <nav class="eig-jump" aria-label="Jump to domain">
-          {domains.map((d: any) => (
-            <a href={`#${d.id}`} data-jump={d.id}>{d.nameEn}</a>
-          ))}
-        </nav>
       </div>
 
-      <h2>Eigenvalue problems</h2>
-      <ul class="eig-list">
-        <li><strong>Dirichlet</strong>: &nbsp;−Δu = λu in Ω,&nbsp; u = 0 on ∂Ω.</li>
-        <li><strong>Neumann</strong>: &nbsp;−Δu = λu in Ω,&nbsp; ∂<sub>ν</sub>u = 0 on ∂Ω.</li>
-        <li><strong>Robin</strong> (α = 1): &nbsp;−Δu = λu in Ω,&nbsp; ∂<sub>ν</sub>u + α u = 0 on ∂Ω.</li>
-        <li><strong>Steklov</strong>: &nbsp;Δu = 0 in Ω,&nbsp; ∂<sub>ν</sub>u = σ u on ∂Ω; equivalently, σ is an eigenvalue of the Dirichlet-to-Neumann operator on ∂Ω.</li>
-      </ul>
-
-      <h2>Discretisation</h2>
-      <p>
-        The approximation is by the P<sub>2</sub> Lagrange finite element
-        method on unstructured triangular meshes (gmsh 4).
-      </p>
-      <p>
-        For Dirichlet, Neumann and Robin we assemble the stiffness matrix K
-        and the mass matrix M; the Dirichlet degrees of freedom are
-        eliminated by condensation and the generalised eigenproblem K u =
-        λ M u is solved in shift-and-invert mode by ARPACK
-        (scipy.sparse.linalg.eigsh). The Robin problem is K + α B on the
-        left-hand side, where B is the boundary (trace) mass matrix assembled
-        on the facet basis.
-      </p>
-      <p>
-        For Steklov we use the Schur-complement reduction: writing
-        K = [K<sub>II</sub>, K<sub>IB</sub>; K<sub>BI</sub>, K<sub>BB</sub>]
-        with I the interior and B the boundary degrees of freedom, the
-        discrete Dirichlet-to-Neumann operator S = K<sub>BB</sub> −
-        K<sub>BI</sub> K<sub>II</sub><sup>-1</sup> K<sub>IB</sub> is formed
-        column-by-column and the (dense) generalised eigenproblem S u =
-        σ M<sub>∂</sub> u is solved. Interior values are recovered by
-        harmonic extension.
-      </p>
-
-      <h2>Closed-form spectra and accuracy</h2>
-      <p>
-        Analytic eigenvalues are reported alongside the numerical values,
-        together with the relative error, for:
-      </p>
-      <ul class="eig-list">
-        <li>Dirichlet Laplacian on the rectangle, the disk (zeros of Bessel functions J<sub>m</sub>), the equilateral triangle (Lamé 1833; McCartin, SIAM Rev. 2003), and the right isoceles triangle.</li>
-        <li>Steklov Laplacian on the disk: σ<sub>k</sub> = k (k ≥ 0), with multiplicity 2 for k ≥ 1 (Girouard–Polterovich, <em>J. Spectral Theory</em> 7, 2017).</li>
-      </ul>
-      <p>
-        The a posteriori error on smooth or polygonal convex domains is
-        typically 10<sup>−6</sup>–10<sup>−7</sup> for the first few Dirichlet
-        modes. On the L-shaped domain the re-entrant corner generates an
-        r<sup>2/3</sup> singularity of the eigenfunction and the
-        non-isoparametric P<sub>2</sub> rate on the first mode is about
-        10<sup>−3</sup>; the computed value λ<sub>1</sub> ≈ 9.6397 agrees with
-        the Fox–Henrici–Moler reference value 9.63972384… to three digits.
-        On curved boundaries, the polygonal approximation of ∂Ω dominates the
-        error: on the unit disk this caps the Dirichlet error at ~10<sup>−4</sup>
-        and the Steklov error at ~10<sup>−5</sup>.
-      </p>
-      <p class="muted">
-        Full data: <a href={`${base}files/eigenfunctions/data/index.json`}>index.json</a> ·
-        Per-domain JSON: <code>{`/files/eigenfunctions/data/<id>.json`}</code>.
-        Source: <a href="https://github.com/ryendo/ryendo.github.io/blob/main/scripts/compute_eigenfunctions.py"><code>scripts/compute_eigenfunctions.py</code></a>.
-      </p>
-
+      {/* --- INDIVIDUAL DOMAINS (by category) --- */}
       {categoryOrder
-        .filter((c) => byCategory.has(c))
+        .filter((c) => indivByCat.has(c))
         .map((cat) => (
-          <section class="eig-category">
-            <h2 class="section-heading">{categoryLabel[cat] ?? cat}</h2>
+          <section class="eig-category" data-cat={cat}>
+            <h2 class="section-heading">{categoryLabel[cat] ?? cat} — individual domains</h2>
 
-            {byCategory.get(cat)!.map((d: any) => (
+            {indivByCat.get(cat)!.map((d: any) => (
               <article
                 class="eig-domain"
                 id={d.id}
@@ -196,10 +226,7 @@ const blogLink = `${base}en/blog/`;
                 data-haystack={`${d.id} ${d.nameEn} ${d.descriptionEn} ${d.category}`.toLowerCase()}
               >
                 <header class="eig-domain-header">
-                  <h3>
-                    {d.nameEn}
-                    <span class="eig-slug">#{d.id}</span>
-                  </h3>
+                  <h3>{d.nameEn}<span class="eig-slug">#{d.id}</span></h3>
                   <p class="eig-desc">{d.descriptionEn}</p>
                   {d.reference && (
                     <p class="eig-ref"><strong>Ref.</strong> {d.reference}</p>
@@ -240,16 +267,13 @@ const blogLink = `${base}en/blog/`;
                               data-lams={JSON.stringify(modes.map((m) => m.lambda))}
                               data-exact={JSON.stringify(modes.map((m) => m.lambdaExact))}
                               data-err={JSON.stringify(modes.map((m) => m.relErr))}
-                            >
-                              λ = {fmt(modes[0].lambda)}
-                            </span>
+                            >λ = {fmt(modes[0].lambda)}</span>
                           </figcaption>
                         </figure>
 
                         <div class="eig-mode-picker" role="tablist" aria-label="Mode number">
                           {modes.map((m: any, idx: number) => (
-                            <button
-                              type="button"
+                            <button type="button"
                               class={"eig-mode-btn" + (idx === 0 ? " is-active" : "")}
                               data-idx={idx}
                               data-k={m.k}
@@ -258,32 +282,6 @@ const blogLink = `${base}en/blog/`;
                           ))}
                         </div>
                       </div>
-
-                      <details class="eig-all-modes">
-                        <summary>All modes as grid</summary>
-                        <div class="eig-grid">
-                          {modes.map((m: any) => (
-                            <figure class="eig-mode">
-                              <a href={m.image} target="_blank" rel="noreferrer">
-                                <img
-                                  src={m.image}
-                                  alt={`${d.nameEn}, ${bc}, mode ${m.k}`}
-                                  loading="lazy"
-                                />
-                              </a>
-                              <figcaption>
-                                <span class="mode-k">k = {m.k}</span>
-                                <span class="mode-lam">λ = {fmt(m.lambda)}</span>
-                                {m.lambdaExact !== null && (
-                                  <span class="mode-exact muted">
-                                    exact {fmt(m.lambdaExact)}{m.relErr !== null ? ` (rel. err ${m.relErr.toExponential(1)})` : ""}
-                                  </span>
-                                )}
-                              </figcaption>
-                            </figure>
-                          ))}
-                        </div>
-                      </details>
                     </div>
                   );
                 })}
@@ -291,115 +289,324 @@ const blogLink = `${base}en/blog/`;
             ))}
           </section>
         ))}
+
+      {/* --- PARAMETRIC FAMILIES --- */}
+      {categoryOrder
+        .filter((c) => famByCat.has(c))
+        .map((cat) => (
+          <section class="eig-category" data-cat={cat}>
+            <h2 class="section-heading">{categoryLabel[cat] ?? cat} — parametric families</h2>
+
+            {famByCat.get(cat)!.map((fam: any) => {
+              // Extract per-member data needed at runtime
+              const membersData = fam.members.map((m: any) => ({
+                id: m.id,
+                param: m.familyParam,
+                boundaries: {
+                  dirichlet: (m.boundaries?.dirichlet?.modes ?? []).map((mm: any) => ({
+                    k: mm.k, lambda: mm.lambda,
+                    lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image,
+                  })),
+                  neumann: (m.boundaries?.neumann?.modes ?? []).map((mm: any) => ({
+                    k: mm.k, lambda: mm.lambda,
+                    lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image,
+                  })),
+                  robin: (m.boundaries?.robin?.modes ?? []).map((mm: any) => ({
+                    k: mm.k, lambda: mm.lambda,
+                    lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image,
+                  })),
+                  steklov: (m.boundaries?.steklov?.modes ?? []).map((mm: any) => ({
+                    k: mm.k, lambda: mm.lambda,
+                    lambdaExact: mm.lambdaExact, relErr: mm.relErr, image: mm.image,
+                  })),
+                },
+                mesh: m.mesh,
+              }));
+              const haystack = `${fam.id} ${fam.nameEn} ${fam.descriptionEn} ${fam.category} ${fam.members.map((m: any) => m.id).join(" ")}`.toLowerCase();
+
+              return (
+                <article
+                  class="eig-domain eig-family"
+                  id={fam.id}
+                  data-family-id={fam.id}
+                  data-name={fam.nameEn}
+                  data-haystack={haystack}
+                >
+                  <header class="eig-domain-header">
+                    <h3>{fam.nameEn}<span class="eig-slug">#{fam.id}</span></h3>
+                    <p class="eig-desc">{fam.descriptionEn}</p>
+                    {fam.reference && (
+                      <p class="eig-ref"><strong>Ref.</strong> {fam.reference}</p>
+                    )}
+                  </header>
+
+                  <div class="eig-family-slider">
+                    <label>
+                      <span class="eig-param-label">{fam.param} = </span>
+                      <output class="eig-param-value">{fam.paramValues[0]}</output>
+                    </label>
+                    <input type="range"
+                      class="eig-param-range"
+                      min="0" max={fam.paramValues.length - 1} step="1" value="0" />
+                    <span class="eig-param-count muted">1 / {fam.paramValues.length}</span>
+                  </div>
+
+                  <script type="application/json" class="eig-family-payload"
+                    set:html={JSON.stringify({
+                      paramValues: fam.paramValues,
+                      paramLabel: fam.param,
+                      members: membersData,
+                    })} />
+
+                  <div class="eig-family-view">
+                    <p class="eig-mesh muted" data-role="mesh-info"></p>
+                    {(["dirichlet", "neumann", "robin", "steklov"] as const).map((bc) => (
+                      <div class="eig-bc-block" data-bc={bc}>
+                        <h4>{({
+                          dirichlet: "Dirichlet",
+                          neumann: "Neumann",
+                          robin: "Robin (α=1)",
+                          steklov: "Steklov",
+                        } as const)[bc]} boundary</h4>
+                        <div class="eig-viewer" data-family-viewer={bc}>
+                          <figure class="eig-focus">
+                            <img class="eig-focus-img" alt={`${fam.nameEn}, ${bc}, focused mode`} loading="lazy" />
+                            <figcaption class="eig-focus-cap">
+                              <span class="eig-focus-k">k = 1</span>
+                              <span class="eig-focus-lam">λ = —</span>
+                            </figcaption>
+                          </figure>
+                          <div class="eig-mode-picker" role="tablist" aria-label="Mode number"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
+          </section>
+        ))}
+    </div>
+
+    <div class="share-row">
+      <span class="share-label">Share</span>
+      <a class="share-btn" href={xUrl} target="_blank" rel="noreferrer">X</a>
+      <a class="share-btn" href={bskyUrl} target="_blank" rel="noreferrer">Bluesky</a>
+      <a class="share-btn" href={mastodonUrl} target="_blank" rel="noreferrer">Mastodon</a>
+      <a class="share-btn" href={linkedinUrl} target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="share-btn" href={facebookUrl} target="_blank" rel="noreferrer">Facebook</a>
+      <button class="share-btn" type="button" data-copy={shareUrl} onclick="(async()=>{try{await navigator.clipboard.writeText(this.dataset.copy);this.textContent='✓';setTimeout(()=>{this.textContent='URL'},1200);}catch(e){}})()">URL</button>
     </div>
   </main>
 </BaseLayout>
 
 <script is:inline>
-  (() => {
-    const fmt = (x) => {
-      if (x === 0) return "0";
-      if (Math.abs(x) < 0.001 || Math.abs(x) >= 100000) return x.toExponential(4);
-      return x.toFixed(6);
-    };
-    const fmtErr = (x) => {
-      if (x === null || x === undefined) return null;
-      return Number(x).toExponential(1);
-    };
+(() => {
+  const fmt = (x) => {
+    if (x === 0) return "0";
+    if (Math.abs(x) < 0.001 || Math.abs(x) >= 100000) return x.toExponential(4);
+    return x.toFixed(6);
+  };
+  const fmtErr = (x) => (x === null || x === undefined) ? null : Number(x).toExponential(1);
 
-    // Mode picker: swap focus image + caption when a k-button is clicked.
-    document.querySelectorAll(".eig-viewer").forEach((viewer) => {
-      const img = viewer.querySelector(".eig-focus-img");
-      const kCap = viewer.querySelector(".eig-focus-k");
-      const lamCap = viewer.querySelector(".eig-focus-lam");
-      const images = JSON.parse(img.dataset.modes || "[]");
-      const lams = JSON.parse(lamCap.dataset.lams || "[]");
-      const exacts = JSON.parse(lamCap.dataset.exact || "[]");
-      const errs = JSON.parse(lamCap.dataset.err || "[]");
-
-      viewer.querySelectorAll(".eig-mode-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const idx = Number(btn.dataset.idx);
-          img.src = images[idx];
-          kCap.textContent = `k = ${btn.dataset.k}`;
-          let text = `λ = ${fmt(lams[idx])}`;
-          if (exacts[idx] !== null && exacts[idx] !== undefined) {
-            text += `  (exact ${fmt(exacts[idx])}, rel. err ${fmtErr(errs[idx])})`;
-          }
-          lamCap.textContent = text;
-          viewer.querySelectorAll(".eig-mode-btn").forEach((b) => b.classList.toggle("is-active", b === btn));
-        });
-      });
-
-      // Keyboard: left/right arrows cycle when focus is inside this viewer
-      viewer.addEventListener("keydown", (e) => {
-        if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-        const btns = Array.from(viewer.querySelectorAll(".eig-mode-btn"));
-        const cur = btns.findIndex((b) => b.classList.contains("is-active"));
-        const next = e.key === "ArrowRight"
-          ? Math.min(cur + 1, btns.length - 1)
-          : Math.max(cur - 1, 0);
-        btns[next].click();
-        btns[next].focus();
-        e.preventDefault();
-      });
-    });
-
-    // Boundary-condition radio: show only the chosen block (or both).
-    const applyBc = (val) => {
-      document.querySelectorAll(".eig-bc-block").forEach((blk) => {
-        const bc = blk.getAttribute("data-bc");
-        blk.style.display = (val === "all" || val === "both" || bc === val) ? "" : "none";
-      });
-    };
-    document.querySelectorAll('input[name="eig-bc"]').forEach((r) => {
-      r.addEventListener("change", () => applyBc(r.value));
-    });
-
-    // Search: hide non-matching domain cards, update count.
-    const search = document.getElementById("eig-search");
-    const countEl = document.getElementById("eig-count");
-    const allDomains = Array.from(document.querySelectorAll(".eig-domain"));
-    const allJumps = Array.from(document.querySelectorAll(".eig-jump a"));
-    const updateCount = (visible) => {
-      countEl.textContent = `${visible} / ${allDomains.length} domains`;
-    };
-    const applySearch = (q) => {
-      const needle = q.trim().toLowerCase();
-      let visible = 0;
-      const visibleIds = new Set();
-      allDomains.forEach((dom) => {
-        const hay = dom.dataset.haystack || "";
-        const match = !needle || hay.includes(needle);
-        dom.style.display = match ? "" : "none";
-        if (match) { visible++; visibleIds.add(dom.id); }
-      });
-      allJumps.forEach((a) => {
-        const id = a.dataset.jump;
-        a.style.display = visibleIds.has(id) ? "" : "none";
-      });
-      // hide empty category sections
-      document.querySelectorAll(".eig-category").forEach((sec) => {
-        const anyVisible = Array.from(sec.querySelectorAll(".eig-domain")).some((d) => d.style.display !== "none");
-        sec.style.display = anyVisible ? "" : "none";
-      });
-      updateCount(visible);
-    };
-    if (search) {
-      search.addEventListener("input", (e) => applySearch(e.target.value));
-      // keyboard shortcut: '/' focuses the search box
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "/" && document.activeElement !== search && !e.metaKey && !e.ctrlKey && !e.altKey) {
-          search.focus();
-          e.preventDefault();
+  // --- individual-domain viewers (mode picker) ---
+  document.querySelectorAll(".eig-domain:not(.eig-family) .eig-viewer").forEach((viewer) => {
+    const img = viewer.querySelector(".eig-focus-img");
+    const kCap = viewer.querySelector(".eig-focus-k");
+    const lamCap = viewer.querySelector(".eig-focus-lam");
+    if (!img || !lamCap) return;
+    const images = JSON.parse(img.dataset.modes || "[]");
+    const lams = JSON.parse(lamCap.dataset.lams || "[]");
+    const exacts = JSON.parse(lamCap.dataset.exact || "[]");
+    const errs = JSON.parse(lamCap.dataset.err || "[]");
+    viewer.querySelectorAll(".eig-mode-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.dataset.idx);
+        img.src = images[idx];
+        kCap.textContent = `k = ${btn.dataset.k}`;
+        let text = `λ = ${fmt(lams[idx])}`;
+        if (exacts[idx] !== null && exacts[idx] !== undefined) {
+          const e = fmtErr(errs[idx]);
+          text += e ? `  (exact ${fmt(exacts[idx])}, rel. err ${e})` : `  (exact ${fmt(exacts[idx])})`;
         }
+        lamCap.textContent = text;
+        viewer.querySelectorAll(".eig-mode-btn").forEach((b) => b.classList.toggle("is-active", b === btn));
       });
+    });
+    viewer.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const btns = Array.from(viewer.querySelectorAll(".eig-mode-btn"));
+      const cur = btns.findIndex((b) => b.classList.contains("is-active"));
+      const next = e.key === "ArrowRight"
+        ? Math.min(cur + 1, btns.length - 1)
+        : Math.max(cur - 1, 0);
+      btns[next].click(); btns[next].focus(); e.preventDefault();
+    });
+  });
+
+  // --- family viewers (slider + per-param data swap) ---
+  const familyState = new WeakMap();
+
+  const renderFamilyBC = (card, bcBlock, member, bc) => {
+    const modes = member.boundaries[bc] || [];
+    const viewer = bcBlock.querySelector(".eig-viewer");
+    if (!viewer) return;
+    const img = viewer.querySelector(".eig-focus-img");
+    const kCap = viewer.querySelector(".eig-focus-k");
+    const lamCap = viewer.querySelector(".eig-focus-lam");
+    const picker = viewer.querySelector(".eig-mode-picker");
+    if (!modes.length) { bcBlock.style.display = "none"; return; }
+    bcBlock.style.display = "";
+
+    // Remember selected k across parameter changes (by index)
+    const st = familyState.get(card) || { selectedIdx: {} };
+    let idx = st.selectedIdx[bc] ?? 0;
+    if (idx >= modes.length) idx = 0;
+
+    img.src = modes[idx].image;
+    img.alt = `${card.dataset.name}, ${bc}, k=${modes[idx].k}`;
+    kCap.textContent = `k = ${modes[idx].k}`;
+    let text = `λ = ${fmt(modes[idx].lambda)}`;
+    if (modes[idx].lambdaExact !== null && modes[idx].lambdaExact !== undefined) {
+      const e = fmtErr(modes[idx].relErr);
+      text += e ? `  (exact ${fmt(modes[idx].lambdaExact)}, rel. err ${e})` : `  (exact ${fmt(modes[idx].lambdaExact)})`;
     }
-    updateCount(allDomains.length);
-  })();
+    lamCap.textContent = text;
+
+    // Rebuild mode buttons
+    picker.innerHTML = "";
+    modes.forEach((m, i) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "eig-mode-btn" + (i === idx ? " is-active" : "");
+      btn.dataset.idx = String(i);
+      btn.dataset.k = String(m.k);
+      btn.title = `λ = ${fmt(m.lambda)}`;
+      btn.textContent = `k=${m.k}`;
+      btn.addEventListener("click", () => {
+        const s = familyState.get(card) || { selectedIdx: {} };
+        s.selectedIdx[bc] = i;
+        familyState.set(card, s);
+        renderFamilyBC(card, bcBlock, member, bc);
+      });
+      picker.appendChild(btn);
+    });
+  };
+
+  document.querySelectorAll(".eig-family").forEach((card) => {
+    const payloadEl = card.querySelector(".eig-family-payload");
+    if (!payloadEl) return;
+    const payload = JSON.parse(payloadEl.textContent || "{}");
+    const slider = card.querySelector(".eig-param-range");
+    const valueOut = card.querySelector(".eig-param-value");
+    const countOut = card.querySelector(".eig-param-count");
+    const meshEl = card.querySelector('[data-role="mesh-info"]');
+    familyState.set(card, { selectedIdx: {} });
+
+    const render = () => {
+      const idx = Number(slider.value);
+      const member = payload.members[idx];
+      const paramVal = payload.paramValues[idx];
+      valueOut.textContent = typeof paramVal === "number" ? (paramVal.toString().length > 6 ? paramVal.toFixed(4) : paramVal) : paramVal;
+      if (countOut) countOut.textContent = `${idx + 1} / ${payload.members.length}`;
+      if (meshEl && member && member.mesh) {
+        meshEl.textContent =
+          `mesh: ${member.mesh.vertices.toLocaleString()} vertices, ${member.mesh.triangles.toLocaleString()} triangles, ${member.mesh.element}`;
+      }
+      if (!member) return;
+      card.querySelectorAll(".eig-bc-block").forEach((bcBlock) => {
+        const bc = bcBlock.getAttribute("data-bc");
+        renderFamilyBC(card, bcBlock, member, bc);
+      });
+    };
+
+    slider.addEventListener("input", render);
+
+    // Keyboard: left/right arrows when focus is inside card cycle the slider
+    card.addEventListener("keydown", (e) => {
+      if (e.target.classList.contains("eig-mode-btn")) return; // mode picker handles arrows
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const cur = Number(slider.value);
+      const next = e.key === "ArrowRight"
+        ? Math.min(cur + 1, payload.members.length - 1)
+        : Math.max(cur - 1, 0);
+      slider.value = String(next);
+      render();
+      e.preventDefault();
+    });
+
+    render();
+  });
+
+  // --- Boundary-condition radio (global) ---
+  const applyBc = (val) => {
+    document.querySelectorAll(".eig-bc-block").forEach((blk) => {
+      const bc = blk.getAttribute("data-bc");
+      blk.style.display = (val === "all" || bc === val) ? "" : "none";
+    });
+  };
+  document.querySelectorAll('input[name="eig-bc"]').forEach((r) => {
+    r.addEventListener("change", () => applyBc(r.value));
+  });
+
+  // --- Search ---
+  const search = document.getElementById("eig-search");
+  const countEl = document.getElementById("eig-count");
+  const allCards = Array.from(document.querySelectorAll(".eig-domain"));
+  const updateCount = (visible) => {
+    if (countEl) countEl.textContent = `${visible} / ${allCards.length} entries`;
+  };
+  const applySearch = (q) => {
+    const needle = q.trim().toLowerCase();
+    let visible = 0;
+    allCards.forEach((c) => {
+      const hay = c.dataset.haystack || "";
+      const match = !needle || hay.includes(needle);
+      c.style.display = match ? "" : "none";
+      if (match) visible++;
+    });
+    document.querySelectorAll(".eig-category").forEach((sec) => {
+      const anyVisible = Array.from(sec.querySelectorAll(".eig-domain")).some((c) => c.style.display !== "none");
+      sec.style.display = anyVisible ? "" : "none";
+    });
+    updateCount(visible);
+  };
+  if (search) {
+    search.addEventListener("input", (e) => applySearch(e.target.value));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "/" && document.activeElement !== search && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        search.focus(); e.preventDefault();
+      }
+    });
+  }
+  updateCount(allCards.length);
+})();
 </script>
 
 <style>
+  .eig-beta {
+    margin: 0.5em 0 1em;
+    padding: 0.7em 1em;
+    border-left: 4px solid #d97706;
+    background: #fff7ed;
+    color: #7c2d12;
+    font-size: 0.93em;
+    border-radius: 3px;
+  }
+  .eig-beta strong {
+    display: inline-block;
+    background: #d97706;
+    color: #fff;
+    padding: 0.05em 0.45em;
+    border-radius: 3px;
+    margin-right: 0.4em;
+    font-size: 0.88em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .eig-list { margin: 0.2em 0 0.6em; padding-left: 1.2em; }
+  .eig-list li { margin: 0.15em 0; }
+
   .eig-controls {
     position: sticky;
     top: 0;
@@ -418,19 +625,37 @@ const blogLink = `${base}en/blog/`;
     font-family: inherit;
   }
   .eig-search-row input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(9,105,218,0.15); }
-  .eig-bc-row { margin-top: 0.55em; font-size: 0.9em; display: flex; gap: 1.1em; align-items: center; }
+  .eig-bc-row { margin-top: 0.55em; font-size: 0.9em; display: flex; gap: 1.1em; align-items: center; flex-wrap: wrap; }
   .eig-bc-row label { cursor: pointer; }
-  .eig-jump {
-    margin-top: 0.55em;
-    font-size: 0.8em;
-    display: flex; flex-wrap: wrap; gap: 0.2em 0.7em;
+
+  .eig-category { margin-top: 2em; }
+  .eig-domain { margin: 1.2em 0 2.2em; padding: 1em 1.2em; border: 1px solid #e2e2e2; border-radius: 6px; background: #fcfcfc; }
+  .eig-domain-header h3 { margin: 0 0 0.2em; font-size: 1.15em; }
+  .eig-slug { margin-left: 0.5em; color: #888; font-size: 0.75em; font-weight: normal; font-family: ui-monospace, Menlo, monospace; }
+  .eig-desc { margin: 0.3em 0 0.2em; color: #222; }
+  .eig-ref { margin: 0.3em 0; font-size: 0.85em; color: #444; }
+  .eig-mesh { margin: 0.2em 0 0; font-size: 0.82em; }
+
+  .eig-family-slider {
+    display: flex; align-items: center; gap: 0.8em;
+    margin: 0.8em 0;
+    padding: 0.5em 0.7em;
+    background: #f1f5f9;
+    border-radius: 4px;
   }
-  .eig-jump a { color: #555; text-decoration: none; white-space: nowrap; }
-  .eig-jump a:hover { color: var(--accent); text-decoration: underline; }
+  .eig-family-slider label { font-family: ui-monospace, Menlo, monospace; font-size: 0.92em; }
+  .eig-family-slider .eig-param-label { color: #555; }
+  .eig-family-slider .eig-param-value { font-weight: 600; }
+  .eig-family-slider .eig-param-range { flex: 1; }
+  .eig-family-slider .eig-param-count { font-size: 0.8em; font-family: ui-monospace, Menlo, monospace; }
+  .eig-family-payload { display: none; }
+
+  .eig-bc-block { margin-top: 1em; }
+  .eig-bc-block h4 { margin: 0.5em 0 0.4em; font-size: 0.95em; color: #333; font-weight: 600; }
 
   .eig-viewer {
     display: grid;
-    grid-template-columns: minmax(220px, 360px) 1fr;
+    grid-template-columns: minmax(220px, 320px) 1fr;
     gap: 1em;
     align-items: start;
   }
@@ -476,55 +701,28 @@ const blogLink = `${base}en/blog/`;
     font-weight: 600;
   }
 
-  .eig-all-modes { margin-top: 0.8em; }
-  .eig-all-modes summary {
-    cursor: pointer; font-size: 0.85em; color: #555; padding: 0.2em 0;
-    user-select: none;
+  .share-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4em;
+    margin: 2em 0 1em;
+    padding-top: 1em;
+    border-top: 1px solid #e2e2e2;
+    font-size: 0.9em;
   }
-  .eig-all-modes summary:hover { color: var(--accent); }
-
-  .eig-beta {
-    margin: 0.5em 0 1em;
-    padding: 0.7em 1em;
-    border-left: 4px solid #d97706;
-    background: #fff7ed;
-    color: #7c2d12;
-    font-size: 0.93em;
-    border-radius: 3px;
-  }
-  .eig-beta strong {
+  .share-label { color: #555; margin-right: 0.3em; }
+  .share-btn {
     display: inline-block;
-    background: #d97706;
-    color: #fff;
-    padding: 0.05em 0.45em;
+    padding: 0.25em 0.7em;
+    background: #f3f4f6;
+    color: #111827;
+    border: 1px solid #d1d5db;
     border-radius: 3px;
-    margin-right: 0.4em;
-    font-size: 0.88em;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.9em;
+    cursor: pointer;
+    font-family: inherit;
   }
-  .eig-list { margin: 0.2em 0 0.6em; padding-left: 1.2em; }
-  .eig-list li { margin: 0.15em 0; }
-  .eig-category { margin-top: 2em; }
-  .eig-domain { margin: 1.2em 0 2.2em; padding: 1em 1.2em; border: 1px solid #e2e2e2; border-radius: 6px; background: #fcfcfc; }
-  .eig-domain-header h3 { margin: 0 0 0.2em; font-size: 1.15em; }
-  .eig-slug { margin-left: 0.5em; color: #888; font-size: 0.75em; font-weight: normal; font-family: ui-monospace, Menlo, monospace; }
-  .eig-desc { margin: 0.3em 0 0.2em; color: #222; }
-  .eig-ref { margin: 0.3em 0; font-size: 0.85em; color: #444; }
-  .eig-mesh { margin: 0.2em 0 0; font-size: 0.82em; }
-
-  .eig-bc-block { margin-top: 1em; }
-  .eig-bc-block h4 { margin: 0.5em 0 0.4em; font-size: 0.95em; color: #333; font-weight: 600; }
-
-  .eig-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.8em;
-  }
-  .eig-mode { margin: 0; display: flex; flex-direction: column; align-items: stretch; }
-  .eig-mode img { width: 100%; height: auto; display: block; border: 1px solid #e0e0e0; border-radius: 3px; background: #fff; }
-  .eig-mode figcaption { display: flex; flex-direction: column; font-size: 0.78em; line-height: 1.35; margin-top: 0.25em; font-family: ui-monospace, Menlo, monospace; }
-  .mode-k { color: #555; }
-  .mode-lam { color: #000; }
-  .mode-exact { font-size: 0.78em; }
+  .share-btn:hover { background: #e5e7eb; color: var(--accent); }
 </style>

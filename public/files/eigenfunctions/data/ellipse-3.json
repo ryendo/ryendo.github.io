@@ -1,0 +1,202 @@
+{
+  "id": "ellipse-3",
+  "nameEn": "Ellipse e=3",
+  "nameJa": "楕円 e=3",
+  "descriptionEn": "Ellipse with semi-axes (1, 1/e). Eigenfunctions are products of angular and radial Mathieu functions.",
+  "descriptionJa": "半軸 (1, 1/e) の楕円。固有関数は角度および動径 Mathieu 関数の積。",
+  "category": "curved",
+  "reference": "",
+  "familyId": "ellipse",
+  "familyParam": 3.0,
+  "mesh": {
+    "vertices": 5510,
+    "triangles": 10722,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 27.978163153945257,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_dirichlet_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 41.36290429902926,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_dirichlet_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 58.594589991773724,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_dirichlet_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 79.95173886290551,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_dirichlet_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 99.29329644947069,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_dirichlet_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 105.62724449002198,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_dirichlet_6.jpg"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_neumann_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 3.5374930273560157,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_neumann_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 11.954521598316349,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_neumann_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 25.10415443780815,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_neumann_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 26.523630133883632,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_neumann_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 38.840252597894036,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_neumann_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 3.7245980383086805,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_robin_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 8.458714094535221,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_robin_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 17.270749824986545,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_robin_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 30.639493682726524,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_robin_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 32.589782009489134,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_robin_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 45.51539641286757,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_robin_6.jpg"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_steklov_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 0.5973865638442264,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_steklov_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 1.8689569422118524,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_steklov_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 3.278461647119682,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_steklov_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 3.444384535236451,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_steklov_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 4.1801810463695634,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-3_steklov_6.jpg"
+        }
+      ]
+    }
+  }
+}

@@ -12,6 +12,9 @@ interface Props {
   altLink?: string;
   altLabel?: string;
   currentSection?: "home" | "blog";
+  ogImage?: string;     // absolute or site-relative URL of the OG thumbnail
+  ogType?: "website" | "article";
+  useKatex?: boolean;    // when true, load KaTeX auto-render for the page
 }
 
 const {
@@ -25,7 +28,17 @@ const {
   altLink,
   altLabel,
   currentSection,
+  ogImage,
+  ogType = "website",
+  useKatex = false,
 } = Astro.props as Props;
+
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://ryendo.github.io";
+const canonical = new URL(Astro.url.pathname, site).toString();
+const defaultOg = `${site}/avatar.svg`;
+const fullOg = ogImage
+  ? (ogImage.startsWith("http") ? ogImage : `${site}${ogImage.startsWith("/") ? "" : "/"}${ogImage}`)
+  : defaultOg;
 ---
 
 <!doctype html>
@@ -35,6 +48,31 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang === "ja" ? "en" : "ja"} href={altLink ?? canonical} />
+
+    {/* Open Graph */}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={fullOg} />
+    <meta property="og:site_name" content={lang === "ja" ? "遠藤 凌輝" : "Ryoki Endo"} />
+    <meta property="og:locale" content={lang === "ja" ? "ja_JP" : "en_US"} />
+
+    {/* Twitter / X card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOg} />
+
+    {useKatex && (
+      <>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous" />
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}, {left: '\\\\(', right: '\\\\)', display: false}, {left: '\\\\[', right: '\\\\]', display: true}], throwOnError: false });"></script>
+      </>
+    )}
   </head>
 
   <body>

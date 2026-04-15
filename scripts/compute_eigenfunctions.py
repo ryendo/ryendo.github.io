@@ -199,8 +199,9 @@ def dom_annulus(r_in: float = 0.5, h: float = 0.03) -> MeshTri:
 
 def _ellipse_mesh(a: float, b: float, h: float) -> MeshTri:
     # semi-axes (a,b), polygonal approximation
-    # scale polygon density with the inverse of the smaller semi-axis
-    N = max(120, int(120 * max(1.0, a / max(b, 1e-3))))
+    # polygon density chosen so boundary segments are ~h in length
+    circumference = math.pi * (3 * (a + b) - math.sqrt((3 * a + b) * (a + 3 * b)))
+    N = max(60, min(360, int(circumference / h)))
     pts = [[a * math.cos(2 * math.pi * k / N), b * math.sin(2 * math.pi * k / N)]
            for k in range(N)]
     def build(geom, h):
@@ -609,6 +610,11 @@ def solve_eigs(mesh: MeshTri, n_eig: int, bc: str) -> tuple[np.ndarray, np.ndarr
         mask = np.zeros(allN, dtype=bool); mask[Dset] = True
         Didx = np.where(mask)[0]
         Iidx = np.where(~mask)[0]
+        if Didx.size > 1500:
+            # dense Schur matrix would be too large; skip Steklov for this mesh
+            raise RuntimeError(
+                f"Steklov skipped: {Didx.size} boundary DoFs exceed threshold 1500"
+            )
         Kcsr = K.tocsr()
         K_II = Kcsr[Iidx][:, Iidx].tocsc()
         K_IB = Kcsr[Iidx][:, Didx].tocsc()
@@ -686,14 +692,9 @@ def plot_eigenfunction(mesh: MeshTri, basis: Basis, u: np.ndarray, path: Path,
     x = mesh.p[0]
     y = mesh.p[1]
     tri = mtri.Triangulation(x, y, mesh.t.T)
-    fig, ax = plt.subplots(figsize=(4, 4), dpi=120)
+    fig, ax = plt.subplots(figsize=(2.8, 2.8), dpi=110)
     norm = TwoSlopeNorm(vcenter=0.0, vmin=-amax, vmax=amax)
     tpc = ax.tripcolor(tri, u_vert, shading="gouraud", cmap="RdBu_r", norm=norm)
-    # zero contour
-    try:
-        ax.tricontour(tri, u_vert, levels=[0.0], colors="k", linewidths=0.4, alpha=0.6)
-    except Exception:
-        pass
     ax.set_aspect("equal")
     ax.set_xticks([]); ax.set_yticks([])
     for s in ax.spines.values():
@@ -701,7 +702,7 @@ def plot_eigenfunction(mesh: MeshTri, basis: Basis, u: np.ndarray, path: Path,
     if title:
         ax.set_title(title, fontsize=9)
     fig.tight_layout(pad=0.1)
-    fig.savefig(path, dpi=160, bbox_inches="tight", pad_inches=0.02)
+    fig.savefig(path, dpi=110, bbox_inches="tight", pad_inches=0.02)
     plt.close(fig)
 
 
@@ -723,6 +724,8 @@ class DomainSpec:
     analytical: Callable[[int], list[float]] | None = None  # Dirichlet, sorted λ₁..λ_n
     analytical_steklov: Callable[[int], list[float]] | None = None  # Steklov, sorted
     reference: str = ""
+    family_id: str | None = None  # None = standalone; otherwise member of a FamilySpec
+    family_param: float | int | None = None  # parameter value within the family
 
 
 def analytic_square(n: int) -> list[float]:
@@ -818,7 +821,7 @@ DOMAINS: list[DomainSpec] = [
         description_en="[0,1] × [0,1]. Separable; every eigenvalue is π²(m²+n²) with m,n ≥ 1.",
         description_ja="[0,1] × [0,1]。変数分離可能で、固有値は π²(m²+n²)（m, n ≥ 1）で尽くされる。",
         category="basic",
-        builder=lambda: dom_square(0.025),
+        builder=lambda: dom_square(0.04),
         n_eig=10,
         analytical=analytic_square,
         reference="Courant–Hilbert (1953), §V.5",
@@ -839,9 +842,9 @@ DOMAINS: list[DomainSpec] = [
         name_en="Unit disk",
         name_ja="単位円板",
         description_en="Radius 1. Eigenvalues are squares of zeros of Bessel J_m.",
-        description_ja="半径 1 の円板。固有値は第1種ベッセル関数 J_m の零点の二乗で与えられる。",
+        description_ja="半径 1 の円板。固有値は第 1 種の Bessel 関数 J_m の零点の二乗で与えられる。",
         category="basic",
-        builder=lambda: dom_disk(0.025),
+        builder=lambda: dom_disk(0.04),
         n_eig=10,
         analytical=analytic_disk,
         analytical_steklov=analytic_steklov_disk,
@@ -852,9 +855,9 @@ DOMAINS: list[DomainSpec] = [
         name_en="Equilateral triangle",
         name_ja="正三角形",
         description_en="Side 1. Lamé (1833) derived the closed-form spectrum λ_{m,n} = (16π²/9)(m² + n² + mn).",
-        description_ja="一辺 1。ラメ (1833) が閉形式解 λ_{m,n} = (16π²/9)(m² + n² + mn) を導いた。",
+        description_ja="一辺 1。Lamé (1833) が閉形式解 λ_{m,n} = (16π²/9)(m² + n² + mn) を導いた。",
         category="polygon",
-        builder=lambda: dom_equilateral_triangle(0.025),
+        builder=lambda: dom_equilateral_triangle(0.04),
         n_eig=10,
         analytical=analytic_equilateral_triangle,
         reference="Lamé (1833); McCartin, SIAM Rev. 45 (2003).",
@@ -866,7 +869,7 @@ DOMAINS: list[DomainSpec] = [
         description_en="Legs of length 1. Half-square: Dirichlet spectrum is π²(m²+n²) with m > n ≥ 1.",
         description_ja="脚の長さ 1。単位正方形の半分として得られ、固有値は π²(m²+n²)（m > n ≥ 1）。",
         category="polygon",
-        builder=lambda: dom_right_isoceles_triangle(0.02),
+        builder=lambda: dom_right_isoceles_triangle(0.035),
         n_eig=10,
         analytical=analytic_right_isoceles,
     ),
@@ -875,9 +878,9 @@ DOMAINS: list[DomainSpec] = [
         name_en="30-60-90 triangle",
         name_ja="30°-60°-90° 三角形",
         description_en="Short leg 1, long leg √3. A tiling (Lamé) triangle with fully integrable billiard.",
-        description_ja="短い脚 1、長い脚 √3。平面を敷き詰める（ラメ型）三角形で、ビリヤードは可積分。",
+        description_ja="短い脚 1、長い脚 √3。平面を敷き詰める(Lamé 型)三角形で、ビリヤードは可積分。",
         category="polygon",
-        builder=lambda: dom_30_60_90_triangle(0.02),
+        builder=lambda: dom_30_60_90_triangle(0.035),
         n_eig=10,
         reference="Integrable triangle (30-60-90 is one of the three Lamé triangles).",
     ),
@@ -918,16 +921,16 @@ DOMAINS: list[DomainSpec] = [
         description_en="[-1,1]² with the lower-right quadrant removed. The eigenfunctions have an r^{2/3} corner singularity at the re-entrant corner (Fox–Henrici–Moler 1967).",
         description_ja="[-1,1]² から右下の象限を除いた領域。凹角 (re-entrant corner) において固有関数は r^{2/3} 型の特異性をもつ（Fox–Henrici–Moler 1967）。",
         category="non-convex",
-        builder=lambda: dom_l_shape(0.025),
+        builder=lambda: dom_l_shape(0.04),
         n_eig=8,
         reference="Fox–Henrici–Moler, SIAM J. Numer. Anal. 4 (1967).",
     ),
     DomainSpec(
         id="stadium",
         name_en="Bunimovich stadium",
-        name_ja="ブニモヴィッチ・スタジアム",
+        name_ja="Bunimovich スタジアム",
         description_en="Rectangle [-1,1]² capped by unit semicircles. The classical billiard is ergodic and K-mixing (Bunimovich 1974); the quantum level-spacing statistics agree with GOE random matrix theory (Bohigas–Giannoni–Schmit conjecture).",
-        description_ja="長方形 [-1,1]² の両端に半径 1 の半円を付加した領域。古典ビリヤードはエルゴード的かつ K 型混合 (Bunimovich 1974)；量子スペクトルの準位間隔は GOE の予想 (Bohigas–Giannoni–Schmit) に従う。",
+        description_ja="長方形 [-1,1]² の両端に半径 1 の半円を付加した領域。古典ビリヤードは ergodic かつ K-mixing (Bunimovich 1974)；量子 spectrum の level-spacingは GOE の予想 (Bohigas–Giannoni–Schmit) に従う。",
         category="chaotic",
         builder=lambda: dom_stadium(0.03),
         n_eig=10,
@@ -936,9 +939,9 @@ DOMAINS: list[DomainSpec] = [
     DomainSpec(
         id="sinai-billiard",
         name_en="Sinai billiard",
-        name_ja="シナイ・ビリヤード",
+        name_ja="Sinai ビリヤード",
         description_en="Square [-1,1]² with a central disk of radius 0.3 removed. The classical billiard is a K-system (Sinai 1970); a model for the Boltzmann–Gibbs ergodic hypothesis.",
-        description_ja="[-1,1]² から中心の半径 0.3 の円板を除いた領域。古典ビリヤードは K 系 (Sinai 1970) で、Boltzmann–Gibbs のエルゴード仮説に対するモデル。",
+        description_ja="[-1,1]² から中心の半径 0.3 の円板を除いた領域。古典ビリヤードは K 系 (Sinai 1970) で、Boltzmann–Gibbs の ergodic hypothesisに対するモデル。",
         category="chaotic",
         builder=lambda: dom_sinai(0.03),
         n_eig=10,
@@ -947,11 +950,11 @@ DOMAINS: list[DomainSpec] = [
     DomainSpec(
         id="cardioid",
         name_en="Cardioid",
-        name_ja="カージオイド",
+        name_ja="Cardioid",
         description_en="r = 1 − cos θ. The classical billiard is ergodic, mixing and K (Markarian 1993); extensively studied in quantum chaos (Robnik 1983; Bäcker–Steiner 1998).",
-        description_ja="r = 1 − cos θ。古典ビリヤードはエルゴード的で混合的、かつ K 系 (Markarian 1993)；量子カオスの文脈で詳しく調べられている (Robnik 1983; Bäcker–Steiner 1998)。",
+        description_ja="r = 1 − cos θ。古典ビリヤードは ergodic, mixing, かつ K 系 (Markarian 1993)；quantum chaos の文脈で詳しく調べられている (Robnik 1983; Bäcker–Steiner 1998)。",
         category="chaotic",
-        builder=lambda: dom_cardioid(0.02),
+        builder=lambda: dom_cardioid(0.04),
         n_eig=10,
         reference="Robnik, J. Phys. A 16 (1983); Bäcker–Steiner (1998).",
     ),
@@ -960,7 +963,7 @@ DOMAINS: list[DomainSpec] = [
         name_en="Annulus (r=0.5)",
         name_ja="円環 (r=0.5)",
         description_en="{0.5 < r < 1}. Separable; eigenvalues determined by cross-products of Bessel functions J_m, Y_m.",
-        description_ja="{0.5 < r < 1}。変数分離可能で、固有値はベッセル関数 J_m, Y_m のクロス積の零点で与えられる。",
+        description_ja="{0.5 < r < 1}。変数分離可能で、固有値は Bessel 関数 J_m, Y_m のクロス積の零点で与えられる。",
         category="non-convex",
         builder=lambda: dom_annulus(0.5, 0.025),
         n_eig=8,
@@ -970,7 +973,7 @@ DOMAINS: list[DomainSpec] = [
         name_en="Ellipse 2:1",
         name_ja="楕円 2:1",
         description_en="Semi-axes (1, 0.5). Separable in elliptic coordinates; eigenfunctions are products of Mathieu functions.",
-        description_ja="半軸 (1, 0.5)。楕円座標で変数分離可能で、固有関数はマシュー関数の積で表される。",
+        description_ja="半軸 (1, 0.5)。楕円座標で変数分離可能で、固有関数は Mathieu 関数の積で表される。",
         category="curved",
         builder=lambda: dom_ellipse_2_1(0.02),
         n_eig=8,
@@ -1087,7 +1090,7 @@ DOMAINS: list[DomainSpec] = [
         description_en="Unit disk with an interior disk of radius 0.25 centred at (0.4, 0) removed. Symmetry-broken variant of the annulus.",
         description_ja="単位円板から、中心 (0.4, 0)、半径 0.25 の内側円板を除いた領域。同心円環の対称性を破った変種。",
         category="non-convex",
-        builder=lambda: dom_non_concentric_annulus(1.0, 0.25, (0.4, 0.0), 0.022),
+        builder=lambda: dom_non_concentric_annulus(1.0, 0.25, (0.4, 0.0), 0.04),
         n_eig=10,
     ),
     # --- dumbbell (collapsing connector) ---
@@ -1098,7 +1101,7 @@ DOMAINS: list[DomainSpec] = [
         description_en="Two unit disks centred at (±1.3, 0) connected by a rectangular neck of half-width 0.25. Classical example for the appearance of near-degenerate eigenpairs as the neck narrows (Arrieta–Hale–Han 1991; Jimbo 1989).",
         description_ja="中心 (±1.3, 0) の単位円板 2 つを、幅 0.5 の長方形の頸部で連結した領域。頸部を細くする極限で固有値がほぼ縮退する古典例 (Arrieta–Hale–Han 1991; Jimbo 1989)。",
         category="collapsing",
-        builder=lambda: dom_dumbbell(1.0, 2.6, 0.25, 0.05),
+        builder=lambda: dom_dumbbell(1.0, 2.6, 0.25, 0.07),
         n_eig=10,
         reference="Jimbo, J. Diff. Eq. 77 (1989); Arrieta, J. Diff. Eq. 118 (1995).",
     ),
@@ -1110,7 +1113,7 @@ DOMAINS: list[DomainSpec] = [
         description_en="Intersection of three unit disks centred at the vertices of an equilateral triangle of side 1; a curve of constant width (Reuleaux 1875).",
         description_ja="一辺 1 の正三角形の各頂点を中心とする単位円板 3 つの共通部分。定幅図形 (Reuleaux 1875)。",
         category="curved",
-        builder=lambda: dom_reuleaux_triangle(0.015),
+        builder=lambda: dom_reuleaux_triangle(0.035),
         n_eig=10,
     ),
     # --- Robnik family (integrable → chaotic) ---
@@ -1119,7 +1122,7 @@ DOMAINS: list[DomainSpec] = [
         name_en="Robnik billiard (ε=0.15)",
         name_ja="Robnik ビリヤード (ε=0.15)",
         description_en="Image of the unit disk under the conformal map z = w + εw² with ε = 0.15. A smooth one-parameter deformation of the disk introduced by Robnik (1983); classical flow is soft-chaotic with mixed phase space.",
-        description_ja="共形写像 z = w + εw² (ε = 0.15) による単位円板の像。Robnik (1983) が導入した円板の滑らかな 1-パラメータ変形族。古典フローは混合相空間をもつ弱カオス。",
+        description_ja="共形写像 z = w + εw² (ε = 0.15) による単位円板の像。Robnik (1983) が導入した円板の滑らかな 1-パラメータ変形族。古典流は mixed phase space をもつ soft-chaotic。",
         category="chaotic",
         builder=lambda: dom_robnik(0.15, 0.02),
         n_eig=10,
@@ -1130,7 +1133,7 @@ DOMAINS: list[DomainSpec] = [
         name_en="Robnik billiard (ε=0.3)",
         name_ja="Robnik ビリヤード (ε=0.3)",
         description_en="Image of the unit disk under z = w + εw² with ε = 0.3. The classical billiard is chaotic (Markarian) but not yet limiting to the cardioid (ε = 1/2).",
-        description_ja="z = w + εw² (ε = 0.3) による単位円板の像。古典的にはカオス的 (Markarian) であるが、ε = 1/2 で得られるカージオイドにはまだ達していない。",
+        description_ja="z = w + εw² (ε = 0.3) による単位円板の像。古典流は chaotic (Markarian) であるが、ε = 1/2 で得られる Cardioidにはまだ達していない。",
         category="chaotic",
         builder=lambda: dom_robnik(0.3, 0.02),
         n_eig=10,
@@ -1165,7 +1168,7 @@ DOMAINS: list[DomainSpec] = [
         description_en="Isoceles trapezoid with parallel bases 2 and 1, height 1.",
         description_ja="平行な底辺 2 と 1、高さ 1 の等脚台形。",
         category="polygon",
-        builder=lambda: dom_trapezoid(0.025),
+        builder=lambda: dom_trapezoid(0.04),
         n_eig=10,
     ),
     DomainSpec(
@@ -1192,6 +1195,375 @@ DOMAINS: list[DomainSpec] = [
 
 
 # ---------------------------------------------------------------------------
+# Parametric families
+# ---------------------------------------------------------------------------
+#
+# A FamilySpec groups a one-parameter family of domains. At FEM time each
+# parameter value is just another DomainSpec with the same id-format
+# (see member_id_fmt). The index.json lists families alongside individual
+# domains; the UI renders a family as a single card with a slider.
+
+
+@dataclass
+class FamilySpec:
+    id: str
+    name_en: str
+    name_ja: str
+    description_en: str
+    description_ja: str
+    category: str
+    param: str                # short parameter label, e.g. "n", "ε", "h"
+    param_ja: str
+    param_values: list       # list of parameter values in the family
+    member_id_fmt: str        # python format string, gets `{p}` (or {n}/{idx})
+    member_name_en_fmt: str
+    member_name_ja_fmt: str
+    builder_for: Callable[[object], Callable[[], MeshTri]]  # param -> builder
+    n_eig: int = 6
+    reference: str = ""
+
+
+def _fmt_param(p) -> str:
+    if isinstance(p, int):
+        return str(p)
+    if isinstance(p, float):
+        if abs(p - round(p)) < 1e-9:
+            return str(int(round(p)))
+        return f"{p:g}"
+    return str(p)
+
+
+def _family_to_domain_specs(fam: FamilySpec) -> list[DomainSpec]:
+    specs: list[DomainSpec] = []
+    for p in fam.param_values:
+        ps = _fmt_param(p)
+        specs.append(DomainSpec(
+            id=fam.member_id_fmt.format(p=ps),
+            name_en=fam.member_name_en_fmt.format(p=ps),
+            name_ja=fam.member_name_ja_fmt.format(p=ps),
+            description_en=fam.description_en,
+            description_ja=fam.description_ja,
+            category=fam.category,
+            builder=fam.builder_for(p),
+            n_eig=fam.n_eig,
+            reference=fam.reference,
+            family_id=fam.id,
+            family_param=p,
+        ))
+    return specs
+
+
+# ---- builders for family members ------------------------------------------
+
+def _dom_rectangle_ar(r: float) -> Callable[[], MeshTri]:
+    def build(geom, h):
+        geom.add_polygon([[0, 0], [r, 0], [r, 1], [0, 1]], mesh_size=h)
+    # keep Steklov boundary DoFs manageable on very long rectangles.
+    if r >= 15:   mesh_size = 0.10
+    elif r >= 7:  mesh_size = 0.07
+    else:         mesh_size = 0.05
+    return lambda: _mesh_from_pygmsh(build, mesh_size)
+
+
+def _dom_isotri(apex_deg: float) -> Callable[[], MeshTri]:
+    apex = math.radians(apex_deg)
+    height = 1.0 / (2.0 * math.tan(apex / 2.0))
+    mesh_size = max(0.015, min(0.045, height / 6))
+    def build(geom, h):
+        geom.add_polygon([[0, 0], [1, 0], [0.5, height]], mesh_size=h)
+    return lambda: _mesh_from_pygmsh(build, mesh_size)
+
+
+def _dom_rhombus_ang(angle_deg: float) -> Callable[[], MeshTri]:
+    mesh_size = 0.03 if angle_deg < 30 else 0.04
+    return lambda: dom_rhombus(angle_deg, mesh_size)
+
+
+def _dom_annulus_rin(r_in: float) -> Callable[[], MeshTri]:
+    return lambda: dom_annulus(r_in, 0.045)
+
+
+def _dom_sector_a(a: float) -> Callable[[], MeshTri]:
+    return lambda: dom_sector(a, 0.04)
+
+
+def _dom_pacman_open(open_angle: float) -> Callable[[], MeshTri]:
+    return lambda: dom_pacman(open_angle, 0.04)
+
+
+def _dom_robnik_eps(eps: float) -> Callable[[], MeshTri]:
+    return lambda: dom_robnik(eps, 0.04)
+
+
+def _dom_thin_tri_h(height: float) -> Callable[[], MeshTri]:
+    h_mesh = max(0.012, min(0.04, height / 3))
+    return lambda: dom_thin_triangle(h_mesh, height)
+
+
+def _dom_dumbbell_neck(neck: float) -> Callable[[], MeshTri]:
+    return lambda: dom_dumbbell(1.0, 2.6, neck, 0.07)
+
+
+def _dom_sinai_r(r_in: float) -> Callable[[], MeshTri]:
+    def make():
+        def build(geom, h):
+            outer = geom.add_polygon(
+                [[-1, -1], [1, -1], [1, 1], [-1, 1]], mesh_size=h, make_surface=False,
+            )
+            inner = geom.add_circle([0, 0], r_in, mesh_size=h,
+                                    num_sections=32, make_surface=False)
+            geom.add_plane_surface(outer.curve_loop, holes=[inner.curve_loop])
+        return _mesh_from_pygmsh(build, 0.05)
+    return make
+
+
+def _dom_stadium_a(a: float) -> Callable[[], MeshTri]:
+    # Bunimovich-family stadium with half-length a (radius 1 caps).
+    def make():
+        def build(geom, h):
+            p0 = geom.add_point([-a, -1.0], mesh_size=h)
+            p1 = geom.add_point([ a, -1.0], mesh_size=h)
+            cR = geom.add_point([ a,  0.0], mesh_size=h)
+            p2 = geom.add_point([ a,  1.0], mesh_size=h)
+            p3 = geom.add_point([-a,  1.0], mesh_size=h)
+            cL = geom.add_point([-a,  0.0], mesh_size=h)
+            l1 = geom.add_line(p0, p1)
+            arcR = geom.add_circle_arc(p1, cR, p2)
+            l2 = geom.add_line(p2, p3)
+            arcL = geom.add_circle_arc(p3, cL, p0)
+            loop = geom.add_curve_loop([l1, arcR, l2, arcL])
+            geom.add_plane_surface(loop)
+        return _mesh_from_pygmsh(build, 0.05)
+    return make
+
+
+def _dom_ellipse_ar(e: float) -> Callable[[], MeshTri]:
+    # semi-axes (1, 1/e)
+    return lambda: _ellipse_mesh(1.0, 1.0 / e, max(0.02, 0.04 / math.sqrt(e)))
+
+
+# ---- family registry -------------------------------------------------------
+
+FAMILIES: list[FamilySpec] = [
+    FamilySpec(
+        id="regpoly",
+        name_en="Regular n-gon",
+        name_ja="正 n 角形",
+        description_en="Regular n-gon inscribed in the unit circle. As n → ∞, the spectrum converges to that of the unit disk.",
+        description_ja="単位円に内接する正 n 角形。n → ∞ で固有値は単位円板の固有値に収束する。",
+        category="polygon",
+        param="n", param_ja="n",
+        param_values=list(range(3, 71)),
+        member_id_fmt="regpoly-{p}",
+        member_name_en_fmt="Regular {p}-gon",
+        member_name_ja_fmt="正 {p} 角形",
+        builder_for=lambda n: (lambda nn=n: dom_regular_polygon(int(nn), 0.05)),
+    ),
+    FamilySpec(
+        id="rect",
+        name_en="Rectangle (aspect ratio r)",
+        name_ja="長方形 (辺比 r)",
+        description_en="Rectangle [0, r] × [0, 1]. Separable spectrum λ_{m,n} = π²((m/r)² + n²).",
+        description_ja="長方形 [0, r] × [0, 1]。変数分離可能で λ_{m,n} = π²((m/r)² + n²)。",
+        category="curved",  # kept with ellipse-type curved shapes
+        param="r", param_ja="r",
+        param_values=[1.0, 1.2, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10.0, 15.0, 25.0],
+        member_id_fmt="rect-{p}",
+        member_name_en_fmt="Rectangle r={p}",
+        member_name_ja_fmt="長方形 r={p}",
+        builder_for=lambda r: _dom_rectangle_ar(float(r)),
+    ),
+    FamilySpec(
+        id="ellipse",
+        name_en="Ellipse (aspect ratio e)",
+        name_ja="楕円 (軸比 e)",
+        description_en="Ellipse with semi-axes (1, 1/e). Eigenfunctions are products of angular and radial Mathieu functions.",
+        description_ja="半軸 (1, 1/e) の楕円。固有関数は角度および動径 Mathieu 関数の積。",
+        category="curved",
+        param="e", param_ja="e",
+        param_values=[1.2, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10.0, 15.0, 25.0],
+        member_id_fmt="ellipse-{p}",
+        member_name_en_fmt="Ellipse e={p}",
+        member_name_ja_fmt="楕円 e={p}",
+        builder_for=lambda e: _dom_ellipse_ar(float(e)),
+    ),
+    FamilySpec(
+        id="isotri",
+        name_en="Isoceles triangle (apex angle θ)",
+        name_ja="二等辺三角形 (頂角 θ)",
+        description_en="Isoceles triangle with base 1 and apex angle θ. At θ = 60° reduces to the equilateral triangle.",
+        description_ja="底辺 1、頂角 θ の二等辺三角形。θ = 60° で正三角形に一致。",
+        category="polygon",
+        param="θ (deg)", param_ja="θ (度)",
+        param_values=[10, 20, 30, 40, 50, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170],
+        member_id_fmt="isotri-{p}",
+        member_name_en_fmt="Isoceles triangle θ={p}°",
+        member_name_ja_fmt="二等辺三角形 θ={p}°",
+        builder_for=lambda a: _dom_isotri(float(a)),
+    ),
+    FamilySpec(
+        id="rhombus",
+        name_en="Rhombus (acute angle θ)",
+        name_ja="菱形 (鋭角 θ)",
+        description_en="Unit-side rhombus with acute interior angle θ. At θ = 90° reduces to a unit square.",
+        description_ja="一辺 1、鋭角 θ の菱形。θ = 90° で単位正方形に一致。",
+        category="polygon",
+        param="θ (deg)", param_ja="θ (度)",
+        param_values=[10, 20, 30, 40, 50, 60, 70, 80, 89],
+        member_id_fmt="rhombus-{p}",
+        member_name_en_fmt="Rhombus θ={p}°",
+        member_name_ja_fmt="菱形 θ={p}°",
+        builder_for=lambda a: _dom_rhombus_ang(float(a)),
+    ),
+    FamilySpec(
+        id="annulus",
+        name_en="Annulus (inner radius r)",
+        name_ja="円環 (内径 r)",
+        description_en="Concentric annulus { r < |x| < 1 }. Eigenvalues are determined by cross-products of Bessel functions J_m, Y_m.",
+        description_ja="同心円環 { r < |x| < 1 }。固有値は Bessel 関数 J_m, Y_m のクロス積の零点で与えられる。",
+        category="non-convex",
+        param="r", param_ja="r",
+        param_values=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+        member_id_fmt="annulus-{p}",
+        member_name_en_fmt="Annulus r={p}",
+        member_name_ja_fmt="円環 r={p}",
+        builder_for=lambda r: _dom_annulus_rin(float(r)),
+    ),
+    FamilySpec(
+        id="sector",
+        name_en="Circular sector (opening α)",
+        name_ja="扇形 (開き角 α)",
+        description_en="Unit disk sector of opening α. The eigenfunctions are J_{kπ/α}(√λ r) sin(kπθ/α).",
+        description_ja="半径 1、開き角 α の扇形。固有関数は J_{kπ/α}(√λ r) sin(kπθ/α)。",
+        category="sector",
+        param="α (rad)", param_ja="α (rad)",
+        param_values=[math.pi / 12, math.pi / 8, math.pi / 6, math.pi / 4,
+                      math.pi / 3, 2 * math.pi / 5, math.pi / 2, 2 * math.pi / 3,
+                      3 * math.pi / 4, math.pi, 5 * math.pi / 4, 3 * math.pi / 2],
+        member_id_fmt="sector-{p}",
+        member_name_en_fmt="Sector α={p}",
+        member_name_ja_fmt="扇形 α={p}",
+        builder_for=lambda a: _dom_sector_a(float(a)),
+    ),
+    FamilySpec(
+        id="pacman",
+        name_en="Pac-Man (opening θ removed)",
+        name_ja="Pac-Man (開口 θ 除去)",
+        description_en="Unit disk with a sector of opening angle θ removed; the re-entrant angle at the origin is 2π − θ, generating an r^{π/(2π−θ)} corner singularity.",
+        description_ja="単位円板から開き角 θ の扇形を除いた領域。原点での凹角は 2π − θ で、r^{π/(2π−θ)} 型特異性が生じる。",
+        category="non-convex",
+        param="θ (rad)", param_ja="θ (rad)",
+        param_values=[math.pi / 6, math.pi / 4, math.pi / 3, math.pi / 2,
+                      2 * math.pi / 3, math.pi, 4 * math.pi / 3, 5 * math.pi / 3],
+        member_id_fmt="pacman-{p}",
+        member_name_en_fmt="Pac-Man θ={p}",
+        member_name_ja_fmt="Pac-Man θ={p}",
+        builder_for=lambda a: _dom_pacman_open(float(a)),
+    ),
+    FamilySpec(
+        id="robnik",
+        name_en="Robnik billiard (ε)",
+        name_ja="Robnik ビリヤード (ε)",
+        description_en="Image of the unit disk under the conformal map z = w + εw². Interpolates between the integrable disk (ε = 0) and increasingly chaotic billiards; ε = 1/2 yields the cardioid.",
+        description_ja="共形写像 z = w + εw² による単位円板の像。ε = 0 の可積分な円板から ε = 1/2 で Cardioid に至る 1 パラメータ族。",
+        category="chaotic",
+        param="ε", param_ja="ε",
+        param_values=[0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45],
+        member_id_fmt="robnik-{p}",
+        member_name_en_fmt="Robnik ε={p}",
+        member_name_ja_fmt="Robnik ε={p}",
+        builder_for=lambda e: _dom_robnik_eps(float(e)),
+        reference="Robnik, J. Phys. A 16 (1983).",
+    ),
+    FamilySpec(
+        id="thintri",
+        name_en="Isoceles triangle (height h)",
+        name_ja="二等辺三角形 (高さ h)",
+        description_en="Isoceles triangle with base 1 and height h. The limit h → 0 realises the thin-domain asymptotics λ ~ (const)/h² (Friedlander–Solomyak 2009).",
+        description_ja="底辺 1、高さ h の二等辺三角形。h → 0 の細領域極限では λ ~ (定数)/h² (Friedlander–Solomyak 2009)。",
+        category="collapsing",
+        param="h", param_ja="h",
+        param_values=[0.05, 0.1, 0.15, 0.2, 0.3, 0.5, 0.8, 1.0, 1.5, 2.0],
+        member_id_fmt="thintri-{p}",
+        member_name_en_fmt="Isoceles triangle h={p}",
+        member_name_ja_fmt="二等辺三角形 h={p}",
+        builder_for=lambda hh: _dom_thin_tri_h(float(hh)),
+        reference="Friedlander–Solomyak, ESAIM COCV (2009).",
+    ),
+    FamilySpec(
+        id="dumbbell",
+        name_en="Dumbbell (neck half-width n)",
+        name_ja="ダンベル (頸部幅 n)",
+        description_en="Two unit disks centred at (±1.3, 0) connected by a rectangular channel of half-width n. As n → 0 the first two Dirichlet eigenvalues become asymptotically degenerate (Jimbo 1989; Arrieta 1995).",
+        description_ja="中心 (±1.3, 0) の単位円板 2 つを、半幅 n の長方形頸部で連結した領域。n → 0 で第 1, 第 2 Dirichlet 固有値が漸近的に縮退する (Jimbo 1989; Arrieta 1995)。",
+        category="collapsing",
+        param="n", param_ja="n",
+        param_values=[0.05, 0.1, 0.15, 0.2, 0.3, 0.45, 0.6, 0.9],
+        member_id_fmt="dumbbell-{p}",
+        member_name_en_fmt="Dumbbell n={p}",
+        member_name_ja_fmt="ダンベル n={p}",
+        builder_for=lambda neck: _dom_dumbbell_neck(float(neck)),
+        reference="Jimbo, J. Diff. Eq. 77 (1989); Arrieta, J. Diff. Eq. 118 (1995).",
+    ),
+    FamilySpec(
+        id="sinai-family",
+        name_en="Sinai billiard (hole radius r)",
+        name_ja="Sinai ビリヤード (内半径 r)",
+        description_en="Square [-1,1]² with a central disk of radius r removed. The classical billiard is a K-system (Sinai 1970) for 0 < r < 1.",
+        description_ja="[-1,1]² から中心の半径 r の円板を除いた領域。0 < r < 1 で古典ビリヤードは K 系 (Sinai 1970)。",
+        category="chaotic",
+        param="r", param_ja="r",
+        param_values=[0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7],
+        member_id_fmt="sinai-{p}",
+        member_name_en_fmt="Sinai r={p}",
+        member_name_ja_fmt="Sinai r={p}",
+        builder_for=lambda r: _dom_sinai_r(float(r)),
+        reference="Sinai, Russ. Math. Surveys 25 (1970).",
+    ),
+    FamilySpec(
+        id="stadium-family",
+        name_en="Stadium (half-length a)",
+        name_ja="スタジアム (半長 a)",
+        description_en="Rectangle [-a, a] × [-1, 1] with unit semicircular caps. The classical billiard is ergodic and K-mixing for every a > 0 (Bunimovich 1974); a = 0 is the unit disk.",
+        description_ja="長方形 [-a, a] × [-1, 1] の両端に半径 1 の半円を付加した領域。a > 0 で古典ビリヤードは ergodic かつ K-mixing (Bunimovich 1974)；a = 0 は単位円板。",
+        category="chaotic",
+        param="a", param_ja="a",
+        param_values=[0.2, 0.5, 1.0, 1.5, 2.0, 3.0, 5.0],
+        member_id_fmt="stadium-{p}",
+        member_name_en_fmt="Stadium a={p}",
+        member_name_ja_fmt="スタジアム a={p}",
+        builder_for=lambda a: _dom_stadium_a(float(a)),
+        reference="Bunimovich, Commun. Math. Phys. 65 (1979).",
+    ),
+]
+
+
+# Extend DOMAINS with all family members. Existing individual specs that are
+# now part of a family (rectangle-2-1, ellipse-2-1/3-1/5-1, pentagon, hexagon,
+# heptagon, octagon, decagon, dodecagon, sector-60/30/120, pacman-90,
+# robnik-0.15/0.3, thin-triangle/-0.3/-0.05, sinai-billiard, stadium,
+# annulus-0.5, rhombus-30/60) are removed from the DOMAINS list below by
+# filtering on id.
+_REPLACED_IDS = {
+    "rectangle-2-1",
+    "ellipse-2-1", "ellipse-3-1", "ellipse-5-1",
+    "pentagon", "hexagon", "heptagon",
+    "octagon", "decagon", "dodecagon",
+    "sector-60", "sector-30", "sector-120",
+    "pacman-90",
+    "robnik-0.15", "robnik-0.3",
+    "thin-triangle", "thin-triangle-0.3", "thin-triangle-0.05",
+    "sinai-billiard",
+    "stadium",
+    "annulus-0.5",
+    "rhombus-30", "rhombus-60",
+}
+DOMAINS = [d for d in DOMAINS if d.id not in _REPLACED_IDS]
+for _fam in FAMILIES:
+    DOMAINS.extend(_family_to_domain_specs(_fam))
+
+
+# ---------------------------------------------------------------------------
 # Main driver
 # ---------------------------------------------------------------------------
 
@@ -1212,6 +1584,8 @@ def compute_domain(
         "descriptionJa": spec.description_ja,
         "category": spec.category,
         "reference": spec.reference,
+        "familyId": spec.family_id,
+        "familyParam": spec.family_param,
         "mesh": {
             "vertices": int(mesh.p.shape[1]),
             "triangles": int(mesh.t.shape[1]),
@@ -1222,7 +1596,11 @@ def compute_domain(
 
     for bc in boundaries:
         print(f"  solving {bc} ...", flush=True)
-        vals, vecs, basis = solve_eigs(mesh, spec.n_eig, bc)
+        try:
+            vals, vecs, basis = solve_eigs(mesh, spec.n_eig, bc)
+        except Exception as e:
+            print(f"    skipped {bc}: {e}", flush=True)
+            continue
         analytic = None
         source = None
         if bc == "dirichlet":
@@ -1242,7 +1620,7 @@ def compute_domain(
             lam_ex = float(analytic[k]) if (analytic is not None and k < len(analytic)) else None
             rel_err = (abs(lam - lam_ex) / lam_ex) if (lam_ex is not None and lam_ex > 1e-12) else None
 
-            img_path = OUT_IMG / f"{spec.id}_{bc}_{k + 1}.png"
+            img_path = OUT_IMG / f"{spec.id}_{bc}_{k + 1}.jpg"
             plot_eigenfunction(mesh, basis, vecs[:, k], img_path,
                                title=f"λ_{{{k+1}}} ≈ {lam:.4f}")
             modes.append({
@@ -1250,7 +1628,7 @@ def compute_domain(
                 "lambda": lam,
                 "lambdaExact": lam_ex,
                 "relErr": rel_err,
-                "image": f"/files/eigenfunctions/img/{spec.id}_{bc}_{k + 1}.png",
+                "image": f"/files/eigenfunctions/img/{spec.id}_{bc}_{k + 1}.jpg",
             })
 
         result["boundaries"][bc] = {"modes": modes}
@@ -1276,16 +1654,43 @@ def main(selection: list[str] | None = None) -> None:
             "descriptionJa": spec.description_ja,
             "category": spec.category,
             "reference": spec.reference,
+            "familyId": spec.family_id,
+            "familyParam": spec.family_param,
             "mesh": r["mesh"],
             "firstFew": {
                 bc: [m["lambda"] for m in r["boundaries"][bc]["modes"][:4]]
                 for bc in r["boundaries"]
             },
         })
+
+    individuals = [d for d in index if d["familyId"] is None]
+    family_entries = []
+    for fam in FAMILIES:
+        members_meta = [d for d in index if d["familyId"] == fam.id]
+        if not members_meta:
+            continue
+        family_entries.append({
+            "id": fam.id,
+            "nameEn": fam.name_en,
+            "nameJa": fam.name_ja,
+            "descriptionEn": fam.description_en,
+            "descriptionJa": fam.description_ja,
+            "category": fam.category,
+            "param": fam.param,
+            "paramJa": fam.param_ja,
+            "paramValues": list(fam.param_values),
+            "memberIds": [d["id"] for d in members_meta],
+            "reference": fam.reference,
+        })
+
     (OUT_DATA / "index.json").write_text(
-        json.dumps({"domains": index}, indent=2, ensure_ascii=False)
+        json.dumps({
+            "domains": index,  # kept for backwards compatibility
+            "individuals": individuals,
+            "families": family_entries,
+        }, indent=2, ensure_ascii=False)
     )
-    print(f"\nwrote {OUT_DATA/'index.json'}")
+    print(f"\nwrote {OUT_DATA/'index.json'} ({len(individuals)} individuals, {len(family_entries)} families, {len(index)} total domains)")
 
 
 if __name__ == "__main__":

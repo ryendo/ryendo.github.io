@@ -1,0 +1,202 @@
+{
+  "id": "sinai-0.6",
+  "nameEn": "Sinai r=0.6",
+  "nameJa": "Sinai r=0.6",
+  "descriptionEn": "Square [-1,1]² with a central disk of radius r removed. The classical billiard is a K-system (Sinai 1970) for 0 < r < 1.",
+  "descriptionJa": "[-1,1]² から中心の半径 r の円板を除いた領域。0 < r < 1 で古典ビリヤードは K 系 (Sinai 1970)。",
+  "category": "chaotic",
+  "reference": "Sinai, Russ. Math. Surveys 25 (1970).",
+  "familyId": "sinai-family",
+  "familyParam": 0.6,
+  "mesh": {
+    "vertices": 1794,
+    "triangles": 3332,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 34.3025191114656,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_dirichlet_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 34.63769494434711,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_dirichlet_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 34.63770261899489,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_dirichlet_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 35.00158257220345,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_dirichlet_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 56.00304043272588,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_dirichlet_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 58.706574313996335,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_dirichlet_6.jpg"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_neumann_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 1.2471866099841187,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_neumann_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 1.2471866188014262,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_neumann_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 3.6570543474915245,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_neumann_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 7.177060641548033,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_neumann_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 11.241051577348447,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_neumann_6.jpg"
+        }
+      ]
+    },
+    "robin": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 3.7184830009703536,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_robin_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 4.981652576817572,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_robin_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 4.981652583759258,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_robin_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 7.400112666195152,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_robin_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 11.275052701352271,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_robin_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 15.660875112521358,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_robin_6.jpg"
+        }
+      ]
+    },
+    "steklov": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_steklov_1.jpg"
+        },
+        {
+          "k": 2,
+          "lambda": 0.29157812239837055,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_steklov_2.jpg"
+        },
+        {
+          "k": 3,
+          "lambda": 0.2915781259904737,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_steklov_3.jpg"
+        },
+        {
+          "k": 4,
+          "lambda": 0.7669997000718936,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_steklov_4.jpg"
+        },
+        {
+          "k": 5,
+          "lambda": 1.4567800415621446,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_steklov_5.jpg"
+        },
+        {
+          "k": 6,
+          "lambda": 1.8113176818005963,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-0.6_steklov_6.jpg"
+        }
+      ]
+    }
+  }
+}
