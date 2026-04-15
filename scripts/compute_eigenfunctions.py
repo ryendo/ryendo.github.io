@@ -1097,18 +1097,7 @@ DOMAINS: list[DomainSpec] = [
         builder=lambda: dom_non_concentric_annulus(1.0, 0.25, (0.4, 0.0), 0.04),
         n_eig=10,
     ),
-    # --- dumbbell (collapsing connector) ---
-    DomainSpec(
-        id="dumbbell",
-        name_en="Dumbbell",
-        name_ja="ダンベル",
-        description_en="Two unit disks centred at (±1.3, 0) connected by a rectangular neck of half-width 0.25. Classical example for the appearance of near-degenerate eigenpairs as the neck narrows (Arrieta–Hale–Han 1991; Jimbo 1989).",
-        description_ja="中心 (±1.3, 0) の単位円板 2 つを、幅 0.5 の長方形の頸部で連結した領域。頸部を細くする極限で固有値がほぼ縮退する古典例 (Arrieta–Hale–Han 1991; Jimbo 1989)。",
-        category="collapsing",
-        builder=lambda: dom_dumbbell(1.0, 2.6, 0.25, 0.07),
-        n_eig=10,
-        reference="Jimbo, J. Diff. Eq. 77 (1989); Arrieta, J. Diff. Eq. 118 (1995).",
-    ),
+    # --- (individual dumbbell removed; see the `dumbbell` family below) ---
     # --- Reuleaux triangle (constant width) ---
     DomainSpec(
         id="reuleaux-triangle",

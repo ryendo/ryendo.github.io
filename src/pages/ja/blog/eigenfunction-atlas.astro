@@ -122,10 +122,19 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
         <div class="eig-bc-row">
           <label><input type="radio" name="eig-bc" value="dirichlet" checked /> Dirichlet</label>
           <label><input type="radio" name="eig-bc" value="neumann" /> Neumann</label>
-          <label><input type="radio" name="eig-bc" value="robin" /> Robin (α=1)</label>
+          <label><input type="radio" name="eig-bc" value="robin" /> Robin</label>
           <label><input type="radio" name="eig-bc" value="steklov" /> Steklov</label>
           <label><input type="radio" name="eig-bc" value="all" /> 全て</label>
         </div>
+
+        <nav class="eig-jump" aria-label="領域にジャンプ">
+          {individuals.map((d: any) => (
+            <a href={`#${d.id}`} data-jump={d.id}>{d.nameJa}</a>
+          ))}
+          {families.map((f: any) => (
+            <a href={`#${f.id}`} data-jump={f.id}>{f.nameJa}</a>
+          ))}
+        </nav>
       </div>
 
       {/* INDIVIDUAL DOMAINS */}
@@ -524,14 +533,19 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
   const updateCount = (visible) => {
     if (countEl) countEl.textContent = `${visible} / ${allCards.length} 項目`;
   };
+  const jumpLinks = Array.from(document.querySelectorAll(".eig-jump a"));
   const applySearch = (q) => {
     const needle = q.trim().toLowerCase();
     let visible = 0;
+    const visibleIds = new Set();
     allCards.forEach((c) => {
       const hay = c.dataset.haystack || "";
       const match = !needle || hay.includes(needle);
       c.style.display = match ? "" : "none";
-      if (match) visible++;
+      if (match) { visible++; visibleIds.add(c.id); }
+    });
+    jumpLinks.forEach((a) => {
+      a.style.display = visibleIds.has(a.dataset.jump) ? "" : "none";
     });
     document.querySelectorAll(".eig-category").forEach((sec) => {
       const anyVisible = Array.from(sec.querySelectorAll(".eig-domain")).some((c) => c.style.display !== "none");
@@ -563,6 +577,19 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
   .eig-search-row input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(9,105,218,0.15); }
   .eig-bc-row { margin-top: 0.55em; font-size: 0.9em; display: flex; gap: 1.1em; align-items: center; flex-wrap: wrap; }
   .eig-bc-row label { cursor: pointer; }
+
+  .eig-jump {
+    margin-top: 0.6em;
+    padding-top: 0.55em;
+    border-top: 1px solid #e8eaed;
+    font-size: 0.82em;
+    display: flex; flex-wrap: wrap;
+    gap: 0.25em 0.8em;
+    max-height: 8.4em;
+    overflow-y: auto;
+  }
+  .eig-jump a { color: #444; text-decoration: none; white-space: nowrap; }
+  .eig-jump a:hover { color: var(--accent); text-decoration: underline; }
 
   .eig-category { margin-top: 2em; }
   .eig-domain { margin: 1.2em 0 2.2em; padding: 1em 1.2em; border: 1px solid #e2e2e2; border-radius: 6px; background: #fcfcfc; }
