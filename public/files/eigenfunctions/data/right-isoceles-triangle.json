@@ -1,0 +1,164 @@
+{
+  "id": "right-isoceles-triangle",
+  "nameEn": "Right isoceles triangle",
+  "nameJa": "直角二等辺三角形",
+  "descriptionEn": "Legs of length 1. Half-square: Dirichlet spectrum is π²(m²+n²) with m > n ≥ 1.",
+  "descriptionJa": "脚の長さ 1。単位正方形の半分として得られ、固有値は π²(m²+n²)（m > n ≥ 1）。",
+  "category": "polygon",
+  "reference": "",
+  "mesh": {
+    "vertices": 1557,
+    "triangles": 2941,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 49.34803619631555,
+          "lambdaExact": 49.34802200544679,
+          "relErr": 2.875671238110686e-07,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 98.69615757051668,
+          "lambdaExact": 98.69604401089359,
+          "relErr": 1.1505995425266265e-06,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 128.3051059119716,
+          "lambdaExact": 128.30485721416164,
+          "relErr": 1.938335113346992e-06,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 167.7838293322504,
+          "lambdaExact": 167.7832748185191,
+          "relErr": 3.3049404472293386e-06,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 197.39299104098174,
+          "lambdaExact": 197.39208802178717,
+          "relErr": 4.5747486822635575e-06,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 246.74188214361675,
+          "lambdaExact": 246.74011002723395,
+          "relErr": 7.18211717827366e-06,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 256.6117123123369,
+          "lambdaExact": 256.6097144283233,
+          "relErr": 7.785691270823902e-06,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 286.2212928882958,
+          "lambdaExact": 286.21852763159137,
+          "relErr": 9.661347667873335e-06,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 335.5709611202096,
+          "lambdaExact": 335.5665496370382,
+          "relErr": 1.314637342776607e-05,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 365.1810855621111,
+          "lambdaExact": 365.17536284030626,
+          "relErr": 1.5671160727598907e-05,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 9.869604513212213,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 19.73920969744333,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 39.478424766206594,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 49.34803604094982,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 78.95689268457758,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 88.82652089280518,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 98.69615558523314,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 128.30510390279193,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 157.91413094362792,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/right-isoceles-triangle_neumann_10.png"
+        }
+      ]
+    }
+  }
+}

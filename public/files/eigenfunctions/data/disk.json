@@ -1,0 +1,164 @@
+{
+  "id": "disk",
+  "nameEn": "Unit disk",
+  "nameJa": "単位円板",
+  "descriptionEn": "Radius 1. Eigenvalues are squares of zeros of Bessel J_m.",
+  "descriptionJa": "半径 1 の円板。固有値は第1種ベッセル関数 J_m の零点の二乗で与えられる。",
+  "category": "basic",
+  "reference": "Courant–Hilbert (1953), §V.5",
+  "mesh": {
+    "vertices": 6202,
+    "triangles": 12146,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 5.783770421984682,
+          "lambdaExact": 5.783185962946785,
+          "relErr": 0.00010106177488361134,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 14.683455131043383,
+          "lambdaExact": 14.681970642123895,
+          "relErr": 0.00010110965044627395,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 14.683455272842556,
+          "lambdaExact": 14.681970642123895,
+          "relErr": 0.00010111930849400803,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 26.37728667565356,
+          "lambdaExact": 26.374616427163392,
+          "relErr": 0.00010124312129972633,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 26.377286731375552,
+          "lambdaExact": 26.374616427163392,
+          "relErr": 0.00010124523401255881,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 30.474349621295268,
+          "lambdaExact": 30.471262343662087,
+          "relErr": 0.00010131768084833926,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 40.71059698545507,
+          "lambdaExact": 40.70646581820033,
+          "relErr": 0.00010148675822634885,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 40.71059806190956,
+          "lambdaExact": 40.70646581820033,
+          "relErr": 0.00010151320253848887,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 49.22346279283893,
+          "lambdaExact": 49.2184563216946,
+          "relErr": 0.00010171938574433083,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 49.223463453033695,
+          "lambdaExact": 49.2184563216946,
+          "relErr": 0.00010173279930529908,
+          "image": "/files/eigenfunctions/img/disk_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 3.390298103001171,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 3.390298103010122,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 9.32930012272844,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 9.329300122949036,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 14.683445509230017,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 17.651762421077613,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 17.65176255377578,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 28.27921742480619,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 28.279217439495234,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/disk_neumann_10.png"
+        }
+      ]
+    }
+  }
+}

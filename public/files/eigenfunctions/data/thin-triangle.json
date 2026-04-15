@@ -1,0 +1,108 @@
+{
+  "id": "thin-triangle",
+  "nameEn": "Thin isoceles triangle (h=0.15)",
+  "nameJa": "細長い二等辺三角形 (h=0.15)",
+  "descriptionEn": "Base 1, height 0.15. Illustrates thin-domain asymptotics: the first eigenfunction concentrates along the ridge; the spectrum is governed by a 1D Schrödinger operator with potential 1/h(x)² (Friedlander–Solomyak 2009; Freitas–Krejčiřík 2008).",
+  "descriptionJa": "底辺 1、高さ 0.15。細領域極限では第一固有関数は「尾根」に局在し、スペクトルは 1 次元シュレディンガー作用素（ポテンシャル 1/h(x)²）で支配される（Friedlander–Solomyak 2009 / Freitas–Krejčiřík 2008）。",
+  "category": "collapsing",
+  "reference": "Friedlander–Solomyak, ESAIM COCV (2009); Freitas–Krejčiřík, J. Diff. Eq. (2008).",
+  "mesh": {
+    "vertices": 480,
+    "triangles": 821,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 630.9096438656486,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 921.0809687872694,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 1180.6927580985966,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 1464.9536027639656,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 1751.8993985047896,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 2067.896957532659,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_dirichlet_6.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 22.560998782930017,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 57.02873770909991,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 118.83739405703676,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 190.9034480343728,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 291.8758993587409,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/thin-triangle_neumann_6.png"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "id": "stadium",
+  "nameEn": "Bunimovich stadium",
+  "nameJa": "ブニモヴィッチ・スタジアム",
+  "descriptionEn": "Rectangle [-1,1]×[-1,1] with unit semicircular caps. Classical billiard of Bunimovich (1974): fully hyperbolic, a touchstone for quantum chaos; level spacing follows GOE.",
+  "descriptionJa": "幅 2 の長方形に半径 1 の半円を両端に付加。ブニモヴィッチの完全カオスビリヤード (1974)。量子カオスの試金石で、準位間隔は GOE 分布に従う。",
+  "category": "chaotic",
+  "reference": "Bunimovich, Commun. Math. Phys. 65 (1979); Heller (1984) scars.",
+  "mesh": {
+    "vertices": 9503,
+    "triangles": 18660,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 3.189293209416727,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 5.321615565257179,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 8.778317222082444,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 10.728491093810966,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 13.253738534070392,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 13.455560261868923,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 17.30132382090601,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 19.25241020992043,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 22.670101615586688,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 23.19705437013077,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 0.7610029022830516,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 2.758666361485457,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 2.897399763845668,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 4.059164165459026,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 6.054466641858177,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 6.799721745815452,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 9.601805634144304,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 10.719644628968402,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 10.927279443134177,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/stadium_neumann_10.png"
+        }
+      ]
+    }
+  }
+}

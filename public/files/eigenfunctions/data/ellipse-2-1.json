@@ -1,0 +1,136 @@
+{
+  "id": "ellipse-2-1",
+  "nameEn": "Ellipse 2:1",
+  "nameJa": "楕円 2:1",
+  "descriptionEn": "Semi-axes (1, 0.5). Separable in elliptic coordinates; eigenfunctions are products of Mathieu functions.",
+  "descriptionJa": "半軸 (1, 0.5)。楕円座標で変数分離可能で、固有関数はマシュー関数の積で表される。",
+  "category": "curved",
+  "reference": "",
+  "mesh": {
+    "vertices": 7371,
+    "triangles": 14436,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 14.273458130494422,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 25.113271980305147,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 40.13209684846965,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 46.96820689966225,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 59.53669104060658,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 63.7251128659358,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 83.42601729211972,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 84.13078465663018,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_dirichlet_8.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 3.511887368406878,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 11.695104663359423,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 12.504759926865963,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 21.55098292037729,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 24.30676091948463,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 34.0646558439939,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 41.20970734449338,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/ellipse-2-1_neumann_8.png"
+        }
+      ]
+    }
+  }
+}

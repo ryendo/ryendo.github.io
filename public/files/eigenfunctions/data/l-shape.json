@@ -1,0 +1,136 @@
+{
+  "id": "l-shape",
+  "nameEn": "L-shape",
+  "nameJa": "L字型領域",
+  "descriptionEn": "[-1,1]² with lower-right quadrant removed. Reference benchmark: eigenfunctions have a r^{2/3} corner singularity at the re-entrant corner (Fox–Henrici–Moler 1967).",
+  "descriptionJa": "[-1,1]² から右下の象限を除いた領域。凹角での r^{2/3} 型特異性を持つ古典的ベンチマーク（Fox–Henrici–Moler 1967）。",
+  "category": "non-convex",
+  "reference": "Fox–Henrici–Moler, SIAM J. Numer. Anal. 4 (1967).",
+  "mesh": {
+    "vertices": 5716,
+    "triangles": 11110,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 9.641979221924858,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 15.197261161496675,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 19.739211055422437,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 29.52149194378169,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 31.918143315191088,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 41.478665652649774,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 44.94855687232505,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 49.34805590875763,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_dirichlet_8.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 1.475967298984336,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 3.534032172176383,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 9.869604661332092,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 9.86960469357848,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 11.389480966987152,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 12.573503647461042,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 19.73921102495556,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/l-shape_neumann_8.png"
+        }
+      ]
+    }
+  }
+}

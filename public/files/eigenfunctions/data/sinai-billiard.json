@@ -1,0 +1,164 @@
+{
+  "id": "sinai-billiard",
+  "nameEn": "Sinai billiard",
+  "nameJa": "シナイ・ビリヤード",
+  "descriptionEn": "Square [-1,1]² with a central disk of radius 0.3 removed. First proven K-system (Sinai 1970).",
+  "descriptionJa": "[-1,1]² から中心の半径 0.3 の円板を除いた領域。最初に証明された K-系 (Sinai 1970)。",
+  "category": "chaotic",
+  "reference": "Sinai, Russ. Math. Surveys 25 (1970).",
+  "mesh": {
+    "vertices": 6707,
+    "triangles": 13050,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 15.076334835057496,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 17.227728671635653,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 17.227729501562656,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 21.310246949864624,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 27.609332583273677,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 34.7644320830107,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 34.7644329979215,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 42.61230326686596,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 49.60944705608191,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 53.90368004948161,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 1.9317574934625712,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 1.9317574963013375,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 4.796064181857512,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 9.381474753740788,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 11.713391850765237,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 11.713391883997515,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 11.906804554499729,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 20.976276300943947,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 20.976276438636084,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sinai-billiard_neumann_10.png"
+        }
+      ]
+    }
+  }
+}

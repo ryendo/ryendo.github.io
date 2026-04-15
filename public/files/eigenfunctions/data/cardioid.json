@@ -1,0 +1,164 @@
+{
+  "id": "cardioid",
+  "nameEn": "Cardioid",
+  "nameJa": "カージオイド",
+  "descriptionEn": "r = 1 − cos θ. Robnik billiard: fully chaotic (ergodic & mixing) for the classical flow; a benchmark for the Bohigas–Giannoni–Schmit conjecture.",
+  "descriptionJa": "r = 1 − cos θ。ロブニク・ビリヤードで、古典フローは完全にカオス的（エルゴード的かつ混合的）。BGS 予想の試金石の一つ。",
+  "category": "chaotic",
+  "reference": "Robnik, J. Phys. A 16 (1983); Bäcker–Steiner (1998).",
+  "mesh": {
+    "vertices": 37898,
+    "triangles": 75268,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 4.043001103844664,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 9.12599099176198,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 11.100055013303715,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 17.309342180809985,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 17.38667342810001,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 21.95903176813534,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 26.65334931586619,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 28.005676751163634,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 30.8980217138323,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 35.450025925728276,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 1.8751304327321237,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 2.569898865042965,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 5.636666428557448,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 6.42726877112137,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 9.724257959098747,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 10.909013736531262,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 12.446895250504145,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 17.191294423155654,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 18.09463735643466,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/cardioid_neumann_10.png"
+        }
+      ]
+    }
+  }
+}

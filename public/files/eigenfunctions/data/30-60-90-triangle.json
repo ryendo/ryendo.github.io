@@ -1,0 +1,164 @@
+{
+  "id": "30-60-90-triangle",
+  "nameEn": "30-60-90 triangle",
+  "nameJa": "30°-60°-90° 三角形",
+  "descriptionEn": "Short leg 1, long leg √3. A tiling (Lamé) triangle with fully integrable billiard.",
+  "descriptionJa": "短い脚 1、長い脚 √3。平面を敷き詰める（ラメ型）三角形で、ビリヤードは可積分。",
+  "category": "polygon",
+  "reference": "Integrable triangle (30-60-90 is one of the three Lamé triangles).",
+  "mesh": {
+    "vertices": 2637,
+    "triangles": 5035,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 30.705439435468342,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 57.02440281481781,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 83.34339795809484,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 92.11639846377061,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 122.8219688412271,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 135.98150543637522,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 162.3006924132731,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 171.0737414582514,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 188.61987155110967,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 214.9392678157234,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 4.386490854288858,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 13.159472816122936,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 17.545963981480078,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 30.705439370640587,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 39.47842445212873,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 52.63790818697129,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 57.02440261278304,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 70.18389193444618,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 83.34339648572139,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/30-60-90-triangle_neumann_10.png"
+        }
+      ]
+    }
+  }
+}

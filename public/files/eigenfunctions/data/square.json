@@ -1,0 +1,164 @@
+{
+  "id": "square",
+  "nameEn": "Unit square",
+  "nameJa": "単位正方形",
+  "descriptionEn": "[0,1] × [0,1]. Separable; every eigenvalue is π²(m²+n²) with m,n ≥ 1.",
+  "descriptionJa": "[0,1] × [0,1]。変数分離可能で、固有値は π²(m²+n²)（m, n ≥ 1）で尽くされる。",
+  "category": "basic",
+  "reference": "Courant–Hilbert (1953), §V.5",
+  "mesh": {
+    "vertices": 1941,
+    "triangles": 3720,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 19.73921106483809,
+          "lambdaExact": 19.739208802178716,
+          "relErr": 1.1462766304840502e-07,
+          "image": "/files/eigenfunctions/img/square_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 49.3480559531343,
+          "lambdaExact": 49.34802200544679,
+          "relErr": 6.879239759961229e-07,
+          "image": "/files/eigenfunctions/img/square_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 49.34805894401496,
+          "lambdaExact": 49.34802200544679,
+          "relErr": 7.485318897084737e-07,
+          "image": "/files/eigenfunctions/img/square_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 78.95697958136736,
+          "lambdaExact": 78.95683520871486,
+          "relErr": 1.828501004606299e-06,
+          "image": "/files/eigenfunctions/img/square_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 98.6963246786038,
+          "lambdaExact": 98.69604401089359,
+          "relErr": 2.8437584609096366e-06,
+          "image": "/files/eigenfunctions/img/square_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 98.69632956321159,
+          "lambdaExact": 98.69604401089359,
+          "relErr": 2.893249885203261e-06,
+          "image": "/files/eigenfunctions/img/square_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 128.3054498676162,
+          "lambdaExact": 128.30485721416164,
+          "relErr": 4.619103808140304e-06,
+          "image": "/files/eigenfunctions/img/square_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 128.305500446949,
+          "lambdaExact": 128.30485721416164,
+          "relErr": 5.01331595171295e-06,
+          "image": "/files/eigenfunctions/img/square_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 167.78464035308644,
+          "lambdaExact": 167.7832748185191,
+          "relErr": 8.138681098176015e-06,
+          "image": "/files/eigenfunctions/img/square_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 167.78468396407746,
+          "lambdaExact": 167.7832748185191,
+          "relErr": 8.398605641079303e-06,
+          "image": "/files/eigenfunctions/img/square_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 9.86960466162819,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 9.86960469311861,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 19.739211031431747,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 39.47843428554767,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 39.47843632485175,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 49.348055296207654,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 49.34805809811534,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 78.95697726160876,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 88.8266295284969,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/square_neumann_10.png"
+        }
+      ]
+    }
+  }
+}

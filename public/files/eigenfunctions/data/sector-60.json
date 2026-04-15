@@ -1,0 +1,136 @@
+{
+  "id": "sector-60",
+  "nameEn": "60° circular sector",
+  "nameJa": "60° 扇形",
+  "descriptionEn": "Radius 1, opening π/3. Separable; eigenvalues are squares of zeros of J_{3k}.",
+  "descriptionJa": "半径 1、開き角 π/3。変数分離可能で、固有値は J_{3k} の零点の二乗。",
+  "category": "sector",
+  "reference": "",
+  "mesh": {
+    "vertices": 1865,
+    "triangles": 3564,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 40.73578595765904,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 95.34626940919416,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 98.79745045356688,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 169.51792462839097,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 178.46623425983904,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 184.80239276198284,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 263.39223617901473,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 279.0340762694802,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_dirichlet_8.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 14.692458192136076,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 17.66250316792392,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 49.253623659517444,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 56.30869036107157,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 64.28987633656124,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 103.57348835066577,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 114.81546790510393,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/sector-60_neumann_8.png"
+        }
+      ]
+    }
+  }
+}

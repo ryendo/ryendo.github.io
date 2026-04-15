@@ -1,0 +1,136 @@
+{
+  "id": "heptagon",
+  "nameEn": "Regular heptagon",
+  "nameJa": "正七角形",
+  "descriptionEn": "Inscribed in the unit circle. Lowest-symmetry regular polygon that cannot tile.",
+  "descriptionJa": "単位円に内接。平面を敷き詰められない最も対称性の低い正多角形。",
+  "category": "polygon",
+  "reference": "",
+  "mesh": {
+    "vertices": 5311,
+    "triangles": 10375,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 6.735104590786609,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 17.083822874499916,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 17.083823227308095,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 30.643691584728067,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 30.643692351090657,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 35.39707907231814,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 47.1008128526725,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 47.10081616961821,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_dirichlet_8.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 3.8616976114184265,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 3.8616976322333487,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 10.514553959754581,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 10.514554075382856,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 16.774748873800526,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 19.29006891521159,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 19.29006910523563,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/heptagon_neumann_8.png"
+        }
+      ]
+    }
+  }
+}

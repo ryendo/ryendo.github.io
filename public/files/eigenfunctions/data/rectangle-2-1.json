@@ -1,0 +1,164 @@
+{
+  "id": "rectangle-2-1",
+  "nameEn": "Rectangle 2:1",
+  "nameJa": "長方形 2:1",
+  "descriptionEn": "[0,2] × [0,1]. Separable; λ_{m,n} = π²((m/2)² + n²).",
+  "descriptionJa": "[0,2] × [0,1]。変数分離可能で λ_{m,n} = π²((m/2)² + n²)。",
+  "category": "basic",
+  "reference": "",
+  "mesh": {
+    "vertices": 2743,
+    "triangles": 5282,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 12.337006520622543,
+          "lambdaExact": 12.337005501361698,
+          "relErr": 8.261817217331846e-08,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 19.739213241676225,
+          "lambdaExact": 19.739208802178716,
+          "relErr": 2.2490757120304197e-07,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 32.07623434823137,
+          "lambdaExact": 32.07621430354041,
+          "relErr": 6.249082502776372e-07,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 41.9458610666629,
+          "lambdaExact": 41.94581870462977,
+          "relErr": 1.0099226677604111e-06,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 49.34808722310384,
+          "lambdaExact": 49.34802200544679,
+          "relErr": 1.3215860412456142e-06,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 49.34809517384426,
+          "lambdaExact": 49.34802200544679,
+          "relErr": 1.4827017272433515e-06,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 61.68515674027578,
+          "lambdaExact": 61.68502750680849,
+          "relErr": 2.095054059542033e-06,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 71.55485155275173,
+          "lambdaExact": 71.55463190789784,
+          "relErr": 3.0696105622915913e-06,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 78.9571188898853,
+          "lambdaExact": 78.95683520871486,
+          "relErr": 3.5928639956248044e-06,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 91.29428749293582,
+          "lambdaExact": 91.29384071007657,
+          "relErr": 4.893899257405068e-06,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 2.4674011085981675,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 9.869604929597712,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 9.869604980947699,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 12.337006517041612,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 19.73921320099477,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 22.20661589011112,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 32.076234199587304,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 39.47845130955952,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 39.47845455324637,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/rectangle-2-1_neumann_10.png"
+        }
+      ]
+    }
+  }
+}

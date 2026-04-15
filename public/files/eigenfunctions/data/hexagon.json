@@ -1,0 +1,136 @@
+{
+  "id": "hexagon",
+  "nameEn": "Regular hexagon",
+  "nameJa": "正六角形",
+  "descriptionEn": "Inscribed in the unit circle. Tiles the plane; approximates the disk.",
+  "descriptionJa": "単位円に内接。平面を敷き詰め、円板の近似として現れる。",
+  "category": "polygon",
+  "reference": "",
+  "mesh": {
+    "vertices": 4921,
+    "triangles": 9600,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 7.155341836657831,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 18.131686978844698,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 18.131686978844705,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 32.451883798417306,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 32.45188379841746,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 37.491386479258786,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 47.62944682977721,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 52.637934581353484,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_dirichlet_8.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 4.043231272078055,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 4.043231272078332,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 10.871477464789374,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 10.871477464789574,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 17.54596484435455,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 17.545964844355005,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 24.89859474906899,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/hexagon_neumann_8.png"
+        }
+      ]
+    }
+  }
+}

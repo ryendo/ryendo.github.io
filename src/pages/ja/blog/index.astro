@@ -30,6 +30,8 @@ const posts = ((await Astro.glob("./*.md")) as Post[]).sort(
   homeLabel="プロフィール"
   blogLink={blogLink}
   blogLabel="ブログ"
+  eigLink={`${base}ja/eigenfunctions/`}
+  eigLabel="固有関数図鑑"
   altLink={altLink}
   currentSection="blog"
 >

@@ -1,0 +1,164 @@
+{
+  "id": "equilateral-triangle",
+  "nameEn": "Equilateral triangle",
+  "nameJa": "正三角形",
+  "descriptionEn": "Side 1. Lamé (1833) derived the closed-form spectrum λ_{m,n} = (16π²/9)(m² + n² + mn).",
+  "descriptionJa": "一辺 1。ラメ (1833) が閉形式解 λ_{m,n} = (16π²/9)(m² + n² + mn) を導いた。",
+  "category": "polygon",
+  "reference": "Lamé (1833); McCartin, SIAM Rev. 45 (2003).",
+  "mesh": {
+    "vertices": 861,
+    "triangles": 1600,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 52.63793458135313,
+          "lambdaExact": 52.637890139143245,
+          "relErr": 8.443007454568595e-07,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 122.82228890656998,
+          "lambdaExact": 122.82174365800091,
+          "relErr": 4.439348871210365e-06,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 122.82228890657073,
+          "lambdaExact": 122.82174365800091,
+          "relErr": 4.439348877342628e-06,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 210.55439217956823,
+          "lambdaExact": 210.55156055657298,
+          "relErr": 1.3448596570645557e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 228.10090035356842,
+          "lambdaExact": 228.0975239362874,
+          "relErr": 1.4802516146450257e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 228.10090035356862,
+          "lambdaExact": 228.0975239362874,
+          "relErr": 1.480251614732248e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 333.38436376534696,
+          "lambdaExact": 333.37330421457386,
+          "relErr": 3.317467425639849e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 333.38436376534753,
+          "lambdaExact": 333.37330421457386,
+          "relErr": 3.317467425810359e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 368.4791585955723,
+          "lambdaExact": 368.46523097400274,
+          "relErr": 3.77990116808258e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 368.47915859557236,
+          "lambdaExact": 368.46523097400274,
+          "relErr": 3.779901168098008e-05,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_dirichlet_10.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 17.545964844354216,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 17.545964844354472,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 52.63793458135598,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 70.18394712739389,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 70.18394712739413,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 122.82228890657302,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 122.8222889065733,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_8.png"
+        },
+        {
+          "k": 9,
+          "lambda": 157.9147342540319,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_9.png"
+        },
+        {
+          "k": 10,
+          "lambda": 157.9147342540323,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/equilateral-triangle_neumann_10.png"
+        }
+      ]
+    }
+  }
+}

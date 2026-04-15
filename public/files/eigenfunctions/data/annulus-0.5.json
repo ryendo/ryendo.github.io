@@ -1,0 +1,136 @@
+{
+  "id": "annulus-0.5",
+  "nameEn": "Annulus (r=0.5)",
+  "nameJa": "円環 (r=0.5)",
+  "descriptionEn": "{0.5 < r < 1}. Separable; eigenvalues determined by cross-products of Bessel functions J_m, Y_m.",
+  "descriptionJa": "{0.5 < r < 1}。変数分離可能で、固有値はベッセル関数 J_m, Y_m のクロス積の零点で与えられる。",
+  "category": "non-convex",
+  "reference": "",
+  "mesh": {
+    "vertices": 5288,
+    "triangles": 10176,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 39.00880990854113,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 40.8683208811843,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 40.86832198373653,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 46.42534625150719,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 46.42534717799794,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 55.61643586273594,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 55.61643788053378,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 68.33960109195799,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_dirichlet_8.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 1.8354670533150312,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 1.8354670543566536,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 7.190065185282763,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 7.190065202033587,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 15.66618628749223,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 15.666186364681188,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 26.786570940038892,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/annulus-0.5_neumann_8.png"
+        }
+      ]
+    }
+  }
+}

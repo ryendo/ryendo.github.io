@@ -1,0 +1,480 @@
+{
+  "domains": [
+    {
+      "id": "square",
+      "nameEn": "Unit square",
+      "nameJa": "単位正方形",
+      "descriptionEn": "[0,1] × [0,1]. Separable; every eigenvalue is π²(m²+n²) with m,n ≥ 1.",
+      "descriptionJa": "[0,1] × [0,1]。変数分離可能で、固有値は π²(m²+n²)（m, n ≥ 1）で尽くされる。",
+      "category": "basic",
+      "reference": "Courant–Hilbert (1953), §V.5",
+      "mesh": {
+        "vertices": 1941,
+        "triangles": 3720,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          19.73921106483809,
+          49.3480559531343,
+          49.34805894401496,
+          78.95697958136736
+        ],
+        "neumann": [
+          0.0,
+          9.86960466162819,
+          9.86960469311861,
+          19.739211031431747
+        ]
+      }
+    },
+    {
+      "id": "rectangle-2-1",
+      "nameEn": "Rectangle 2:1",
+      "nameJa": "長方形 2:1",
+      "descriptionEn": "[0,2] × [0,1]. Separable; λ_{m,n} = π²((m/2)² + n²).",
+      "descriptionJa": "[0,2] × [0,1]。変数分離可能で λ_{m,n} = π²((m/2)² + n²)。",
+      "category": "basic",
+      "reference": "",
+      "mesh": {
+        "vertices": 2743,
+        "triangles": 5282,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          12.337006520622543,
+          19.739213241676225,
+          32.07623434823137,
+          41.9458610666629
+        ],
+        "neumann": [
+          0.0,
+          2.4674011085981675,
+          9.869604929597712,
+          9.869604980947699
+        ]
+      }
+    },
+    {
+      "id": "disk",
+      "nameEn": "Unit disk",
+      "nameJa": "単位円板",
+      "descriptionEn": "Radius 1. Eigenvalues are squares of zeros of Bessel J_m.",
+      "descriptionJa": "半径 1 の円板。固有値は第1種ベッセル関数 J_m の零点の二乗で与えられる。",
+      "category": "basic",
+      "reference": "Courant–Hilbert (1953), §V.5",
+      "mesh": {
+        "vertices": 6202,
+        "triangles": 12146,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          5.783770421984682,
+          14.683455131043383,
+          14.683455272842556,
+          26.37728667565356
+        ],
+        "neumann": [
+          0.0,
+          3.390298103001171,
+          3.390298103010122,
+          9.32930012272844
+        ]
+      }
+    },
+    {
+      "id": "equilateral-triangle",
+      "nameEn": "Equilateral triangle",
+      "nameJa": "正三角形",
+      "descriptionEn": "Side 1. Lamé (1833) derived the closed-form spectrum λ_{m,n} = (16π²/9)(m² + n² + mn).",
+      "descriptionJa": "一辺 1。ラメ (1833) が閉形式解 λ_{m,n} = (16π²/9)(m² + n² + mn) を導いた。",
+      "category": "polygon",
+      "reference": "Lamé (1833); McCartin, SIAM Rev. 45 (2003).",
+      "mesh": {
+        "vertices": 861,
+        "triangles": 1600,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          52.63793458135313,
+          122.82228890656998,
+          122.82228890657073,
+          210.55439217956823
+        ],
+        "neumann": [
+          0.0,
+          17.545964844354216,
+          17.545964844354472,
+          52.63793458135598
+        ]
+      }
+    },
+    {
+      "id": "right-isoceles-triangle",
+      "nameEn": "Right isoceles triangle",
+      "nameJa": "直角二等辺三角形",
+      "descriptionEn": "Legs of length 1. Half-square: Dirichlet spectrum is π²(m²+n²) with m > n ≥ 1.",
+      "descriptionJa": "脚の長さ 1。単位正方形の半分として得られ、固有値は π²(m²+n²)（m > n ≥ 1）。",
+      "category": "polygon",
+      "reference": "",
+      "mesh": {
+        "vertices": 1557,
+        "triangles": 2941,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          49.34803619631555,
+          98.69615757051668,
+          128.3051059119716,
+          167.7838293322504
+        ],
+        "neumann": [
+          0.0,
+          9.869604513212213,
+          19.73920969744333,
+          39.478424766206594
+        ]
+      }
+    },
+    {
+      "id": "30-60-90-triangle",
+      "nameEn": "30-60-90 triangle",
+      "nameJa": "30°-60°-90° 三角形",
+      "descriptionEn": "Short leg 1, long leg √3. A tiling (Lamé) triangle with fully integrable billiard.",
+      "descriptionJa": "短い脚 1、長い脚 √3。平面を敷き詰める（ラメ型）三角形で、ビリヤードは可積分。",
+      "category": "polygon",
+      "reference": "Integrable triangle (30-60-90 is one of the three Lamé triangles).",
+      "mesh": {
+        "vertices": 2637,
+        "triangles": 5035,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          30.705439435468342,
+          57.02440281481781,
+          83.34339795809484,
+          92.11639846377061
+        ],
+        "neumann": [
+          0.0,
+          4.386490854288858,
+          13.159472816122936,
+          17.545963981480078
+        ]
+      }
+    },
+    {
+      "id": "pentagon",
+      "nameEn": "Regular pentagon",
+      "nameJa": "正五角形",
+      "descriptionEn": "Inscribed in the unit circle. No closed-form spectrum is known.",
+      "descriptionJa": "単位円に内接。閉形式解は知られていない。",
+      "category": "polygon",
+      "reference": "",
+      "mesh": {
+        "vertices": 4741,
+        "triangles": 9240,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          7.957090136224746,
+          20.10628570514348,
+          20.10628574685325,
+          35.65471125168318
+        ],
+        "neumann": [
+          0.0,
+          4.354463379554477,
+          4.35446338111282,
+          11.17236656009373
+        ]
+      }
+    },
+    {
+      "id": "hexagon",
+      "nameEn": "Regular hexagon",
+      "nameJa": "正六角形",
+      "descriptionEn": "Inscribed in the unit circle. Tiles the plane; approximates the disk.",
+      "descriptionJa": "単位円に内接。平面を敷き詰め、円板の近似として現れる。",
+      "category": "polygon",
+      "reference": "",
+      "mesh": {
+        "vertices": 4921,
+        "triangles": 9600,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          7.155341836657831,
+          18.131686978844698,
+          18.131686978844705,
+          32.451883798417306
+        ],
+        "neumann": [
+          0.0,
+          4.043231272078055,
+          4.043231272078332,
+          10.871477464789374
+        ]
+      }
+    },
+    {
+      "id": "heptagon",
+      "nameEn": "Regular heptagon",
+      "nameJa": "正七角形",
+      "descriptionEn": "Inscribed in the unit circle. Lowest-symmetry regular polygon that cannot tile.",
+      "descriptionJa": "単位円に内接。平面を敷き詰められない最も対称性の低い正多角形。",
+      "category": "polygon",
+      "reference": "",
+      "mesh": {
+        "vertices": 5311,
+        "triangles": 10375,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          6.735104590786609,
+          17.083822874499916,
+          17.083823227308095,
+          30.643691584728067
+        ],
+        "neumann": [
+          0.0,
+          3.8616976114184265,
+          3.8616976322333487,
+          10.514553959754581
+        ]
+      }
+    },
+    {
+      "id": "l-shape",
+      "nameEn": "L-shape",
+      "nameJa": "L字型領域",
+      "descriptionEn": "[-1,1]² with lower-right quadrant removed. Reference benchmark: eigenfunctions have a r^{2/3} corner singularity at the re-entrant corner (Fox–Henrici–Moler 1967).",
+      "descriptionJa": "[-1,1]² から右下の象限を除いた領域。凹角での r^{2/3} 型特異性を持つ古典的ベンチマーク（Fox–Henrici–Moler 1967）。",
+      "category": "non-convex",
+      "reference": "Fox–Henrici–Moler, SIAM J. Numer. Anal. 4 (1967).",
+      "mesh": {
+        "vertices": 5716,
+        "triangles": 11110,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          9.641979221924858,
+          15.197261161496675,
+          19.739211055422437,
+          29.52149194378169
+        ],
+        "neumann": [
+          0.0,
+          1.475967298984336,
+          3.534032172176383,
+          9.869604661332092
+        ]
+      }
+    },
+    {
+      "id": "stadium",
+      "nameEn": "Bunimovich stadium",
+      "nameJa": "ブニモヴィッチ・スタジアム",
+      "descriptionEn": "Rectangle [-1,1]×[-1,1] with unit semicircular caps. Classical billiard of Bunimovich (1974): fully hyperbolic, a touchstone for quantum chaos; level spacing follows GOE.",
+      "descriptionJa": "幅 2 の長方形に半径 1 の半円を両端に付加。ブニモヴィッチの完全カオスビリヤード (1974)。量子カオスの試金石で、準位間隔は GOE 分布に従う。",
+      "category": "chaotic",
+      "reference": "Bunimovich, Commun. Math. Phys. 65 (1979); Heller (1984) scars.",
+      "mesh": {
+        "vertices": 9503,
+        "triangles": 18660,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          3.189293209416727,
+          5.321615565257179,
+          8.778317222082444,
+          10.728491093810966
+        ],
+        "neumann": [
+          0.0,
+          0.7610029022830516,
+          2.758666361485457,
+          2.897399763845668
+        ]
+      }
+    },
+    {
+      "id": "sinai-billiard",
+      "nameEn": "Sinai billiard",
+      "nameJa": "シナイ・ビリヤード",
+      "descriptionEn": "Square [-1,1]² with a central disk of radius 0.3 removed. First proven K-system (Sinai 1970).",
+      "descriptionJa": "[-1,1]² から中心の半径 0.3 の円板を除いた領域。最初に証明された K-系 (Sinai 1970)。",
+      "category": "chaotic",
+      "reference": "Sinai, Russ. Math. Surveys 25 (1970).",
+      "mesh": {
+        "vertices": 6707,
+        "triangles": 13050,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          15.076334835057496,
+          17.227728671635653,
+          17.227729501562656,
+          21.310246949864624
+        ],
+        "neumann": [
+          0.0,
+          1.9317574934625712,
+          1.9317574963013375,
+          4.796064181857512
+        ]
+      }
+    },
+    {
+      "id": "cardioid",
+      "nameEn": "Cardioid",
+      "nameJa": "カージオイド",
+      "descriptionEn": "r = 1 − cos θ. Robnik billiard: fully chaotic (ergodic & mixing) for the classical flow; a benchmark for the Bohigas–Giannoni–Schmit conjecture.",
+      "descriptionJa": "r = 1 − cos θ。ロブニク・ビリヤードで、古典フローは完全にカオス的（エルゴード的かつ混合的）。BGS 予想の試金石の一つ。",
+      "category": "chaotic",
+      "reference": "Robnik, J. Phys. A 16 (1983); Bäcker–Steiner (1998).",
+      "mesh": {
+        "vertices": 37898,
+        "triangles": 75268,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          4.043001103844664,
+          9.12599099176198,
+          11.100055013303715,
+          17.309342180809985
+        ],
+        "neumann": [
+          0.0,
+          1.8751304327321237,
+          2.569898865042965,
+          5.636666428557448
+        ]
+      }
+    },
+    {
+      "id": "annulus-0.5",
+      "nameEn": "Annulus (r=0.5)",
+      "nameJa": "円環 (r=0.5)",
+      "descriptionEn": "{0.5 < r < 1}. Separable; eigenvalues determined by cross-products of Bessel functions J_m, Y_m.",
+      "descriptionJa": "{0.5 < r < 1}。変数分離可能で、固有値はベッセル関数 J_m, Y_m のクロス積の零点で与えられる。",
+      "category": "non-convex",
+      "reference": "",
+      "mesh": {
+        "vertices": 5288,
+        "triangles": 10176,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          39.00880990854113,
+          40.8683208811843,
+          40.86832198373653,
+          46.42534625150719
+        ],
+        "neumann": [
+          0.0,
+          1.8354670533150312,
+          1.8354670543566536,
+          7.190065185282763
+        ]
+      }
+    },
+    {
+      "id": "ellipse-2-1",
+      "nameEn": "Ellipse 2:1",
+      "nameJa": "楕円 2:1",
+      "descriptionEn": "Semi-axes (1, 0.5). Separable in elliptic coordinates; eigenfunctions are products of Mathieu functions.",
+      "descriptionJa": "半軸 (1, 0.5)。楕円座標で変数分離可能で、固有関数はマシュー関数の積で表される。",
+      "category": "curved",
+      "reference": "",
+      "mesh": {
+        "vertices": 7371,
+        "triangles": 14436,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          14.273458130494422,
+          25.113271980305147,
+          40.13209684846965,
+          46.96820689966225
+        ],
+        "neumann": [
+          0.0,
+          3.511887368406878,
+          11.695104663359423,
+          12.504759926865963
+        ]
+      }
+    },
+    {
+      "id": "sector-60",
+      "nameEn": "60° circular sector",
+      "nameJa": "60° 扇形",
+      "descriptionEn": "Radius 1, opening π/3. Separable; eigenvalues are squares of zeros of J_{3k}.",
+      "descriptionJa": "半径 1、開き角 π/3。変数分離可能で、固有値は J_{3k} の零点の二乗。",
+      "category": "sector",
+      "reference": "",
+      "mesh": {
+        "vertices": 1865,
+        "triangles": 3564,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          40.73578595765904,
+          95.34626940919416,
+          98.79745045356688,
+          169.51792462839097
+        ],
+        "neumann": [
+          0.0,
+          14.692458192136076,
+          17.66250316792392,
+          49.253623659517444
+        ]
+      }
+    },
+    {
+      "id": "thin-triangle",
+      "nameEn": "Thin isoceles triangle (h=0.15)",
+      "nameJa": "細長い二等辺三角形 (h=0.15)",
+      "descriptionEn": "Base 1, height 0.15. Illustrates thin-domain asymptotics: the first eigenfunction concentrates along the ridge; the spectrum is governed by a 1D Schrödinger operator with potential 1/h(x)² (Friedlander–Solomyak 2009; Freitas–Krejčiřík 2008).",
+      "descriptionJa": "底辺 1、高さ 0.15。細領域極限では第一固有関数は「尾根」に局在し、スペクトルは 1 次元シュレディンガー作用素（ポテンシャル 1/h(x)²）で支配される（Friedlander–Solomyak 2009 / Freitas–Krejčiřík 2008）。",
+      "category": "collapsing",
+      "reference": "Friedlander–Solomyak, ESAIM COCV (2009); Freitas–Krejčiřík, J. Diff. Eq. (2008).",
+      "mesh": {
+        "vertices": 480,
+        "triangles": 821,
+        "element": "P2 Lagrange"
+      },
+      "firstFew": {
+        "dirichlet": [
+          630.9096438656486,
+          921.0809687872694,
+          1180.6927580985966,
+          1464.9536027639656
+        ],
+        "neumann": [
+          0.0,
+          22.560998782930017,
+          57.02873770909991,
+          118.83739405703676
+        ]
+      }
+    }
+  ]
+}

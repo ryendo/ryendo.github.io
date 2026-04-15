@@ -1,0 +1,136 @@
+{
+  "id": "pentagon",
+  "nameEn": "Regular pentagon",
+  "nameJa": "正五角形",
+  "descriptionEn": "Inscribed in the unit circle. No closed-form spectrum is known.",
+  "descriptionJa": "単位円に内接。閉形式解は知られていない。",
+  "category": "polygon",
+  "reference": "",
+  "mesh": {
+    "vertices": 4741,
+    "triangles": 9240,
+    "element": "P2 Lagrange"
+  },
+  "boundaries": {
+    "dirichlet": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 7.957090136224746,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_dirichlet_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 20.10628570514348,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_dirichlet_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 20.10628574685325,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_dirichlet_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 35.65471125168318,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_dirichlet_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 35.65471174655319,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_dirichlet_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 41.31396030264816,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_dirichlet_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 55.7008493512869,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_dirichlet_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 55.700852494895706,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_dirichlet_8.png"
+        }
+      ]
+    },
+    "neumann": {
+      "modes": [
+        {
+          "k": 1,
+          "lambda": 0.0,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_neumann_1.png"
+        },
+        {
+          "k": 2,
+          "lambda": 4.354463379554477,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_neumann_2.png"
+        },
+        {
+          "k": 3,
+          "lambda": 4.35446338111282,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_neumann_3.png"
+        },
+        {
+          "k": 4,
+          "lambda": 11.17236656009373,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_neumann_4.png"
+        },
+        {
+          "k": 5,
+          "lambda": 11.172366580263967,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_neumann_5.png"
+        },
+        {
+          "k": 6,
+          "lambda": 18.71206001005831,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_neumann_6.png"
+        },
+        {
+          "k": 7,
+          "lambda": 24.051431547384702,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_neumann_7.png"
+        },
+        {
+          "k": 8,
+          "lambda": 24.051431996342195,
+          "lambdaExact": null,
+          "relErr": null,
+          "image": "/files/eigenfunctions/img/pentagon_neumann_8.png"
+        }
+      ]
+    }
+  }
+}
