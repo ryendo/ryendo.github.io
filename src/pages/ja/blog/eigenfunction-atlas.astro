@@ -108,63 +108,6 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
         対応する領域の JSON ファイルに対して照合し、差異があればご連絡ください。
       </div>
 
-      <div set:html={`
-        <p>
-          平面領域 $\\Omega \\subset \\mathbb{R}^2$ のラプラス作用素について、
-          Dirichlet・Neumann・Robin ($\\alpha = 1$)・Steklov の 4 種類の境界条件の下での
-          低次固有値および固有関数の数値データベース。
-        </p>
-
-        <h2>扱う固有値問題</h2>
-        <ul class="eig-list">
-          <li><strong>Dirichlet</strong>: $-\\Delta u = \\lambda u$ (Ω), $u = 0$ (∂Ω).</li>
-          <li><strong>Neumann</strong>: $-\\Delta u = \\lambda u$ (Ω), $\\partial_\\nu u = 0$ (∂Ω).</li>
-          <li><strong>Robin</strong> ($\\alpha = 1$): $-\\Delta u = \\lambda u$ (Ω), $\\partial_\\nu u + \\alpha u = 0$ (∂Ω).</li>
-          <li><strong>Steklov</strong>: $\\Delta u = 0$ (Ω), $\\partial_\\nu u = \\sigma u$ (∂Ω)。同値に、$\\sigma$ は ∂Ω 上の Dirichlet-to-Neumann 作用素の固有値。</li>
-        </ul>
-
-        <h2>離散化</h2>
-        <p>
-          非構造三角形メッシュ (gmsh 4) 上の $P_2$ Lagrange 有限要素法による
-          離散化を用いる。Dirichlet・Neumann・Robin の場合、剛性行列 $K$ と
-          質量行列 $M$ を組み立て、Dirichlet 自由度は condensation で除去したのち、
-          一般化固有値問題 $K u = \\lambda M u$ を ARPACK
-          (scipy.sparse.linalg.eigsh) の shift-and-invert モードで解く。
-          Robin の場合は $(K + \\alpha B) u = \\lambda M u$ とする ($B$ は
-          facet basis 上で組み立てた境界 (トレース) 質量行列)。Steklov に
-          ついては Schur 補による縮約を用いる：
-          $$ S = K_{BB} - K_{BI} K_{II}^{-1} K_{IB} $$
-          は離散化された Dirichlet-to-Neumann 作用素であり、
-          $S u_\\partial = \\sigma M_\\partial u_\\partial$ を密行列で解いたのち、
-          内点値は調和拡張で復元する。
-        </p>
-
-        <h2>閉形式スペクトルと精度</h2>
-        <p>
-          閉形式解が既知のものについては、数値値と並べて相対誤差を示している：
-          矩形・単位円板 ($J_m$ の零点の二乗)・正三角形 (Lamé 1833;
-          McCartin, <em>SIAM Rev.</em> 2003)・直角二等辺三角形の Dirichlet
-          固有値；および単位円板の Steklov 固有値 ($\\sigma_k = k$,
-          $k \\ge 1$ に対して重複度 2；Girouard–Polterovich, <em>J. Spectral
-          Theory</em> 7, 2017)。
-        </p>
-        <p>
-          滑らかな領域または凸多角形領域では、低次の Dirichlet モードの
-          相対誤差は概ね $10^{-6}$–$10^{-7}$。L 字領域では凹角における
-          $r^{2/3}$ 型特異性のため、非等方的 $P_2$ の第 1 モードでの精度は
-          約 $10^{-3}$ に制限される (Fox–Henrici–Moler ベンチマーク
-          $\\lambda_1 = 9.63972384\\ldots$ と 3 桁一致)。単位円板では境界の
-          多角形近似が誤差を支配し、Dirichlet モードで約 $10^{-4}$、
-          Steklov モードで約 $10^{-5}$ で頭打ちとなる。
-        </p>
-      `} />
-
-      <p class="muted">
-        全データ: <a href={`${base}files/eigenfunctions/data/index.json`}>index.json</a> ／
-        各領域: <code>{`/files/eigenfunctions/data/<id>.json`}</code>。
-        計算コード: <a href="https://github.com/ryendo/ryendo.github.io/blob/main/scripts/compute_eigenfunctions.py"><code>scripts/compute_eigenfunctions.py</code></a>
-      </p>
-
       <div class="eig-controls" id="eig-controls">
         <div class="eig-search-row">
           <input

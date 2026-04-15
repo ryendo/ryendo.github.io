@@ -131,66 +131,6 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
         JSON file and report discrepancies.
       </div>
 
-      <div set:html={`
-        <p>
-          Numerical database of the low eigenvalues and eigenfunctions of the
-          Laplace operator on a collection of planar domains $\\Omega \\subset \\mathbb{R}^2$,
-          under Dirichlet, Neumann, Robin ($\\alpha = 1$) and Steklov boundary
-          conditions.
-        </p>
-
-        <h2>Eigenvalue problems</h2>
-        <ul class="eig-list">
-          <li><strong>Dirichlet</strong>: $-\\Delta u = \\lambda u$ in $\\Omega$, $u = 0$ on $\\partial\\Omega$.</li>
-          <li><strong>Neumann</strong>: $-\\Delta u = \\lambda u$ in $\\Omega$, $\\partial_\\nu u = 0$ on $\\partial\\Omega$.</li>
-          <li><strong>Robin</strong> ($\\alpha = 1$): $-\\Delta u = \\lambda u$ in $\\Omega$, $\\partial_\\nu u + \\alpha u = 0$ on $\\partial\\Omega$.</li>
-          <li><strong>Steklov</strong>: $\\Delta u = 0$ in $\\Omega$, $\\partial_\\nu u = \\sigma u$ on $\\partial\\Omega$; equivalently, $\\sigma$ is an eigenvalue of the Dirichlet-to-Neumann operator on $\\partial\\Omega$.</li>
-        </ul>
-
-        <h2>Discretisation</h2>
-        <p>
-          The approximation is by the $P_2$ Lagrange finite element method on
-          unstructured triangular meshes (gmsh 4). For Dirichlet, Neumann and
-          Robin we assemble the stiffness matrix $K$ and the mass matrix $M$;
-          the Dirichlet degrees of freedom are eliminated by condensation and
-          the generalised eigenproblem $K u = \\lambda M u$ is solved in
-          shift-and-invert mode by ARPACK (scipy.sparse.linalg.eigsh). The
-          Robin problem is $(K + \\alpha B) u = \\lambda M u$, where $B$ is the
-          boundary mass matrix assembled on the facet basis. For Steklov we
-          reduce to the boundary by the Schur complement
-          $$ S = K_{BB} - K_{BI} K_{II}^{-1} K_{IB} $$
-          (the discrete Dirichlet-to-Neumann operator) and solve the dense
-          generalised eigenproblem $S u_\\partial = \\sigma M_\\partial u_\\partial$;
-          interior values are recovered by harmonic extension.
-        </p>
-
-        <h2>Closed-form spectra and accuracy</h2>
-        <p>
-          Analytic eigenvalues are reported alongside the numerical values,
-          together with the relative error, for: Dirichlet on the rectangle,
-          the disk (squares of zeros of $J_m$), the equilateral triangle
-          (Lamé 1833; McCartin, <em>SIAM Rev.</em> 2003), and the right
-          isoceles triangle; and Steklov on the disk ($\\sigma_k = k$,
-          multiplicity 2 for $k \\ge 1$; Girouard–Polterovich, <em>J. Spectral
-          Theory</em> 7, 2017).
-        </p>
-        <p>
-          The a posteriori error on smooth or polygonal convex domains is
-          typically $10^{-6}$–$10^{-7}$ for the first few Dirichlet modes. On
-          the L-shape the re-entrant corner generates an $r^{2/3}$ singularity
-          of the eigenfunction and caps the non-isoparametric $P_2$ rate on
-          the first mode at $\\sim 10^{-3}$. On the unit disk the polygonal
-          approximation of $\\partial\\Omega$ caps the Dirichlet error at
-          $\\sim 10^{-4}$ and the Steklov error at $\\sim 10^{-5}$.
-        </p>
-      `} />
-
-      <p class="muted">
-        Full data: <a href={`${base}files/eigenfunctions/data/index.json`}>index.json</a> ·
-        Per-domain JSON: <code>{`/files/eigenfunctions/data/<id>.json`}</code>.
-        Source: <a href="https://github.com/ryendo/ryendo.github.io/blob/main/scripts/compute_eigenfunctions.py"><code>scripts/compute_eigenfunctions.py</code></a>.
-      </p>
-
       <div class="eig-controls" id="eig-controls">
         <div class="eig-search-row">
           <input
