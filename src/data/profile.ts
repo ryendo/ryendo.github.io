@@ -307,6 +307,22 @@ export const profileEn = {
     "label": "International Workshop on Reliable Computing and Computer-Assisted Proofs (ReCAP 2022) Student Presentation Award"
   }
 ],
+  preprints: [
+    {
+      "title": "Inverse problems and continuity of heat content coefficients",
+      "authors": "Ryoki Endo, Katie Gittins, Jacob Walker",
+      "when": "2026-10-23",
+      "arxivId": "2610.32613",
+      "arxivUrl": "https://arxiv.org/abs/2610.32613"
+    },
+    {
+      "title": "Maximizing the fundamental Laplace–Neumann eigenvalue on quadrilaterals",
+      "authors": "Ryoki Endo, Braxton Osting",
+      "when": "2026-09-02",
+      "arxivId": "2609.02784",
+      "arxivUrl": "https://arxiv.org/abs/2609.02784"
+    }
+  ],
   publications: [
   {
     "title": "The Second Dirichlet Eigenvalue is Simple on Every Non-equilateral Triangle, Part II: Nearly Equilateral Triangles",

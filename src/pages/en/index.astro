@@ -75,6 +75,24 @@ const base = import.meta.env.BASE_URL;
       </ul>
     </div>
 
+    <div class="section" id="preprints">
+      <h2 class="section-heading">Preprints</h2>
+      <ul class="pub-list">
+        {profile.preprints.map((paper) => (
+          <li class="pub-item">
+            <div class="pub-title">{paper.title}</div>
+            <div class="pub-authors">{paper.authors}</div>
+            <div class="pub-meta">
+              <span class="date">{paper.when}</span>
+              <span class="pub-links">
+                <a href={paper.arxivUrl} target="_blank" rel="noreferrer">arXiv:{paper.arxivId}</a>
+              </span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
     <div class="section">
       <h2 class="section-heading">Awards</h2>
       <ul class="simple-list">
